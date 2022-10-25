@@ -1,0 +1,17 @@
+{
+    "name": "vp-stable-diffusion-book",
+    "version": "1.0.0",
+    "main": "index.js",
+    "private": true,
+    "license": "MIT",
+    "packageManager": "yarn@3.2.4",
+    "devDependencies": {
+        "vitepress": "1.0.0-alpha.23",
+        "vue": "^3.2.41"
+    },
+    "scripts": {
+        "dev": "vitepress dev",
+        "build": "vitepress build",
+        "serve": "vitepress serve"
+    }
+}
