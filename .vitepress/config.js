@@ -10,27 +10,34 @@ export default defineConfig({
     srcDir: "./src",
     ignoreDeadLinks: true,
     themeConfig: {
-        outlineTitle: '在这一页上',
+        outlineTitle: "在这一页上",
         nav: [
-            { text: "附录", link: "/appendix" }
-        ],
-        sidebar: [
+            { text: "术语解释", link: "/glossary" },
             {
-                text: "基础指引",
+                text: "指南",
                 items: [
-                    { text: "术语解释", link: "/glossary" },
                     { text: "起步于此", link: "/preparation" },
                     { text: "安装配置", link: "/installation" },
-                    { text: "模型调试", link: "/models" },
+                    { text: "模型调试", link: "/models/index" },
                     { text: "绘画调试", link: "/drawing" },
                 ],
             },
             {
-                text: "进阶指引",
-                items: [
-                    { text: "训练精修", link: "/finetune" }
-                ],
+                text: "深入",
+                items: [{ text: "训练精修", link: "/finetune" }],
             },
+            { text: "附录", link: "/appendix" },
         ],
+        sidebar: {
+            "/models/": [
+                {
+                    text: "模型调试",
+                    items: [
+                        { text: "引言", link: "/models/index" },
+                        { text: "关于显卡", link: "/models/videocards" },
+                    ],
+                },
+            ],
+        },
     },
 });
