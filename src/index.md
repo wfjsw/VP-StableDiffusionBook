@@ -1,15 +1,24 @@
-# AiDraw
+---
+layout: home
 
-本站为通过 VitePress 对 [sudoskys/StableDiffusionBook](https://github.com/sudoskys/StableDiffusionBook) 进行架构整理的尝试。
+title: AiDraw
+titleTemplate: AiDraw
 
-本站内容可能过时，欲查阅最新内容请访问 https://draw.dianas.cyou/
-
-## 分流地址
-
-- Vercel 域名(国内不可用)
-[https://stable-diffusion-book.vercel.app/](https://stable-diffusion-book.vercel.app/) 短链为(https://b23.ink/aibook)
-
-- 别名(国内可用)
-[https://draw.dianas.cyou/](https://draw.dianas.cyou/)
-
->图片托管在 Github,如果不能访问图片，请切换网络环境。
+hero:
+  name: AiDraw
+  text: Stable Diffusion Book
+  tagline: 关于使用 Ai 绘画的 Wiki ，翻译，教程，相关资源。主要内容为 StableDiffusionWebUI
+  actions:
+    - theme: brand
+      text: 新手指南
+      link: /guide/index
+    - theme: alt
+      text: 术语解释
+      link: /glossary
+    - theme: alt
+      text: 在 GitHub 上查看
+      link: https://github.com/wfjsw/VP-StableDiffusionBook
+    - theme: alt
+      text: 阅读原本
+      link: https://draw.dianas.cyou/
+---

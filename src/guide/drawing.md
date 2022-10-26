@@ -7,7 +7,7 @@
 >
 
 
-这节会介绍 参数 和 相关的 WebUi(SD)  网页应用资源。如果你会画画，那么效果会更加稳定可观。
+这节会介绍 参数 和 相关的 WebUI(SD)  网页应用资源。如果你会画画，那么效果会更加稳定可观。
 
 标签参考应该使用 [Danbooru wiki Tag](https://danbooru.donmai.us/wiki_pages/help:home) 和 [MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference) ，因为它们都比较原生。 
 
@@ -20,7 +20,7 @@
 如果你不想读文字，可以打开 [推荐的视频教程](https://space.bilibili.com/35723238/channel/collectiondetail?sid=779851)，但需要了解 **通过 AI 模仿画风，特定镜头，增加特效，微修微调，PS嫁接出图，通过3D特定姿势，重画，迭代** 等等操作的话，需要**通读**下面的内容。
 
 
->提前告知：WebUi 的设置页面需要按下 `Apply setting` 才能保存设置。
+>提前告知：WebUI 的设置页面需要按下 `Apply setting` 才能保存设置。
 
 
 ## 基本流程
@@ -56,7 +56,7 @@
 
 ## 魔法入门
 
-请先在前面了解一下 WebUi(SD) 网页应用的参数。
+请先在前面了解一下 WebUI(SD) 网页应用的参数。
 
 
 ### 提示词语法简介
@@ -65,7 +65,7 @@
 
 !!! tip
     两方的提示词语法**不通用**
-    用 `()`在WebUi做增强，而在NAi用 `{}` 做增强，注意NAI不支持单个词语指定权重
+    用 `()`在WebUI做增强，而在NAi用 `{}` 做增强，注意NAI不支持单个词语指定权重
 
     如果你想便捷转换权重，可以使用[转换服务](https://t.me/M2NM2NBot)
 
@@ -73,9 +73,9 @@
 
 分隔，英文半角 `,` 做分隔符，在英文逗号前后存在一个或数个空格并不影响实际使用。
 
-混合，WebUi 使用 `|` 分隔多个关键词以混合多个要素，字面意义上的混合，可以多个使用。
+混合，WebUI 使用 `|` 分隔多个关键词以混合多个要素，字面意义上的混合，可以多个使用。
 
-增强，用 `(提示词:权重)` 在 WebUi 权重增强，增强的范围是 `0.1 ~:100`，允许小数。NAI使用 `{}`
+增强，用 `(提示词:权重)` 在 WebUI 权重增强，增强的范围是 `0.1 ~:100`，允许小数。NAI使用 `{}`
 
 !!! tip
     `a ((((farm))), daytime` 的语法可能会吃掉逗号
@@ -88,24 +88,24 @@
 
 `[from::when]` 在固定数量的step后从提示中删除 `from`( when)
 
-转义，WebUi 对于带括号的参数，`a (word)`  请在参数中使用 `\` 字符转义为 `a \(word\)`。
+转义，WebUI 对于带括号的参数，`a (word)`  请在参数中使用 `\` 字符转义为 `a \(word\)`。
 
 降低权重，`[]` 或者 `(word:0.952)`。NAI 仅能使用 `[]`
 
-交替（alternate prompt）[^7]，这使您可以创建动物、人或风格的混合体，每一个 step 切换一个项，`[alison brie|emma stone|elizabeth olsen|scarlett johansson|anne hathaway|emma roberts], still film` 这是WebUi 语法，在 NAI 中是混合。
+交替（alternate prompt）[^7]，这使您可以创建动物、人或风格的混合体，每一个 step 切换一个项，`[alison brie|emma stone|elizabeth olsen|scarlett johansson|anne hathaway|emma roberts], still film` 这是WebUI 语法，在 NAI 中是混合。
 
 !!! tip "NAI"
 
     NAI中不允许单独指定权重，但支持混合权重 `cat:1|happy:-0.2|cute:-0:3` 这样的语法。
     
-    因为NAI使用的是 WebUi 2022 年 9 月 29 日之前的实现，所以权重增强语法是旧的 `{}` ，新的 WebUi 更改为 `()`。
+    因为NAI使用的是 WebUI 2022 年 9 月 29 日之前的实现，所以权重增强语法是旧的 `{}` ，新的 WebUI 更改为 `()`。
     
     **换算关系**
-    NAI的 [word] = WebUi(word:0.952)(0.952 = 1/1.05)
+    NAI的 [word] = WebUI(word:0.952)(0.952 = 1/1.05)
 
     NAI的{word} = WeUi的(word:1.05)
 
-    NAI花括号权重为1.05/个，WebUi圆权重为1.1/个
+    NAI花括号权重为1.05/个，WebUI圆权重为1.1/个
     
 
 
@@ -115,7 +115,7 @@
 
 - 自然语言
 
-可以直接使用自然语言，WebUi(SD) 有自然语言处理能力(英文句子),也可以使用 颜文字 和 emoji
+可以直接使用自然语言，WebUI(SD) 有自然语言处理能力(英文句子),也可以使用 颜文字 和 emoji
 
 - 参数[^6]
 
@@ -141,7 +141,7 @@
 
 根据 手抄本的Tip，由于GPT-3模型限制，prompt 并不是无限的，positive token 在 75-80 之间，negative 大概65，加太多会提示你 xxx of xxx are truncated，所以别人那边的圣经不要照抄，太长的咒语后半都没有意义了，所以用简易反咒就足够，除非你有特定想屏蔽的东西。
 
-当提示超过75个`token`（比如150个`token`）时，WebUi 将分组提示词，提交多组75个 `token`。标记只具有同一集合中其他内容的上下文。这意味着您可能在第一组和第二组之间的边界处有`bule hair`，标记`blue`将在第一组中，`hair`将在第二组中。这导致了结果的不准确，因为这两个词是分开的。
+当提示超过75个`token`（比如150个`token`）时，WebUI 将分组提示词，提交多组75个 `token`。标记只具有同一集合中其他内容的上下文。这意味着您可能在第一组和第二组之间的边界处有`bule hair`，标记`blue`将在第一组中，`hair`将在第二组中。这导致了结果的不准确，因为这两个词是分开的。
 
 新版本增加了一个选项 `Increase coherency by padding from the last comma within n tokens when using more than 75 tokens`
 
@@ -246,7 +246,7 @@ a \(word\) - 在提示中使用文字 () 字符
 
 如果未指定权重，则假定为 `1.1`
 
-指定权重仅适用于 `()` 而不是 `[]`，注意 `[]` 削减语法，指定单个权重仅适用于WebUi 且使用 `()`
+指定权重仅适用于 `()` 而不是 `[]`，注意 `[]` 削减语法，指定单个权重仅适用于WebUI 且使用 `()`
 
 ```
 > ( n ) = ( n : 1.1 )  
@@ -259,7 +259,7 @@ a \(word\) - 在提示中使用文字 () 字符
 
 `(cat :2 | dog)` 也就是更像猫的狗
 
-在 WebUi 中需要使用 `()`指定权重！可以像这样指定权重：(text:1.4)。如果未指定权重，则假定为 1.1。
+在 WebUI 中需要使用 `()`指定权重！可以像这样指定权重：(text:1.4)。如果未指定权重，则假定为 1.1。
 
 
 
@@ -272,14 +272,14 @@ a \(word\) - 在提示中使用文字 () 字符
 
     NAI中不允许单独指定权重，但支持混合权重 `cat:1|happy:-0.2|cute:-0:3` 这样的语法。
     
-    因为 NAI 使用的是 WebUi 2022 年 9 月 29 日之前的实现，所以权重增强语法是旧的 `{}` ，新的 WebUi 更改为 `()`。
+    因为 NAI 使用的是 WebUI 2022 年 9 月 29 日之前的实现，所以权重增强语法是旧的 `{}` ，新的 WebUI 更改为 `()`。
     
     **换算关系**
-    NAI的 [word] = WebUi(word:0.952)(0.952 = 1/1.05)
+    NAI的 [word] = WebUI(word:0.952)(0.952 = 1/1.05)
 
     NAI的{word} = WeUi的(word:1.05)
 
-    NAI花括号权重为1.05/个，WebUi圆权重为1.1/个
+    NAI花括号权重为1.05/个，WebUI圆权重为1.1/个
 
 ??? tip "How It Work"
     每个单词都有一个768个值的相关向量，该向量“指向”概念的方向（在768维空间中）。
@@ -290,7 +290,7 @@ a \(word\) - 在提示中使用文字 () 字符
 
 ### 消极提示词
 
-WebUi(SD)网页应用会在生成时**拒绝消极提示词有关的内容**。
+WebUI(SD)网页应用会在生成时**拒绝消极提示词有关的内容**。
 
 比如使用以下提示词削除水印和文字内容
 
@@ -314,7 +314,7 @@ normal quality, text, censored, gown, latex, pencil
 
 ### 渐变标签
 
-渐变标签，指示 WebUi 在训练中替换 Token，语法使用 `[some1:some2:num]`
+渐变标签，指示 WebUI 在训练中替换 Token，语法使用 `[some1:some2:num]`
 
 `[fantasy:cyberpunk:16]` 代表从第 16 step 后，使用 `cyberpunk` 标签替换 `fantasy`
 
@@ -375,18 +375,18 @@ normal quality, text, censored, gown, latex, pencil
 
 在程序中，提示词的解析由 CLIP 处理
 
-[WebUi的prompt_parser](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/prompt_parser.py) 实现了渐变等功能
+[WebUI的prompt_parser](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/prompt_parser.py) 实现了渐变等功能
 
 CLIP 无法处理中文，中文字符会被分解。
 
 **关于权重的实现**：权重增加通常会占一个提示词位。
 
 
-**关于渐变的实现**：到了指定 Step ，WebUi 程序会替换对应 提示词，达到渐变效果。
+**关于渐变的实现**：到了指定 Step ，WebUI 程序会替换对应 提示词，达到渐变效果。
 
 其他以此类推。
 
-WebUi prompt 语法会转换为相应时间的 prompt,然后通过 embedding 交给 Ai 处理。
+WebUI prompt 语法会转换为相应时间的 prompt,然后通过 embedding 交给 Ai 处理。
 
 
 ### 参数冲突(提示词)
@@ -537,7 +537,7 @@ CLIP 询问器有两个部分：一个是 BLIP 模型，它从图片中创建文
 
 一般我们有两种途径对图像进行修复：**PS 和 InPaint**，使用方法也十分多样。
 
-WebUi 使用 `--gradio-img2img-tool color-sketch` 启动会带入一个插件对图片进行颜色涂抹(这里不是 Inpaint)
+WebUI 使用 `--gradio-img2img-tool color-sketch` 启动会带入一个插件对图片进行颜色涂抹(这里不是 Inpaint)
 
 !!! tip "不同之处"
     PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint 就不会。

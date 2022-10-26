@@ -1,19 +1,19 @@
 
 # 模型技法
 
-这节介绍 Debug 和一些 关于 WebUi 网页应用模型参数 的优化方案，让它更好用。
+这节介绍 Debug 和一些 关于 WebUI 网页应用模型参数 的优化方案，让它更好用。
 
 至于如何出图，请看下一节。
 
 !!! tip
-    注意要经常从远端代码库拉取代码更新 WebUi 网页应用～
+    注意要经常从远端代码库拉取代码更新 WebUI 网页应用～
 
 >本节只针对 NAI 模型展开教程。请多多关注 About 页面的社区获取最新进展和新闻。**大部分源教程来自：[^2]**
 
 !!! info "版权"
     本仓库不提供具体链接（版权警告），可以看页面下标或关注中文社区 t.me@StableDiffusion_CN_WIKI。
 
-SDWebUi是一个框架，所以除了NAI模型外还有许多[其他模型](https://rentry.org/sdmodels)
+SDWebUI是一个框架，所以除了NAI模型外还有许多[其他模型](https://rentry.org/sdmodels)
 
 
 
@@ -62,7 +62,7 @@ SDWebUi是一个框架，所以除了NAI模型外还有许多[其他模型](http
 
 注意，`final-pruned .yaml` 的名称应该对应 `final-pruned .ckpt`
 
-`hypernetworks` 包含了 `stableckpt/modules/modules` 里的文件，是风格相关的数据集，可以作为特定人物的 `embedding model` 调用，和 model 使用可以生成特定风格。主要格式为 `*.pt`。需要在WebUi的设置标签页启用这个增强模型。
+`hypernetworks` 包含了 `stableckpt/modules/modules` 里的文件，是风格相关的数据集，可以作为特定人物的 `embedding model` 调用，和 model 使用可以生成特定风格。主要格式为 `*.pt`。需要在WebUI的设置标签页启用这个增强模型。
 
 `workspace` 不是个人可以负载的，NAI采用的是 GPU 集群云。
 
@@ -487,7 +487,7 @@ Script 类有四个主要方法，这里通过一个简单的[示例脚本](http
 
 ### 不间断生产
 
-在 WebUi 的生成键右击即可出现 不间断生成 的选项。
+在 WebUI 的生成键右击即可出现 不间断生成 的选项。
 
 ### 图片信息 Png info
 

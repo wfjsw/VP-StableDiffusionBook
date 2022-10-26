@@ -9,7 +9,7 @@
 >
 >
 
-本节讨论 WebUi 的高度自定义功能：`train`，通过这项功能，我们可以为 Ai 增加类似 DLC 扩展包一样的功能。
+本节讨论 WebUI 的高度自定义功能：`train`，通过这项功能，我们可以为 Ai 增加类似 DLC 扩展包一样的功能。
 
 目前个人认为效果认为效果最好的是 `dreambooth`，但是其对显存要求较高（>12GB）
 
@@ -47,7 +47,7 @@
 
 [相关 embeddings](https://gitlab.com/16777216c/stable-diffusion-embeddings)，里面有相关效果预览。
 
-[list of Textual Inversion embeddings for WebUi(SD)](https://rentry.org/embeddings)
+[list of Textual Inversion embeddings for WebUI(SD)](https://rentry.org/embeddings)
 
 [HuggingFace 的embeddings库](https://cyberes.github.io/stable-diffusion-textual-inversion-models/)
 
@@ -153,7 +153,7 @@ propose an advanced Prompt Tuning method (APT), can super dramatically improve t
 
 ### 模型要求
 
-WebUi 应该是 Git 的最新版本。
+WebUI 应该是 Git 的最新版本。
 
 显存至少 6GB，正常使用需要 12GB 显存。根据实验数据，8GB 显存应该选择 `512x512` 分辨率，不能在 `--lowvram` 和 `--medvram` 参数下进行训练，不支持 `batch sizes` 和 `gradient accumulation` 。
 
@@ -167,7 +167,7 @@ WebUi 应该是 Git 的最新版本。
 
 ### 设置说明
 
-准备 30 张以上的目标人设图片，每一张图片应当裁剪为同样的比例。（即使WebUi已经支持了长方形图片的裁剪）
+准备 30 张以上的目标人设图片，每一张图片应当裁剪为同样的比例。（即使WebUI已经支持了长方形图片的裁剪）
 
 在 `Interrogate Options` 设置中，`Interrogate: deepbooru score threshold` 是 deepbooru(从图像提取标签) 可用标签的阀值。建议使用 0.75,也就是保留预测结果大于 75%的结果。
 

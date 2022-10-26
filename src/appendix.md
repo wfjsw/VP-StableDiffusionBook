@@ -17,7 +17,7 @@
 
 - [Danbooru 标签超市](https://tags.novelai.dev/),[项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)
 
-- [SDWebUi自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
+- [SDWebUI自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
 
 - [参数转换-M2NM2NBot](https://t.me/M2NM2NBot)
 
@@ -47,7 +47,7 @@
 
 - **[SD资源金矿](https://rentry.org/sdupdates)**
 
-- [WebUi使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
+- [WebUI使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
 
 - [NovelAI 5ch Wiki](https://seesaawiki.jp/nai_ch/)
 
@@ -55,7 +55,7 @@
 
 - [一个小指南：RedditAbout](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)
 
-- [WebUi自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
+- [WebUI自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
 
 - [SD相关的Faq](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 
@@ -70,7 +70,7 @@
 
 - [火药教程](https://rentry.org/stablediffgpubuy)
 
-- [WebUi的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
+- [WebUI的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
 
 - [匿名者的绘画技巧/nsfw](https://rentry.org/inpainting-guide-SD)
 
