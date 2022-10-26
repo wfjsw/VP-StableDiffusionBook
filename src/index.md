@@ -13,9 +13,6 @@ hero:
       text: 新手指南
       link: /guide/index
     - theme: alt
-      text: 术语解释
-      link: /glossary
-    - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/wfjsw/VP-StableDiffusionBook
     - theme: alt
