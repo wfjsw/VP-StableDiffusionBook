@@ -1,21 +1,9 @@
 ## 使用 Google Colab 搭建
 
-<!--
-Colab 开始反滥用，目前 Colab 的[协议](https://research.google.com/colaboratory/faq.html#limitations-and-restrictions) `禁止穿透` ，如果你使用，会承担风险。
+Colab 资源每日重置。Colab的 [用户协议](https://research.google.com/colaboratory/faq.html?hl=zh-CN) 不允许利用多个帐号绕过访问权限或资源使用情况限制。
 
-但是有人指出 [Colab并没有计划封禁 SD](https://github.com/googlecolab/colabtools/issues/3147)
--->
+NovelAI 原版：
+https://colab.research.google.com/drive/1_Ma71L6uGbtt6UQyA3FjqW2lcZ5Bjck-
 
-Colab 资源每日重置。
-
-::: tip
-为什么不放笔记本地址？
-
-因为 Colab 是谷歌开放的一款免费的研究工具，不应将其用于生产环境。
-
-在 10/23 晚，有人反映 Colab 开始反滥用。
-
-据 Google 员工在 GitHub 发帖，是误封。
-:::
-
-具体笔记本地址请关注中文社区 t.me@StableDiffusion_CN_WIKI
+Stable-Diffusion-WebUI 版：
+https://colab.research.google.com/drive/1zuK0u8UW8IKMEvVNz7lU34Qph_gS14XD

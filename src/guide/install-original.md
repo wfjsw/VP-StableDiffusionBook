@@ -50,13 +50,13 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 参考代码，具体参照leak的前端后端项目，以及其中的 `sd-private\hydra-node-http\main.py`
 
-`prompt` 中 `masterpiece, best quality `, 开头对应原版 `web Add Quality Tags`  选项，不建议删除，后面直接跟自己 `prompt` 即可
+`prompt` 中 `masterpiece, best quality`, 开头对应原版 `Add Quality Tags` 选项，不建议删除，后面直接跟自己 `prompt` 即可
 
-uc 部分对应 *web Undesired Content*，建议保留默认
+`uc` 部分对应 *Undesired Content*，建议保留默认
 
-sampler 是采样方法，可选 `plms/ddim/k_euler/k_euler_ancestral/k_heun/k_dpm_2/k_dpm_2_ancestral/k_lms`
+`sampler` 是采样方法，可选 `plms/ddim/k_euler/k_euler_ancestral/k_heun/k_dpm_2/k_dpm_2_ancestral/k_lms`
 
-seed 是种子，自己随机一个整数数字，不然一直会出一样的结果
+`seed` 是种子，自己随机一个整数数字，不然一直会出一样的结果
 
 n_samples 代表要生成几张图片
 

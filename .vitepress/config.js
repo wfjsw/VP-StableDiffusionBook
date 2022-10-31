@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { SearchPlugin } from "vitepress-plugin-search";
 
 export default defineConfig({
     title: "AiDraw",
@@ -62,16 +63,22 @@ export default defineConfig({
                         },
                     ],
                 },
-            ],
-            "/models/": [
                 {
-                    text: "模型调试",
+                    text: "配置与调试",
                     items: [
-                        { text: "引言", link: "/models/index" },
-                        { text: "关于显卡", link: "/models/videocards" },
+                        { text: "引言", link: "/guide/configuration" },
+                        { text: "关于显卡", link: "/guide/configuration-videocards" },
+                        { text: "关于 NovelAI 泄露模型", link: "/guide/configuration-novelai-models" },
                     ],
                 },
             ],
         },
+    },
+    vite: {
+        plugins: [
+            SearchPlugin({
+                wildcard: true,
+            }),
+        ],
     },
 });

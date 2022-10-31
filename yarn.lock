@@ -534,6 +534,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"argparse@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "argparse@npm:2.0.1"
+  checksum: 83644b56493e89a254bae05702abf3a1101b4fa4d0ca31df1c9985275a5a5bd47b3c27b7fa0b71098d41114d8ca000e6ed90cad764b306f8a503665e4d517ced
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -676,6 +683,13 @@ __metadata:
   dependencies:
     iconv-lite: ^0.6.2
   checksum: bb98632f8ffa823996e508ce6a58ffcf5856330fde839ae42c9e1f436cc3b5cc651d4aeae72222916545428e54fd0f6aa8862fd8d25bdbcc4589f1e3f3715e7f
+  languageName: node
+  linkType: hard
+
+"entities@npm:~3.0.1":
+  version: 3.0.1
+  resolution: "entities@npm:3.0.1"
+  checksum: aaf7f12033f0939be91f5161593f853f2da55866db55ccbf72f45430b8977e2b79dbd58c53d0fdd2d00bd7d313b75b0968d09f038df88e308aa97e39f9456572
   languageName: node
   linkType: hard
 
@@ -1153,6 +1167,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"linkify-it@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "linkify-it@npm:4.0.1"
+  dependencies:
+    uc.micro: ^1.0.1
+  checksum: 3e0a29921269c14eb7ac6f5db2da68d4854ea9acca6e9014a323f75f2dd39b197ffab57c1fbd6a906ceb021aad3ee6d7ba7d0181236dd9630ffc452b392f7f71
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^6.0.0":
   version: 6.0.0
   resolution: "lru-cache@npm:6.0.0"
@@ -1199,6 +1222,28 @@ __metadata:
     socks-proxy-agent: ^7.0.0
     ssri: ^9.0.0
   checksum: 2332eb9a8ec96f1ffeeea56ccefabcb4193693597b132cd110734d50f2928842e22b84cfa1508e921b8385cdfd06dda9ad68645fed62b50fff629a580f5fb72c
+  languageName: node
+  linkType: hard
+
+"markdown-it@npm:^13.0.1":
+  version: 13.0.1
+  resolution: "markdown-it@npm:13.0.1"
+  dependencies:
+    argparse: ^2.0.1
+    entities: ~3.0.1
+    linkify-it: ^4.0.1
+    mdurl: ^1.0.1
+    uc.micro: ^1.0.5
+  bin:
+    markdown-it: bin/markdown-it.js
+  checksum: faf5891d389dc433bcf21d3fbff2009beb044b42b117c92f4848899780ca1a2282a209e3ff4672db4afed726a7248304ec473e6e242a7d6498af7113d31974e7
+  languageName: node
+  linkType: hard
+
+"mdurl@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "mdurl@npm:1.0.1"
+  checksum: 71731ecba943926bfbf9f9b51e28b5945f9411c4eda80894221b47cc105afa43ba2da820732b436f0798fd3edbbffcd1fc1415843c41a87fea08a41cc1e3d02b
   languageName: node
   linkType: hard
 
@@ -1689,6 +1734,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uc.micro@npm:^1.0.1, uc.micro@npm:^1.0.5":
+  version: 1.0.6
+  resolution: "uc.micro@npm:1.0.6"
+  checksum: 6898bb556319a38e9cf175e3628689347bd26fec15fc6b29fa38e0045af63075ff3fea4cf1fdba9db46c9f0cbf07f2348cd8844889dd31ebd288c29fe0d27e7a
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -1746,9 +1798,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress@npm:1.0.0-alpha.23":
-  version: 1.0.0-alpha.23
-  resolution: "vitepress@npm:1.0.0-alpha.23"
+"vitepress-plugin-search@npm:1.0.4-alpha.11":
+  version: 1.0.4-alpha.11
+  resolution: "vitepress-plugin-search@npm:1.0.4-alpha.11"
+  peerDependencies:
+    vite: 2 || 3
+    vitepress: ^1.0.0-alpha.13
+    vue: 3
+  checksum: cf428d9fc35f2bc91c9f14aee186dffabd5abd5ce4a5d755130c3bb96f022ce1798a8496bad9240433dfde306450b990d9005e35587d507e2139825ff2e1ff95
+  languageName: node
+  linkType: hard
+
+"vitepress@npm:1.0.0-alpha.26":
+  version: 1.0.0-alpha.26
+  resolution: "vitepress@npm:1.0.0-alpha.26"
   dependencies:
     "@docsearch/css": ^3.3.0
     "@docsearch/js": ^3.3.0
@@ -1762,7 +1825,7 @@ __metadata:
     vue: ^3.2.41
   bin:
     vitepress: bin/vitepress.js
-  checksum: 532a3206a1d620934194716cda6877b5edf3508ce4c670ed84b0535280ecca582b6d11b12f6e20920ad91973245b5a8d9cb5e9f3be6db035aae6965e07d92ef3
+  checksum: 8dbc1615bb79e65d0e4fc8fbc1f47b821d2c8f89c131387255c516f0dcd1d3695d2fedcc5fd4c00f082093b4cc7cb3c0b2d618de2eaabb04d245bf0ed756ee4f
   languageName: node
   linkType: hard
 
@@ -1770,7 +1833,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vp-stable-diffusion-book@workspace:."
   dependencies:
-    vitepress: 1.0.0-alpha.23
+    markdown-it: ^13.0.1
+    vitepress: 1.0.0-alpha.26
+    vitepress-plugin-search: 1.0.4-alpha.11
     vue: ^3.2.41
   languageName: unknown
   linkType: soft

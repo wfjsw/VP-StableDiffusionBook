@@ -6,14 +6,6 @@ outline: [2, 3]
 
 # 准备工作
 
-## 在社区礼貌提问
-
-[如何提问才是正确的？](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
-
-如果你确认有错误的内容或者需要补充的重要内容，可以发 Issue 或 Pr 这个仓库，帮助完成文档，帮到更多人。
-
-欢迎交流，不欢迎伸手党。问问题前请先自己确认文档内没有解释，且你应该明白任何人或社区成员在没有利益关系的情况下，没有义务为你解答问题。
-
 ## 术语解释
 
 ### ENSD

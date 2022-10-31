@@ -6,7 +6,9 @@
     "license": "MIT",
     "packageManager": "yarn@3.2.4",
     "devDependencies": {
-        "vitepress": "1.0.0-alpha.23",
+        "markdown-it": "^13.0.1",
+        "vitepress": "1.0.0-alpha.26",
+        "vitepress-plugin-search": "1.0.4-alpha.11",
         "vue": "^3.2.41"
     },
     "scripts": {
