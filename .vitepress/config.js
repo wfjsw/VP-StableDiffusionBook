@@ -96,7 +96,7 @@ export default defineConfig({
                     items: [{ text: "前言", link: "/advanced/" }],
                 },
                 {
-                    text: "提示词工程",
+                    text: "提示词工程学",
                     items: [
                         { text: "概述", link: "/advanced/prompt-engineering/" },
                         {
@@ -106,6 +106,10 @@ export default defineConfig({
                         {
                             text: "实战指南",
                             link: "/advanced/prompt-engineering/practice",
+                        },
+                        {
+                            text: "魔法进阶",
+                            link: "/advanced/prompt-engineering/advanced",
                         },
                         {
                             text: "杂项",
@@ -125,6 +129,10 @@ export default defineConfig({
                 {
                     text: "二次开发",
                     items: [
+                        {
+                            text: "插件",
+                            link: "/advanced/development/extensions",
+                        },
                         {
                             text: "自定义脚本",
                             link: "/advanced/development/scripts",

@@ -263,7 +263,7 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 通过添加 `--share` 开关即可使用 Gradio 托管的转发服务。
 
-你会得到一个 `xxx.app.gradio` 链接，这是在协作中使用该程序的预期方式。
+你会得到一个 `https://xxx.gradio.app` 链接，这是在协作中使用该程序的预期方式。
 
 ::: danger RCE 警告
 
@@ -271,13 +271,17 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 示例：
 
-```
+```text
 --share --gradio-auth admin:admin,user1:user_password
 ```
 
 使用该例子将会创建两个用户，一个是账号密码为 admin 的用户，另外一个是账号为 user1,密码为 user_password 的用户
 
 如果攻击者可以访问 ui，他们可能能够远程运行 python 脚本。
+
+10/30 社区报告：有人在扫描公开的 WebUi
+
+11/1 社区反映：共享链接可能会导致安全风险，**攻击者可以访问系统上的所有文件。**
 :::
 
 可以通过添加 `--freeze-settings` 启动参数来锁定设置，防止他人编辑。
