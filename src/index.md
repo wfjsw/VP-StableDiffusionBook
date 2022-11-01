@@ -5,7 +5,7 @@ import Actions from './components/Actions.vue'
 # AiDraw
 
 ::: tip 提示
-本站内容可能过时，欲查阅最新内容请访问原站 https://draw.dianas.cyou/
+本站为 [sudoskys/StableDiffusionBook](https://github.com/sudoskys/StableDiffusionBook) 的一个 Fork，遵循 GFDL 发布。其中内容可能过时，欲查阅最新内容请访问原站 https://draw.dianas.cyou/
 :::
 
 关于使用 Ai 绘画的 Wiki ，翻译，教程，相关资源。主要内容为 StableDiffusionWebUI
