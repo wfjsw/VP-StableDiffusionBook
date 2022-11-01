@@ -47,28 +47,46 @@ export default defineConfig({
                     items: [
                         {
                             text: "SD-WebUI 方案",
-                            link: "/guide/install-sd-webui",
+                            link: "/guide/install/sd-webui",
                         },
                         {
                             text: "Google Colab 方案",
-                            link: "/guide/install-colab",
+                            link: "/guide/install/colab",
                         },
                         {
                             text: "NAI 官方套件方案",
-                            link: "/guide/install-original",
+                            link: "/guide/install/original",
                         },
                         {
                             text: "其他方案",
-                            link: "/guide/install-others",
+                            link: "/guide/install/others",
                         },
                     ],
                 },
                 {
                     text: "配置与调试",
                     items: [
-                        { text: "引言", link: "/guide/configuration" },
-                        { text: "关于显卡", link: "/guide/configuration-videocards" },
-                        { text: "关于 NovelAI 泄露模型", link: "/guide/configuration-novelai-models" },
+                        { text: "引言", link: "/guide/configuration/index" },
+                        {
+                            text: "关于显卡",
+                            link: "/guide/configuration/videocards",
+                        },
+                        {
+                            text: "关于 NovelAI 泄露模型",
+                            link: "/guide/configuration/novelai-models",
+                        },
+                        {
+                            text: "调参基础",
+                            link: "/guide/configuration/param-basic",
+                        },
+                        {
+                            text: "进阶配置",
+                            link: "/guide/configuration/param-advanced",
+                        },
+                        {
+                            text: "其他",
+                            link: "/guide/configuration/other",
+                        },
                     ],
                 },
             ],

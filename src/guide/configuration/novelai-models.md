@@ -2,6 +2,7 @@
 
 使用 NAI Leak 模型 的 models 文件夹结构应该如下。
 
+<div style="overflow-x: auto;">
 <pre>
 ./models
 ├── Codeformer
@@ -28,10 +29,11 @@
 │   └── 其他模型文件.ckpt
 └── SwinIR
 </pre>
+</div>
 
 其中，hypernetworks 和 Stable-diffusion 是需要新建的文件夹。其他文件根据规则重命名。
 
-### Part 1
+## Part 1
 
 <!-- TODO: 扫了一眼，有很多基本问题，待修 -->
 
@@ -49,13 +51,13 @@
 
 `workspace` 不是个人可以负载的，NAI 采用的是 GPU 集群云。
 
-### Part 2
+## Part 2
 
 `prodmodels` 是 GPT 模型(语言处理)，但是实际用了 CLIP，所以不用我们管。
 
 `random_stableckpt` 是一些模型，有的与 Part1 重复
 
-![Part1](../assets/models.webp)
+![Part1](../../assets/models.webp)
 
 ::: details 附内容
  - stableckpt/ - Stable Diffusion checkpoints 
@@ -72,13 +74,13 @@
 
 启动 cli 有提示加载就 OK, 同时可以去设置选模型那里选喜欢的 `hypernetwork`
 
-### 全量和基线模型
+## 全量和基线模型
 
 `animesfw-latest` = NAI 基线模型
 
 `animefull-final-pruned` = `full-latest` = NAI 全量模型(包含成人内容)
 
-### 使用 latest (7G) 还是 pruned (4G) 模型
+## 使用 latest (7G) 还是 pruned (4G) 模型
 
 4GB 的模型由 7GB 的模型修剪而来，去除了最后一次的权重，留下了 EMA 权重。
 
@@ -88,7 +90,7 @@
 
 [结论由此贴讨论得到](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017#discussioncomment-3882551)。
 
-#### 关于 EMA
+### 关于 EMA
 
 EMA 移动平均值对生成图像没有任何帮助。
 
@@ -96,28 +98,35 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 不确定在 dreambooth 的训练中是否起作用。
 
-#### 详细介绍
+### 详细介绍
 
 <iframe src="//player.bilibili.com/player.html?aid=688965561&cid=857942294&page=1&danmaku=0" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
 
 拆包视频可以看 [av688965561](https://www.bilibili.com/video/av688965561/?zw)
 
-### 风格化[^5]
+## 风格化
 
-![furry](https://user-images.githubusercontent.com/474879/194965036-4c9f70ca-a32f-4f68-a9a1-17a827e8e61e.jpg)
+### Furry 超网络模型比较
+![furry](../../assets/furry-xy.webp)
 
-> furry
+### 其他超网络模型比较
 
-![test-result](https://user-images.githubusercontent.com/115398132/194805364-95e523aa-4bec-4a88-9fe1-b3d39d2f2992.jpg)
+![test-result](../../assets/other-hn-xy.webp)
 
-```
-masterpiece, best quality, masterpiece, 1girl, solo, outdoors, flowers, dancing
-Negative prompt: nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts,signature, watermark, username, blurry, artist name
-Steps: 28, Sampler: Euler, CFG scale: 12, Seed: [SEE COLUMN], Size: 512x512, Model hash: 925997e9, Hypernet: [SEE ROW]
-```
+参考参数：
+
+> masterpiece, best quality, masterpiece, 1girl, solo, outdoors, flowers, dancing
+
+> Negative prompt: nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts,signature, watermark, username, blurry, artist name
+
+> Steps: 28, Sampler: Euler, CFG scale: 12, Seed: [SEE COLUMN], Size: 512x512, Model hash: 925997e9, Hypernet: [SEE ROW]
+
+### 结论
 
 `aini` 有一种你可能不喜欢的强烈风格，我认为它具有最高的一致性和质量。
 
-`anime_3`是该系列中质量最高的，但它们都有些不一致. 我一般不会推荐他们。
+`anime_3` 是该系列中质量最高的，但它们都有些不一致. 我一般不会推荐他们。
 
-可以看到 `furry`的超网络在添加动物特征方面更加激进，因此这里更保守的变化可能与采样器、步骤和 CFG 有关。[^5]
+可以看到 `furry` 的超网络在添加动物特征方面更加激进，因此这里更保守的变化可能与采样器、步骤和 CFG 有关。
+
+[所有超网络的 X/Y](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017#discussioncomment-3836360)

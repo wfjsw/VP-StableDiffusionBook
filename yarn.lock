@@ -1798,14 +1798,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress-plugin-search@npm:1.0.4-alpha.11":
-  version: 1.0.4-alpha.11
-  resolution: "vitepress-plugin-search@npm:1.0.4-alpha.11"
+"vitepress-plugin-search@npm:1.0.4-alpha.14":
+  version: 1.0.4-alpha.14
+  resolution: "vitepress-plugin-search@npm:1.0.4-alpha.14"
   peerDependencies:
     vite: 2 || 3
     vitepress: ^1.0.0-alpha.13
     vue: 3
-  checksum: cf428d9fc35f2bc91c9f14aee186dffabd5abd5ce4a5d755130c3bb96f022ce1798a8496bad9240433dfde306450b990d9005e35587d507e2139825ff2e1ff95
+  checksum: 5063d601cfa3f34d5515deea224c28f7864a9799d81be5a3f5dbba8a9638fad8893375830a5c81c1b5f473254a7512557547cc67daf068caa5051b95d962aced
   languageName: node
   linkType: hard
 
@@ -1835,7 +1835,7 @@ __metadata:
   dependencies:
     markdown-it: ^13.0.1
     vitepress: 1.0.0-alpha.26
-    vitepress-plugin-search: 1.0.4-alpha.11
+    vitepress-plugin-search: 1.0.4-alpha.14
     vue: ^3.2.41
   languageName: unknown
   linkType: soft

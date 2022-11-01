@@ -24,7 +24,7 @@ nvidia-smi
 
 查看机器的英伟达显卡是否正常运作。
 
-![效果.png](../assets/benchmark-512.webp)
+![效果.png](../../assets/benchmark-512.webp)
 
 > 这里是 9 月份效果(现在快了不少)
 

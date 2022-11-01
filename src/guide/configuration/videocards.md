@@ -34,9 +34,9 @@ torch.version.cuda
 
 > Using memory from between two GPUs is not simple. I only have one so I can't research/develop this.
 
-## 16xx系显卡使用半精度生成图片
+## 16xx 系显卡使用半精度生成图片
 
-[16xx系显卡可以使用半精度生成图片的方式](https://t.me/StableDiffusion_CN/50749)
+[16xx 系显卡可以使用半精度生成图片的方式](https://t.me/StableDiffusion_CN/50749)
 
 方案来自 [这个讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/28#issuecomment-1241448049)
 

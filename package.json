@@ -8,7 +8,7 @@
     "devDependencies": {
         "markdown-it": "^13.0.1",
         "vitepress": "1.0.0-alpha.26",
-        "vitepress-plugin-search": "1.0.4-alpha.11",
+        "vitepress-plugin-search": "1.0.4-alpha.14",
         "vue": "^3.2.41"
     },
     "scripts": {
