@@ -90,6 +90,48 @@ export default defineConfig({
                     ],
                 },
             ],
+            "/advanced/": [
+                {
+                    text: "进阶深入",
+                    items: [{ text: "前言", link: "/advanced/" }],
+                },
+                {
+                    text: "提示词工程",
+                    items: [
+                        { text: "概述", link: "/advanced/prompt-engineering/" },
+                        {
+                            text: "魔法入门",
+                            link: "/advanced/prompt-engineering/basic",
+                        },
+                        {
+                            text: "实战指南",
+                            link: "/advanced/prompt-engineering/practice",
+                        },
+                        {
+                            text: "杂项",
+                            link: "/advanced/prompt-engineering/misc",
+                        },
+                    ],
+                },
+                {
+                    text: "模型精调",
+                    items: [
+                        {
+                            text: "概述",
+                            link: "/advanced/finetuning/",
+                        },
+                    ],
+                },
+                {
+                    text: "二次开发",
+                    items: [
+                        {
+                            text: "自定义脚本",
+                            link: "/advanced/development/scripts",
+                        },
+                    ],
+                },
+            ],
         },
     },
     vite: {

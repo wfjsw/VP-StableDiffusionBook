@@ -20,7 +20,7 @@
 * 启用 xformers
 * 加载 `animevae.pt` 模型（将该模型文件改名为 `模型名.vae.pt` 与模型文件放置在一起）
 * Settings 中将 `Stop At last layers of CLIP model` 设为 `2`
-* Eta noise seed delta 设置为 `31337`
+* `Eta noise seed delta` 设置为 `31337`
 * 使用 NovelAI 自动填充的正反标签
   * 正向标签：`masterpiece, best quality`
   * 反向标签：`lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`

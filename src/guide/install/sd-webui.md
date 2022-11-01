@@ -251,7 +251,7 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 本地化作为单个 `.json` 文件提供。 将此文件放入 `localizations` 目录并在设置中选择即可。
 
-在 22/10/26 下午，WebUi 添加了中文的翻译。
+在 22/10/26 下午，WebUI 添加了中文的翻译。
 
 #### 创建本地化文件
 
@@ -361,7 +361,7 @@ nvidia-smi
 
 ### API 文档
 
-使用 `--api` 参数运行程序，在浏览器访问 `{输出的网址}/docs` 就可以查看到 WebUi 的 [Api](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules/api) 文档。
+使用 `--api` 参数运行程序，在浏览器访问 `{输出的网址}/docs` 就可以查看到 WebUI 的 [Api](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules/api) 文档。
 
 [Basic Documentation and Examples for using API](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3734)
 
@@ -375,7 +375,7 @@ import io
 import base64
 from PIL import Image, PngImagePlugin
 
-class WebUiApi(object):
+class WebUIApi(object):
     def __init__(url):
         self.url=url
 
@@ -401,7 +401,7 @@ payload = {
     "steps": 20
 }
 # 其他参数会使用默认值
-WebUiApi(url="http://127.0.0.1:7860").txt2img(payload=payload,outpath="1145.png",infotie=True)
+WebUIApi(url="http://127.0.0.1:7860").txt2img(payload=payload,outpath="1145.png",infotie=True)
 
 # 实际使用的时候不应该保存到本地再发送，而是直接发送，避免存储图片作品造成 版权 问题。
 ```
@@ -424,9 +424,9 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 如果安装过程中出现：
 
--   形如 Connection timed out 字样
--   形如 Connection was Reset 字样
--   下载速度极慢
+- 形如 Connection timed out 字样
+- 形如 Connection was Reset 字样
+- 下载速度极慢
 
 请设置代理，或者使用 VPN。
 

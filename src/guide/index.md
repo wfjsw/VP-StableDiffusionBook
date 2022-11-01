@@ -10,7 +10,7 @@ Copyright (C)  2022  StableDiffusionBook.
     Free Documentation License".
 -->
 
-本文档目的是为了总结社区讨论成果，为刚入门接触使用 Stable Diffusion 绘画的小白编写一个自助指南，从 WebUi 入手接触 AI 绘画，并学习相关知识。
+本文档目的是为了总结社区讨论成果，为刚入门接触使用 Stable Diffusion 绘画的小白编写一个自助指南，从 WebUI 入手接触 AI 绘画，并学习相关知识。
 
 ## 在社区礼貌提问
 
