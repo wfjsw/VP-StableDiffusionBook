@@ -219,7 +219,7 @@ pip install xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
 
 现在更多 GPU 架构是自动支持的，尝试重新安装并使用 --xformers 参数。
 
-如果你移动了Xformers，那么应该删除里面的 venv 目录
+如果你移动了 xformers，那么应该删除里面的 venv 目录。
 
 [Windows](https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases) (30 系之外要自己编译)
 

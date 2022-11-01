@@ -450,7 +450,7 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 如果还不行....
 
-![CUDA-OOM](../assets/cuda-oom.webp)
+![CUDA-OOM](../../assets/cuda-oom.webp)
 
 建议你升级设备。
 
