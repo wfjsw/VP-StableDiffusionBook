@@ -65,6 +65,7 @@ export default defineConfig({
                 },
                 {
                     text: "配置与调试",
+                    collapsible: true,
                     items: [
                         { text: "引言", link: "/guide/configuration/index" },
                         {
@@ -97,6 +98,7 @@ export default defineConfig({
                 },
                 {
                     text: "提示词工程学",
+                    collapsible: true,
                     items: [
                         { text: "概述", link: "/advanced/prompt-engineering/" },
                         {
@@ -119,6 +121,7 @@ export default defineConfig({
                 },
                 {
                     text: "模型精调",
+                    collapsible: true,
                     items: [
                         {
                             text: "概述",
@@ -144,6 +147,7 @@ export default defineConfig({
                 },
                 {
                     text: "二次开发",
+                    collapsible: true,
                     items: [
                         {
                             text: "插件",

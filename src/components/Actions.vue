@@ -22,6 +22,7 @@ import VPButton from 'vitepress/dist/client/theme-default/components/VPButton.vu
 <style scoped>
 .actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 </style>
