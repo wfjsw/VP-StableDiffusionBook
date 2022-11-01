@@ -146,31 +146,3 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 然后重启程序，你就可以在 Img2Img 中使用此项功能。
 
 ![Aesthetic_other](../../assets/Aesthetic_other.webp)
-
-
-
-
-[^7]:[风格模型训练](https://www.bilibili.com/video/BV1ae4y1S7v9/)
-
-[^8]:[迭代草图](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2473)
-
-[^9]:[交替单词](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/1733)
-
-[^10]:[角色与画风tag训练十问](https://www.bilibili.com/video/BV1xt4y1F7Y2/)
-
-[^11]:[WebUI即将引入重磅更新，大幅提升图像品质](https://www.bilibili.com/read/cv19102552)
-
-[^12]:[超网络训练](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2284)
-
-[^13]:[超网络训练指南](https://rentry.org/hypernetwork4dumdums)
-
-
-[^14]:[dreambooth-小鬼峰](https://www.bilibili.com/read/cv18935031?from=search)
-
-[^15]:[dreambooth-论文](https://arxiv.org/abs/2208.12242)
-
-[^16]:[Hypernetwork画风训练经验分享](https://shiina-h.notion.site/shiina-h/Hypernetwork-1fc0b60645284c5e96bb41b583a4e86f)
-
-[^17]:[Installing Stable Diffusion & Dreambooth for Windows](https://pastebin.com/xcFpp9Mr)
-
-[^18]:[Installing Dreambooth for Windows](https://gist.github.com/Summersoff/70861d757a40c153c5802dc8c4ed68c0)
