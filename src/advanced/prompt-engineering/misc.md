@@ -9,19 +9,12 @@
 ### NAI 在使用的出图参数
 
 - 使用全量模型(官方的GPU云特别强悍)
-
 - CLIP layer = 2
-
 - 使用 ema 权重加载，将yaml 配置其中的 `use_ema` 设置为 true
-
 - 将 ` sigma noise/strength` 重置为默认值 1
-
 - 设定 `eta noise seed delta` 为 31337（使 ` sigma noise/strength` 无需使用 0.69 / 0.67）
-
 - 如果 prompt 有权重，转换权重（ WebUI 占比 1.1 ，NAI 占比 1.05）
-
 - 使用 `--no-half` 参数启动程序（次要）
-
 
 **NAI 默认的模型设置**
 
@@ -34,20 +27,18 @@ scale 就是 CFG scale
 ```
 
 **NAI 默认的 `SFW` 消极提示词为**
+
 ```
 lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry
 ```
-
 
 **其他**
 
 将所有提示词前面加入 `masterpiece, best quality`
 
-
 Clip 跳过 0，其他一切都很好（afaik 不要使用超网络、v2、yaml、VAE）
 
-
-### 转换——NAI和WebUI(SD)的增强语法不同
+### 转换 —— NAI和WebUI(SD)的增强语法不同
 
 **Prompts 参数括号转换**
 
@@ -232,3 +223,26 @@ an extremely delicate and beautiful
 | 跪下               | kneel down                                           |
 | 湿身               | wet body                                             |
 
+
+## 提示词速查
+
+**[手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)**
+
+**[Danbooru全部Tag列表](https://gelbooru.com/index.php?page=tags&s=list)**
+
+**[参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)**
+
+**[Tag在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)**
+
+**[NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)**
+
+**[Ai艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
+
+**[Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)**
+
+
+## 调参工程师
+
+[https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
+
+[https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)

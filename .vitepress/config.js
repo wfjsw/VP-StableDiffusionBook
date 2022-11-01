@@ -104,7 +104,7 @@ export default defineConfig({
                             link: "/advanced/prompt-engineering/basic",
                         },
                         {
-                            text: "实战指南",
+                            text: "实战技巧",
                             link: "/advanced/prompt-engineering/practice",
                         },
                         {
@@ -123,6 +123,22 @@ export default defineConfig({
                         {
                             text: "概述",
                             link: "/advanced/finetuning/",
+                        },
+                        {
+                            text: "Textual Inversion",
+                            link: "/advanced/finetuning/textual-inversion",
+                        },
+                        {
+                            text: "Hypernetwork",
+                            link: "/advanced/finetuning/hypernetwork",
+                        },
+                        {
+                            text: "Dreambooth",
+                            link: "/advanced/finetuning/dreambooth",
+                        },
+                        {
+                            text: "Aesthetic Gradients",
+                            link: "/advanced/finetuning/aesthetic-gradients",
                         },
                     ],
                 },
