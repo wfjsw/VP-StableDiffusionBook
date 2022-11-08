@@ -87,6 +87,10 @@ export default defineConfig({
                             link: '/guide/configuration/param-advanced',
                         },
                         {
+                            text: '疑难解答',
+                            link: '/guide/configuration/troubleshoot',
+                        },
+                        {
                             text: '其他',
                             link: '/guide/configuration/other',
                         },
@@ -185,8 +189,8 @@ export default defineConfig({
                     '的',
                     '得',
                     '地',
-                    "and",
-                    "or",
+                    'and',
+                    'or',
                 ],
             }),
         ],

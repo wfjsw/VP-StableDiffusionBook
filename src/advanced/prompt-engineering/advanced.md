@@ -24,13 +24,11 @@ WebUI 使用 `--gradio-img2img-tool color-sketch` 启动会带入一个插件对
 PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint 就不会。
 :::
 
-### 图形参数
+### 调整大小
 
-Just resize : 将图像调整为目标分辨率。除非高度和宽度完全匹配，否则图片会被挤压
-
-Crop and resize：调整图像大小，使整个目标分辨率都被图像填充。裁剪多余部分。
-
-Resize and fill：调整图像大小，使整个图像在目标分辨率内。用图像的颜色填充空白区域。
+- Just resize : 将图像调整为目标分辨率。除非高度和宽度完全匹配，否则图片会被挤压
+- Crop and resize：调整图像大小，使整个目标分辨率都被图像填充。裁剪多余部分。
+- Resize and fill：调整图像大小，使整个图像在目标分辨率内。用图像的颜色填充空白区域。
 
 ## Img2Img 三渲二
 
@@ -105,11 +103,11 @@ Ai 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
 
 ![result](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/images/inpainting.png)
 
-[开源调研-AI绘画全参数讲解-002img2img图像到图像](https://www.bilibili.com/video/BV1HK411Q7uk/?zw)
+[开源调研-AI绘画全参数讲解-002img2img图像到图像](https://www.bilibili.com/video/BV1HK411Q7uk)
 
 通过这种方法，我们可以更改角色衣物风格或者其他任何细节。
 
-[如何教会Ai画手](https://www.bilibili.com/video/av559044202/?zw)
+[如何教会Ai画手](https://www.bilibili.com/video/av559044202)
 
 ## Outpainting 外部修补
 
@@ -143,7 +141,7 @@ Batch 数设置控制获得多少次迭代
 5. 一般送入 Img2img 的图，输入框自动填充原提示词。如果你发现prompt有变动，请手动填充
 6. 选择合适的 `Sampling Steps` 和 `Sampling method`
 7. 确认你的 `Width` 和 `Height` 与**原图**一致
-8. 将第 2 步复制的 Seed 填入img2img的 Seed 里并生成
+8. 将第 2 步复制的 Seed 填入 img2img 的 Seed 里并生成
 
 这里的 Width 和 Height 是超分时 img2img 的图片大小，如果不等会导致出现重叠问题
 
@@ -187,42 +185,6 @@ SD-WebUI 的 Extras 页有一个自带的超分功能，可以使用 `ESRGAN_4x`
 ![效果](../../assets/realesrgan-teaser.webp)
 
 >效果图
-
-## 渐变提示词
-
-详见 [Prompt Editing](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#prompt-editing)
-
-允许您开始对一张图片进行采样，但在中间切换到其他图片。基本语法是：
-
-```
-[from:to:when]
-```
-
-其中from和to是任意文本，并且when是一个数字，用于定义应在采样周期多长时间内进行切换。越晚，模型绘制to文本代替from文本的能力就越小。如果when是介于 0 和 1 之间的数字，则它是进行切换之后的步数的一小部分。如果它是一个大于零的整数，那么这只是进行切换的步骤。
-
-将一个提示编辑嵌套在另一个提示中不起作用。
-
-**使用方法**
-
-[to:when] 在固定数量的step后添加to到提示 ( when)
-
-[from::when] 在固定数量的step后从提示中删除from( when)
-
-例子： a [fantasy:cyberpunk:16] landscape
-
-开始时，模型将绘制 `a fantasy landscape`。
-
-在第 16 步之后，它将切换到绘图 `a cyberpunk landscape`，从幻想停止的地方继续。
-
-比如 [male:female:0.0], 意味着你开始时就要求画一个女性。
-
-## 注意 `尺寸`
-
-比如出图尺寸宽了人可能会多
-
-::: tip
-要匹配好姿势，镜头和人物才不畸形，有时候需要限定量词，多人物时要处理空间关系和 prompt 遮挡优先级。人数->人物样貌->环境样式->人物状态
-::: 
 
 ## 提示词原理
 

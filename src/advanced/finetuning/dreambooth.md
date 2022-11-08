@@ -7,9 +7,13 @@ outline: [2, 3]
 
 DreamBooth 的模型是一种新的文本到图像“个性化”（可适应用户特定的图像生成需求）扩散模型方法。
 
+使用时，只需将模型导出为 ckpt，然后您可以将其加载到您想要的 UI 中。
+
+本节使用 Shivam Shirao 的 [版本](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)
+
 ## 配置要求
 
-Windows 系统至少需要 16, Linux 系统要求显存大于 8 GB
+Windows 系统至少需要 16 GB, Linux 系统要求显存大于 8 GB
 
 ## 训练
 
@@ -79,7 +83,7 @@ pip install bitsandbytes==0.34
 pip install torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
 
-### 进入python并测试调用：
+### 进入 python 并测试调用
 
 ```cmd
 python
@@ -88,7 +92,7 @@ python
 
 如果没有报错证明安装成功（<kbd>Ctrl</kbd> + <kbd>Z</kbd> 并回车退出 python）
 
-### 设置accelerate
+### 设置 accelerate
 
 ```
 accelerate config
@@ -137,9 +141,83 @@ python diffusers\scripts\convert_original_stable_diffusion_to_diffusers.py  --ch
 python diffusers\scripts\convert_diffusers_to_original_stable_diffusion.py  --model_path models/resultModel  --checkpoint_path result.ckpt  --half
 ```
 
+## 简单指南
+
+[testing_dreambooth_for_consistency_with_complex](https://www.reddit.com/r/StableDiffusion/comments/yhw7k8/testing_dreambooth_for_consistency_with_complex/)
+
+> 以下皆为未证实的内容。如果你有不同意见，欢迎提出。
+
+### 准备训练图像
+
+对于你的训练图片，你将需要:
+
+至少20张近距离人像照片，至少4张中距离躯干照片，至少4张长距离的全身照，至少1张坐姿照片。
+
+质量较高(细节多)的训练图片（裁剪为512x512）。
+
+如果需要使你的  Dreambooth 模型更加多样化，尽量使用不同的环境、灯光、发型、表情、姿势、角度和与主体的距离。
+
+避免在你的渲染图中出现手粘在头上的情况，请删除所有手太靠近或接触头部的图片。
+
+如果需要避免渲染图中出现鱼眼镜头效果，可以删除所有自拍图片。
+
+为了避免在渲染中出现白色边框，请确保你的图像中没有裁剪边框。
+
+为了避免不自然的过度模糊，确保图像不包含假的重景深或虚化。
+
+### 一致的标识
+
+经过大量的测试，有人发现 类标识符`class identifier picker` 明显有助于提高概念的嵌入和渲染的质量。我使用类标识符来唤起任何训练过的概念词。
+
+如果训练的是一个 **现实** 的概念，class prompt 应该是“一张高清照片_____”
+
+我们最初只有一个 `class identifier picker` 类图像选择器 (一个词)，它也用于生成 `class images` 。现在已经添加了一个单独的 `class image generator picker` (使用多个单词)，它允许我们进一步确定和约束我们想从类图像中获得的内容。
+
+这非常有用，让我们能够更灵活地找到哪些类图像能够改善概念嵌入到潜在空间中。
+
+### 从检查点恢复训练
+
+参数的 MODEL_NAME 改成上一次模型的位置。
+
 ## 参数分析
 
 [使用 Dreambooth 训练稳定扩散的实验的分析](https://wandb.ai/psuraj/dreambooth/reports/Dreambooth-training-analysis--VmlldzoyNzk0NDc3)
+
+### Subject images / Class images
+
+介绍来自 [good_dreambooth_formula](https://www.reddit.com/r/StableDiffusion/comments/ybxv7h/good_dreambooth_formula/)
+
+Subject images (或者你在笔记本上看到的实例图像)是你想要训练的图像，所以如果你想要自己的外观的模型，你可以取20到40张自己的图像并输入这些图像。实例名是一个唯一的标识符，它将在提示符中表示受训对象，个人使用 “namelastname”，大多数笔记本使用“sks”，但最好更改它。
+
+你实际上是在告诉AI把你介绍到大数据库中，为了做到这一点，你选择一个类别，即最适合你所训练的类别，对于人们来说，通常使用 "person", "man"/"woman" 等。
+
+在训练中使用Class images是为了防止物体的特征 “渗透” 到同一Class 的其他物体。如果没有 Class images 作为参考点，人工智能倾向于将你的脸与 Class 中出现的其他脸合并。其他像名人一样的人会有点像你。
+
+- concepts_list.json
+
+<!-- TODO: 这必不是个 JSON -->
+
+```
+# You can also add multiple concepts here. Try tweaking `--max_train_steps` accordingly.
+
+concepts_list = [
+    {
+        "instance_prompt":      "photo of zwx dog",
+        "class_prompt":         "photo of a dog",
+        "instance_data_dir":    "/content/data/zwx",
+        "class_data_dir":       "/content/data/dog"
+    },
+#     {
+#         "instance_prompt":      "photo of ukj person",
+#         "class_prompt":         "photo of a person",
+#         "instance_data_dir":    "/content/data/ukj",
+#         "class_data_dir":       "/content/data/person"
+#     }
+]
+
+# `class_data_dir` contains regularization images
+```
+
 
 ## 其他 
 

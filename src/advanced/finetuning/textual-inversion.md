@@ -2,8 +2,6 @@
 
 [官方Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
 
-[视频介绍](https://www.bilibili.com/video/BV1ae4y1S7v9)
-
 ::: tip
 VAE 对 TI 训练并不会造成灾难性的影响。如需卸载，在启动 webui 前把 "xxx.vae.pt" 重命名为 "xxx.vae.pt.disabled" 或其他名字。
 
@@ -20,9 +18,7 @@ VAE 对 TI 训练并不会造成灾难性的影响。如需卸载，在启动 we
 
 如果你有足够的 VRAM，那么使用 `--no-half --precision full` 可能会防止溢出带来的问题。
 
-
 你可以中断和恢复训练，但是 optimizer state 不会被保存，所以不推荐这样做。
-
 
 ## 设置说明
 
@@ -88,20 +84,23 @@ VAE 对 TI 训练并不会造成灾难性的影响。如需卸载，在启动 we
 **接下来有四个复选框**
 
 
-`Create flipped copies` 
+> `Create flipped copies` 
 
-- 勾选后会将图片镜像反转来增加数据量。
+勾选后会将图片镜像反转来增加数据量。
 
-- `Use deepbooru caption as filename` 
+> `Use deepbooru caption as filename` 
 
 深度学习识 Tag，勾选后可以训练适用于 NAI 的 `embedding`。 如果你没有这个选项，需要在启动项添加`--deepdanbooru`
 
 Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者直接 `python launch.py --deepdanbooru` 。（如果启动卡住是网络问题）
 
-- `Use BLIP for caption` 使用 BLIP 模型为文件名添加标题。不太适合二次元图片。
+> `Use BLIP for caption` 
 
-- `Split oversized images into two` 将超大图像一分为二，一般不用。
+使用 BLIP 模型为文件名添加标题。不太适合二次元图片。
 
+> `Split oversized images into two`
+
+将超大图像一分为二，一般不用。
 
 所以我们勾选 `Use deepbooru caption as filename` 和 `Create flipped copies` 。
 
@@ -140,6 +139,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 [name]:  embedding 名称
 [filewords]: words from the file name of the image from the dataset. See below for more info.
 ```
+
 `Preview prompt` 预览，完成后用此提示词生成一张预览。 
 如果为空，将使用来自 prompt 的提示。
 
@@ -149,7 +149,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 `Save an image to log directory every N steps, 0 to disable`
 每 N 步保存一个图像到日志目录，0 表示禁用
 
-`Max steps`决定完成多少 `step` 后，训练将停止。
+`Max steps` 决定完成多少 `step` 后，训练将停止。
 
 一个 step 是向模型训练一张图片（或一批图片，但目前不支持批量）并用于改进 embedding。如果你中断训练并在以后恢复训练，步数会被保留。
 
@@ -168,7 +168,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 如果太多会过拟合(可以理解为Ai的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
 
-`Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件。~人物卡~
+`Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件。~~人物卡~~
 
 点击 右下角训练，等待。
 

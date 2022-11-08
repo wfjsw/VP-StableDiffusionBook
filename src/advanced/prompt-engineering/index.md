@@ -1,10 +1,14 @@
+---
+outline: [2, 4]
+---
+
 # 提示词工程学
 
 这节会介绍绘图所需要用到的提示词，和相关的 SD-WebUI 网页应用资源。如果你会画画，那么效果会更加稳定可观。
 
 ## 基本流程
 
-![WorkFlow](../../assets/draw_workflow.svg){style="background-color: #eee;"}
+![WorkFlow](../../assets/draw_workflow.svg){style="background-color: #fff;"}
 
 这幅图演示了循环迭代的流程。
 
@@ -43,3 +47,62 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI绘画魔�
 提前告知：WebUI 的设置页面需要按下 `Apply setting` 才能保存设置。
 :::
 
+## 考场速查
+
+这里是打开页面就可以看到的工具箱
+
+### 标签参考
+
+* [Danbooru wiki Tag](https://danbooru.donmai.us/wiki_pages/tag_groups)
+* [MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)
+* [手抄魔法本](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/)
+* [绘画技术分类](https://danbooru.donmai.us/wiki_pages/tag_group%3Aimage_composition)
+* [地点分类](https://danbooru.donmai.us/wiki_pages/tag_group%3Alocations)
+* [服装分类](https://danbooru.donmai.us/wiki_pages/tag_group%3Aattire)
+* [美学风格分类](https://aesthetics.fandom.com/wiki/List_of_Aesthetics)
+* [颜色列表](https://en.wikipedia.org/wiki/List_of_colors_by_shade)
+* [表情符号参考](https://unicode.org/emoji/charts/emoji-list.html)
+
+### 工具
+
+* [快速分享-在线剪切板](https://netcut.cn/)
+* **[AiPhotoShop-无限外延画布的在线工具](https://www.painthua.com/)**
+* [NAI<=>WebUi权重转换Telegram服务](https://github.com/sudoskys/M2NM2NBot)
+* [NAI的分词器，用来查看你的文本被识别为哪些](https://novelai.net/tokenizer)
+
+
+#### 灵感
+
+* [Pic2Prompt0](https://www.latentspace.dev/)
+* [Pic2Prompt1](https://magicstudio.com/pic2prompt/editor)
+* [Pic2Prompt2](https://replicate.com/methexis-inc/img2prompt)
+* [Danbooru 标签超市](https://tags.novelai.dev/)
+* [AI绘画tag生成器](https://aitag.top/)
+* [prompthero](https://prompthero.com/)
+* [Prompt Search ](https://www.ptsearch.info/home/)
+* [Prompt Search2](https://pagebrain.ai/promptsearch/?q=girl&page=1)
+* [midjourney haha](https://www.midjourney.com/showcase/)
+* [Social Generative AI](https://histre.com/integrations/generative/)
+
+#### 后期
+
+* [PNGINFO 在线查看工具](https://spell.novelai.dev/)
+* [Real-ESRGAN 降噪提高分辨率神器](https://github.com/xinntao/Real-ESRGAN) 
+* [DeepDanbooru通过图像识别提示](https://github.com/KichangKim/DeepDanbooru)
+
+### 作品参考
+
+* [arthub](https://arthub.ai/)
+* [NAI-NOVELAI.IO](https://novelai.io/)
+* [NAI-Pixai](https://pixai.art/)
+* [LEXICA](https://lexica.art/)
+* [Krea](https://www.krea.ai/)
+* [largest library of AI-generated images](https://libraire.ai/)
+
+### 风格化
+
+* [稳定扩散的艺术家风格研究](https://proximacentaurib.notion.site/e28a4f8d97724f14a784a538b8589e7d?v=42948fd8f45c4d47a0edfc4b78937474)
+* [Top-sd-artists](https://www.urania.ai/top-sd-artists)
+* [artiststostudy](https://artiststostudy.pages.dev/)
+* [Stable Diffusion Artist Style Studies](https://proximacentaurib.notion.site/e28a4f8d97724f14a784a538b8589e7d?v=ab624266c6a44413b42a6c57a41d828c)
+* [Stable Diffusion Artist Study](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)

@@ -2,6 +2,18 @@
 
 此主题的内容可能不会即时更新到此处，[源地址](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts#prompt-interpolation)
 
+### Depth Maps for Stable Diffusion
+
+这个脚本是AUTOMATIC1111的Stable Diffusion Web UI的一个插件，可以从生成的图像中创建深度图。
+
+https://github.com/thygate/stable-diffusion-webui-depthmap-script
+
+### sd-lexikrea
+
+Automatic1111 Stable Diffusion 的脚本，用于从 krea 和 lexica 中提取提示。 
+
+https://github.com/Vetchems/sd-lexikrea
+
 ### 自动补全
 
 这里有一个项目，可以使SD做到类似 NAI 的补全效果。
@@ -13,6 +25,7 @@ https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
 https://github.com/GRMrGecko/stable-diffusion-webui-automatic/blob/advanced_matrix/scripts/advanced_prompt_matrix.py
 
 安装后可以使用以下语法
+
 ```
 <cyber|cyborg|> cat <photo|image|artistic photo|oil painting> in a <car|boat|cyber city>
 ```

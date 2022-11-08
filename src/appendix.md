@@ -159,11 +159,11 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 这里是稳定扩散（非 NAI 模型）的应用情况。
 
-- 3D
+### 3D
 
 在 blender 上，Ai 有 [渲染插件](https://blendermarket.com/products/ai-render/?ref=110)
 
-- 设计
+### 设计
 
 [Microsoft 365 工具套件](https://www.xda-developers.com/microsoft-designer-image-creator-ai-dall-e-2/)
 
@@ -171,11 +171,11 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 [产品和架构设计/素描](https://github.com/horribleCodes)
 
-- 专辑图
+### 专辑图
 
 [用稳定扩散生成歌手的图像放入视频](https://github.com/Chilluminati91)
 
-- 配图
+### 配图
 
 [制作怪图作为记忆工具](https://github.com/ClashSAN)
 
@@ -183,21 +183,21 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 [稳定扩散的应用结合](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3572)
 
-- 自媒体
+### 自媒体
 
 哔哩哔哩已经一大堆了，抖音也不少，可以做的话题很多
 
-- 套壳
+### 套壳
 
 无良某些公司套壳开源项目，比如 某某画廊，某某版图。
 
 (题外：韭菜采收容易，可用于园艺，在世界广泛种植)
 
-- 插图/背景
+### 插图/背景
 
 小说插图，AI画背景(据说原版模型也很好用)
 
-- NFT
+### NFT
 
 ？
 

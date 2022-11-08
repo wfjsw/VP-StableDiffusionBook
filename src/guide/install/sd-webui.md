@@ -58,17 +58,7 @@ WSL 不可以迁移，如果 C 盘不够，寄！
 
 ::: tip 切换国内下载镜像
 
-如果你在安装依赖时遇到了网络问题，需要按照以下步骤切换至国内镜像。
-
-打开 CMD 命令行（Win+R 运行 cmd），输入 `python` 回车，检查是否正确安装 Python 环境。如果能成功进入 Python，按下 Ctrl+Z (或输入 `exit()` 回车) 退出。
-
-然后输入以下命令设置镜像。
-
-<!-- 清华有点慢。清华人建议用 BFSU，比较快 -->
-
-```cmd
-pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
-```
+如果你在安装依赖时遇到了网络问题，需要按照 [设置 Pip 镜像](#pip-设置镜像) 中所述步骤切换至国内镜像。
 
 :::
 
@@ -98,25 +88,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 ::: tip
 
-如果你本地开启了代理，可以使用如下命令设置：
-
-```bash
-git config --global http.proxy <代理地址>
-git config --global https.proxy <代理地址>
-```
-
-使用结束后建议及时恢复，以免产生其他问题。
-
-```bash
-git config --global --unset http.proxy
-git config --global --unset https.proxy
-```
-
-如果你不会设置代理，可以使用以下命令拉取镜像：
-
-```cmd
-git clone https://hub.fastgit.xyz/AUTOMATIC1111/stable-diffusion-webui.git
-```
+关于如何设置 Git 代理，见 [Git 设置代理](#git-设置代理)。
 
 :::
 
@@ -463,7 +435,7 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 翻译整理自 [Voldy 的傻瓜教程](https://rentry.co/voldy)
 
-### 首先...
+### 路径含有空格
 
 路径不允许含有空格，确保您的文件夹路径没有空格。该程序经过测试可在 Python 3.10.6 上运行，低版本 Python 可能会发生错误。
 
@@ -478,6 +450,40 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 - 下载速度极慢
 
 请设置代理，或者使用 VPN。
+
+#### Git 设置代理
+
+如果你本地开启了代理，可以使用如下命令设置：
+
+```bash
+git config --global http.proxy <代理地址>
+git config --global https.proxy <代理地址>
+```
+
+使用结束后建议及时恢复，以免产生其他问题。
+
+```bash
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+如果你不会设置代理，可以使用以下命令拉取镜像：
+
+```cmd
+git clone https://hub.fastgit.xyz/AUTOMATIC1111/stable-diffusion-webui.git
+```
+
+#### Pip 设置镜像
+
+打开 CMD 命令行（Win+R 运行 cmd），输入 `python` 回车，检查是否正确安装 Python 环境。如果能成功进入 Python，按下 Ctrl+Z (或输入 `exit()` 回车) 退出。
+
+然后输入以下命令设置镜像。
+
+<!-- 清华有点慢。清华人建议用 BFSU，比较快 -->
+
+```cmd
+pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+```
 
 ### 长时间无反应
 
@@ -505,7 +511,7 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 ### 我 Python 呢？
 
-如果你的 Python 版本不在 PATH 中，则在文件夹中创建或修改 webui.settings.bat 添加行 `set PYTHON=python `来说明 Python 可执行文件的完整路径（请看下面的参数说明！
+如果你的 Python 不在 `PATH` 中，可在文件夹中创建或修改 `webui.settings.bat` 添加行 `set PYTHON=<python 路径> ` 来说明 Python 可执行文件的完整路径（请看下面的参数说明！）
 
 ### ERROR:asyncio:Accept failed on a socket
 
@@ -513,16 +519,18 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 这个错误有可能是 `Python38` 的 `asyncio` 库对 `Windows` 的兼容性问题。
 
-<!-- TODO: 重置 catalog 真的能解决么？ -->
-
-尝试用 CMD 管理员身份运行 `netsh winsock reset`，不行的话，切换端口。
-
-如果使用了 WSL，不妨试试
+如果曾经使用过 WSL，不妨试试
 
 ```cmd
 net stop winnat
 net start winnat
 ```
+
+<!-- TODO: 重置 catalog 真的能解决么？ -->
+
+如果使用过游戏加速器，可尝试用 CMD 管理员身份运行 `netsh winsock reset`。
+
+如果仍然无法启动，请尝试 [更换一个端口](#修改监听端口)。
 
 ### 虚拟环境
 
@@ -532,7 +540,7 @@ net start winnat
 
 在运行时，一键安装程序会创建一个 python 虚拟环境，因此如果你在安装之前安装了一个模块，那么任何已安装的模块都不会影响你
 
-如果需要防止创建虚拟环境而使用系统 python，编辑 `webui.bat` 替换 `setVENV_DIR=venv`为`set VENV_DIR=`
+如果需要防止创建虚拟环境而使用系统 python，编辑 `webui.bat` 替换 `set VENV_DIR=venv`为`set VENV_DIR=`
 
 ### api-ms-win-core-path-l1-1-0.dll is missing
 
@@ -540,7 +548,7 @@ Windows 7 上运行很可能会报错: `api-ms-win-core-path-l1-1-0.dll is missi
 
 如果没有出现该错误，不需要执行下面的操作。
 
-这些文件已经被移植来与 W7 兼容，并且可以在 [这里](https://github.com/nalexandru/api-ms-win-core-path-HACK/releases/download/0.3.1/api-ms-win-core-path-blender-0.3.1.zip) 下载。它的 [Github 页面](https://github.com/nalexandru/api-ms-win-core-path-HACK/)
+这些文件已经被移植来与 Windows 7 兼容，并且可以在 [这里](https://github.com/nalexandru/api-ms-win-core-path-HACK/releases/download/0.3.1/api-ms-win-core-path-blender-0.3.1.zip) 下载。它的 [Github 页面](https://github.com/nalexandru/api-ms-win-core-path-HACK/)
 
 解压缩并将 `x86.dll` 复制到 `C:\Windows\SysWOW64` ，将 `x64.dll` 复制到 `C:\Windows\System32` 并重启。
 

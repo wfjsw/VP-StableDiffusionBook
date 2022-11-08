@@ -28,6 +28,10 @@ SD-WebUI 使用 `()` 增强权重，而 NovelAI 使用 `{}` 增强权重。两�
 
 混合：NovelAI 使用 `|` 分隔多个关键词以混合多个要素，字面意义上的混合，可以串联多个提示词。SD-WebUI 使用 ` AND ` 关键词（注意大小写）。混合组内单词可通过 `提示词 :权重值` 格式指示权重值。
 
+::: warning
+值得注意的是，`AND` 会将所有标签划分成段，括号对其并无作用。
+:::
+
 [渐变](advanced#渐变提示词)：使用 `[some1:some2:num]`
  - `[fantasy:cyberpunk:0.2]` 代表从 20% 的生成步数后，将 `fantasy` 标签替换为 `cyberpunk`
  - `[fantasy:cyberpunk:16]` 代表从第 16 步后，将 `fantasy` 标签替换为 `cyberpunk`
@@ -269,9 +273,49 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 
 ## 提示词冲突
 
-比如 `sex` 包含较多姿势体位，在使用者想要特定姿势时，法术内单一的 `sex` 标签就应该被删除。
+比如 `sex` 包含较多姿势体位，在使用者想要特定姿势时，法术内单一的 `sex` tag就应该被删除。
 
-同样地，`loli` 标签附带了强画风属性，会很大地影响结果！改成 `female child` 会好一点。
+同样地，`loli` Tag 附带了强画风属性，会很大地影响结果！改成 `female child` 会好一点。
+
+默认我们使用(别人给你的)的消极提示中，有可能会出现会发生冲突的词汇，请务必注意。
+
+## 渐变标签
+
+详见 [Prompt Editing](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#prompt-editing)
+
+允许您开始对一张图片进行采样，但在中间切换到其他图片。基本语法是：
+
+```
+[from:to:when]
+```
+
+其中from和to是任意文本，并且when是一个数字，用于定义应在采样周期多长时间内进行切换。越晚，模型绘制to文本代替from文本的能力就越小。如果when是介于 0 和 1 之间的数字，则它是进行切换之后的步数的一小部分。如果它是一个大于零的整数，那么这只是进行切换的步骤。
+
+将一个提示编辑嵌套在另一个提示中不起作用。
+
+**使用方法**
+
+[to:when] 在固定数量的step后添加to到提示 ( when)
+
+[from::when] 在固定数量的step后从提示中删除from( when)
+
+例子： a [fantasy:cyberpunk:16] landscape
+
+开始时，模型将绘制 `a fantasy landscape`。
+
+在第 16 步之后，它将切换到绘图 `a cyberpunk landscape`，从幻想停止的地方继续。
+
+比如 [male:female:0.0], 意味着你开始时就要求画一个女性。
+
+## 注意 `尺寸`
+
+比如出图尺寸宽了人可能会多
+
+::: tip
+要匹配好姿势，镜头和人物才不畸形，有时候需要限定量词，多人物时要处理空间关系和 prompt 遮挡优先级。人数->人物样貌->环境样式->人物状态
+::: 
+
+1024 之上的尺寸可能会出现不理想的结果！推荐使用 小尺寸 + 适量提高 Step 步数 + 图片超清分辨率。
 
 ## Step 迭代步数
 
@@ -329,3 +373,4 @@ PS：调太高步数 (>30) 效果不会更好
 不同显卡由于微架构不同，可能会造成预料之外的不同结果。
 
 GTX 10xx 系列存在此类问题。详见 [这里的讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017#discussioncomment-3873467)。
+

@@ -59,9 +59,9 @@ Swish似乎并不需要开启LN，因为Swish的训练速度慢，所以应该�
 
 在 10/21/22 的一个 [合并请求](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3199) 中，这项功能被 discus0434 提出。
 
-支持 relu、leakyrelu 和 linear 。选择 linear(线性) 的效果和没有激活函数一样。
+支持 ReLU、LeakyReLU 和 Linear。选择 Linear (线性) 的效果和没有激活函数一样。
 
-Swish对比Relu和Linear要更好，Swish适合更大的网络，而Elu可能对1，2，1的超网络带来更好的结果。
+Swish 对比 ReLU 和 Linear 要更好，Swish适合更大的网络，而 ReLU 可能对1，2，1的超网络带来更好的结果。
 
 [相关的英文指南](https://rentry.org/hypernetwork4dumdums)
 
@@ -69,11 +69,11 @@ Swish对比Relu和Linear要更好，Swish适合更大的网络，而Elu可能对
 
 ![hypernet对比图](../../assets/exp_hypernet.webp)
 
-> hypernet对比图,the woman in picture is 24 years old
+> hypernet对比图, the woman in picture is 24 years old
 
 ## 额外注意
 
-在开启LN选用激活函数并开启Dropout后，超网络没以前那么容易过拟合，但是可能需要更大的学习率进行学习。
+在开启 LN 选用激活函数并开启 Dropout 后，超网络没以前那么容易过拟合，但是可能需要更大的学习率进行学习。
 
 [Hypernetwork画风训练经验分享](https://shiina-h.notion.site/shiina-h/Hypernetwork-1fc0b60645284c5e96bb41b583a4e86f)
 

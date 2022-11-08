@@ -4,15 +4,27 @@
 注意显卡温度，有报道称显卡太热炸了。
 :::
 
-先判断 CUDA 是否可用。
+**检查显卡**
 
-打开命令窗，输入 python 进入，分行输入
+通过 
+
+```bash 
+nvidia-smi
+```
+
+判断 CUDA 是否可用。
+
+**检查 PyTorch 是否成功载入 CUDA**
+
+打开命令窗，输入 `python` 进入，分行输入
 
 ```python
 import torch
 print(torch.__version__)
 print(torch.cuda.is_available())
 ```
+
+如果出现 `True` 字样则正常。
 
 **查看 torch 对应的 cuda 版本**
 
@@ -23,6 +35,7 @@ torch.version.cuda
 
 输入 <kbd>Ctrl</kbd> + <kbd>Z</kbd> 退出
 
+如果出现了任何错误，请询问他人或使用搜索引擎解决。
 
 ## 多 GPU 支持
 

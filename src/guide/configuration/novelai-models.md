@@ -100,13 +100,14 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 ### 详细介绍
 
-<iframe src="//player.bilibili.com/player.html?aid=688965561&cid=857942294&page=1&danmaku=0" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
+<!-- <iframe src="//player.bilibili.com/player.html?aid=688965561&cid=857942294&page=1&danmaku=0" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe> -->
 
-拆包视频可以看 [av688965561](https://www.bilibili.com/video/av688965561/?zw)
+拆包视频可以看 [av688965561](https://www.bilibili.com/video/av688965561)
 
 ## 风格化
 
 ### Furry 超网络模型比较
+
 ![furry](../../assets/furry-xy.webp)
 
 ### 其他超网络模型比较

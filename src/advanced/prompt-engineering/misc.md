@@ -38,7 +38,7 @@ lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer
 
 Clip 跳过 0，其他一切都很好（afaik 不要使用超网络、v2、yaml、VAE）
 
-### 转换 —— NAI和WebUI(SD)的增强语法不同
+### 转换 —— NAI 和 WebUI 的增强语法差异
 
 **Prompts 参数括号转换**
 
@@ -60,7 +60,7 @@ Clip 跳过 0，其他一切都很好（afaik 不要使用超网络、v2、yaml�
 [元素法典制作委员会](https://space.bilibili.com/1981251194)
 
 
-### 良好参数(风格趋向插画)[^4]
+### 良好参数(风格趋向插画)
 
 ```
 an extremely delicate and beautiful

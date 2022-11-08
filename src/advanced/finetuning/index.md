@@ -92,7 +92,7 @@ NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一�
 
 把 DreamBooth 训练出的 .ckpt 文件放进 webui 的 `models\Stable-diffusion` 目录里，在 webui 的左上角切换到即可使用。
 
-![SAMPLE](https://dreambooth.github.io/DreamBooth_files/high_level.png)
+![SAMPLE](../../assets/high_level.webp){style="background-color: #fff;"}
 
 官网 https://dreambooth.github.io/
 

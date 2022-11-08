@@ -6,33 +6,6 @@
 
 ![Roaming_info.png](../../assets/load-path.webp)
 
-## 使用 WebUI 复现 NAI 官网结果
-
-[相关讨论，应该读一读！](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017)
-
-::: tip
-由于 xformers 在优化过程中引入的抖动与部分显卡微架构差异，尝试完全复原在不同机器上生成的图片是不明智的。所以不要纠结一些细节不能复现。
-:::
-
-### 需要做的事情
-
-* 如果使用 7G 模型，需要将 config.yml 改名为 `模型名.yml` 与模型文件放置在一起。这种加载方式可能消耗大量显存。如果使用 4G 模型，无需进行任何操作。
-* 启用 xformers
-* 加载 `animevae.pt` 模型（将该模型文件改名为 `模型名.vae.pt` 与模型文件放置在一起）
-* Settings 中将 `Stop At last layers of CLIP model` 设为 `2`
-* `Eta noise seed delta` 设置为 `31337`
-* 使用 NovelAI 自动填充的正反标签
-  * 正向标签：`masterpiece, best quality`
-  * 反向标签：`lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`
-* 如果使用大括号，将大括号翻译为权重数字（每个大括号 105%）
-
-### 不需要做的事情
-
-* hypernetwork。官网默认并不使用 hypernetwork
-
-设置 `Stop At last layers of CLIP model` 是为了匹配 NAI 的一个[优化](https://blog.novelai.net/novelai-improvements-on-stable-diffusion-e10d38db82ac)。
-
-
 ## 半精度还是单精度？
 
 如果能，尽量使用半精度，可以节省运算时间/RAM/VRAM，同时图片质量并不会和单精度差多少。~~真要说差别可能和你电脑被宇宙射线打了差不多。~~
@@ -62,6 +35,26 @@
 0.0-1.0 [6] = 0.0, 0.2, 0.4, 0.6, 0.8, 1.0
 ```
 
+### Prompt S/R 替换
+
+S/R 是 X/Y 图的的一种较难理解的操作模式。
+
+S/R 是 搜索/替换 的意思，输入一个单词或短语的列表，它从列表中取第一个并将其视为关键词，并将该关键词的所有实例替换为列表中的其他条目的所有实例替换为列表中的其他条目。
+
+例如，提示 `a man holding an apple, 8k clean` 和 S/R提示 `an apple, a watermelon, a gun` 结合，你会得到三个提示。
+
+* `a man holding an apple, 8k clean`
+* `a man holding a watermelon, 8k clean`
+* `a man holding a gun, 8k clean`
+
+列表使用的语法与CSV文件中的一行相同，所以如果你想在你的条目中加入逗号，你可以
+在你的条目中加入逗号，你必须将文本放在引号中，并确保引号之间没有空格。
+确保引号和分隔逗号之间没有空格。
+
+* `darkness, light, green, heat` - 4 items - `darkness`, `light`, `green`, `heat`
+* `darkness, "light, green", heat` - WRONG - 4 items - `darkness`, `"light`, `green"`, `heat`
+* `darkness,"light, green",heat` - RIGHT - 3 items - `darkness`, `light, green`, `heat`
+
 ### 设置示例
 
 引用官方 Wiki 的设置图：
@@ -81,13 +74,13 @@
 
 右侧的下拉框将允许您从以前保存的样式中选择任何样式，并自动将其**附加**到输入中
 
-要删除样式，请从 styles.csv 中手动将其删除并重新启动程序。
+要删除样式，请从 `styles.csv` 中手动将其删除并重新启动程序。
 
 ## xformers
 
 xformers 分辨率越高加速效果越好。使用 xformers 会引入一些随机性，稍微影响生成的图像。
 
-如果你使用 Pascal、Turing 或者 Ampere 架构的卡（包括 GTX 1000，RTX 2000、3000 系列），将 `--xformers` 参数添加到 `webui-user.bat` 中的 `COMMANDLINE_ARGS`。
+如果你使用 Pascal、Turing 或者 Ampere 架构的卡（包括 GTX 1000，RTX 2000、3000 系列），将 `--xformers` 参数添加到 `webui-user.bat` 中的 `COMMANDLINE_ARGS`。**不需要再按照下述步骤编译安装。**
 
 ::: tip
 有人说在 700 和 900 系列卡上使用 xformers 的性能明显较差，请注意这一点。
@@ -95,7 +88,7 @@ xformers 分辨率越高加速效果越好。使用 xformers 会引入一些随�
 :::
 
 ::: warning
-注意使用 xformers 优化加速将使得同种子生成的图片存在差异。
+注意使用 xformers 优化加速将使得同种子生成的图片存在细微差异。
 :::
 
 ### 在 Windows 上编译 Xformers
@@ -109,7 +102,7 @@ xformers 分辨率越高加速效果越好。使用 xformers 会引入一些随�
 <!-- TODO: 11.6 没问题 -->
 
 - 安装 [VS Build Tools 2022](https://visualstudio.microsoft.com/zh-hans/downloads/?q=build+tools)，运行安装时只需要选择 `Desktop development with C++`
-- 安装 [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)，（后期版本未测试），选择`custom`，VS 集成可能不需要
+- 安装 [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)。可选择`Custom` 安装方式，删除一些如 Nsight、Visual Studio 集成等无用组件。
 
 1. 确认 nvcc 可用
 
@@ -245,6 +238,10 @@ CLIP 可以从图像中提取令牌。
 
 <!-- TODO: DeepDanbooru Interrogate -->
 
+## DeepDanbooru Interrogate
+
+使用 `--deepdanbooru` 启动 WebUI 后将可看到这个按钮。可以从图像中提取令牌。
+
 ## Face restoration 三次元人脸修复
 
 适用于三次元。
@@ -255,7 +252,7 @@ CLIP 可以从图像中提取令牌。
 
 创建一个名为 user.css 的文件并放在 webui.py 旁，将自定义 CSS 代码放入 user.css 中。
 
-下面的例子将会使得画廊更高：
+下面的例子将设置画廊的最短长度：
 
 ```css
 #txt2img_gallery, #img2img_gallery{
@@ -268,6 +265,8 @@ CLIP 可以从图像中提取令牌。
 如果在 webui.py 附近存在 `notification.mp3` 文件，它将在图片生成结束后播放。
 
 ## 开发自定义脚本
+
+见 [脚本](../../advanced/development/scripts.md)。
 
 你可以在 `modules/scripts.py` 中找到Script类。
 
