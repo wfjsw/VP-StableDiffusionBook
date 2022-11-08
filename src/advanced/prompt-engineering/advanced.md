@@ -18,7 +18,7 @@ CLIP 询问器有两个部分：一个是 BLIP 模型，它从图片中创建文
 
 一般我们有两种途径对图像进行修复：**PS 和 InPaint**，使用方法也十分多样。
 
-WebUi 使用 `--gradio-img2img-tool color-sketch` 启动会带入一个插件对图片进行颜色涂抹(这里不是 Inpaint)
+WebUI 使用 `--gradio-img2img-tool color-sketch` 启动会带入一个插件对图片进行颜色涂抹(这里不是 Inpaint)
 
 ::: tip 不同之处
 PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint 就不会。

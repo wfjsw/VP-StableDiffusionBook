@@ -3,13 +3,17 @@
     "version": "1.0.0",
     "main": "index.js",
     "private": true,
+    "type": "module",
     "license": "MIT",
     "packageManager": "yarn@3.2.4",
     "devDependencies": {
+        "flexsearch": "0.7.31",
         "markdown-it": "^13.0.1",
-        "vitepress": "1.0.0-alpha.26",
-        "vitepress-plugin-search": "1.0.4-alpha.14",
-        "vue": "^3.2.41"
+        "medium-zoom": "^1.0.6",
+        "vitepress": "1.0.0-alpha.27",
+        "vitepress-plugin-search": "1.0.4-alpha.15",
+        "vue": "^3.2.41",
+        "wasm-pack": "^0.10.3"
     },
     "scripts": {
         "dev": "vitepress dev",

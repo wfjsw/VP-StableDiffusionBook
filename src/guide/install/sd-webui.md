@@ -50,7 +50,7 @@ WSL 不可以迁移，如果 C 盘不够，寄！
 
 #### 安装 Python
 
-安装[Python 3.10.6](https://www.python.org/downloads/windows/)，安装时须选中 `Add Python to PATH`
+安装 [Python 3.10 / 3.11](https://www.python.org/downloads/windows/)，安装时须选中 `Add Python to PATH`
 
 > 部分整合包自带 Python 运行时。
 
@@ -88,7 +88,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 拉取仓库，这里如果如果失败请设置代理。
 
-使用Git下载的源代码，可以直接使用 `git pull` 更新代码。推荐经常更新，并关注社区讨论。
+使用 Git 下载的源代码，可以直接使用 `git pull` 更新代码。推荐经常更新，并关注社区讨论。
 
 如果是整合或者其他，请向上游（谁分发的）索取。
 
@@ -97,10 +97,25 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 <!-- TODO: FastGit 早就寄了吧 -->
 
 ::: tip
-如果你不会设置代理，可以使用以下命令拉取镜像
+
+如果你本地开启了代理，可以使用如下命令设置：
+
+```bash
+git config --global http.proxy <代理地址>
+git config --global https.proxy <代理地址>
+```
+
+使用结束后建议及时恢复，以免产生其他问题。
+
+```bash
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+如果你不会设置代理，可以使用以下命令拉取镜像：
 
 ```cmd
-git clone https://hub.fastgit.org/AUTOMATIC1111/stable-diffusion-webui.git
+git clone https://hub.fastgit.xyz/AUTOMATIC1111/stable-diffusion-webui.git
 ```
 
 :::
@@ -119,8 +134,7 @@ git clone https://hub.fastgit.org/AUTOMATIC1111/stable-diffusion-webui.git
 
 大约 30 分钟后安装完毕，程序会输出一个类似 `http://127.0.0.1:7860/` 的地址，点开即可(注意是 http,且不指定端口的话可能会变动)。
 
-:::tip
-运行需要模型！
+:::tip 运行需要模型！
 
 如果你是瞄准二次元来的，请想办法搞到某个模型咯，至于模型选哪个，请看下一章节。如果你是整合包，也可以移植整合包其中的 `models` 文件夹。（甚至你可以直接去下载拆分整合包....？但是直接使用整合包迟早要走自己安装的流程，因为不能更新）
 
@@ -185,18 +199,24 @@ COMMANDLINE_ARGS="--medvram" REQS_FILE="requirements.txt" python launch.py
 
 ## 启动
 
+首先运行前必须加载一个任意模型。界面顶部的菜单可用于选择模型。
+
 如果你运行报错，请读最后的自救提示。
 
 不提供 NV 模型，你可以去 关于/底部图标 页面找到 `中文社区` 的频道，里面应该有你想要的哈。
 
 ### 载入模型后
 
-Win 运行 `webui.bat`
+Win 用户编辑并运行 `webui.bat`
 
-Linux 用户采用
+Linux 用户可运行 `launch.py` 或 `webui.py` ，前者会自动安装(新)环境。
+
+```bash 
+python launch.py
+```
 
 ```
-COMMANDLINE_ARGS="--medvram --always-batch-cond-uncond" REQS_FILE="requirements.txt" python launch.py
+python web.py
 ```
 
 ### 令牌参数生成第一幅图片
@@ -205,9 +225,7 @@ COMMANDLINE_ARGS="--medvram --always-batch-cond-uncond" REQS_FILE="requirements.
 
 令牌请读后面的内容，这里给出一个实例来供你完成测试。
 
-顶上那个是选择模型，暂时用不到。
-
--   第一个框是正向令牌
+- 第一个输入框里写关于期望结果的词汇
 
 可以使用 颜文字 和 emoji，使用 () 来增强权重，具体规则见后
 
@@ -215,7 +233,7 @@ COMMANDLINE_ARGS="--medvram --always-batch-cond-uncond" REQS_FILE="requirements.
 ((masterpiece)), best quality, illustration, 1 girl, beautiful,beautiful detailed sky, catgirl,beautiful detailed water, cinematic lighting, dramatic angle, Grey T-Shirt, (few clothes),(yuri),(medium breasts),white hair,cat ears,masturbation,bare shoulders ,(gold eyes),wet clothes
 ```
 
--   第二个框是反向令牌
+- 第二个输入框书写不希望出现的结果
 
 指定需要过滤什么标签
 
@@ -225,18 +243,19 @@ lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer
 
 #### 第一次调整参数
 
-选定分辨率参数，越大越慢越卡。
+选定分辨率参数。分辨率越大，生成耗时越长、耗费显存越大。通常不建议超过 1280 x 1280。
 
-生成后的结果结尾类似为
+生成完成后的参数描述信息类似如下：
 
-```
+```text
 Steps: 28, Sampler: Euler a, CFG scale: 7, Seed: 2706937631, Size: 1024x512, Model hash: 925997e9
 ```
 
-通过一样的参数和 Seed(-1 就是随机)，可以生产一样的图像，这用于微调！
-还有占用信息
+通过一样的参数和 Seed (-1 就是随机)，可以生产一样的图像，这用于微调！
 
-```
+还有资源占用信息：
+
+```text
 Time taken: 33.97s
 Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 ```
@@ -245,13 +264,21 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 不想来回设置 Clip？
 
-添加`sd_hypernetwork`和`CLIP_stop_at_last_layers`到设置页面的`Quicksettings list`，保存并重新启动 webui，你就可以在 Ui 顶部看到一个快速切换选项啦～
+添加 `sd_hypernetwork` 和 `CLIP_stop_at_last_layers` 到设置页面的`Quicksettings list`，保存并重新启动 webui，你就可以在 UI 顶部看到相应的快速切换选项啦～
+
+::: tip 需要添加更多快捷设置?
+
+有 Python 代码阅读能力的话则可在 [此处](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/shared.py) 源码中找到各设置定义的名称。
+
+它们通常以将对象 `OptionInfo` 的实例作为值的字典的键存在。
+
+:::
 
 ### 中文/本地化
 
-本地化作为单个 `.json` 文件提供。 将此文件放入 `localizations` 目录并在设置中选择即可。
+语言文件作为单个 `.json` 文件提供。 将此文件放入 `localizations` 目录并在设置中选择即可。
 
-在 22/10/26 下午，WebUI 添加了中文的翻译。
+在 22/10/26 下午，WebUI 添加了内置的中文翻译。
 
 #### 创建本地化文件
 
@@ -275,11 +302,11 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 --share --gradio-auth admin:admin,user1:user_password
 ```
 
-使用该例子将会创建两个用户，一个是账号密码为 admin 的用户，另外一个是账号为 user1,密码为 user_password 的用户
+使用该例子将会创建两个用户，一个是账号密码为 `admin` 的用户，另外一个是账号为 `user1`，密码为 `user_password` 的用户
 
-如果攻击者可以访问 ui，他们可能能够远程运行 python 脚本。
+如果攻击者可以访问 UI，他们可能能够远程运行 python 脚本。
 
-10/30 社区报告：有人在扫描公开的 WebUi
+10/30 社区报告：有人在扫描公开的 WebUI
 
 11/1 社区反映：共享链接可能会导致安全风险，**攻击者可以访问系统上的所有文件。**
 :::
@@ -290,58 +317,74 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 参数 `--listen` 使服务器监听外部网络连接。
 
-这将允许本地网络上的计算机访问 UI，如果配置端口转发，公网上的计算机也可以访问（当然你得有公网。
+这将允许本地网络上的其他计算机访问 UI，如果配置端口转发，公网上的计算机也可以访问（当然你得有公网）。
 
-注意，监听 `0.0.0.0` 就意味着对本地网卡所有 IPv4 监听，访问请使用 `localhost` 替换 `0.0.0.0`
+注意，监听 `0.0.0.0` 意味着对本地网卡所有 IPv4 监听，局域网访问请使用对应 IP 地址。
 
 #### 修改监听端口
 
 参数 `--port xxxx` 使服务器监听特定端口。
 
-低于 1024 的所有端口都需要 `root`权限，因此建议使用高于 1024 的端口。
+对于 Linux 系统，如需监听低于 `1024` 的任何端口，程序需要以 `root` 权限运行或授权 `CAP_NET_BIND_SERVICE` 能力，因此建议使用高于 `1024` 的端口。
 
-如果可用，则默认为端口 7860
+默认端口为 `7860`。
 
 #### 主题
 
-使用 `--theme` 参数，设置主题
+添加 `--theme` 参数来切换主题。
 
 ### 自定义运行
 
-进一步熟悉这个程序，你会发现可以修改 Bat 运行脚本 添加参数！具体参数列表请读下文。
+进一步熟悉这个程序，你会发现可以通过修改 Bat 运行脚本添加参数！具体参数列表请读下文。
 
-生成报错？请读 `绘画调试` 章节。
+生成时报错？请读 [配置与调试](../configuration/param-basic.md) 章节。
 
 首先，你可以运行 `python webui.py --help` 查看所有命令参数，或者在[源码文件](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/shared.py)中读到它们。
 
-Tip:
-自定义程序运行方式的推荐方法是编辑 webui-user.bat(Windows) 和 webui-user.sh(Linux)
+::: tip
+自定义程序运行方式的推荐方法是编辑 `webui-user.bat` (Windows) 和 `webui-user.sh` (Linux)
+:::
 
 #### 环境定制
 
 ```cmd
-set PYTHON=b:/soft/Python310/Python.exe
+set PYTHON=E:/soft/Python310/Python.exe
 ```
 
-`set PYTHON` 允许设置自定义 Python 路径
+```bash
+export PYTHON="/usr/local/python310/bin/python"
+```
+
+`set PYTHON` (Windows) 或 `export PYTHON` (Linux) 允许设置自定义 Python 路径。
 
 ```cmd
 set VENV_DIR=C:\run\var\run
 ```
-`set VENV_DIR` 允许您选择虚拟环境的目录。默认为 `venv`。特殊值 `-` 在不创建虚拟环境的情况下运行脚本。
+
+```bash
+export VENV_DIR="/run/var/run"
+```
+
+`set VENV_DIR` (Windows) 或 `export VENV_DIR` (Linux) 可允许您选择虚拟环境的目录。默认为 `venv`。特殊值 `-` 在不创建虚拟环境的情况下运行脚本。
 
 ```cmd
 set COMMANDLINE_ARGS=--ckpt a.ckpt
 ```
-`set COMMANDLINE_ARGS` 设置命令行参数 webui.py 运行
 
-示例使用模型 a.ckpt 而不是 model.ckpt
+```bash
+export COMMANDLINE_ARGS="--ckpt a.ckpt"
+```
+
+`set COMMANDLINE_ARGS` (Windows) 或 `export COMMANDLINE_ARGS` (Linux) 可设置运行 webui.py 的命令行参数。
+
+示例中，设置使用模型 `a.ckpt` 而不是 `model.ckpt`
 
 #### GPU 指定
 
-选择要使用的默认 Gpu `--device-id 0`，来代替旧版本的 `CUDA_VISIBLE_DEVICES=0`，可以选择第二个 GPU 允许同时运行两个实例，从而能够以更简洁的方式简单地选择设备。
+选择要使用的默认 GPU `--device-id 0`，来代替旧版本 (2022/10 之前) 的 `CUDA_VISIBLE_DEVICES=0`，可以选择第二个 GPU 允许同时运行两个实例，从而能够以更简洁的方式简单地选择设备。
 
 查看 GPU 序号，可以使用 
+
 ```bash
 nvidia-smi
 ```
@@ -353,9 +396,9 @@ nvidia-smi
 | 命令行参数                      | 解释                                                                                                                                                                                                                                                                        |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--xformers`                    | 使用[xformers](https://github.com/facebookresearch/xformers)库。极大地改善了内存消耗和速度。Windows 版本安装由[C43H66N12O12S2 维护](https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases)的二进制文件                                                          |
-| `--force-enable-xformers`       | 无论程序是否认为您可以运行它，都启用 xformers。不要报告你运行它的错误。                                                                                                                                                                                                     |
-| `--opt-split-attention`         | Cross attention layer optimization 优化显着减少了内存使用，几乎没有成本（一些报告改进了性能）。黑魔法。默认情况下`torch.cuda`，包括 NVidia 和 AMD 卡。                                                                                                                      |
-| `--disable-opt-split-attention` | 禁用上面的优化                                                                                                                                                                                                                                                              |
+| `--force-enable-xformers`       | 无论程序是否认为您可以运行它，都启用 xformers。不要报告运行时错误。                                                                                                                                                                                                     |
+| `--opt-split-attention`         | Cross attention layer optimization 优化显着减少了内存使用，几乎没有成本（一些报告改进了性能）。黑魔法。默认情况下`torch.cuda`，包括 NVIDIA 和 AMD 卡。（新版默认开启）                                                                                                                      |
+| `--disable-opt-split-attention` | 禁用上述优化                                                                                                                                                                                                                                                              |
 | `--opt-split-attention-v1`      | 使用上述优化的旧版本，它不会占用大量内存（它将使用更少的 VRAM，但会限制您可以制作的最大图片大小）。                                                                                                                                                                         |
 | `--medvram`                     | 通过将稳定扩散模型分为三部分，使其消耗更少的 VRAM，即 cond（用于将文本转换为数字表示）、first_stage（用于将图片转换为潜在空间并返回）和 unet（用于潜在空间的实际去噪），并使其始终只有一个在 VRAM 中，将其他部分发送到 CPU RAM。降低性能，但只会降低一点-除非启用实时预览。 |
 | `--lowvram`                     | 对上面更彻底的优化，将 unet 拆分成多个模块，VRAM 中只保留一个模块,破坏性能                                                                                                                                                                                                  |
@@ -363,9 +406,11 @@ nvidia-smi
 | `--always-batch-cond-uncond`    | 禁用上述优化。只有与`--medvram`或`--lowvram`一起使用才有意义                                                                                                                                                                                                                |
 | `--opt-channelslast`            | 更改 torch 内存类型，以稳定扩散到最后一个通道,效果没有仔细研究。                                                                                                                                                                                                            |
 
+[讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3889) 中有人认为，通过在 Windows 设置上禁用硬件加速 GPU 调度，WebUI 性能提高了大约 10-50%
+
 ### API 文档
 
-使用 `--api` 参数运行程序，在浏览器访问 `{输出的网址}/docs` 就可以查看到 WebUI 的 [Api](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules/api) 文档。
+使用 `--api` 参数运行程序，在浏览器访问 `{输出的网址}/docs` 就可以查看到 WebUI 的 [API](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules/api) 文档。
 
 [Basic Documentation and Examples for using API](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3734)
 
@@ -407,7 +452,7 @@ payload = {
 # 其他参数会使用默认值
 WebUIApi(url="http://127.0.0.1:7860").txt2img(payload=payload,outpath="1145.png",infotie=True)
 
-# 实际使用的时候不应该保存到本地再发送，而是直接发送，避免存储图片作品造成 版权 问题。
+# 实际使用的时候建议直接发送而非保存到本地再发送，避免存储图片作品造成版权问题。
 ```
 
 跨平台多后端项目 [novelai-bot](https://github.com/koishijs/novelai-bot)
