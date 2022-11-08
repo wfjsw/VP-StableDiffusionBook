@@ -2,6 +2,12 @@
 
 此主题的内容可能不会即时更新到此处，[源地址](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts#prompt-interpolation)
 
+### sd-dynamic-prompts
+
+AUTOMATIC1111/stable-diffusion-webui 的自定义脚本，用于实现用于随机提示生成的微型模板语言 
+
+https://github.com/adieyal/sd-dynamic-prompts
+
 ### Depth Maps for Stable Diffusion
 
 这个脚本是AUTOMATIC1111的Stable Diffusion Web UI的一个插件，可以从生成的图像中创建深度图。

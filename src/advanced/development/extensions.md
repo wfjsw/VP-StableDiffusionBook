@@ -2,6 +2,12 @@
 
 安装完毕重启程序。目前 SD-WebUI 已经自带扩展管理器界面。
 
+### DreamBooth extension
+
+Dreambooth Extension for Stable-Diffusion-WebUI
+
+https://github.com/d8ahazard/sd_dreambooth_extension
+
 ## training-picker
 
 stable-diffusion-webui 的扩展，允许用户通过视频的关键帧进行复用，并自动从各个关键帧中挑选和导出训练示例。 

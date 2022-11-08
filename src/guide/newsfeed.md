@@ -8,6 +8,16 @@
 
 英文原版见 [sdupdates @ rentry](https://rentry.org/sdupdates)
 
+## 11/07
+
+- DreamBooth WebUI 插件
+
+https://github.com/d8ahazard/sd_dreambooth_extension
+
+- 有插件中出现了广告
+
+https://www.reddit.com/r/StableDiffusion/comments/ynshup/ds_are_starting_to_appear_in_our_foss/
+
 ## 11/06
 
 - 新的采样高阶算法
