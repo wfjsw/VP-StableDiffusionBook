@@ -3,7 +3,7 @@ import FlexSearch from "flexsearch";
 import buildDocs from "./docs-builder.js";
 
 const md = new MarkdownIt();
-const MAX_PREVIEW_CHARS = 64; // Number of characters to show for a given search result
+const MAX_PREVIEW_CHARS = 32; // Number of characters to show for a given search result
 
 const buildIndexSearch = (docs, options) => {
     const searchIndex = new FlexSearch.Index({

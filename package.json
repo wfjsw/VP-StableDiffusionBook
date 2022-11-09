@@ -10,6 +10,7 @@
         "flexsearch": "0.7.31",
         "markdown-it": "^13.0.1",
         "medium-zoom": "^1.0.6",
+        "sass": "^1.56.0",
         "vitepress": "1.0.0-alpha.27",
         "vitepress-plugin-search": "1.0.4-alpha.15",
         "vue": "^3.2.41",

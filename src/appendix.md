@@ -1,8 +1,22 @@
+---
+outline: [2, 4]
+---
+
 # 附录
 
 ## 社区
 
 这里是相关的社区资源
+
+### 图库
+
+* [AIBooru](https://aibooru.online/)
+
+* [openart.ai](https://openart.ai/)
+
+* [lexica](https://lexica.art) (SD search engine)
+
+* [PIXAI](https://pixai.art/)
 
 ### 项目
 
@@ -14,9 +28,11 @@
 
 #### 服务
 
+- [WebUi：为Krita插件等添加自定义后端API](https://github.com/Interpause/auto-sd-paint-ext)
+
 - [Danbooru 标签超市](https://tags.novelai.dev/),[项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)
 
-- [SD-WebUI自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
+- [SDWebUi自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
 
 - [标签提词器](https://thereisnospon.github.io/NovelAiTag/)
 
@@ -29,6 +45,8 @@
 - [MD设计标签选择](https://aispells.art/)
 
 ### 提示词相关
+
+- [测试组](https://artiststostudy.pages.dev/)
 
 - [Danbooru tag组](https://danbooru.donmai.us/wiki_pages/tag_groups)
 
@@ -56,7 +74,7 @@
 
 - [Notion：关于人工智能艺术](https://proximacentaurib.notion.site/proximacentaurib/parrot-zone-74a5c04d4feb4f12b52a41fc8750b205)
 
-- [WebUI使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
+- [WebUi使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
 
 - [NovelAI 5ch Wiki](https://seesaawiki.jp/nai_ch/)
 
@@ -64,7 +82,7 @@
 
 - [一个小指南：RedditAbout](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)
 
-- [WebUI自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
+- [WebUi自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
 
 - [SD相关的Faq](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 
@@ -79,7 +97,7 @@
 
 - [火药教程](https://rentry.org/stablediffgpubuy)
 
-- [WebUI的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
+- [WebUi的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
 
 - [匿名者的绘画技巧/nsfw](https://rentry.org/inpainting-guide-SD)
 
@@ -123,7 +141,9 @@
 
 ### embeddings
 
+::: warning
 不同大模型之间不能通用 embeddings
+:::
 
 [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
 
@@ -201,23 +221,7 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 ？
 
-### 谈论
-
-Ai 处理不了细节，对漫画创作(包含其他需要连续情节的作品)其实很鸡肋，因为 Ai 无法保证是同一角色。
-
-同时 Ai 会添加莫名其妙的结构光影，造成你二修困难。
-
-这些特点导致 Ai 根本不能替代人工的精细需求，只能替代低端需求(细节没Ai多的那种)
-
-有点实力的人都不用担心，Ai 的限制就在那里。
-
-所以主要应该在于 背景(星轨)，给甲方参考图。
-
->他的未来中作用应该是完成预制框架中的绝大部分重复性作业
-
-
 ## FAQ
-
 
 ### 模型会进化吗
 
@@ -231,36 +235,43 @@ NAI模型使用 Danbooru2021 的数据, 而 Danbooru2022 还未训练(个人不�
 
 ### Ps插件
 
-有人在做，不过需要等等。
-
-
+不确定是否安全的 [插件](https://internationaltd.github.io/defuser/)
 
 ## 关于文档
 
 ### 贡献支持
 
-此项目由以下人员参与编写整理:
-
-@sudoskys
+此项目由以下人员参与编写整理校对，排名不分先后:
 
 @CCRcmcpe
 
+@sudoskys
+
 @huige233
 
-@lychees
+@sakurayang
 
 @ReOracle
 
+@lychees
 
 ## 鸣谢
 
 引用的开源教程.
 
+- 图标提供
+
+https://fonts.google.com/icons
+
+https://fontawesome.com/icons
+
 - 编辑器
 
-https://mdformatter.dswwsd.net/
+图表格式化 https://mdformatter.dswwsd.net/
 
-https://markdown.lovejade.cn/
+网页表格转MarkDown https://markdown.lovejade.cn/
+
+石墨编辑器 https://editor.graphite.rs/
 
 - 文档写作指导
 
@@ -293,3 +304,9 @@ Ai 本质上它不能替代人的创意性，让人眼前一亮的图片也无�
 <iframe src="//player.bilibili.com/player.html?aid=219246962&bvid=BV1N8411e766&cid=864564133&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
 
 另外，欢迎参与文档编写和文档备份。
+
+#### 关于对 Danbooru 标签翻译项目的碎碎念
+
+[在线文档](https://t.bilibili.com/720572354272428097)开展的结果是 `此文档违反XX文档社区公约，暂时无法查看，请所有者联系平台申诉`
+
+个人认为参考 [EhTagTranslation](https://github.com/EhTagTranslation) [Web页面提交翻译](https://ehtt.vercel.app/list/all)，可以提供 Json 化的数据，便于接入和展开，是一个更好的选择。
