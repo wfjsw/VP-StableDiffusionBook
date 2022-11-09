@@ -65,7 +65,7 @@ function cleanSearch() {
                             stroke-linecap="round"
                             stroke-linejoin="round"></path>
                     </svg>
-                    <span class="DocSearch-Button-Placeholder">Search</span>
+                    <span class="DocSearch-Button-Placeholder">搜索</span>
                 </span>
                 <span class="DocSearch-Button-Keys">
                     <kbd class="DocSearch-Button-Key">{{ metaKey }}</kbd>
@@ -229,7 +229,7 @@ body.dark .DocSearch-Button:hover {
     transition: color 0.5s;
     font-size: 13px;
     font-weight: 500;
-    color: #66666699;
+    color: #999999cc;
     display: none;
     padding: 0 10px 0 0;
 }

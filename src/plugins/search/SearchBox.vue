@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useData } from 'vitepress'
 import FlexSearch from 'flexsearch'
 import FlexLogo from './flex-logo.svg'
+import SearchItem from './SearchItem.vue';
 
 const emit = defineEmits(['close'])
 
@@ -17,7 +18,7 @@ const searchIndex = ref()
 
 const result = computed(() => {
     if (searchTerm.value) {
-        const searchResults = searchIndex.value.search(searchTerm.value, 10)
+        const searchResults = searchIndex.value.search(searchTerm.value.toLowerCase(), 10)
         const search = []
 
         for (let i = 0; i < searchResults.length; i++) {
@@ -28,7 +29,9 @@ const result = computed(() => {
             const preview = item['p']
             const link = item['l'].split(' ').join('-')
             const anchor = item['a']
-            search.push({ id: i, link, title, preview, anchor })
+            const pageTitle = item['T']
+            const pageLink = origin.value + link.slice(0, link.indexOf('#'))
+            search.push({ id: i, link, title, preview, anchor, pageTitle, pageLink })
         }
         return search
     }
@@ -56,10 +59,15 @@ onMounted(async () => {
     )
     PREVIEW_LOOKUP.value = previewLookup
     origin.value = window.location.origin + localePath.value
-    const document = FlexSearch({ ...options, encode: (str) => {
+    const document = FlexSearch({
+        ...options, encode: (str) => {
+        const filter = options.filter ?? []
         const eng = Array.from(str.matchAll(/[a-zA-Z0-9]+/g)).map(n => n[0])
         const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-        return eng.concat(chs)
+            return eng.concat(chs)
+                .filter(n => !!n)
+                .filter(n => n.trim() !== '')
+                .filter(n => !filter.includes(n))
     }})
 
     document.registry = indexData.reg && JSON.parse(indexData.reg)
@@ -120,7 +128,7 @@ defineExpose({
                     spellcheck="false"
                     autofocus="true"
                     v-model="searchTerm"
-                    placeholder="Search docs"
+                    placeholder="搜索文档"
                     maxlength="64"
                     type="search"
                     ref="input"
@@ -128,32 +136,21 @@ defineExpose({
             </form>
             <div class="search-list">
                 <div
-                    v-for="(group, groupKey) of GroupBy(result, (x) =>
-                        x.link.split('/').slice(0, -1).join('-')
-                    )"
+                    v-for="(group, groupKey) of GroupBy(result, x => x.pageTitle)"
                     :key="groupKey">
-                    <span class="search-group">{{
+                    <span class="search-group">
+                        <a :href="group[0].pageLink">{{
                         groupKey
                             ? groupKey.toString()[0].toUpperCase() +
                               groupKey.toString().slice(1)
-                            : 'Home'
-                    }}</span>
-                    <a
-                        :href="origin + item.link"
+                            : '主页'
+                    }}</a></span>
+                    <SearchItem
                         v-for="item in group"
                         :key="item.id"
-                        @click="cleanSearch">
-                        <div class="search-item">
-                            <span class="search-item-icon">{{
-                                item.link.includes('#') ? '#' : '▤'
-                            }}</span>
-                            <div style="width: 100%">
-                                <h3>{{ item.title }}</h3>
-                                <p v-html="item.preview"></p>
-                            </div>
-                            <span class="search-item-icon">↪</span>
-                        </div>
-                    </a>
+                        :item="item"
+                        :origin="origin"
+                        @click="cleanSearch" />
                 </div>
             </div>
             <div class="DocSearch-Footer">
@@ -163,9 +160,9 @@ defineExpose({
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .DocSearch-Footer {
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     background-color: var(--docsearch-footer-background);
 }
 
@@ -182,50 +179,12 @@ defineExpose({
     overflow-x: auto;
 }
 
-.search-item-icon {
-    font-family: none;
-    align-self: center;
-    padding: 0 1rem 0 0;
-    font-size: x-large;
-}
-
 .search-list > div {
     color: var(--vp-c-brand-dark);
-    font-weight: bold;
+    /* font-weight: bold; */
 
     margin-bottom: 0.75rem;
 }
-
-.search-item {
-    padding: 0.25rem 1rem;
-    margin: 8px 0 0 0;
-    border: solid 1px;
-    border-radius: 6px;
-    display: flex;
-
-    border-color: var(--vp-custom-block-details-border);
-    color: var(--vp-custom-block-details-text);
-    background-color: var(--vp-custom-block-details-bg);
-}
-
-.search-item p {
-    margin: 0px;
-    font-size: smaller;
-    color: var(--c-text-light-3);
-}
-
-.search-item:hover {
-    color: #fff;
-    background: var(--vp-c-brand-dark);
-}
-
-.search-item:hover > p {
-    color: #fff;
-}
-
-/* .dark .search-item > p {
-  color: var(--c-text-light-2);
-} */
 
 .DocSearch-MagnifierLabel {
     margin: 16px;
@@ -235,7 +194,7 @@ defineExpose({
 
 .DocSearch-Input {
     appearance: none;
-    background: #58565636;
+    
     border: solid 1px var(--c-brand-light);
     color: var(--docsearch-text-color);
     flex: 1;
@@ -247,7 +206,6 @@ defineExpose({
     width: 80%;
     margin: 8px;
     padding: 8px;
-    border-radius: 6px;
 }
 
 .dark .DocSearch-Input {
@@ -264,6 +222,7 @@ defineExpose({
     max-width: 560px;
     position: relative;
     /* box-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5), 0 3px 8px 0 #555a64; */
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -274,7 +233,8 @@ defineExpose({
 }
 
 .dark .DocSearch-Form {
-    background-color: var(--vt-c-bg-mute);
+    // background-color: var(--vt-c-bg-mute);
+    background: #58565636;
 }
 
 .DocSearch-Form {
@@ -285,7 +245,6 @@ defineExpose({
 .DocSearch-Form {
     align-items: center;
     background: var(--docsearch-searchbox-focus-background);
-    border-radius: 4px;
     box-shadow: var(--docsearch-searchbox-shadow);
     display: flex;
     height: var(--docsearch-searchbox-height);
@@ -293,6 +252,8 @@ defineExpose({
     padding: 0 var(--docsearch-spacing);
     position: relative;
     width: 100%;
+    
+    // border-radius: 6px;
 }
 
 .DocSearch-MagnifierLabel {
@@ -307,4 +268,5 @@ defineExpose({
     background-color: white;
     border: 1px solid var(--vt-c-brand);
 }
+
 </style>

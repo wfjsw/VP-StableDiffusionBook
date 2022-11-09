@@ -177,7 +177,7 @@ export default defineConfig({
         plugins: [
             SearchPlugin({
                 profile: 'score',
-                tokenize: 'full',
+                tokenize: 'reverse',
                 cache: 50,
                 context: {
                     resolution: 4,
@@ -189,8 +189,9 @@ export default defineConfig({
                     '的',
                     '得',
                     '地',
-                    'and',
-                    'or',
+                    '了',
+                    ' ',
+                    ...'!@#$%^&*！￥……&*'.split(''),
                 ],
             }),
         ],

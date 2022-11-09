@@ -75,28 +75,36 @@ const processMdFiles = async (dirName) => {
  * @returns array of index docs
  */
 const parseMdContent = (mdCode, path) => {
-    const result = mdCode.split(/(^|\s)#{2}\s/gi);
-    const cleaning = result.filter((i) => i != "" && i != "\n");
-    const mdData = cleaning.map((i) => {
-        let content = i.split("\n");
+    const pageTitle = mdCode.match(/^# (.*)/m)?.[1]?.trim()
+    const result = mdCode.split(/(^|\s)#{2,3}\s/gi)
+    const cleaning = result.filter((i) => i.trim() !== "" && !i.startsWith('---') );
+    const mdData = cleaning.flatMap((i) => {
+        let content = i.split(/\n|。/);
         let anchor = content?.shift() || "";
-        return { anchor, content: content.join("\n"), path };
+        return content
+            .map((c) => c.replace(/(<([^>]+)>)/gi, '').replace(/\s{2,}/g, ' '))
+            .filter((c) => c.trim() !== '')
+            .map((c) => ({ anchor, content: c.trim(), path, pageTitle }))
+        // return { anchor, content: content.join("\n"), path };
     });
     return mdData;
 }
 
 const buildDoc = (mdDoc, id) => {
-    let a = mdDoc.anchor.replace(" ", " ").replace("\r", "").toLowerCase();
-    if (a[0] == "#") a = a.replace("#", "");
+    let a = mdDoc.anchor.replace("\r", "");
+    if (a[0] === "#") a = a.replace("#", "");
+
+    a = a.trim()
 
     let link = mdDoc.path.replace(rootPath + "/", "").replace("md", "html");
 
-    if (!id.includes(".0")) link += `#${a}`;
+    if (!id.endsWith(".0")) link += `#${a}`;
     return {
         id,
         link,
         b: mdDoc.content,
         a,
+        T: mdDoc.pageTitle,
     };
 };
 
@@ -111,7 +119,7 @@ const buildDocs = async (HTML_FOLDER) => {
 
             for (let index = 0; index < mdDocs.length; index++) {
                 const mdDoc = mdDocs[index];
-                docs.push(buildDoc(mdDoc, i + "." + index));
+                docs.push(buildDoc(mdDoc, i.toString(36) + "." + index.toString('36')));
             }
         }
     }

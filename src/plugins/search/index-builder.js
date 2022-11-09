@@ -3,18 +3,22 @@ import FlexSearch from "flexsearch";
 import buildDocs from "./docs-builder.js";
 
 const md = new MarkdownIt();
-const MAX_PREVIEW_CHARS = 32; // Number of characters to show for a given search result
+const MAX_PREVIEW_CHARS = 64; // Number of characters to show for a given search result
 
 const buildIndexSearch = (docs, options) => {
     const searchIndex = new FlexSearch.Index({
         ...options, encode: (str) => {
+            const filter = options.filter ?? []
             const eng = Array.from(str.matchAll(/[a-zA-Z0-9]+/g)).map(n => n[0])
             const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
             return eng.concat(chs)
+                .filter(n => !!n)
+                .filter(n => n.trim() !== '')
+                .filter(n => !filter.includes(n))
         }
     });
     for (const doc of docs) {
-        searchIndex.add(doc.id, doc.a + " " + doc.b);
+        searchIndex.add(doc.id, doc.a.toLowerCase() + "\n" + doc.b.toLowerCase());
     }
     return searchIndex;
 };
@@ -28,11 +32,13 @@ function buildPreviews(docs) {
         if (preview.length > MAX_PREVIEW_CHARS)
             preview = preview.slice(0, MAX_PREVIEW_CHARS) + " ...";
 
+        preview = preview.trim()
         result[doc["id"]] = {
             t: doc["a"],
             p: preview,
             l: doc["link"],
-            a: doc["a"], //
+            a: doc["a"], 
+            T: doc["T"],
         };
     }
     return result;

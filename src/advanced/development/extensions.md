@@ -2,7 +2,7 @@
 
 安装完毕重启程序。目前 SD-WebUI 已经自带扩展管理器界面。
 
-### DreamBooth extension
+## DreamBooth extension
 
 Dreambooth Extension for Stable-Diffusion-WebUI
 

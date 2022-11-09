@@ -287,37 +287,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/flexsearch@npm:^0.7.3":
-  version: 0.7.3
-  resolution: "@types/flexsearch@npm:0.7.3"
-  checksum: fac365e6d6f7f251c49b22530635a7042523b00a45dcb5591372782125f5e5e97b0508c71e08c8d1b3fbef0e01c504027271df5d60698b1e26caf7d067cc2ef0
-  languageName: node
-  linkType: hard
-
-"@types/linkify-it@npm:*":
-  version: 3.0.2
-  resolution: "@types/linkify-it@npm:3.0.2"
-  checksum: dff8f10fafb885422474e456596f12d518ec4cdd6c33cca7a08e7c86b912d301ed91cf5a7613e148c45a12600dc9ab3d85ad16d5b48dc1aaeda151a68f16b536
-  languageName: node
-  linkType: hard
-
-"@types/markdown-it@npm:^12.2.3":
-  version: 12.2.3
-  resolution: "@types/markdown-it@npm:12.2.3"
-  dependencies:
-    "@types/linkify-it": "*"
-    "@types/mdurl": "*"
-  checksum: 868824a3e4d00718ba9cd4762cf16694762a670860f4b402e6e9f952b6841a2027488bdc55d05c2b960bf5078df21a9d041270af7e8949514645fe88fdb722ac
-  languageName: node
-  linkType: hard
-
-"@types/mdurl@npm:*":
-  version: 1.0.2
-  resolution: "@types/mdurl@npm:1.0.2"
-  checksum: 79c7e523b377f53cf1f5a240fe23d0c6cae856667692bd21bf1d064eafe5ccc40ae39a2aa0a9a51e8c94d1307228c8f6b121e847124591a9a828c3baf65e86e2
-  languageName: node
-  linkType: hard
-
 "@types/web-bluetooth@npm:^0.0.16":
   version: 0.0.16
   resolution: "@types/web-bluetooth@npm:0.0.16"
@@ -2025,22 +1994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress-plugin-search@npm:1.0.4-alpha.15":
-  version: 1.0.4-alpha.15
-  resolution: "vitepress-plugin-search@npm:1.0.4-alpha.15"
-  dependencies:
-    "@types/flexsearch": ^0.7.3
-    "@types/markdown-it": ^12.2.3
-    markdown-it: ^13.0.1
-  peerDependencies:
-    flexsearch: ^0.7.31
-    vite: 2 || 3
-    vitepress: ^1.0.0-alpha.13
-    vue: 3
-  checksum: c383a41218413ad30c99dcd4ddba3ea3df6f56546aa3f881affdf7127c70cdf32694a5c3a46ef63d15bf7258aa70d5ced0eb65ec9c36e7b37da21c86e0a5813b
-  languageName: node
-  linkType: hard
-
 "vitepress@npm:1.0.0-alpha.27":
   version: 1.0.0-alpha.27
   resolution: "vitepress@npm:1.0.0-alpha.27"
@@ -2069,7 +2022,6 @@ __metadata:
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     vitepress: 1.0.0-alpha.27
-    vitepress-plugin-search: 1.0.4-alpha.15
     vue: ^3.2.41
     wasm-pack: ^0.10.3
   languageName: unknown

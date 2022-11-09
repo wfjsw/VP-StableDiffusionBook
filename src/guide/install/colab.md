@@ -1,4 +1,4 @@
-## 使用 Google Colab 搭建
+# 使用 Google Colab 搭建
 
 Colab 资源每日重置。Colab的 [用户协议](https://research.google.com/colaboratory/faq.html?hl=zh-CN) 不允许利用多个帐号绕过访问权限或资源使用情况限制。
 
