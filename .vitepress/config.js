@@ -19,6 +19,7 @@ export default defineConfig({
                 link: '/advanced/index',
             },
             { text: '附录', link: '/appendix' },
+            { text: 'NovelAI.dev', link: 'https://novelai.dev' },
         ],
         sidebar: {
             '/guide/': [
