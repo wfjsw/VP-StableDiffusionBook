@@ -1,5 +1,10 @@
 import { defineConfig } from "vitepress";
 import { SearchPlugin } from "../src/plugins/search/plugin";
+import { SitemapStream } from 'sitemap'
+import { createWriteStream } from 'node:fs'
+import { resolve } from 'node:path'
+
+const links = []
 
 export default defineConfig({
     title: 'AiDraw',
@@ -10,6 +15,7 @@ export default defineConfig({
     outDir: './dist',
     srcDir: './src',
     ignoreDeadLinks: true,
+    cleanUrls: 'without-subfolders',
     themeConfig: {
         outlineTitle: '在这一页上',
         nav: [
@@ -196,5 +202,22 @@ export default defineConfig({
                 ],
             }),
         ],
+    },
+    transformHtml: (_, id, { pageData }) => {
+        if (!id.endsWith('404.html'))
+            links.push({
+                // you might need to change this if not using clean urls mode
+                url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+                lastmod: pageData.lastUpdated,
+            })
+    },
+    buildEnd: ({ outDir }) => {
+        const sitemap = new SitemapStream({
+            hostname: 'https://guide.novelai.dev/',
+        })
+        const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+        sitemap.pipe(writeStream)
+        links.forEach((link) => sitemap.write(link))
+        sitemap.end()
     },
 })

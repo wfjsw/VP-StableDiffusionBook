@@ -1,0 +1,1 @@
+Sitemap: https://guide.novelai.dev/sitemap.xml
