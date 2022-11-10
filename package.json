@@ -12,8 +12,7 @@
         "medium-zoom": "^1.0.6",
         "sass": "^1.56.0",
         "sitemap": "^7.1.1",
-        "vite-plugin-radar": "^0.5.0",
-        "vitepress": "1.0.0-alpha.27",
+        "vitepress": "1.0.0-alpha.28",
         "vue": "^3.2.41",
         "wasm-pack": "^0.10.3"
     },

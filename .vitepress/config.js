@@ -1,6 +1,5 @@
 import { defineConfig } from "vitepress";
 import { SearchPlugin } from "../src/plugins/search/plugin";
-import { VitePluginRadar } from "vite-plugin-radar";
 import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
@@ -197,16 +196,6 @@ export default defineConfig({
                     ...'!@#$%^&*！￥……&*'.split(''),
                 ],
             }),
-            {
-                ...VitePluginRadar({
-                    analytics: {
-                        id: 'G-86153EB058',
-                    },
-                }),
-                apply(config, { command }) {
-                    return command === 'build' && config.mode === 'production'
-                },
-            },
         ],
     },
     transformHtml: (_, id, { pageData }) => {
@@ -226,4 +215,18 @@ export default defineConfig({
         links.forEach((link) => sitemap.write(link))
         sitemap.end()
     },
+    head: [
+        [
+            'script',
+            {
+                async: true,
+                src: 'https://www.googletagmanager.com/gtag/js?id=G-86153EB058',
+            },
+        ],
+        [
+            'script',
+            {},
+            "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-86153EB058');",
+        ],
+    ],
 })

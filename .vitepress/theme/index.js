@@ -21,4 +21,17 @@ export default {
             () => nextTick(() => initZoom())
         );
     },
+    enhanceApp({ router }) {
+        if (!import.meta.env.SSR) {
+            if (typeof window !== 'undefined' && window.ga) {
+                watch(
+                    () => router.route.data.relativePath,
+                    (path) => {
+                        ga('send', 'pageview', path)
+                    },
+                    { immediate: true }
+                )
+            }
+        }
+	},
 };

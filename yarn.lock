@@ -317,13 +317,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "@vitejs/plugin-vue@npm:3.1.2"
+"@vitejs/plugin-vue@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@vitejs/plugin-vue@npm:3.2.0"
   peerDependencies:
     vite: ^3.0.0
     vue: ^3.2.25
-  checksum: 1da84ccfc8f31b612ad51dfbbbc39816900346168c1b66a0870ddeddc622d227ac9a1d571a94d9bc63c75e50320fb8b2f7c986a115e0b87140100b0ac35b9fd6
+  checksum: 64774f770e0e21ce7eb36743d614e3f197a35f5b67b2d3800c61766e649f43dc497bb037738ffafd607eb488064ab132c23766190e7ab557a0b88c0051f7a794
   languageName: node
   linkType: hard
 
@@ -1646,7 +1646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.10, postcss@npm:^8.4.16":
+"postcss@npm:^8.1.10, postcss@npm:^8.4.18":
   version: 8.4.18
   resolution: "postcss@npm:8.4.18"
   dependencies:
@@ -1745,9 +1745,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:~2.78.0":
-  version: 2.78.1
-  resolution: "rollup@npm:2.78.1"
+"rollup@npm:^2.79.1":
+  version: 2.79.1
+  resolution: "rollup@npm:2.79.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -1755,7 +1755,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 9034814383ca5bdb4bea6d499270aeb31cdb0bb884f81b0c6a1d19c63cc973f040e6ee09b7af8a7169dd231c090f4b44ef8b99c4bfdf884aceeb3dcefb8cfa14
+  checksum: 6a2bf167b3587d4df709b37d149ad0300692cc5deb510f89ac7bdc77c8738c9546ae3de9322b0968e1ed2b0e984571f5f55aae28fa7de4cfcb1bc5402a4e2be6
   languageName: node
   linkType: hard
 
@@ -2013,63 +2013,60 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-radar@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "vite-plugin-radar@npm:0.5.0"
-  peerDependencies:
-    vite: ^2.0.0 || ^3.0.0
-  checksum: c18bfd0a979710c1dc5ff603a9099c0ea452feb63e57973e19b22da217caad279a9a89ca64e1dbc6f381cd35637f69c80e7336577ae0f106aa81710e9836b4f8
-  languageName: node
-  linkType: hard
-
-"vite@npm:^3.1.8":
-  version: 3.1.8
-  resolution: "vite@npm:3.1.8"
+"vite@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "vite@npm:3.2.3"
   dependencies:
     esbuild: ^0.15.9
     fsevents: ~2.3.2
-    postcss: ^8.4.16
+    postcss: ^8.4.18
     resolve: ^1.22.1
-    rollup: ~2.78.0
+    rollup: ^2.79.1
   peerDependencies:
+    "@types/node": ">= 14"
     less: "*"
     sass: "*"
     stylus: "*"
+    sugarss: "*"
     terser: ^5.4.0
   dependenciesMeta:
     fsevents:
       optional: true
   peerDependenciesMeta:
+    "@types/node":
+      optional: true
     less:
       optional: true
     sass:
       optional: true
     stylus:
       optional: true
+    sugarss:
+      optional: true
     terser:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 982696ad134577dd9915c4c3548ad36ddcf5dc6d341058548a670a13d860e4cdaaf2b320a59221f178018df089d148b9980e9a344316bef12b698a1c1abc7390
+  checksum: 3c7c618f7fb471cdfaf7f8eb769cb5f4174447e1103cd6221cbc2ae1ea1102bc28dd6a621ead250e6aa42c1e9ee3c8092666ea81078e1d88d2325c484218fd0a
   languageName: node
   linkType: hard
 
-"vitepress@npm:1.0.0-alpha.27":
-  version: 1.0.0-alpha.27
-  resolution: "vitepress@npm:1.0.0-alpha.27"
+"vitepress@npm:1.0.0-alpha.28":
+  version: 1.0.0-alpha.28
+  resolution: "vitepress@npm:1.0.0-alpha.28"
   dependencies:
     "@docsearch/css": ^3.3.0
     "@docsearch/js": ^3.3.0
-    "@vitejs/plugin-vue": ^3.1.2
+    "@vitejs/plugin-vue": ^3.2.0
     "@vue/devtools-api": ^6.4.5
     "@vueuse/core": ^9.4.0
     body-scroll-lock: 4.0.0-beta.0
     shiki: ^0.11.1
-    vite: ^3.1.8
+    vite: ^3.2.3
     vue: ^3.2.41
   bin:
     vitepress: bin/vitepress.js
-  checksum: df8fd611d75dd3aca027fa3055d0255f1be8acf5154f9cf5c80d6ae9da0b6023d2d376dba6260eb29df267a6f3dc6d73966f876dc58ee6b2344b1829705ced67
+  checksum: e92202bfdf23102f108e67cb8545f8a42b86d65046450895431d62548cee11fad5ead71a66193ca1fc37f22812fc20b1aaddb01401a34093ccf1f4a919a53743
   languageName: node
   linkType: hard
 
@@ -2082,8 +2079,7 @@ __metadata:
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     sitemap: ^7.1.1
-    vite-plugin-radar: ^0.5.0
-    vitepress: 1.0.0-alpha.27
+    vitepress: 1.0.0-alpha.28
     vue: ^3.2.41
     wasm-pack: ^0.10.3
   languageName: unknown
