@@ -2013,6 +2013,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vite-plugin-radar@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "vite-plugin-radar@npm:0.5.0"
+  peerDependencies:
+    vite: ^2.0.0 || ^3.0.0
+  checksum: c18bfd0a979710c1dc5ff603a9099c0ea452feb63e57973e19b22da217caad279a9a89ca64e1dbc6f381cd35637f69c80e7336577ae0f106aa81710e9836b4f8
+  languageName: node
+  linkType: hard
+
 "vite@npm:^3.1.8":
   version: 3.1.8
   resolution: "vite@npm:3.1.8"
@@ -2073,6 +2082,7 @@ __metadata:
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     sitemap: ^7.1.1
+    vite-plugin-radar: ^0.5.0
     vitepress: 1.0.0-alpha.27
     vue: ^3.2.41
     wasm-pack: ^0.10.3

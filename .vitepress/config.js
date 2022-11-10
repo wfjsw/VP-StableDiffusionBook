@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import { SearchPlugin } from "../src/plugins/search/plugin";
+import { VitePluginRadar } from "vite-plugin-radar";
 import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
@@ -24,6 +25,7 @@ export default defineConfig({
                 text: '深入',
                 link: '/advanced/',
             },
+            { text: '新闻', link: '/newsfeed' },
             { text: '附录', link: '/appendix' },
             { text: 'NovelAI.dev', link: 'https://novelai.dev' },
         ],
@@ -31,13 +33,7 @@ export default defineConfig({
             '/guide/': [
                 {
                     text: '新手指南',
-                    items: [
-                        { text: '前言', link: '/guide/' },
-                        {
-                            text: '新闻',
-                            link: '/guide/newsfeed',
-                        },
-                    ],
+                    items: [{ text: '前言', link: '/guide/' }],
                 },
                 {
                     text: '起步于此',
@@ -201,6 +197,16 @@ export default defineConfig({
                     ...'!@#$%^&*！￥……&*'.split(''),
                 ],
             }),
+            {
+                ...VitePluginRadar({
+                    analytics: {
+                        id: 'G-86153EB058',
+                    },
+                }),
+                apply(config, { command }) {
+                    return command === 'build' && config.mode === 'production'
+                },
+            },
         ],
     },
     transformHtml: (_, id, { pageData }) => {
