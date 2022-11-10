@@ -19,10 +19,10 @@ export default defineConfig({
     themeConfig: {
         outlineTitle: '在这一页上',
         nav: [
-            { text: '指南', link: '/guide/index' },
+            { text: '指南', link: '/guide/' },
             {
                 text: '深入',
-                link: '/advanced/index',
+                link: '/advanced/',
             },
             { text: '附录', link: '/appendix' },
             { text: 'NovelAI.dev', link: 'https://novelai.dev' },
@@ -76,7 +76,7 @@ export default defineConfig({
                     text: '配置与调试',
                     collapsible: true,
                     items: [
-                        { text: '引言', link: '/guide/configuration/index' },
+                        { text: '引言', link: '/guide/configuration/' },
                         {
                             text: '关于显卡',
                             link: '/guide/configuration/videocards',
