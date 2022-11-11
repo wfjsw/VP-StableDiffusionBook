@@ -559,3 +559,27 @@ Windows 7 上运行很可能会报错: `api-ms-win-core-path-l1-1-0.dll is missi
 在多数情况下，这代表显存溢出，也有可能是 GPU 硬件问题。
 
 据说使用 DeepDanbooru 的话会有这个提示，可以尝试重新启动 或 安装 CPU 版本的 DeepDanbooru.
+
+### Cannot connect to proxy
+
+代理设置问题，检查全局变量有无协议头（需要有），如果是 Clash，开启 TUN 模式即可。
+
+如果没开代理，尝试更新到最新版本。
+
+见 [#491](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/491)。
+
+### Failed to establish a new connection
+
+在我的电脑 -> 右键 -> 属性 -> 环境变量中，删除代理环境变量（小心操作）
+
+代理环境变量形如：
+
+```text 
+HTTP_PROXY
+HTTPS_PROXY
+ALL_PROXY
+```
+
+等等。
+
+见 [#2684](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/2684)。
