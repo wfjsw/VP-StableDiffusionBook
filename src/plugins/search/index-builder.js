@@ -48,7 +48,7 @@ export async function IndexSearch(
     HTML_FOLDER,
     options
 ) {
-    console.log("  🔎 Indexing...");
+    // console.log("  🔎 Indexing...");
     const docs = await buildDocs(HTML_FOLDER);
     const previews = buildPreviews(docs);
     const flexIdx = buildIndexSearch(docs, options);
@@ -70,7 +70,7 @@ export const previewLookup = ${JSON.stringify(previews)};
 export const options = ${JSON.stringify(options)};
 `;
 
-    console.log("  🔎 Done.");
+    // console.log("  🔎 Done.");
 
     return js;
 }

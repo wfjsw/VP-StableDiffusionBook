@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import SearchBox from './SearchBox.vue'
 
 const metaKey = ref('Ctrl')
@@ -41,11 +41,13 @@ function cleanSearch() {
 
 <template>
     <div class="VPNavBarSearch">
-        <Teleport to="body">
-            <div v-show="open" class="modal-back DocSearch" @click="open = false">
-                <SearchBox @close="open = false" ref="searchBox" />
-            </div>
-        </Teleport>
+        <ClientOnly>
+            <Teleport to="body">
+                <div v-show="open" class="modal-back DocSearch" @click="open = false">
+                    <SearchBox @close="open = false" ref="searchBox" />
+                </div>
+            </Teleport>
+        </ClientOnly>
         <div id="docsearch" @click="openSearch()">
             <button
                 type="button"
@@ -80,7 +82,7 @@ function cleanSearch() {
 .VPNavBarSearch {
     display: flex;
     align-items: center;
-    padding-left: 16px;
+    padding: 0 16px;
 }
 
 .modal-back {
@@ -96,6 +98,8 @@ function cleanSearch() {
 .DocSearch-Button-Keys {
     display: flex;
     min-width: calc(40px + 0.8em);
+    border: 1px solid #666666;
+    border-radius: 4px;
 }
 
 @media (min-width: 768px) {

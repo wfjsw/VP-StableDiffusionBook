@@ -161,6 +161,7 @@ defineExpose({
 </template>
 
 <style scoped lang="scss">
+
 .DocSearch-Footer {
     padding-top: 0.75rem;
     background-color: var(--docsearch-footer-background);
@@ -223,6 +224,7 @@ defineExpose({
     position: relative;
     /* box-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5), 0 3px 8px 0 #555a64; */
     overflow: hidden;
+    border: 1px solid #222222;
 }
 
 @media (max-width: 768px) {

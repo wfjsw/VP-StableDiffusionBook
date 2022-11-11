@@ -9,29 +9,36 @@ const props = defineProps({
 <template>
     <a :href="origin + item.link">
         <div class="search-item">
-            <span class="search-item-icon">{{
+            <span class="item-type-icon">{{
                 item.link.includes('#') ? '#' : '▤'
             }}</span>
             <div class="search-item-content">
                 <h3 class="preview">{{ item.preview || '<多媒体内容>' }}</h3>
                 <p class="chapter-header">{{ item.title }}</p>
             </div>
-            <span class="search-item-icon">↪</span>
+            <span class="jump-icon">↪</span>
         </div>
     </a>
 </template>
 
 <style scoped lang="scss">
 
-.search-item-icon {
+.item-type-icon {
     font-family: none;
     align-self: center;
     padding: 0 1rem 0 0;
     font-size: x-large;
 }
 
+.jump-icon {
+    font-family: none;
+    align-self: center;
+    font-size: x-large;
+    margin-left: 0.5rem;
+}
+
 .search-item {
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
     margin: 8px 0 0 0;
     border: solid 1px;
     border-radius: 6px;
@@ -70,6 +77,7 @@ const props = defineProps({
 .search-item-content {
     width: 100%;
     overflow: hidden;
+    line-height: 18px;
 }
 
 .chapter-header {

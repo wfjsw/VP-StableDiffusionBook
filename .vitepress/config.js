@@ -199,12 +199,13 @@ export default defineConfig({
         ],
     },
     transformHtml: (_, id, { pageData }) => {
-        if (!id.endsWith('404.html'))
+        if (!id.endsWith('404.html')) {
             links.push({
                 // you might need to change this if not using clean urls mode
                 url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
                 lastmod: pageData.lastUpdated,
             })
+        }
     },
     buildEnd: ({ outDir }) => {
         const sitemap = new SitemapStream({
