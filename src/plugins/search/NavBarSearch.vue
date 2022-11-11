@@ -96,15 +96,20 @@ function cleanSearch() {
 }
 
 .DocSearch-Button-Keys {
-    display: flex;
-    min-width: calc(40px + 0.8em);
-    border: 1px solid #666666;
-    border-radius: 4px;
+    display: none;
 }
 
 @media (min-width: 768px) {
     .DocSearch-Button .DocSearch-Button-Key {
         display: inline-block;
+    }
+
+    .DocSearch-Button-Keys {
+        display: flex;
+        min-width: calc(40px + 0.8em);
+        border: 1px solid #666666;
+        border-radius: 4px;
+        
     }
 }
 

@@ -8,7 +8,7 @@ import Actions from './components/Actions.vue'
 本站为 [sudoskys/StableDiffusionBook](https://github.com/sudoskys/StableDiffusionBook) 的一个 Fork，遵循 GFDL 发布。其中内容可能过时，欲查阅最新内容请访问原站 https://draw.dianas.cyou/
 :::
 
-关于使用 Ai 绘画的 Wiki ，翻译，教程，相关资源。主要内容为 StableDiffusionWebUI
+关于使用 AI 绘画的 Wiki ，翻译，教程，相关资源。主要内容为 Stable-Diffusion-WebUI
 
 <Actions />
 
@@ -48,11 +48,11 @@ Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本�
 
 ### 论坛
 
-[Reddit-DreamBooth](https://www.reddit.com/r/DreamBooth/)
+[/r/DreamBooth](https://www.reddit.com/r/DreamBooth/)
 
-[Reddit-StableDiffusion](https://www.reddit.com/r/StableDiffusion/)
+[/r/StableDiffusion](https://www.reddit.com/r/StableDiffusion/)
 
-[Reddit-NovelAi](https://www.reddit.com/r/NovelAi/)
+[/r/NovelAi](https://www.reddit.com/r/NovelAi/)
 
 
 ## 声明
