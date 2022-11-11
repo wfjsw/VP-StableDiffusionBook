@@ -82,7 +82,11 @@ const parseMdContent = (mdCode, path) => {
         let content = i.split(/\n|。/);
         let anchor = content?.shift() || "";
         return content
-            .map((c) => c.replace(/(<([^>]+)>)/gi, '').replace(/\s{2,}/g, ' '))
+            .map((c) => c
+                .replace(/(<([^>]+)>)/gi, '')
+                .replace(/\s{2,}/g, ' ')
+                .replace(/^:::/gm, '')
+            )
             .filter((c) => c.trim() !== '')
             .map((c) => ({ anchor, content: c.trim(), path, pageTitle }))
         // return { anchor, content: content.join("\n"), path };
@@ -98,7 +102,15 @@ const buildDoc = (mdDoc, id) => {
 
     let link = mdDoc.path.replace(rootPath + "/", "").replace("md", "html");
 
-    if (!id.endsWith(".0")) link += `#${a}`;
+    if (!id.endsWith(".0")) {
+        const normalized = a
+            .replace(/[!@#$%^&*()=！@#￥%…&*（）+_：:;；'"“”‘’<>《》?/]/g, ' ')
+            .replace(/\s{2,}/g, ' ')
+            .replaceAll('/', '-')
+            .toLowerCase()
+        link += `#${normalized}`;
+    }
+
     return {
         id,
         link,

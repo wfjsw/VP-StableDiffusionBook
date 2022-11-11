@@ -69,7 +69,7 @@ Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本�
 -   您必须注明文章的作者
 -   您必须提供取得材料“透明版本”的方法
 
-文档具体协议参考[FDL](https://www.gnu.org/licenses/fdl-1.3.html),以仓库副本为准。
+文档具体协议参考 [FDL](https://www.gnu.org/licenses/fdl-1.3.html)，以仓库副本为准。
 
 ``` text
 Copyright (C)  2022  StableDiffusionBook.

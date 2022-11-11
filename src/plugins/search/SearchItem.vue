@@ -1,13 +1,17 @@
 <script setup>
+import { computed } from 'vue';
+
 
 const props = defineProps({
     item: Object,
     origin: String,
 })
+
+const linkHref = computed(() => `${props.origin}${props.item.link}`)
 </script>
 
 <template>
-    <a :href="origin + item.link">
+    <a :href="linkHref">
         <div class="search-item">
             <span class="item-type-icon">{{
                 item.link.includes('#') ? '#' : '▤'
