@@ -100,7 +100,7 @@ const buildDoc = (mdDoc, id) => {
 
     a = a.trim()
 
-    let link = mdDoc.path.replace(rootPath + "/", "").replace("md", "html");
+    let link = mdDoc.path.replace(rootPath + "/", "").replace(".md", "")
 
     if (!id.endsWith(".0")) {
         const normalized = a
