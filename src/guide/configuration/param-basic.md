@@ -11,10 +11,10 @@ outline: [2, 3]
  - `Step` 迭代多少次，取值和 `sampling method` 有关，`DDIM` 采样方法收敛较快，具体差别见调参魔法 [Sampler vs. Steps Comparison (low to mid step counts)](https://www.reddit.com/r/StableDiffusion/comments/wwm2at/sampler_vs_steps_comparison_low_to_mid_step_counts/)。
    - 注意：在 DDIM 采样方法下，`Step` 不宜超过 30，否则可能出现报错。
  - `Batch count/Batch size` 决定生成的图片数量。`Batch size` 决定并发量，需要大量显存；`Batch count` 决定连续生成次数，不需要额外内存。得到的图片数量是两者之积。
- - `Sample Method` 采样方法。`DDIM`、`Euler a` 也挺好用。 (带 a 的是 Ancestral 的意思, step 增长出图不稳定)
- - `CFG scale` 符合 prompt 的程度, 值越高越会字面看待 prompt, 低则给模型较大的发挥空间, 但是实际模型表现上来看 cfg scale 低 (6-8) 饱和度低, 偏线稿, 偏杂乱, 高 (18-22) 则饱和度偏高, 偏 CG 风格.
+ - `Sample Method` 采样方法。`DDIM`、`Euler a` 也挺好用。 (带 a 的是 Ancestral 的意思，tep 增长出图不稳定)
+ - `CFG scale` 符合 prompt 的程度，值越高越会字面看待 prompt，低则给模型较大的发挥空间，但是实际模型表现上来看 cfg scale 低 (6-8) 饱和度低，偏线稿，偏杂乱，高 (18-22) 则饱和度偏高，偏 CG 风格.
    - 过高的 CFG 会引起颜色失真，CFG 应该在 5-15 之间
- - `Denoise strength` img2img 专属参数，从 0 到 1 取值，值越高 AI 对原图的参考程度就越低（同时增加迭代次数），个人喜欢低 cfg 高 denoise 重绘图, 高 cfg 低 denoise 改细节.
+ - `Denoise strength` img2img 专属参数，从 0 到 1 取值，值越高 AI 对原图的参考程度就越低（同时增加迭代次数），个人喜欢低 cfg 高 denoise 重绘图，高 cfg 低 denoise 改细节.
  - `Width` & `Height` 设置输出图片的长宽大小。如设置过大可能出现显存不足问题。同时，过大的分辨率通常不会产生更好的效果。建议使用滑条，手动输入长宽数值可能出现报错。
 
 [一个小指南：RedditAbout](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)

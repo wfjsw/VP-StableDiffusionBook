@@ -18,8 +18,6 @@ outline: [2, 3]
 
 在法律上，**不应该**无视画师约定的版权许可，采集作品数据进行训练。在道德上，**不应该**用训练结果贬低原画师作品价值，俗谚有 “吃水不忘挖井人”，训练数据并不能作为你的贡献。
 
-目前个人认为效果认为效果最好的是 DreamBooth，但是其训练时对显存要求较高（>12GB）。
-
 ## 模型训练的不同方法
 
 如果你在 `--medvram` 参数下开始训练，可能会出现 `RuntimeError: Expected all tensors to be on the same device` 错误，无法创建训练。
@@ -125,7 +123,7 @@ NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一�
 
 通过这项技术，你不需要通过 过多提示词 来提升图片的质量，而是保持作品原始的总体构图，并提高美观度。在少量提示词情况下也可以生成效果不错的作品。
 
-据[暗影·夜光所言](https://www.bilibili.com/read/cv19102552)，添加 25% 以内的权重，就可以稍微改善画面的美观度而不影响内容。美学 与 Hypernetworks 让 Ai 作品更接近原画师风格，但是美学权重本身效果并不好。需要配合 Hypernetworks 超网络。
+据 [暗影·夜光所言](https://www.bilibili.com/read/cv19102552)，添加 25% 以内的权重，就可以稍微改善画面的美观度而不影响内容。美学 与 Hypernetworks 让 AI 作品更接近原画师风格，但是美学权重本身效果并不好。需要配合 Hypernetworks 超网络。
 
 训练这项模型很快，但是在每一次生产时都会重新为图片计算一次，所以出图很慢。
 
@@ -146,3 +144,11 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 然后重启程序，你就可以在 Img2Img 中使用此项功能。
 
 ![Aesthetic_other](../../assets/Aesthetic_other.webp)
+
+## 如何选择
+
+综述。Textual Inversion  和 Hypernetwork 适用于 **整体靠近**，前者教 AI 用模型中的标签组成一个 **人物**，后者也是类似的。区别在于 Hypernetwork 以调节模型权重为手段，而 Textual Inversion 告诉 AI 特定标签应该如何组成。
+
+而 DreamBooth 适用于 **细节** 的模仿，它的训练过程 **重新整改** 了模型，新模型之中含有了新的样本特征（加了新东西），DreamBooth 技术本身用于 **复刻**，所以可以认识冷门元素。
+
+至于 Aesthetic Gradients ，也就是给 AI 认识一组 **优秀的数据**。结果就是这个东西会增加细节，训练很简单，但是会拖慢生成图片的速度(每次生成都要重新计算)。并不适合应用。

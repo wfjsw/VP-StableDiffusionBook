@@ -13,7 +13,7 @@ DreamBooth 的模型是一种新的文本到图像“个性化”（可适应用
 
 ## 配置要求
 
-Windows 系统至少需要 16 GB, Linux 系统要求显存大于 8 GB
+Windows 系统至少需要 16 GB，Linux 系统要求显存大于 8 GB
 
 ## 训练
 
@@ -135,7 +135,7 @@ diffusers 不能直接使用 ckpt 文件进行训练，需要先进行转换，�
 python diffusers\scripts\convert_original_stable_diffusion_to_diffusers.py  --checkpoint_path model.ckpt  --original_config_file v1-inference.yaml  --scheduler_type ddim  --dump_path models/diffusers_model
 ```
 
-训练完成同样要进行打包转换为ckpt,即可用于AUTOMATIC1111的WebUI中：
+训练完成同样要进行打包转换为ckpt，即可用于 AUTOMATIC1111 的 WebUI 中：
 
 ```cmd
 python diffusers\scripts\convert_diffusers_to_original_stable_diffusion.py  --model_path models/resultModel  --checkpoint_path result.ckpt  --half

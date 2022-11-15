@@ -5,7 +5,7 @@ Hypernetworks 是一种新颖的概念，用于在不触及任何权重的情况
 [超网络训练指南](https://rentry.org/hypernetwork4dumdums)
 
 ::: tip
-在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是转移 VAE 到 RAM,而不是卸载，
+在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是将 VAE 模型从显存转移到内存，而非卸载，
 
 如需卸载，请重命名。
 :::

@@ -42,45 +42,17 @@ PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint �
 
 如果你使用 Blender ，你可以使用 [这个视频](https://youtu.be/MClbPwu-75o) 分享的 [模型娃娃](https://www.artstation.com/marketplace/p/VOAyv/stable-diffusion-3d-posable-manekin-doll?utm_source=artstation&utm_medium=referral&utm_campaign=homepage&utm_term=marketplace)
 
-## Img2Img PS重绘画/嫁接修复/躺姿补全
-
-**尺寸上应该尽量靠近原图尺寸，然后选择 `Crop and resize` 也就是裁切后调整大小**
-
-使用PS软件增删元素，然后重新生产。这可以解决画手的问题。
-
-Ai 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
-
-比如我们可以通过 PS 给角色移植一个手让Ai来润色它，或者为没有下半身的半身像嫁接其他作品的下半身让 AI 润色它。
-
-或者涂鸦特定部位指定形状动作(比如衣料的覆盖率或者形状)，打上色块（为了防止出现阴影，**请取亮色皮肤**）。
-
-![test_woman](../../assets/00119_136826557_masterpiece%2C_best_quality%2C_1girl%2C_black_hair%2C_hat1.webp)
-
-> [一张图片](https://m.weibo.cn/status/4823585938735546)展现 WebUI 下 img2img 中不同参数下效果的详细对比图（prompt、steps、scale、各种seed等参数均保持一致）
-
-纵轴是 Denoising strength（线上版的 strength），横轴是Variation strength
-
-### 重绘画/去除/替换
-
-- 首先要对人物描线，然后打上色块（如果有阴影，取**亮色皮肤**）。
-
-- 变动强度，选择较低的 0.3 左右的去噪。
-
-- 然后使用 Img2Img Inpaint + 相关提示词修复，不满意可以再改，直到满意。
-
-- 然后对图像进行超分，降噪(去除图像纹理)。
-
 ## Inpainting 修补
 
-在 img2img 选项卡中，在图像的一部分上绘制蒙版，该部分将被重画。
+在 Inpainting 选项卡中，在图像的一部分上绘制蒙版，该部分将被重画。
 
-对于 `Masked content` 设置，遮罩内容字段确定内容在修复之前放置到遮罩区域中。
+`Masked content` 设置确定在修复之前放置到遮罩区域中的内容，一般选 `original`，可以保持潜在空间一致性，如果你不希望修补内容继承原来的色彩分布，选 `fill` 就是使用图片的大部分底色，选 `latent noise` 可以获得随机色彩点阵图（使生成内容脱离关联）。
 
 一般选 `original`，可以保持潛空间一致性。
 
 它们的效果如下:
 
-| mask  | fill  | original   | latent noise      | latent nothing       |
+| 示意操作  | fill  | original   | latent noise      | latent nothing       |
 |---------------------------|----------------|-----------------------|-------------------------|-----------------------|
 | ![](../../assets/inpainting-initial-content-mask.webp) | ![](../../assets/inpainting-initial-content-fill.webp) | ![](../../assets/inpainting-initial-content-original.webp) | ![](../../assets/inpainting-initial-content-latent-noise.webp) | ![](../../assets/inpainting-initial-content-latent-nothing.webp) |
 
@@ -90,14 +62,15 @@ Ai 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
 `fill` 要更多 step 才能消除不自然感.
 :::
 
-`Inpaint at full resolution` 即全分辨率修复。
-通常，Inpaint 会将图像大小调整为*UI中指定的目标分辨率*。启用完全分辨率的Inpaint后，仅调整遮罩区域的大小，并在处理后将其**粘贴回**原始图片。这允许您处理大图片，并允许您以更大的分辨率渲染修复对象。
+`mask` 横条决定了模糊程度。original 是`原图`，fill 是`填充底色`，`fill` 要更多 step 才能消除不自然感。
 
-有几种方法进行重绘制:
+`Inpaint at full resolution` 即全分辨率修复。默认情况下 Inpaint 会将生成的图像大小 **整体** 调整为 *UI中指定的目标分辨率*。启用 `Inpaint at full resolution` 后，**仅调整遮罩区域** 的大小，并在处理后将其 **粘贴回** 原始图片。这允许你处理大尺寸图片，并允许以更大的分辨率渲染修复对象。
+
+目前有几种方法进行重绘制操作：
 
 - 在网络编辑器中自己绘制蒙版（`Inpaint masked `指重画涂鸦区域，`Inpaint not masked` 指重画涂鸦之外的区域）
-- 在外部编辑器中擦除部分图片并上传透明图片。 任何稍微透明的区域都将成为蒙版的一部分。 请注意，某些编辑器默认将完全透明的区域保存为黑色。
-- 将模式（图片右下角）更改为"Upload mask"并为蒙版选择单独的黑白图像(white=inpaint)。
+- 在外部编辑器中擦除部分图片并上传透明图片。 透明区域会成为蒙版的一部分。注意：某些编辑器默认将完全透明的区域保存为黑色。
+- 将模式（图片右下角）更改为 "Upload mask" 并为蒙版处理为单独的黑白图像(白色部分会被 inpaint)。
 
 如果 `inpaint at full resolution` 出现黑块，可能是内存不足，尝试卸载 vae.
 
@@ -107,7 +80,7 @@ Ai 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
 
 通过这种方法，我们可以更改角色衣物风格或者其他任何细节。
 
-[如何教会Ai画手](https://www.bilibili.com/video/av559044202)
+[如何教会AI画手](https://www.bilibili.com/video/av559044202)
 
 ## Outpainting 外部修补
 

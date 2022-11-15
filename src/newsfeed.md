@@ -8,6 +8,85 @@
 
 英文原版见 [sdupdates @ rentry](https://rentry.org/sdupdates)
 
+## 11/15
+
+- 关于 NAI Leak 的 Colab DMCA 通知
+  - https://lumendatabase.org/notices/29484955
+  - https://lumendatabase.org/notices/29484957
+
+## 11/13+11/14
+
+* 防 img2img 水印: https://github.com/MadryLab/photoguard
+	* 看起来类似: https://github.com/ShieldMnt/invisible-watermark
+* 自签名 TLS/HTTPS 扩展 (不确定是否会自动安装证书): https://github.com/papuSpartan/stable-diffusion-webui-auto-tls-https
+* Stable Diffusion + production company 的酷炫示范 (?): https://www.youtube.com/watch?v=QBWVHCYZ_Zs
+* (尚未实现) 使用技巧稳定 DPM Solver++ 2M 的采样: https://github.com/crowsonkb/k-diffusion/issues/43#issuecomment-1304916783
+	* 需要做的修改: https://rentry.org/wf7pv
+* 用于使用 Diffusers、Hivemind 和 Pytorch Lightning 训练稳定扩散模型的存储库发布了 (有人说他们的博客提到对 NAI 模型进行微调有正向效果): https://github.com/Mikubill/naifu-diffusion
+
+## 11/11+11/12
+
+* 中文开源 SD 模型发布: https://huggingface.co/IDEA-CCNL/Taiyi-Stable-Diffusion-1B-Chinese-v0.1
+	* 让它与 AUTOMATIC1111 的 WebUI 一起工作（可能）: https://github.com/IDEA-CCNL/stable-diffusion-webui/commit/61ece0cec1097ab8f5e2b52c8d340ca203c5917b
+* 提示词中的显式填充: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2642
+	* 相关的，可能有助于写提示词: https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/2305
+* DeviantArt 发布 AI 图像生成器: https://twitter.com/DeviantArt/status/1591113199218487300
+	* 花钱买会员，可能不如 webui
+	* 立马被削弱: https://www.deviantart.com/team/journal/UPDATE-All-Deviations-Are-Opted-Out-of-AI-Datasets-934500371
+		* https://twitter.com/arvalis/status/1591242450055892992
+* 使用 ColossalAI 训练 Stable Diffusion: https://github.com/hpcaitech/ColossalAI/tree/main/examples/images/diffusion
+	* 6.5 倍训练速度，节省训练成本，微调的硬件成本可以便宜近 7 倍 (从 RTX3090/4090 24GB 到 RTX3050/2070 8GB)
+* 对生成的面部图片动画化测试: https://www.reddit.com/r/StableDiffusion/comments/ys434h/animating_generated_face_test/
+* Waifu Diffusion 1.4 标签工具 (下一版的 deepdanbooru?): https://mega.nz/file/ptA2jSSB#G4INKHQG2x2pGAVQBn-yd_U5dMgevGF8YYM9CR_R1SY
+	* Waifu Diffusion 开发 (SD training labs 服务器): https://discord.com/channels/1038249716149928046/1038249717001359402/1041160494150594671
+* DreamArtist 扩展改变了 `modules/ui.py` 的源码
+	* 扩展: https://github.com/7eu7d7/DreamArtist-sd-webui-extension
+	* 相关源码: https://github.com/7eu7d7/DreamArtist-sd-webui-extension/blob/9f65d05127a551e5dcf044ed6340510f3ba082f4/install.py#L15-L28
+	* 破坏自身和正常的 Textual Inversion 模型，直到被修改的的所有文件都被原本替换
+	* Webui 在关闭扩展后无法正常启动，由于添加的 'dream_artist_trigger'
+	* 到目前为止，它不在 wiki 扩展列表中，必须通过 repo url 下载。 如果您想下载它，请自行承担风险。
+	* 如要修复，执行 `git stash` 和 `git pull`
+* 根据预览图像与学习数据的差异自动调整超网络学习率: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4509
+* 用于解释 Stable Diffusion 的标签归因图 (又名标签热度图): https://github.com/castorini/daam
+	* https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/4592
+* DeepDanbooru 损坏 (未知是否修复): https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/4458
+* macOS Finder 右键菜单扩展发布: https://github.com/anastasiuspernat/UnderPillow
+* [Pull#4563](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4563) 在 ngrok 中添加用户名和密码
+
+```
+Allows specifying the user of ngrok by username and password using the : --ngrok authtoken:username:password
+and keep old args for not using username and password only use authtoken : --ngrok authtoken
+```
+
+## 11/10
+
+* Waifu Diffusion 1.4 信息:
+	* 更准确的自动标签工具 Deepdanbooru (目前处于预发布状态)
+	* 更好的手 - 未完成的例子见 'Cafe Unofficial Instagram TEST Model Release'
+	* 根据 SD 1.5 训练
+	* 创作者: "对于扩展性与灵活性而言，WD 1.4 应该做的比市面上其他模型都好" (计划替代目前的所有公开模型，包含 NovelAI 模型与 Anything，不再需要混合模型)
+	* 创作者: "我们可能创建我们自己的超网络用于微调动漫或现实画风"
+	* 创作者: Instagram 模型训练包含了如下改进:
+		1. 动态图片长宽比（无剪裁）
+		2. unconditional training 使得模型可以自我提升
+		3. 更高的训练分辨率 (最高 640x640)
+		4. 更快的训练代码 (6-8 倍性能提升)
+		5. 所有图片自动 BLIP 打标
+	* 数据集与标签都将公开
+	* Haru 和 Cafe 想到一个临时的提高 CLIP 质量的方法
+	* 为防止图像污染，每张原图在输入 SD 时的标签数据中都会有一个与之独特关联的标签
+* Intel Arc (A770) 可以在未优化的 SD 上达到 ~5.2 it/s 的 fp16 速度: https://github.com/rahulunair/stable_diffusion_arc
+* NovelAI 发布了 Furry (Beta V1.2) 模型: https://twitter.com/novelaiofficial/status/1590814613201117184
+* 带色修补的 PR: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3865
+* 在某些情况下，在合成数据上训练的模型可能比其他模型更准确，且可以消除使用真实数据带来的一些隐私、版权和道德问题: https://news.mit.edu/2022/synthetic-data-ai-improvements-1103
+* 日语文字转语音: https://huggingface.co/spaces/skytnt/moe-tts
+	* Colab: https://colab.research.google.com/drive/14Pb8lpmwZL-JI5Ub6jpG4sz2-8KS0kbS?usp=sharing
+* VAE 选择器修复: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4214
+* xformers 系列问题: https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2958#discussioncomment-4024359
+* 伯克利正在研究一种使用 2070 之类的廉价显卡来训练 SD 模型的方法（简单、高效和可扩展的分布式训练）: https://github.com/hpcaitech/ColossalAI
+	* https://medium.com/@yangyou_berkeley/diffusion-pretraining-and-hardware-fine-tuning-can-be-almost-7x-cheaper-85e970fe207b
+* 添加对 SSL/TLS 的支持（提供 Gradio TLS 选项） [AUTOMATIC1111/stable-diffusion-webui#4320](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4320)
+
 ## 11/09
 
  - 新的基于 Latent Diffusion 的超分方法由 StabilityAI 员工发布：  
@@ -18,9 +97,7 @@
  - 发现了 NovelAI 中 Enhance 的作用：  
    首先将图片使用 Lanczos 算法缩放（默认最大 1.5 倍），然后送给 img2img 运行50步，降噪强度设为 0.2 至 0.6 （对应 NAI 中 Magnitude 的 1 至 5 的值）。这像是 SD 超分的一个更消耗显存的类型。
  - 美国对 NVIDIA 输出中国的产品施加了新的出口限制
- - [#4222](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4222) 再次提及 webui 的许可证问题：
-
-
+ - [#4222](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4222) 再次提及 webui 的许可证问题
 
 ## 11/08
 
@@ -199,7 +276,7 @@ lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer
 ## 10/30
 
  - 在 [提交 9f4f894 中](https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/9f4f894d74b57c3d02ebccaa59f9c22fca2b6c90) ，WebUI 添加了 `allow skip current image in progress api`，跳过当前流程的 API 方法。
- - 在 [#3722](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3722) 中，WebUI 添加了原生的进度 Api
+ - 在 [#3722](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3722) 中，WebUI 添加了原生的进度 API
 
 ## 10/29
 
@@ -298,7 +375,7 @@ StabilityAI 从现在开始只发布 SFW 模型，[来源](https://www.reddit.co
 
 ## 10/10 
 
-测试发现,新版本 WebUI 优化显存占用(20xx—>10xx)，关闭浏览器和TG的硬件加速后，即使是4GB的  RTX2050 也可以启动 --medvram 模式！而且很快.
+测试发现，新版本 WebUI 优化显存占用 (20xx—>10xx)，关闭浏览器和 Telegram 的硬件加速后，即使是 4GB 的 RTX2050 也可以启动 `--medvram` 模式！而且很快.
 
 [Q & A](https://github.com/brycedrennan/imaginAIry/blob/master/docs/emad-qa-2020-10-10.md)
 
@@ -308,9 +385,9 @@ NovelAI 是一个使用 AI 生成故事文本和**通过描述文字生成图片
 
 开发者 [AUTOMATIC](https://github.com/AUTOMATIC1111) 是 Stable-Diffusion-Webui 的主要开发者：此项目可以用于在使用 Stable Diffusion 等模型时调整参数，极大地方便了尤其是没有计算机背景或 AI/ML 背景的模型用户。
 
-前几日 NovelAI [称其部分软件和源码泄露](https://old.reddit.com/r/NovelAi/comments/xydjc6/)。在模型泄露后， AUTOMATIC 在 Webui 项目中添加了对 **Hypernetwork** 模型的支持，使得此项目可以和泄露模型共用。
+前几日 NovelAI [称其部分软件和源码泄露](https://old.reddit.com/r/NovelAi/comments/xydjc6/)。在模型泄露后，AUTOMATIC 在 Webui 项目中添加了对 **Hypernetwork** 模型的支持，使得此项目可以和泄露模型共用。
 
-此 Reddit 贴称， Stability AI 创始人 Emad Mostaque 谴责 AUTOMATIC 此行为，并称后者窃取了代码；
+此 Reddit 贴称，Stability AI 创始人 Emad Mostaque 谴责 AUTOMATIC 此行为，并称后者窃取了代码；
 
 AUTOMATIC 则称自己没有窃取代码，并解释说他编写的代码是基于很久以前已经完成的研究和开发，并且是开源的。有问题的函数于 2021 年 12 月 21 日在 [此处](https://github.com/CompVis/latent-diffusion/commit/e66308c7f2e64cb581c6d27ab6fbeb846828253b) 发布，并称反倒是 NovelAI 使用了自己的代码。
 
@@ -320,6 +397,6 @@ AUTOMATIC 则称自己没有窃取代码，并解释说他编写的代码是基�
 
 Stable Diffusion 社群管理员后又要求 AUTOMATIC 移除项目中的 Hypernetwork 支持，称 NovelAI 核心开发者认为相关代码必然与泄露源码有联系；但被以代码原创且 Hypernetwork **并非泄露模型独创** 的理由回绝。
 
-而后， AUTOMATIC 被从 Stable Diffusion 的 Discord 社群服务器中封禁。
+而后，AUTOMATIC 被从 Stable Diffusion 的 Discord 社群服务器中封禁。
 
 来自 https://rentry.org/sd-tldr

@@ -17,25 +17,31 @@ SD-WebUI 是一个框架，所以除了 NAI 模型外还有许多 [其他模型]
 
 [Pickle 的介绍](https://docs.python.org/3/library/pickle.html)，Python object serialization
 
-文档说
+pickle 模块设计上并不安全。
 
-> pickle模块不安全。只解pickle您信任的数据。
-> 可以构造恶意pickle数据，在解pickle期间执行任意代码。永远不要解pickle可能来自不可信来源或可能被篡改的数据。
+`.ckpt` 和 `.pt` 文件中都可能含有恶意数据，可使得加载期间执行任意代码。原则上，您应该只加载您信任的数据。永远不要加载可能未知来源的、或可能被篡改的数据。
 
-`.ckpt` 和 `.pt` 文件中都可能有恶意的 pickle，AUTOMATIC1111 在这方面做了一些验证。
-
-对于不安全的文件，会提示 
+WebUI 内置了一定的安全检查，如果你使用 Automatic1111 的 WebUI, 其在这方面做了一些验证。对于不安全的文件，会提示 
 
 ```
 The file may be malicious, so the program is not going to read it. 
 You can skip this check with --disable-safe-unpickle commandline argument.
 ```
 
-不一定保证百分百安全，甚至也会误报一些文件，所以建议从可靠信源下载模型。
+:::tip
+值得注意的是，出现该提示并不一定表明文件一定危险，有时由于网络问题、内存问题无法完整加载模型时也会出现此提示。
+:::
 
 另外，你可以在 [这里](https://github.com/sudoskys/StableDiffusionBook/blob/main/docs/ckpt_safe) 看到一个简单的检查脚本。
 
-相关项目 [pickle_inspector](https://github.com/lopho/pickle_inspector) 。
+相关项目 [pickle_inspector](https://github.com/lopho/pickle_inspector)。
+
+```python
+    raise pickle.UnpicklingError("global '%s/%s' is forbidden" %
+                                 (module, name))
+```
+如果你运行脚本得到了类似 "global something.something is forbidden" 这意味着检查点试图做坏事，可能有危险。
+
 
 ## 模型选调
 

@@ -63,7 +63,7 @@ SD-WebUI 使用 `()` 增强权重，而 NovelAI 使用 `{}` 增强权重。两�
 图片的背景
 ```
 
-详见：[为文字转图像Ai提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
+详见：[为文字转图像AI提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
 
 ### 提示词长度
 

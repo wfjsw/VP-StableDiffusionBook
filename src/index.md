@@ -18,7 +18,7 @@ import Actions from './components/Actions.vue'
 
 [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 简称 SD-WebUI，是一个基于 Gradio 库的 Stable Diffusion 浏览器界面。
 
-[NovelAI](https://novelai.net/) 简称 NAI， 是一项月费服务，用于 AI 辅助创作、讲故事、虚拟陪伴，或者只是供您想象的 GPT 驱动的沙盒。
+[NovelAI](https://novelai.net/) 简称 NAI，是一项月费服务，用于 AI 辅助创作、讲故事、虚拟陪伴，或者只是供您想象的 GPT 驱动的沙盒。
 
 Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本。
 
@@ -37,10 +37,10 @@ Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本�
 
 ### 社群
 
-- [Telegram Ai绘画中文社群](https://t.me/StableDiffusion_CN)
+- [Telegram AI绘画中文社群](https://t.me/StableDiffusion_CN)
 <img src="https://img.shields.io/badge/Telegram-Group-blue" alt="Telegram">
 
-- [Discord Ai绘画中文社群](https://discord.gg/vhsArSSA6K)
+- [Discord AI绘画中文社群](https://discord.gg/vhsArSSA6K)
 <img src="https://img.shields.io/discord/1033769426216046622?color=blue&label=Discord_Ai%E7%BB%98%E7%94%BB%E4%B8%AD%E6%96%87%E7%BB%84" alt="Discord">
 
 - stablediffusion [Discord 英文社群](https://discord.gg/stablediffusion) 

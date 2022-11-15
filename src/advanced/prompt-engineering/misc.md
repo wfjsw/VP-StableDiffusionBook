@@ -21,7 +21,7 @@
 ```
 steps": 28, "sampler": "[sampler]", "seed": [seed], "strength": 0.69, "noise": 0.667, "scale": 11.0,
 
-Strength ， noise 是 eta 和 sigma
+Strength ，noise 是 eta 和 sigma
 
 scale 就是 CFG scale
 ```
@@ -236,7 +236,7 @@ an extremely delicate and beautiful
 
 **[NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)**
 
-**[Ai艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
+**[AI艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
 
 **[Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)**
 

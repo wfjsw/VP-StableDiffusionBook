@@ -16,7 +16,7 @@ WebUI 的官方代码仓库地址为 https://github.com/AUTOMATIC1111/stable-dif
 
 最低需要显存 2 GB，建议显存不少于 4 GB。
 
-在开始前，打开 CMD， 输入
+在开始前，打开 CMD，输入
 
 ```cmd
 nvidia-smi
@@ -104,7 +104,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 在此期间你可以打开资源管理器，关注网络速度。在没有完成下载之前，脚本不会继续输出任何提示。(等了两小时？可以试试挂代理)
 
-大约 30 分钟后安装完毕，程序会输出一个类似 `http://127.0.0.1:7860/` 的地址，点开即可(注意是 http,且不指定端口的话可能会变动)。
+大约 30 分钟后安装完毕，程序会输出一个类似 `http://127.0.0.1:7860/` 的地址，点开即可(注意是 http，且不指定端口的话可能会变动)。
 
 :::tip 运行需要模型！
 
@@ -373,10 +373,10 @@ nvidia-smi
 | `--disable-opt-split-attention` | 禁用上述优化                                                                                                                                                                                                                                                              |
 | `--opt-split-attention-v1`      | 使用上述优化的旧版本，它不会占用大量内存（它将使用更少的 VRAM，但会限制您可以制作的最大图片大小）。                                                                                                                                                                         |
 | `--medvram`                     | 通过将稳定扩散模型分为三部分，使其消耗更少的 VRAM，即 cond（用于将文本转换为数字表示）、first_stage（用于将图片转换为潜在空间并返回）和 unet（用于潜在空间的实际去噪），并使其始终只有一个在 VRAM 中，将其他部分发送到 CPU RAM。降低性能，但只会降低一点-除非启用实时预览。 |
-| `--lowvram`                     | 对上面更彻底的优化，将 unet 拆分成多个模块，VRAM 中只保留一个模块,破坏性能                                                                                                                                                                                                  |
+| `--lowvram`                     | 对上面更彻底的优化，将 unet 拆分成多个模块，VRAM 中只保留一个模块，破坏性能                                                                                                                                                                                                  |
 | `*do-not-batch-cond-uncond`     | 防止在采样过程中对正面和负面提示进行批处理，这基本上可以让您以 0.5 批量大小运行，从而节省大量内存。降低性能。不是命令行选项，而是使用`--medvram`or 隐式启用的优化`--lowvram`。                                                                                              |
 | `--always-batch-cond-uncond`    | 禁用上述优化。只有与`--medvram`或`--lowvram`一起使用才有意义                                                                                                                                                                                                                |
-| `--opt-channelslast`            | 更改 torch 内存类型，以稳定扩散到最后一个通道,效果没有仔细研究。                                                                                                                                                                                                            |
+| `--opt-channelslast`            | 更改 torch 内存类型，以稳定扩散到最后一个通道，效果没有仔细研究。                                                                                                                                                                                                            |
 
 [讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3889) 中有人认为，通过在 Windows 设置上禁用硬件加速 GPU 调度，WebUI 性能提高了大约 10-50%
 

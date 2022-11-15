@@ -54,10 +54,6 @@ export default defineConfig({
                             link: '/guide/install/sd-webui',
                         },
                         {
-                            text: 'Google Colab 方案',
-                            link: '/guide/install/colab',
-                        },
-                        {
                             text: 'NAI 官方套件方案',
                             link: '/guide/install/original',
                         },

@@ -72,7 +72,7 @@
  - sha256sum.sig Detached signature for the sums, signed by our GPG key
 :::
 
-启动 cli 有提示加载就 OK, 同时可以去设置选模型那里选喜欢的 `hypernetwork`
+启动 cli 有提示加载就 OK，同时可以去设置选模型那里选喜欢的 `hypernetwork`
 
 ## 全量和基线模型
 

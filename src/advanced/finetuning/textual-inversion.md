@@ -5,8 +5,16 @@
 ::: tip
 VAE 对 TI 训练并不会造成灾难性的影响。如需卸载，在启动 webui 前把 "xxx.vae.pt" 重命名为 "xxx.vae.pt.disabled" 或其他名字。
 
-在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是转移 VAE 到 RAM,而不是卸载，
+在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是将 VAE 模型从显存转移到内存，而非卸载，
 :::
+
+## Apt/DreamArtist
+
+TI 是让 Ai 了解 “喜欢” ，而 Apt 让 AI 了解“喜欢”和“不喜欢”。
+
+所以是一种高效的 Textual Inversion
+
+https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 
 ## 准备数据集
 
@@ -119,7 +127,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 训练时，可以先用较大的学习率进行测试，然后逐步调小 `0.1 -- 0.02 -- 0.005` ，每次测试都用上一次效果最好的。
 
-一般设置为 0.005，如果想快一些，可以使用 0.01 加快。但是如果设置得太高，梯度下降时候步长太大无法收敛，会且可能会破坏 `embedding` ， 效果达不到预期。如果设置的太小，容易陷入局部最优。目前 TI 支持设置 `0.1:500, 0.01:1000, 0.001:10000` 的学习率，它会按照时间表进行。
+一般设置为 0.005，如果想快一些，可以使用 0.01 加快。但是如果设置得太高，梯度下降时候步长太大无法收敛，会且可能会破坏 `embedding` ，效果达不到预期。如果设置的太小，容易陷入局部最优。目前 TI 支持设置形如 `0.1:500, 0.01:1000, 0.001:10000` 的学习率排期表，它会按照时间表进行。
 
 ![CS231n](../../assets/CS231n.webp)
 
@@ -166,7 +174,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 如果Loss大于 0.3 ，效果就不是很好
 :::
 
-如果太多会过拟合(可以理解为Ai的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
+如果太多会过拟合(可以理解为AI的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
 
 `Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件。~~人物卡~~
 

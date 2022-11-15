@@ -87,7 +87,7 @@ outline: [2, 4]
 - [SD相关的Faq](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 
 
-- [为文字转图像Ai提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
+- [为文字转图像AI提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
 
 - [AI Art Learning Hub](https://mashonoid.notion.site/AI-Art-Learning-Hub-b6bb69fc249847438602ee11d3a89fa0)
 
@@ -109,7 +109,7 @@ outline: [2, 4]
 
 - [艺术家博物馆](https://gallerix.asia/storeroom/)
 
-- [Ai艺术家文档——深入了解](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
+- [AI艺术家文档——深入了解](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
 
 - [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
 
@@ -181,7 +181,7 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 ### 3D
 
-在 blender 上，Ai 有 [渲染插件](https://blendermarket.com/products/ai-render/?ref=110)
+在 blender 上，AI 有 [渲染插件](https://blendermarket.com/products/ai-render/?ref=110)
 
 ### 设计
 
@@ -225,11 +225,11 @@ https://huggingface.co/Deltaadams/Hentai-Diffusion
 
 ### 模型会进化吗
 
-生成的图像没有喂给模型，NAI会继续优化模型，而 Leak 的模型则是一个固定的版本。
+生成的图像没有喂给模型，NAI 会继续优化模型，而 Leak 的模型则是一个固定的版本。
 
-10月份的热潮可能会是短暂的。
+10 月份的热潮可能会是短暂的。
 
-NAI模型使用 Danbooru2021 的数据, 而 Danbooru2022 还未训练(个人不能负载如此昂贵的继续训练成本)，且某公司的模型也不会再次泄漏。
+NAI 模型使用 Danbooru2021 的数据，而 Danbooru2022 还未训练(个人不能负载如此昂贵的继续训练成本)，且某公司的模型也不会再次泄漏。
 
 以后就是大公司的对弈了。
 
@@ -291,11 +291,11 @@ https://fontawesome.com/icons
 
 模型中没有存储任何素材，[算法实现](https://zhuanlan.zhihu.com/p/572986232)，目前的版权还很模糊。
 
-Ai 根本不能替代人工的精细需求，只能替代低端需求(细节没Ai多的那种)
+AI 根本不能替代人工的精细需求，只能替代低端需求(细节没AI多的那种)
 
-Ai 作为一种 高级笔刷 ，节省了小工作室和个人的成本，但是会 ~~导致低端美术市场的需求缩水~~ AI在细节方面很弱，画背景倒是省事。
+AI 作为一种 高级笔刷 ，节省了小工作室和个人的成本，但是会 ~~导致低端美术市场的需求缩水~~ AI在细节方面很弱，画背景倒是省事。
 
-Ai 本质上它不能替代人的创意性，让人眼前一亮的图片也无非是静物的绘制。
+AI 本质上它不能替代人的创意性，让人眼前一亮的图片也无非是静物的绘制。
 
 <iframe src="//player.bilibili.com/player.html?aid=731418335&bvid=BV1YD4y1k7Cr&cid=858424971&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
 

@@ -2,7 +2,7 @@
 
 这个简短的实战指南，可以让你快速了解如何合理调整参数达成目的效果。
 
-目前， Ai 处理不好细节和多人物，如果一个个处理，光影结构就会乱掉。如果修图，不如重画。但是画背景和做预览很实用。
+目前，AI 处理不好细节和多人物，如果一个个处理，光影结构就会乱掉。如果修图，不如重画。但是画背景和做预览很实用。
 
 核心逻辑就是缩小预选数据的范围，调节天平在消极和积极提示之间的方向，还有使用部分语法控制提示词效果的强烈程度和起效过程。
 
@@ -22,10 +22,11 @@
 
 ## 画作焊接！
 
-通过 [AiPhotoShop-无限外延画布的在线工具](https://www.painthua.com/) ，你可以连续 “焊接” 作品，非常方便。只需要在启动命令加上 `--api` 参数，然后打开网页就可以使用。
+通过 [AIPhotoShop-无限外延画布的在线工具](https://www.painthua.com/) ，你可以连续 “焊接” 作品，非常方便。只需要在启动命令加上 `--api` 参数，然后打开网页就可以使用。
 
-[Github](https://github.com/BlinkDL/Hua)
+[GitHub](https://github.com/BlinkDL/Hua)
 
+> 并不支持在任意模型上进行图像外延，因为它们不是 Inpaint 模型 (Stable Diffusion 有专用的 Inpaint 模型。)
 
 ## 遏制风格污染
 
@@ -89,9 +90,13 @@ emoji 因为只有一个字符，所以在语义准确度上表现良好。
 
 另外就是如果要求的是像素作品，应该移除一些冲突的消极提示(如果有的话)。
 
+### 顺序调整
+
+在前面的词汇会锚定画面的色彩分布。什么重要什么放前面。
+
 ### 语义偏移防范
 
-为了防止语义偏移，优先考虑 emoji,然后少用不必要的 `with` 一类的复杂语法。
+为了防止语义偏移，优先考虑 emoji，然后少用不必要的 `with` 一类的复杂语法。
 
 ### 彩虹混乱图
 
@@ -183,7 +188,7 @@ comic 2koma 3koma 4koma collage
 
 宽幅画作单人物生成最好打草图，进行色彩涂抹，确定画面主体。
 
-多人物确定人物数量，最好使用草稿 / 有色3D 排列 + 图生图。
+多人物确定人物数量，最好使用草稿 / 有色 3D 排列 + 图生图。
 
 人数超过三个就难以控制效果，人数大于 6 的图像模型里估计没有...
 
@@ -257,3 +262,51 @@ bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits,
 <iframe src="//player.bilibili.com/player.html?aid=559362671&bvid=BV14e4y1U7r9&cid=869144379&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"></iframe>
 
 > BV14e4y1U7r9
+
+## 修改画作
+
+想要用 WebUI 改画或者手动添加元素？下面是一个小指南。
+
+首先，IMG2IMG2 和 Inpaint 的效果是完全不同的。如果你不希望风格发生变动，不要选择 IMG2IMG2.
+
+为了避免图片拉伸，尺寸上都应该 **尽量靠近原图尺寸，选择 `Crop and resize` 也就是裁切后调整大小**
+
+### Masked Content
+
+`Masked content` 相关设置确定在修复之前放置到遮罩区域中的内容，它决定了初始的参考内容(origin就是模糊之前蒙版的内容，而 latent nosie是以噪声(很多随机色素点点做参考)。
+
+latent noise 是确定 AI 参考的内容，而 Denoising strength 可以理解为对参考点的偏离容许程度。
+
+![aidrawfix2](../../assets/aidrawfix2.webp)
+
+### 变动元素
+
+如果需要变动元素，抠图，贴图，即可。
+
+如果需要添加元素，我们可以通过 PS 给角色移植一个手让 AI 来润色，或者为没有下半身的半身像嫁接其他作品的下半身让 AI 修复。
+
+![test1](../../assets/test1.webp)
+
+### 基于原图进行微调
+
+使用 Inpaint，主要场景是去除/替换。
+
+首先要对人物边缘描细线，然后打上色块（如果有阴影，取**亮色**或者画全阴影）。变动强度选择较低的 0.3 左右的去噪（越低越接近输入的图片）。
+
+然后使用 Img2Img Inpaint + 相关提示词修复，不满意可以再改，直到满意。然后对图像进行 realesrgan 超分，去除图像纹理。
+
+![fix_exp](../../assets/fix_exp.webp)
+
+### 修复绘画技巧/Inpaint/PS重绘画/嫁接修复/躺姿补全
+
+使用 PS 软件增删元素，然后重新生产。这可以解决画手的问题。
+
+AI 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
+
+比如
+
+![test_woman](../../assets/test_woman.webp)
+
+[一张图片](https://m.weibo.cn/status/4823585938735546) 展现 WebUI 下 img2img 中不同参数下效果的详细对比图（prompt、steps、scale、各种 seed 等参数均保持一致）
+
+纵轴是 Denoising strength（线上版的 strength），横轴是 Variation strength

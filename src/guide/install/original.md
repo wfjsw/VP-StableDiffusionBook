@@ -40,13 +40,13 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 #### 容器状态
 
-查询出容器ID `docker ps`
+查询出容器 ID `docker ps`
 
-查看容器LOG `docker logs [Container ID]`
+查看容器日志 `docker logs [Container ID]`
 
 出现 “Application startup complete.” 即代表程序已经就绪
 
-**请求API**
+**请求 API**
 
 参考代码，具体参照leak的前端后端项目，以及其中的 `sd-private\hydra-node-http\main.py`
 
