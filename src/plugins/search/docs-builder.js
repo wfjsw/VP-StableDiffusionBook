@@ -104,7 +104,7 @@ const buildDoc = (mdDoc, id) => {
 
     if (!id.endsWith(".0")) {
         const normalized = a
-            .replace(/[!@#$%^&*()=！@#￥%…&*（）+_：:;；'"“”‘’<>《》?/]/g, ' ')
+            .replace(/[!@#$%^&*()=！@#￥%…&*（）+_：:;；'"“”‘’<>《》?./]/g, ' ')
             .replace(/\s{2,}/g, ' ')
             .replaceAll('/', '-')
             .toLowerCase()
