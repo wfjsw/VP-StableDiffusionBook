@@ -513,6 +513,12 @@ pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
 
 建议你升级设备。
 
+### DefaultCPUAllocator...
+
+内存不足。
+
+考虑关闭软件、增加虚拟内存容量，或增加内存条。
+
 ### 我 Python 呢？
 
 如果你的 Python 不在 `PATH` 中，可在文件夹中创建或修改 `webui.settings.bat` 添加行 `set PYTHON=<python 路径> ` 来说明 Python 可执行文件的完整路径（请看下面的参数说明！）
@@ -587,3 +593,11 @@ ALL_PROXY
 等等。
 
 见 [#2684](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/2684)。
+
+### safe.directory
+
+```cmd
+git config --global --add safe.directory "*"
+```
+
+

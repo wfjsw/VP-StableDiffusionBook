@@ -42,5 +42,5 @@ print(torch.cuda.is_available())
 
 ## CUDA out of memory
 
-原因：显存不足。`--lowvram` 和 `--medvram` 启动参数都可以改善此问题。
+见 [显存不足](../install/sd-webui.md#显存不足cuda-out-of-memory)
 
