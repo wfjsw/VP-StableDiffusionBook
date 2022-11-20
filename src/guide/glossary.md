@@ -36,9 +36,9 @@ outline: [2, 3]
 
 ## ENSD
 
-在设置页中的 ENSD 是 eta 噪声种子增量。
+在设置页中的 `eta noise seed delta` 是 eta 噪声种子增量。
 
-它改变了你的种子，执行一些 eta/sigma 的操作。
+它对处理你种子的操作增加了一些偏移量。
 
 NAI使用 `31337`。
 
