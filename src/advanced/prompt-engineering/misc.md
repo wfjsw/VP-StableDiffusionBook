@@ -228,7 +228,7 @@ an extremely delicate and beautiful
 
 **[手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)**
 
-**[Danbooru全部Tag列表](https://gelbooru.com/index.php?page=tags&s=list)**
+**[Danbooru 全部 Tag 列表](https://gelbooru.com/index.php?page=tags&s=list)**
 
 **[参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)**
 
@@ -236,7 +236,7 @@ an extremely delicate and beautiful
 
 **[NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)**
 
-**[AI艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
+**[AI 艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
 
 **[Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)**
 

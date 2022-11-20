@@ -82,10 +82,6 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 如果是整合或者其他，请向上游（谁分发的）索取。
 
-<!-- TODO: 设置 Git 代理 -->
-
-<!-- TODO: FastGit 早就寄了吧 -->
-
 ::: tip
 
 关于如何设置 Git 代理，见 [Git 设置代理](#git-设置代理)。
@@ -445,8 +441,8 @@ Discord 机器人项目 [aiyabot](https://github.com/Kilvoctu/aiyabot/blob/main/
 
 如果安装过程中出现：
 
-- 形如 Connection timed out 字样
-- 形如 Connection was Reset 字样
+- 形如 `Connection timed out` 字样
+- 形如 `Connection was Reset` 字样
 - 下载速度极慢
 
 请设置代理，或者使用 VPN。
@@ -468,6 +464,14 @@ git config --global --unset https.proxy
 ```
 
 如果你不会设置代理，可以使用以下命令拉取镜像：
+
+<!-- 自营镜像 -->
+
+```cmd
+git clone https://jihulab.com/hunter0725/stable-diffusion-webui.git
+```
+
+或
 
 ```cmd
 git clone https://hub.fastgit.xyz/AUTOMATIC1111/stable-diffusion-webui.git

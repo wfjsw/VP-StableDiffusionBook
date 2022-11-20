@@ -1,6 +1,6 @@
 # 关于 NovelAI 泄露模型
 
-使用 NAI Leak 模型 的 models 文件夹结构应该如下。
+使用 NAI Leak 模型 的 models 文件夹结构如下。
 
 <div style="overflow-x: auto;">
 <pre>

@@ -19,14 +19,14 @@ outline: [2, 4]
 
 #### 其他前端
 
-- [集成Tag工具/支持超网络的Web](https://kamiya.hudaye.work/)，[项目地址](https://git.hudaye.work/MiuliKain/Kamiya-OpenUI)
+- [集成Tag工具/支持超网络的Web](https://kamiya.hudaye.work/) ([项目地址](https://git.hudaye.work/MiuliKain/Kamiya-OpenUI))
 - [基于 NovelAI 的画图机器人](https://github.com/koishijs/novelai-bot#token)
 
 #### 服务
 
-- [WebUi：为Krita插件等添加自定义后端API](https://github.com/Interpause/auto-sd-paint-ext)
+- [WebUI：为Krita插件等添加自定义后端API](https://github.com/Interpause/auto-sd-paint-ext)
 - [Danbooru 标签超市](https://tags.novelai.dev/),[项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)
-- [SDWebUi自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
+- [SDWebUI自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
 - [标签提词器](https://thereisnospon.github.io/NovelAiTag/)
 - [参数转换-M2NM2NBot](https://t.me/M2NM2NBot)
 - [参数转换 - Js项目](https://naisd5ch.github.io/novel-ai-5ch-wiki-js/)
@@ -51,18 +51,18 @@ outline: [2, 4]
 
 - **[SD资源金矿](https://rentry.org/sdupdates)**
 - [Notion：关于人工智能艺术](https://proximacentaurib.notion.site/proximacentaurib/parrot-zone-74a5c04d4feb4f12b52a41fc8750b205)
-- [WebUi使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
+- [WebUI使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
 - [NovelAI 5ch Wiki](https://seesaawiki.jp/nai_ch/)
 - [Voldy Retard Guide](https://rentry.co/voldy)
 - [一个小指南：RedditAbout](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)
-- [WebUi自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
+- [WebUI自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
 - [SD相关的Faq](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 - [为文字转图像AI提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
 - [AI Art Learning Hub](https://mashonoid.notion.site/AI-Art-Learning-Hub-b6bb69fc249847438602ee11d3a89fa0)
 - [日本社区？那边出的教程](https://rentry.co/zk4u5)
 - [novelai对Sd的优化日志](https://blog.novelai.net/novelai-improvements-on-stable-diffusion-e10d38db82ac)
 - [火药教程](https://rentry.org/stablediffgpubuy)
-- [WebUi的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
+- [WebUI的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
 - [匿名者的绘画技巧/nsfw](https://rentry.org/inpainting-guide-SD)
 - [梦想家指南](https://stablediffusionguides.carrd.co/#)
 

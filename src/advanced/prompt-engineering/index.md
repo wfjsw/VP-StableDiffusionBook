@@ -41,7 +41,7 @@ Danbooru 网站的 Wiki 提供了一部分 [标签分类与说明](https://danbo
 
 同时，市面上存在多种提示词辅助构建工具，详见 [Danbooru 标签超市](https://tags.novelai.dev/) ([项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)) 或 [魔咒百科词典](https://aitag.top/) (后者不支持负面Tag)
 
-Bilibili 上也发布了许多视频教程，如 [【开源调研】AI绘画魔法の奥义 (只剩一瓶辣椒酱)](https://space.bilibili.com/35723238/channel/collectiondetail?sid=779851)，但需要了解 **通过 AI 模仿画风，特定镜头，增加特效，微修微调，PS嫁接出图，通过3D特定姿势，重画，迭代** 等等操作的话，需要 **通读** 下面的内容。
+Bilibili 上也发布了许多视频教程，如 [【开源调研】AI绘画魔法の奥义 (只剩一瓶辣椒酱)](https://space.bilibili.com/35723238/channel/collectiondetail?sid=779851)，但需要了解 **通过 AI 模仿画风，特定镜头，增加特效，微修微调，PS嫁接出图，通过 3D 特定姿势，重画，迭代** 等等操作的话，需要 **通读** 下面的内容。
 
 ::: warning
 提前告知：WebUI 的设置页面需要按下 `Apply setting` 才能保存设置。
@@ -67,7 +67,7 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI绘画魔�
 
 * [快速分享-在线剪切板](https://netcut.cn/)
 * **[AIPhotoShop-无限外延画布的在线工具](https://www.painthua.com/)**
-* [NAI<=>WebUi权重转换Telegram服务](https://github.com/sudoskys/M2NM2NBot)
+* [NAI<=>WebUI权重转换Telegram服务](https://github.com/sudoskys/M2NM2NBot)
 * [NAI的分词器，用来查看你的文本被识别为哪些](https://novelai.net/tokenizer)
 
 

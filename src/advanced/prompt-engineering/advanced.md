@@ -51,15 +51,15 @@ U-Net 在以文本嵌入为条件的同时迭代地对随机高斯噪声表示�
 - [稳定扩散入门](https://pub.towardsai.net/getting-started-with-stable-diffusion-f343639e4931)
 - [Stable Diffusion From Wikipedia](https://en.wikipedia.org/wiki/Stable_Diffusion)
 
-#### WebUi 的实现
+#### WebUI 的实现
 
-[WebUi的prompt_parser](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/prompt_parser.py) 通过本地 WebUi 实现了渐变等功能。
+[WebUI 的 prompt_parser](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/prompt_parser.py) 通过本地 WebUI 实现了渐变等功能。
 
-WebUi prompt 语法会转换为相应时间的 prompt,然后通过 embedding 交给 Ai 处理。
+WebUI prompt 语法会转换为相应时间的 prompt，然后通过 embedding 交给 Ai 处理。
 
 关于权重的实现：权重增加通常会占一个提示词位。
 
-关于渐变的实现：到了指定 Step ，WebUi 程序会替换对应 提示词，达到渐变效果。
+关于渐变的实现：到了指定 Step，WebUI 程序会替换对应提示词，达到渐变效果。
 
 其他以此类推。
 

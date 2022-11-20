@@ -19,7 +19,7 @@ Windows 系统至少需要 16 GB，Linux 系统要求显存大于 8 GB
 
 ## 训练方法
 
-### WebUi 插件
+### WebUI 插件
 
 https://github.com/d8ahazard/sd_dreambooth_extension
 
@@ -284,9 +284,7 @@ ARB 与 DreamBooth 一起使用的相性不好, 仅推荐 Native Training 时使
 
 用 DreamBooth 是可以训练多个概念/人物/动作/物体的. 但是若训练两个人物则推理时不能使其同时出现, 两者的特征会被混合起来.
 
-
 如果用其他版本的 DreamBooth 训练方法检查 `--concept_list` 参数, 可以读入一个类似的 `json` 文件.
-
 
 - 训练步数的选择
 
@@ -296,7 +294,7 @@ ARB 与 DreamBooth 一起使用的相性不好, 仅推荐 Native Training 时使
 
 <!-- TODO: 这必不是个 JSON -->
 
-```
+```python
 # You can also add multiple concepts here. Try tweaking `--max_train_steps` accordingly.
 
 concepts_list = [
