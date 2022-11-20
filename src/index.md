@@ -48,12 +48,10 @@ Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本�
 
 ### 论坛
 
-[/r/DreamBooth](https://www.reddit.com/r/DreamBooth/)
-
-[/r/StableDiffusion](https://www.reddit.com/r/StableDiffusion/)
-
-[/r/NovelAi](https://www.reddit.com/r/NovelAi/)
-
+- [Nga](https://nga.178.com/thread.php?stid=33844263)
+- [/r/DreamBooth](https://www.reddit.com/r/DreamBooth/)
+- [/r/StableDiffusion](https://www.reddit.com/r/StableDiffusion/)
+- [/r/NovelAi](https://www.reddit.com/r/NovelAi/)
 
 ## 声明
 

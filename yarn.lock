@@ -2051,9 +2051,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress@npm:1.0.0-alpha.28":
-  version: 1.0.0-alpha.28
-  resolution: "vitepress@npm:1.0.0-alpha.28"
+"vitepress@npm:v1.0.0-alpha.29":
+  version: 1.0.0-alpha.29
+  resolution: "vitepress@npm:1.0.0-alpha.29"
   dependencies:
     "@docsearch/css": ^3.3.0
     "@docsearch/js": ^3.3.0
@@ -2066,7 +2066,7 @@ __metadata:
     vue: ^3.2.41
   bin:
     vitepress: bin/vitepress.js
-  checksum: e92202bfdf23102f108e67cb8545f8a42b86d65046450895431d62548cee11fad5ead71a66193ca1fc37f22812fc20b1aaddb01401a34093ccf1f4a919a53743
+  checksum: 05f284c8ee3fe80ae6fa9688157ffa14e912ea15ae80f321073f35a1fd0326b859208cb942e6ef8690ef035d8a534b139e0c501223fe63944cda1bd453ac1e09
   languageName: node
   linkType: hard
 
@@ -2079,7 +2079,7 @@ __metadata:
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     sitemap: ^7.1.1
-    vitepress: 1.0.0-alpha.28
+    vitepress: v1.0.0-alpha.29
     vue: ^3.2.41
     wasm-pack: ^0.10.3
   languageName: unknown

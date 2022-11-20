@@ -36,7 +36,9 @@ outline: [2, 3]
 
 训练产物大小较小，WebUI 自带训练支持。
 
-可以解决新出的角色画不出的问题，或者模仿特定的可以用语言精确描述的艺术风格。因为 TI 是在 Text Encoder 的输出做处理，所以并不能让模型学习到它不知道的概念。
+可以解决新出的角色画不出的问题，或者模仿特定的可以用语言精确描述的艺术风格。
+
+因为 TI 是在 Text Encoder 的输出做处理，所以并不能让模型学习到它不知道的概念。
 
 #### 使用
 
@@ -152,3 +154,9 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 而 DreamBooth 适用于 **细节** 的模仿，它的训练过程 **重新整改** 了模型，新模型之中含有了新的样本特征（加了新东西），DreamBooth 技术本身用于 **复刻**，所以可以认识冷门元素。
 
 至于 Aesthetic Gradients ，也就是给 AI 认识一组 **优秀的数据**。结果就是这个东西会增加细节，训练很简单，但是会拖慢生成图片的速度(每次生成都要重新计算)。并不适合应用。
+
+## 附录
+
+- [WD 1.4 tagger for Automatic1111's Web UI](https://github.com/toriato/stable-diffusion-webui-wd14-tagger)
+- [Resize Tool](https://www.birme.net/)
+- [sd-tagging-helper 打标工具](https://github.com/arenatemp/sd-tagging-helper)

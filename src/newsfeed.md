@@ -6,7 +6,57 @@
 
 以下是该领域的最新消息。
 
-英文原版见 [sdupdates @ rentry](https://rentry.org/sdupdates)
+英文原版见 
+ - [sdupdates @ rentry](https://rentry.org/sdupdates)
+ - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
+ - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
+
+## 11/19
+
+* AUTOMATIC1111 webui 更新了，建议及时 `git pull`
+	* 更新列表: https://github.com/AUTOMATIC1111/stable-diffusion-webui/commits/master
+* (重发，修复图片) AltDiffusion 发布: https://huggingface.co/BAAI/AltDiffusion-m9
+	* 支持多种语言：English(En), Chinese(Zh), Spanish(Es), French(Fr), Russian(Ru), Japanese(Ja), Korean(Ko), Arabic(Ar) and Italian(It)
+	* 原始模型基于中文、英文: https://huggingface.co/BAAI/AltDiffusion
+	* 完全开源
+	* 由双语 CLIP 模型 AltCLIP 提供支持
+	* 示例: https://i.4cdn.org/g/1668837915177041.png
+
+## 11/18
+
+- [逆向思维修复手](https://twitter.com/needle/status/1593428231901700101)
+
+## 11/14+11/15+11/16+11/17+11/18
+
+* 面向 CPU、GPU、加速器和异构集群的高性能机器学习和数据分析方法发布 (不确定安全性): https://github.com/nod-ai/SHARK
+* Safetensors，一种安全的模型存储方式，比 Pytorch 自带的方式快很多: https://huggingface.co/docs/safetensors/speed
+* CLIPSeg (基于文字的图片修补): https://huggingface.co/spaces/nielsr/text-based-inpainting
+* 使用自然语言指令指令实现的图转图: https://www.timothybrooks.com/instruct-pix2pix
+* 动态提示现在支持模板语言: https://github.com/adieyal/sd-dynamic-prompts/blob/main/jinja2.md
+* Latent-NERF 发布，与 stable-dreamfusion 类似，可产生更多受约束的输出 (?): https://github.com/eladrich/latent-nerf
+* 易于使用的本地安装 SD 版本发布：https://artroom.ai/download-app
+	* 文档: https://docs.equilibriumai.com/artroom
+	* Github: https://github.com/artmamedov/artroom-stable-diffusion
+	* Discord: https://discord.com/invite/XNEmesgTFy
+	* https://www.reddit.com/r/StableDiffusion/comments/yxdgps/easytouse_local_install_of_stable_diffusion/
+	* 图片修补、扩充 (使用 runway 模型)，嵌入模型与超网络将在后期更新
+* 从大脑到 Stable Diffusion: https://mind-vis.github.io/
+* 通用科学语言模型 (可以编写代码等, https://i.4cdn.org/g/1668563334234815s.jpg) (完全开源): https://github.com/paperswithcode/galai
+	* https://twitter.com/paperswithcode/status/1592546938473549824
+	* 可以总结学术文献、解决数学问题、生成 Wiki 文章、编写科学代码、注释分子和蛋白质等等
+	* "为了加速科学发展，我们开源了所有模型，包括无修正的 1200 亿模型。"
+* 在 AUTOMATIC1111 的 webui 中一次加载多个超网络的脚本 (未测试): https://github.com/antis0007/sd-webui-multiple-hypernetworks
+* WD 1.4 打标插件 (未测试): https://github.com/toriato/stable-diffusion-webui-wd14-tagger
+* (添加了一些信息) 防 img2img 水印: https://github.com/MadryLab/photoguard
+	* 示例笔记本（带图）: https://github.com/MadryLab/photoguard/blob/main/notebooks/demo_complex_attack_inpainting.ipynb
+	* 有人报告说它不能很好地工作/仅适用于特定模型 + 引入杂物
+	* 看起来相似：https://github.com/ShieldMnt/invisible-watermark
+* 在 AUTOMATIC1111 发布的 webui 中直接搜索 danbooru 标签的扩展: https://github.com/stysmmaker/stable-diffusion-webui-booru-prompt
+	* 支持帖子 id
+	* 支持 Danbooru 的所有搜索语法
+* 无失真合并 SD 模型 (第三方 git-re-basin 方法: https://github.com/samuela/git-re-basin): https://github.com/ogkalu2/Merge-Stable-Diffusion-models-without-distortion
+* Facebook 发布快速 SD 方法: https://github.com/facebookincubator/AITemplate/tree/main/examples/05_stable_diffusion
+	* 有人报告性能可达到 35.81 it/s on 3090, 512x512, 50 steps
 
 ## 11/15
 

@@ -3,7 +3,9 @@
 [官方Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
 
 ::: tip
-VAE 对 TI 训练并不会造成灾难性的影响。如需卸载，在启动 webui 前把 "xxx.vae.pt" 重命名为 "xxx.vae.pt.disabled" 或其他名字。
+训练时请不要加载VAE。
+
+在启动 webui 前把 "xxx.vae.pt" 重命名为 "xxx.vae.pt.disabled" 或其他名字。
 
 在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是将 VAE 模型从显存转移到内存，而非卸载，
 :::
@@ -19,6 +21,8 @@ https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 ## 准备数据集
 
 数据集应保证风格一致，内容具有同一概念。如果算力允许，图片越多越好。数据内容可以是插画，抽象画作，也可以是表情包。
+
+对数据集质量要求高，如果背景出现人影等物体，就会训练进去。训练程序非常敏感。
 
 ## 要求
 
@@ -121,41 +125,47 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 在 `Train` 子选项卡中，选择你要训练的模型。
 
-`Learning rate`(超参数：学习率)，学习速率代表了神经网络中随时间推移，信息累积的速度，这个参数较大地影响了影响训练的速度。
+### 学习率
+
+`Learning rate` (超参数：学习率)，学习速率代表了神经网络中随时间推移，信息累积的速度，这个参数较大地影响了影响训练的速度。
 
 通常，Learning rate越低学习越慢（花费更长的时间收敛），但是效果一般更好。
 
-训练时，可以先用较大的学习率进行测试，然后逐步调小 `0.1 -- 0.02 -- 0.005` ，每次测试都用上一次效果最好的。
+一般设置为 0.005，如果想快一些，可以使用 0.01 加快。但是如果设置得太高，梯度下降时候步长太大无法收敛，会且可能会破坏 `embedding`，使得效果达不到预期。如果设置的太小，容易陷入局部最优。目前 TI 支持设置 `0.1:500, 0.01:1000, 0.001:10000` 的学习率，它会按照 `学习率:步数` 进行，如果步数为小数，则代表 `总步数*百分比`。
 
-一般设置为 0.005，如果想快一些，可以使用 0.01 加快。但是如果设置得太高，梯度下降时候步长太大无法收敛，会且可能会破坏 `embedding` ，效果达不到预期。如果设置的太小，容易陷入局部最优。目前 TI 支持设置形如 `0.1:500, 0.01:1000, 0.001:10000` 的学习率排期表，它会按照时间表进行。
+训练时，可以先用较大的学习率进行测试，然后逐步调小 `0.1 -- 0.02 -- 0.005` ，每次测试都用上一次效果最好的。
 
 ![CS231n](../../assets/CS231n.webp)
 
+### 其他参数
+
 `Log directory` 是日志目录
 
-`Prompt template file`是带有提示的文本文件，每行一个，用于训练模型。
+`Prompt template file` 是带有提示的文本文件，每行一个，用于训练模型。
 
-目录中`textual_inversion_templates`，解释了你可以使用这些文件做什么。
+目录中 `textual_inversion_templates`，解释了你可以使用这些文件做什么。
 
-训练时会使用 `style.txt` 和`subject.txt`
+训练时参考 `style.txt` 和`subject.txt`，比如训练画风，使用 `style.txt`，训练人物，使用 `subject.txt`
 
-**如果是训练画风，使用`style.txt`**
-
-**如果是训练人物，使用`subject.txt`**
+根据模板文件，你可以在文件名中使用下面的关键词，处理时它们会被替换。
 
 ```
-[name]:  embedding 名称
-[filewords]: words from the file name of the image from the dataset. See below for more info.
+[name]:  embedding 的名称
+[filewords]: 数据集中图像文件的名字
 ```
 
-`Preview prompt` 预览，完成后用此提示词生成一张预览。 
+### 操作
+
+`Preview prompt` 预览，完成后用此提示词生成一张预览。  
 如果为空，将使用来自 prompt 的提示。
 
-`Save a copy of embedding to log directory every N steps, 0 to disable`
-每 N 步将嵌入的副本保存到日志目录，0 表示禁用
+`Save a copy of embedding to log directory every N steps, 0 to disable`  
+每 N 步将嵌入的副本保存到日志目录，0 表示禁用。
 
-`Save an image to log directory every N steps, 0 to disable`
-每 N 步保存一个图像到日志目录，0 表示禁用
+`Save an image to log directory every N steps, 0 to disable`  
+每 N 步保存一个图像到日志目录，0 表示禁用。
+
+### 步数
 
 `Max steps` 决定完成多少 `step` 后，训练将停止。
 
@@ -176,27 +186,23 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 如果太多会过拟合(可以理解为AI的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
 
-`Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件。~~人物卡~~
+`Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件，很方便我们分享嵌入，且其相较于 pt 文件更为安全。~~人物卡~~
 
-点击 右下角训练，等待。
+一切妥当之后，点击右下角 `训练` ，等待。
 
 训练完毕。如果卸载了 VAE ，将 VAE 权重文件重命名回去，重启程序。
 
-## 备注
-
-**效果评价**
-
-可以尝试模仿原作品。
+## 其他解释
 
 **[filewords]**
 
-这个是代表 提示词模板文件 的 Tag，可以实现把**文件名插入提示词**。
+这个是代表替换提示词模板文件的 `[filewords]` 为数据集文件的名字，可以实现把 **文件名插入提示词**
 
-第一，默认情况下，文件的扩展名以及-文件名开头的所有数字和破折号 ( ) 都会被删除。
+1. 默认情况下，文件的扩展名以及-文件名开头的所有数字和破折号都会被删除。
 
 所以这个文件名：`000001-1-a man in suit.png`将成为提示文本：`a man in suit`。文件名中文本的格式保持不变。
 
-第二，可以使用 `Filename word regex` 和 `Filename join string` 选项更改文件名中的文本。
+2. 可以使用 `Filename word regex` 和 `Filename join string` 选项更改文件名中的文本。
 
 例如，使用单词 `regex =\w+` 和 连接字符串 = `,` ，上面的文件将生成以下文本：`a, man, in, suit`。
 
@@ -205,14 +211,34 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 并将连接字符串（'，'）放在这些单词之间以创建一个文本`a, man, in, suit`
 
-也可以创建一个与图像 ( 000001-1-a man in suit.txt) 具有相同文件名的文本文件，然后将提示文本放在那里。将不使用文件名和正则表达式选项。
+也可以创建一个与图像具有相同文件名的文本文件 (000001-1-a man in suit.txt) ，然后将提示文本放在那里。将不使用文件名和正则表达式选项。
 
 **Move VAE and CLIP from VRAM when training. Saves VRAM.**
 
 训练时从 VRAM 中卸载 VAE 和 CLIP
+
 设置选项卡上的此选项允许您以较慢的预览图片生成为代价节省一些内存。
 
-训练的结果是一个 .pt 或一个 .bin 文件（前者是原作者使用的格式，后者作为 diffusers library）
+训练的结果是一个 .pt 或一个 .bin 文件（前者是原作者使用的格式，后者适用于 huggingface diffusers）
+
+## subject_filewords.txt 模板
+
+[is_textual_inversion_salvageable](https://www.reddit.com/r/sdforall/comments/ykerg2/is_textual_inversion_salvageable/)
+
+Textual Inversion 训练不能训练模型中没有的东西。它对训练照片也非常敏感。
+
+如果你没有得到好的结果（未能收敛或结果崩坏），你需要更换训练数据或者使用 Dreambooth。
+
+那么，训练是如何进行的呢？
+
+被送入模型的向量是训练向量+提示向量。你给它提供一个提示，提示转化为一堆向量并输入模型，输出与训练图片进行比较，被训练的词向量被稍微修正。这个过程在训练中会反复进行。
+
+因为训练向量的修正不会使用提示向量提供的内容进行训练。所以文件词不应该包含属于被训练内容的特性。
+
+如果你有，比如说一个在所有照片中都穿着 `black t-shirt` 的主体，你可以通过在这些图片的 `filewords` 中加入 `black t-shirt` 来有效地将其从训练集中否定掉。
+
+除非你试图修复照片，否则请将 `filewords` 用于 style，而不是用于 subject。
 
 <iframe src="//player.bilibili.com/player.html?aid=559085039&bvid=BV1ae4y1S7v9&cid=859894044&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
 
+[官方Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)

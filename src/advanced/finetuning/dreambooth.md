@@ -11,11 +11,17 @@ DreamBooth 的模型是一种新的文本到图像“个性化”（可适应用
 
 本节使用 Shivam Shirao 的 [版本](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)
 
+配置衍生自 [ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)
+
 ## 配置要求
 
 Windows 系统至少需要 16 GB，Linux 系统要求显存大于 8 GB
 
-## 训练
+## 训练方法
+
+### WebUi 插件
+
+https://github.com/d8ahazard/sd_dreambooth_extension
 
 ### Linux
 
@@ -42,6 +48,8 @@ Windows 上的 Dreambooth 可以采用 ShivamShrirao 的优化版本来节省显
 修改或覆盖原始库中的文件前请备份！
 
 准备环境 `Git`，`Python`，`MiniConda` (或 `MiniConda` )。
+
+## 操作步骤
 
 以下步骤在 python3.8，windows10 22H2 中操作，其他环境未测试
 
@@ -143,55 +151,146 @@ python diffusers\scripts\convert_diffusers_to_original_stable_diffusion.py  --mo
 
 ## 简单指南
 
+启用 prior_preservation 以开始 DreamBooth 训练. prior_loss_weight 越低则越难过拟合, 但是也越难学到东西.
+
 [testing_dreambooth_for_consistency_with_complex](https://www.reddit.com/r/StableDiffusion/comments/yhw7k8/testing_dreambooth_for_consistency_with_complex/)
 
-> 以下皆为未证实的内容。如果你有不同意见，欢迎提出。
+[dreambooth-training-guide](https://github.com/nitrosocke/dreambooth-training-guide)
 
-### 准备训练图像
+[crosstyan-s-guide](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 
-对于你的训练图片，你将需要:
+### 数据集
 
-至少20张近距离人像照片，至少4张中距离躯干照片，至少4张长距离的全身照，至少1张坐姿照片。
+数据集的创建是在 Dreambooth 训练中获得良好、稳定结果的最重要部分。
 
-质量较高(细节多)的训练图片（裁剪为512x512）。
+#### 内容要求
 
-如果需要使你的  Dreambooth 模型更加多样化，尽量使用不同的环境、灯光、发型、表情、姿势、角度和与主体的距离。
+一定要使用高质量的样本，运动模糊或低分辨率等内容会被训练到模型里，影响作品质量。
+
+当为一个特定的风格进行训练时，挑选具有良好一致性的样本。理想情况下，只挑选你要训练的艺术家的图像。避免粉丝艺术或任何具有不同风格的东西，除非你的目标是像风格融合。
+
+对于主题，黑色或白色背景的样本有极大的帮助。
+
+> 透明的背景也可以，但有时会在主体周围留下白色轮廓，所以目前我不建议使用透明背景。
+如果需要使你的 Dreambooth 模型更加多样化，尽量使用不同的环境、灯光、发型、表情、姿势、角度和与主体的距离。
+
+请确保包括有正常背景的图片（例如，对象在一个场景中的图片）。只使用带简单背景的图片，效果会比较差。
 
 避免在你的渲染图中出现手粘在头上的情况，请删除所有手太靠近或接触头部的图片。
 
 如果需要避免渲染图中出现鱼眼镜头效果，可以删除所有自拍图片。
 
-为了避免在渲染中出现白色边框，请确保你的图像中没有裁剪边框。
-
 为了避免不自然的过度模糊，确保图像不包含假的重景深或虚化。
 
-### 一致的标识
+#### 数据集标准化
 
-经过大量的测试，有人发现 类标识符`class identifier picker` 明显有助于提高概念的嵌入和渲染的质量。我使用类标识符来唤起任何训练过的概念词。
+一旦你收集了数据集的照片，将所有图片裁剪并调整为 512x512 的正方形，并删除任何水印、商标、被图片边缘切断的人/肢体，或其他你不希望被训练的内容。
 
-如果训练的是一个 **现实** 的概念，class prompt 应该是“一张高清照片_____”
+以 PNG 格式保存图像，并将所有图像放在 `train` 文件夹中。
 
-我们最初只有一个 `class identifier picker` 类图像选择器 (一个词)，它也用于生成 `class images` 。现在已经添加了一个单独的 `class image generator picker` (使用多个单词)，它允许我们进一步确定和约束我们想从类图像中获得的内容。
+#### 从检查点恢复训练
 
-这非常有用，让我们能够更灵活地找到哪些类图像能够改善概念嵌入到潜在空间中。
+参数的 `MODEL_NAME` 改成上一次模型的位置。
 
-### 从检查点恢复训练
 
-参数的 MODEL_NAME 改成上一次模型的位置。
+### 基本参数
 
-## 参数分析
+基本上所有的解释和例子都在上面给出的 Colab 笔记本中。
 
 [使用 Dreambooth 训练稳定扩散的实验的分析](https://wandb.ai/psuraj/dreambooth/reports/Dreambooth-training-analysis--VmlldzoyNzk0NDc3)
 
-### Subject images / Class images
+* Instance Image 
 
-介绍来自 [good_dreambooth_formula](https://www.reddit.com/r/StableDiffusion/comments/ybxv7h/good_dreambooth_formula/)
+你所训练的目标
 
-Subject images (或者你在笔记本上看到的实例图像)是你想要训练的图像，所以如果你想要自己的外观的模型，你可以取20到40张自己的图像并输入这些图像。实例名是一个唯一的标识符，它将在提示符中表示受训对象，个人使用 “namelastname”，大多数笔记本使用“sks”，但最好更改它。
+* Instance Prompt 
 
-你实际上是在告诉AI把你介绍到大数据库中，为了做到这一点，你选择一个类别，即最适合你所训练的类别，对于人们来说，通常使用 "person", "man"/"woman" 等。
+默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的, 即 DreamBooth (original paper method) 但当你的训练目标增多之后则不适用, 可以开启 combine_prompt_from_txt 选项, 为每个 instance 准备一个 prompt (通常为 txt) 即为 DreamBooth (alternative method)。Instance Prompt 之中应该包含一个唯一标识符 `[V]`。见下方 Token 一节。
 
-在训练中使用Class images是为了防止物体的特征 “渗透” 到同一Class 的其他物体。如果没有 Class images 作为参考点，人工智能倾向于将你的脸与 Class 中出现的其他脸合并。其他像名人一样的人会有点像你。
+* Class/Regularization 
+
+Image 应该为 自动生成 即 auto-generated 的图像, 用于检测 AI 的先验知识。不应该放任何非 AI 生成的图像。如果你确定这么做为什么不去使用 Native Training 呢？(掺杂同风格图在 clas image 属于早期探索的弯路, 目前已经不再鼓励)
+
+* Class Prompt 
+
+随意, 反正是自动生成出来的, 建议从其他支持 CLIP SKIP 2 的推理前端单独生成好之后丢到 class img 集内, 同样可以从独立的 txt 中读取内容。
+
+* learning_rate
+
+学习率
+
+DreamBooth 本身具有十分强烈的 copy and paste 效果。使用 class/regularization 可以适当压制该效果。
+
+### Native Training
+
+Native Training 为原生训练, 与 DreamBooth 不同的是, Native Training 会直接使用你的训练集进行训练, 不再需要 Class Image。
+
+关闭 `prior_preservation` 选项以开始以原生方式进行训练, 是训练画风的推荐方式。在此训练中没有 Instance/Class Image 之分, 所有的图都会被用于训练, 但是你需要为每个图准备一个 Instance Prompt, 就像传统的 hypernetwork 一样同文件名称, 通常为 txt。
+
+Native Training 需要较多的数据集, 但这个量众说纷纭, 大约在 [100, 10000] 这个区间, 多多益善 (但仍然建议人工挑选)
+
+### 建议
+
+#### Token and Tagging
+
+| What your training set is about | Instance prompt must contain | Class prompt should describe                   |
+| --------------------------------- | ------------------------------ | ------------------------------------------------ |
+| A object/person                 | `[V]`                    | The object's type and/or characteristics       |
+| A artist's style                | `by [V]`                 | The common characteristics of the training set |
+
+假设你想训练的人物叫做 `[N]`, 你不应该直接使用 `[N]` 作为代表特征词, 而是应该使用在 [该词汇表](https://huggingface.co/openai/clip-vit-large-patch14/raw/main/vocab.json) 中存在但是没有对应概念或者说对应概念不明显的词 `[V]`。具体可在 [NovelAI Tokenizer](https://novelai.net/tokenizer) 验证其 token 长度以辅助确定。
+
+> 注: 原论文中使用的示例词 `sks` 和现实中的枪械 [SKS](https://en.wikipedia.org/wiki/SKS) 相同, 属于不适合被使用的词汇。但是如果你的训练程度足够高的话说不定可以 override 其影响。
+
+推荐使用 [crosstyan/blip_helper](https://github.com/crosstyan/blip_helper) 去给你的图像打标。或者使用 [DeepDanbooru](https://github.com/KichangKim/DeepDanbooru) 和 [BLIP](https://github.com/salesforce/BLIP)
+
+#### Augmentation
+
+* 处理数据的方式有许多: 最常见的有反转, 旋转, 亮度和裁切。
+
+玄学打碎, 或者对背景/大头等单独裁切, 也许会有帮助。
+
+#### Aspect Ratio Bucketing
+
+`aspect_ratio_bucket` 调成 `enable: true`。见 [Aspect Ratio Bucketing](https://github.com/NovelAI/novelai-aspect-ratio-bucketing)。
+
+Aspect Ratio Bucketing 简称 ARB, 原版训练均只能使用 `1:1` 的图像, 开启 ARB 使得训练非 `1:1` 的图像成为可能, 但并非任意比例尺的图像。
+
+```
+[[ 256 1024], [ 320 1024], [ 384 1024], [ 384  960], [ 384  896], [ 448  832], [ 512  768], [ 512  704], [ 512  512], [ 576  640], [ 640  576], [ 704  512], [ 768  512], [ 832  448], [ 896  384], [ 960  384], [1024  384], [1024  320], [1024  256]]
+```
+
+不在 bucket 内的图像将会被裁切。
+
+ARB 与 DreamBooth 一起使用的相性不好, 仅推荐 Native Training 时使用。
+
+
+#### Train Text Encoder
+
+我愿称之为玩坏 Text Encoder, 不推荐使用。
+
+有玄学说法是在达到训练的某个百分比/epoch/step 之后应该关闭以防止过度玩坏。
+
+* 你一开始写的 instance prompt 要长一些, 概括你的训练目标 (但是又不要太长, 不要覆盖你常用的词) (像是 girl 我会换成 woman, 1boy 换成 male)
+* 第一, text prompt 读进去是寄。因为词数太多了影响分散, 效果不明显。
+* 第二, instance prompt 不能只填一个 `[V]` 否则那个词也废掉了。
+* 试着大火爆炒
+
+炼出来调用的话看情况加你训练的 instance prompt 的词, 看你想要多少味道。
+
+或许训练人物的时候也是效果拔群。
+
+#### Multiple Concept
+
+用 DreamBooth 是可以训练多个概念/人物/动作/物体的. 但是若训练两个人物则推理时不能使其同时出现, 两者的特征会被混合起来.
+
+
+如果用其他版本的 DreamBooth 训练方法检查 `--concept_list` 参数, 可以读入一个类似的 `json` 文件.
+
+
+- 训练步数的选择
+
+训练步数的选择一般来说是 训练步骤 =（参考图像 x 100）
 
 - concepts_list.json
 
@@ -218,6 +317,15 @@ concepts_list = [
 # `class_data_dir` contains regularization images
 ```
 
+### 解释 Subject images / Class images
+
+介绍来自 [good_dreambooth_formula](https://www.reddit.com/r/StableDiffusion/comments/ybxv7h/good_dreambooth_formula/)
+
+Subject images (或者你在笔记本上看到的实例图像) 是你想要训练的图像，所以如果你想要自己的外观的模型，你可以取 20 到 40 张自己的图像并输入这些图像。实例名是一个唯一的标识符，它将在提示符中表示受训对象，个人使用 “namelastname”，大多数笔记本使用“sks”，但最好更改它。
+
+你实际上是在告诉 AI 把你介绍到大数据库中，为了做到这一点，你选择一个类别，即最适合你所训练的类别，对于人们来说，通常使用 "person", "man"/"woman" 等。
+
+在训练中使用 Class images 是为了防止物体的特征 “渗透” 到同一 Class 的其他物体。如果没有 Class images 作为参考点，人工智能倾向于将你的脸与 Class 中出现的其他脸合并。其他像名人一样的人会有点像你。
 
 ## 其他 
 
