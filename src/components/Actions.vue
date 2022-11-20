@@ -13,9 +13,6 @@ import VPButton from 'vitepress/dist/client/theme-default/components/VPButton.vu
         <div class="action">
             <VPButton size="medium" theme="alt" href="https://github.com/wfjsw/VP-StableDiffusionBook" target="_blank" text="在 GitHub 上查看" />
         </div>
-        <div class="action">
-            <VPButton size="medium" theme="alt" href="https://draw.dianas.cyou/" target="_blank" text="阅读原本" />
-        </div>
     </div>
 </template>
 

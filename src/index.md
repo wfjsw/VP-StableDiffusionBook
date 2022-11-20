@@ -6,7 +6,7 @@ import Actions from './components/Actions.vue'
 
 ::: tip 提示
 本站为 [sudoskys/StableDiffusionBook @ GitHub](https://github.com/sudoskys/StableDiffusionBook) 的一个派生网站，
-遵循 GFDL 发布。其中大部分内容为原本经演绎修改的产物。
+遵循 GFDL 发布。其中大部分内容为 [原本](https://draw.dianas.cyou/) 经演绎修改的产物。
 :::
 
 关于使用 AI 绘画的 Wiki ，翻译，教程，相关资源。主要内容涉及 [Stable-Diffusion-WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)

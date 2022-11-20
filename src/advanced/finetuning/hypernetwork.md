@@ -40,14 +40,13 @@ If checked, add layer normalization after every fully connected layer.
 
 LN 对防止过拟合使训练更加稳定是有意义的，但是根据之前的测试，linear 开启 LN 的情况，可能学不进去东西，出空包弹。使用激活函数后，LN现在是可使用的。
 
-Swish似乎并不需要开启LN，因为Swish的训练速度慢，所以应该使用更高的学习率。
+Swish 似乎并不需要开启 LN，因为 Swish 的训练速度慢，所以应该使用更高的学习率。
 
 ## USE Dropout
 
-启用Dropout可以防止超网络过拟合，目前不支持自定义dropout比率，默认为0.3
+启用 Dropout 可以防止超网络过拟合，目前不支持自定义 dropout 比率，默认为 0.3
 
-在1，2，1的层结构上，dropout可能只会对小数据集有帮助。
-
+在 1:2:1 的层结构上，dropout可能只会对小数据集有帮助。
 
 ## 激活函数 activation functions
 
