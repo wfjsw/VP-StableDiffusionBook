@@ -1,1 +1,5 @@
 /guide/newsfeed /newsfeed 301
+
+/s/troubleshooting/install /guide/install/sd-webui#错误处理-troubleshooting 302
+/s/troubleshooting/generate /guide/configuration/troubleshoot 302
+

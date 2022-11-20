@@ -2051,7 +2051,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress@npm:v1.0.0-alpha.29":
+"vitepress@npm:1.0.0-alpha.29":
   version: 1.0.0-alpha.29
   resolution: "vitepress@npm:1.0.0-alpha.29"
   dependencies:
@@ -2079,7 +2079,7 @@ __metadata:
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     sitemap: ^7.1.1
-    vitepress: v1.0.0-alpha.29
+    vitepress: 1.0.0-alpha.29
     vue: ^3.2.41
     wasm-pack: ^0.10.3
   languageName: unknown
