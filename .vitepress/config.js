@@ -167,6 +167,13 @@ export default defineConfig({
             copyright:
                 'Copyright © 2022-present StableDiffusionBook Contributors',
         },
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/wfjsw/VP-StableDiffusionBook' },
+        ],
+        editLink: {
+            pattern:
+                'https://github.com/wfjsw/VP-StableDiffusionBook/edit/master/src/:path',
+        },
     },
     vite: {
         plugins: [
@@ -186,7 +193,9 @@ export default defineConfig({
                     '地',
                     '了',
                     ' ',
-                    ...'!@#$%^&*！￥……&*/\\,.，。<>《》；：;:"\'“”’‘[]{}|()（）-—'.split(''),
+                    ...'!@#$%^&*！￥……&*/\\,.，。<>《》；：;:"\'“”’‘[]{}|()（）-—'.split(
+                        ''
+                    ),
                 ],
             }),
         ],
