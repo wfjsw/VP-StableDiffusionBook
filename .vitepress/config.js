@@ -17,6 +17,7 @@ export default defineConfig({
     ignoreDeadLinks: true,
     cleanUrls: 'without-subfolders',
     themeConfig: {
+        logo: '/paintbrush-solid.svg',
         outlineTitle: '在这一页上',
         nav: [
             { text: '指南', link: '/guide/' },

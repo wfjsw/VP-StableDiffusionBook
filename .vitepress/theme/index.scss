@@ -13,3 +13,7 @@ h4 {
 .vp-doc a {
   word-break: break-all;
 }
+
+html.dark .logo {
+  filter: invert(1);
+}
