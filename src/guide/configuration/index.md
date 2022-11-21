@@ -140,15 +140,15 @@ Part 1 中较常用的文件列举如下：
 受 WebUI 算法限制，在 WebUI 中具有相同 Hash 的模型存在不是同一个模型的可能。
 :::
 
-| CRC32      | WebUI Hash | 文件名                           | 模型包路径                                     | 说明                                                 |
-| ---------- | ---------- | -------------------------------- | ---------------------------------------------- | ---------------------------------------------------- |
-| `31D10243` | `925997E9` | `full-pruned.ckpt`               | `stableckpt/animefull-final-pruned/model.ckpt` | 全量 压缩模型                                        |
-| `81274D13` | `E6E8E1FC` | `full-latest.ckpt`               | `stableckpt/animefull-latest/model.ckpt`       | 全量 完整模型                                        |
-| `ADDB53AF` | `1D4A34AF` | `sfw-pruned.ckpt`                | `stableckpt/animesfw-final-pruned/model.ckpt`  | 精选 压缩模型                                        |
-| `1D44365E` | `202FCEC0` | `sfw-latest.ckpt`                | `stableckpt/animesfw-final-pruned/model.ckpt`  | 精选 完整模型                                        |
-|            |            | `*.vae.pt`                       | `stableckpt/animevae.pt`                       | 用于稳定风格，修复饱和度问题                         |
-|            |            | `*.yaml`                         | `stableckpt/anime*/config.yaml`                | 模型配置文件，主要作用是让完整模型达到压缩模型的效果 |
-|            |            | `stableckpt/vector_adjust/v2.pt` | 风格化                                         |                                                      |
+| CRC32      | WebUI Hash | 文件名             | 模型包路径                                     | 说明                                                 |
+| ---------- | ---------- | ------------------ | ---------------------------------------------- | ---------------------------------------------------- |
+| `31D10243` | `925997E9` | `full-pruned.ckpt` | `stableckpt/animefull-final-pruned/model.ckpt` | 全量 压缩模型                                        |
+| `81274D13` | `E6E8E1FC` | `full-latest.ckpt` | `stableckpt/animefull-latest/model.ckpt`       | 全量 完整模型                                        |
+| `ADDB53AF` | `1D4A34AF` | `sfw-pruned.ckpt`  | `stableckpt/animesfw-final-pruned/model.ckpt`  | 精选 压缩模型                                        |
+| `1D44365E` | `202FCEC0` | `sfw-latest.ckpt`  | `stableckpt/animesfw-final-pruned/model.ckpt`  | 精选 完整模型                                        |
+|            |            | `*.vae.pt`         | `stableckpt/animevae.pt`                       | 用于稳定风格，修复饱和度问题                         |
+|            |            | `*.yaml`           | `stableckpt/anime*/config.yaml`                | 模型配置文件，主要作用是让完整模型达到压缩模型的效果 |
+|            |            |                    | `stableckpt/vector_adjust/v2.pt`               | 未知风格化                                           |
 
 注意，`.yaml` 与 `.vae.pt` 的名称应该与 `.ckpt` 文件相对应。
 
@@ -230,7 +230,7 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 见 [HuggingFace/lambdalabs/sd-pokemon-diffusers](https://huggingface.co/lambdalabs/sd-pokemon-diffusers)。
 
-### SD PixelArt SpriteSheet Generator 
+### SD PixelArt SpriteSheet Generator
 
 ![Preview](../../assets/1667278292305-63028bc42db53f7d9f38dadb.webp)
 
@@ -265,4 +265,3 @@ EMA 移动平均值对生成图像没有任何帮助。
 可以看到 `furry` 的超网络在添加动物特征方面更加激进，因此这里更保守的变化可能与采样器、步骤和 CFG 有关。
 
 [所有超网络的 X/Y](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017#discussioncomment-3836360)
-
