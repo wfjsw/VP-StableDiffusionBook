@@ -264,17 +264,6 @@ CLIP 可以从图像中提取令牌。
 
 如果在 webui.py 附近存在 `notification.mp3` 文件，它将在图片生成结束后播放。
 
-## 开发自定义脚本
-
-见 [脚本](../../advanced/development/scripts.md)。
-
-你可以在 `modules/scripts.py` 中找到Script类。
-
-如果要创建你自己的自定义脚本，请创建一个实现类的 python 脚本，并将其放到 `scripts` 文件夹中，使用以下示例或文件夹中已有的其他脚本作为指导。
-
-Script 类有四个主要方法，这里通过一个简单的[示例脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-custom-scripts)进行更详细的描述，这个脚本可以旋转和/或翻转生成的图像。
-
-[这里](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts) 有很多社区共享的脚本，可以将文件添加到 `scripts/` 文件夹中。
 
 ## 修剪模型
 
@@ -285,3 +274,11 @@ Script 类有四个主要方法，这里通过一个简单的[示例脚本](http
 比如，`prune_it('wd-v1-2-full-emma.ckpt')`
 
 然后运行这个脚本，修剪过程可能需要几分钟。
+
+## 速度判定
+
+注意区分 `it/s` 与 `s/it`。
+
+终端的 `it/s` 速率是大致速率，在一秒钟可完成多次迭代时显示，代表每秒钟迭代次数。数字升高代表加速。
+
+`s/it` 速率是上值的倒数，在一秒钟无法完成一次迭代时显示，代表每次迭代所需秒数。因此，数字降低代表加速。

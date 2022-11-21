@@ -21,6 +21,8 @@ outline: [2, 4]
 - 提示词 + PS/Inpaint(微修/嫁接)
 - 提示词 + 3D 参考
 
+关于生成时涉及到的参数配置，见 [参数介绍](../../guide/configuration/param-basic.md#参数介绍)。
+
 ## 提示词来源
 
 提示词的来源主要取决于以下三个要素：
