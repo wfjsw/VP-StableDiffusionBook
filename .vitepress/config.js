@@ -162,6 +162,10 @@ export default defineConfig({
                             text: '自定义脚本',
                             link: '/advanced/development/scripts',
                         },
+                        {
+                            text: 'API',
+                            link: '/advanced/development/api',
+                        },
                     ],
                 },
             ],

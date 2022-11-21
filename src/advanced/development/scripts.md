@@ -8,8 +8,6 @@ outline: [2, 3]
 
 ## 开发自定义脚本
 
-见 [脚本](../../advanced/development/scripts.md)。
-
 你可以在 `modules/scripts.py` 中找到Script类。
 
 如果要创建你自己的自定义脚本，请创建一个实现类的 python 脚本，并将其放到 `scripts` 文件夹中，使用以下示例或文件夹中已有的其他脚本作为指导。
@@ -18,7 +16,7 @@ Script 类有四个主要方法，这里通过一个简单的[示例脚本](http
 
 [这里](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts) 有很多社区共享的脚本，可以将文件添加到 `scripts/` 文件夹中。
 
-## 现有自定义脚本
+## 自定义脚本案例
 
 ### sd-dynamic-prompts
 

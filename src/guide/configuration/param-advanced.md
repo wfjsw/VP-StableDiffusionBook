@@ -240,7 +240,9 @@ CLIP 可以从图像中提取令牌。
 
 ## DeepDanbooru Interrogate
 
-使用 `--deepdanbooru` 启动 WebUI 后将可看到这个按钮。可以从图像中提取令牌。
+新版 Stable-Diffusion-WebUI 已无需使用 `--deepdanbooru` 开关启用该功能。
+
+可在 img2img / 图生图 页面中看到 DeepDanbooru Interrogate 按钮。可以从图像中提取令牌。
 
 ## Face restoration 三次元人脸修复
 
