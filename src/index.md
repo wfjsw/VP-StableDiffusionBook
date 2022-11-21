@@ -21,18 +21,18 @@ import Actions from './components/Actions.vue'
 
 [NovelAI](https://novelai.net/) 简称 NAI，是一项月费服务，用于 AI 辅助创作、讲故事、虚拟陪伴，或者只是供您想象的 GPT 驱动的沙盒。
 
-Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本。
+Stable Diffusion 原模型是面向三次元的，而 NovelAI 所用的模型是二次元特化版本。
 
-## Stable Diffusion 和 NAI 关系？
+## 与原本的差异
 
-因为泄漏事件，NAI 使用数千万 Danbooru（图站）图片训练的模型被泄漏了两次。目前社区广泛使用 **Stable Diffusion WebUI** 生成框架 （简称 SD-WebUI）装载 NAI 的模型。
+本文档与 [原本](https://draw.dianas.cyou/) 的差异主要有以下几点：
 
-::: details 泄露内容详情
-
-泄露 Part 1：共 53.66 GB，包含生产模型，程序。其中需要下载的相关模型有 7 GB 和 4 GB 两种。
-
-泄露 Part 2：共 124.54 GB，包含历史测试代码和模型，程序。其中需要下载的相关模型与 Part 1 相同。
-:::
+-   根据编者的理解进行了大量结构调整。
+-   删除了部分失效内容。
+-   对一些描述不清的内容进行了重写。
+-   对中英混合内容进行了重新排版。
+-   本地镜像了文档中涉及的所有图片。
+-   对文档中大部分外链进行了归档操作（进行中）。
 
 ## 社区
 
@@ -50,11 +50,11 @@ Stable Diffusion 本来是面向三次元的，而 NAI 是二次元特化版本�
 -   [NovelAI @ Discord](https://discord.gg/novelai)
 -   [SD Training Labs @ Discord](https://discord.gg/pGE2HWVGjq)
     -   [ML Research Labs @ Discord (已废弃)](https://discord.gg/UnthRCE5Ww)
--   [东方Project AI (Waifu Diffusion) @ Discord](https://discord.gg/touhouai)
+-   [东方 Project AI (Waifu Diffusion) @ Discord](https://discord.gg/touhouai)
 
 ### 论坛
 
--   [Nga - AI作画讨论合集](https://nga.178.com/thread.php?stid=33844263)
+-   [Nga - AI 作画讨论合集](https://nga.178.com/thread.php?stid=33844263)
 -   [/r/DreamBooth](https://www.reddit.com/r/DreamBooth/)
 -   [/r/StableDiffusion](https://www.reddit.com/r/StableDiffusion/)
 -   [/r/NovelAi](https://www.reddit.com/r/NovelAi/)
