@@ -51,6 +51,12 @@ You can skip this check with --disable-safe-unpickle commandline argument.
 
 Stable Diffusion 模型适用于生成与照片、艺术品类似的图像。
 
+提示词常用连贯的自然语言句子描述一个物体，如：
+
+```
+A horse running on the moon
+```
+
 下载地址：
 
 -   [Stable Diffusion v1.2](https://huggingface.co/CompVis/stable-diffusion-v-1-2-original)
@@ -62,6 +68,12 @@ Stable Diffusion 模型适用于生成与照片、艺术品类似的图像。
 
 Waifu Diffusion 模型采用 Danbooru 数据集中图片与标签训练，适用于生成各类二次元图像。
 
+提示词常用 Danbooru 提供的标签组合，如：
+
+```
+1girl, white hair, blue dress, black shoes
+```
+
 下载地址：
 
 -   [Waifu Diffusion v1.3](https://huggingface.co/hakurei/waifu-diffusion-v1-3)
@@ -69,6 +81,12 @@ Waifu Diffusion 模型采用 Danbooru 数据集中图片与标签训练，适用
 ### NovelAI 泄露模型
 
 NovelAI 模型采用 Danbooru 数据集中图片与标签训练，适用于生成各类二次元图像。
+
+提示词常用 Danbooru 提供的标签组合、与部分私有标签，如：
+
+```
+masterpiece, best quality, 1girl, white hair, blue dress, black shoes
+```
 
 使用该模型的 models 文件夹结构大致如下：
 
