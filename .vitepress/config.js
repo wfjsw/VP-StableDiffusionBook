@@ -70,14 +70,6 @@ export default defineConfig({
                     items: [
                         { text: '引言', link: '/guide/configuration/' },
                         {
-                            text: '关于显卡',
-                            link: '/guide/configuration/videocards',
-                        },
-                        {
-                            text: '关于 NovelAI 泄露模型',
-                            link: '/guide/configuration/novelai-models',
-                        },
-                        {
                             text: '调参基础',
                             link: '/guide/configuration/param-basic',
                         },

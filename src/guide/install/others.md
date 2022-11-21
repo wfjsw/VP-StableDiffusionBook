@@ -2,6 +2,8 @@
 
 ## 在 AMD GPU 上安装
 
+AMD ROCm 仅在 Linux 系统下可使用。
+
 [详见 Install and Run on AMD GPUs @ SD-WebUI Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and-Run-on-AMD-GPUs)
 
 
