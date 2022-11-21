@@ -1169,6 +1169,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-entities@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "html-entities@npm:2.3.3"
+  checksum: 92521501da8aa5f66fee27f0f022d6e9ceae62667dae93aa6a2f636afa71ad530b7fb24a18d4d6c124c9885970cac5f8a52dbf1731741161002816ae43f98196
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.1.0":
   version: 4.1.0
   resolution: "http-cache-semantics@npm:4.1.0"
@@ -2075,6 +2082,7 @@ __metadata:
   resolution: "vp-stable-diffusion-book@workspace:."
   dependencies:
     flexsearch: 0.7.31
+    html-entities: ^2.3.3
     markdown-it: ^13.0.1
     medium-zoom: ^1.0.6
     sass: ^1.56.0

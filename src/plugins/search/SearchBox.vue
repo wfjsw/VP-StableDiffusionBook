@@ -3,7 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useData } from 'vitepress'
 import FlexSearch from 'flexsearch'
 import FlexLogo from './flex-logo.svg'
-import SearchItem from './SearchItem.vue';
+import SearchItem from './SearchItem.vue'
 
 const emit = defineEmits(['close'])
 
@@ -18,7 +18,7 @@ const searchIndex = ref()
 
 const result = computed(() => {
     if (searchTerm.value) {
-        const searchResults = searchIndex.value.search(searchTerm.value.toLowerCase(), 10)
+        const searchResults = searchIndex.value.search(searchTerm.value, 10)
         const search = []
 
         for (let i = 0; i < searchResults.length; i++) {
@@ -27,11 +27,19 @@ const result = computed(() => {
 
             const title = item['t']
             const preview = item['p']
-            const link = item['l'].split(' ').join('-')
+            const link = item['l']
             const anchor = item['a']
             const pageTitle = item['T']
             const pageLink = origin.value + link.slice(0, link.indexOf('#'))
-            search.push({ id: i, link, title, preview, anchor, pageTitle, pageLink })
+            search.push({
+                id: i,
+                link,
+                title,
+                preview,
+                anchor,
+                pageTitle,
+                pageLink,
+            })
         }
         return search
     }
@@ -54,26 +62,32 @@ const GroupBy = (array, func) => {
 }
 
 onMounted(async () => {
-    const { indexData, previewLookup, options } = await import(
-        'virtual:search-data'
-    )
+    const [{ indexData, options }, { previewLookup }] = await Promise.all([
+        import('virtual:search-index'),
+        import('virtual:search-preview'),
+    ])
     PREVIEW_LOOKUP.value = previewLookup
     origin.value = window.location.origin + localePath.value
     const document = FlexSearch({
-        ...options, encode: (str) => {
-        const filter = options.filter ?? []
-        const eng = Array.from(str.matchAll(/[a-zA-Z0-9]+/g)).map(n => n[0])
-        const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-            return eng.concat(chs)
-                .filter(n => !!n)
-                .filter(n => n.trim() !== '')
-                .filter(n => !filter.includes(n))
-    }})
+        ...options,
+        encode: (str) => {
+            const filter = options.filter ?? []
+            const eng = Array.from(
+                str.toLowerCase().matchAll(/[a-z0-9]+/gi)
+            ).map((n) => n[0])
+            const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
+            return eng
+                .concat(chs)
+                .filter((n) => !!n)
+                .filter((n) => n.trim() !== '')
+                .filter((n) => !filter.includes(n))
+        },
+    })
 
-    document.registry = indexData.reg && JSON.parse(indexData.reg)
-    document.cfg = indexData.cfg && JSON.parse(indexData.cfg)
-    document.map = indexData.map && JSON.parse(indexData.map)
-    document.ctx = indexData.ctx && JSON.parse(indexData.ctx)
+    document.registry = indexData.reg
+    document.cfg = indexData.cfg
+    document.map = indexData.map
+    document.ctx = indexData.ctx
 
     searchIndex.value = document
 
@@ -89,7 +103,7 @@ function cleanSearch() {
 
 defineExpose({
     focus: () => input.value.focus(),
-    clear: () => searchTerm.value = '',
+    clear: () => (searchTerm.value = ''),
 })
 </script>
 
@@ -131,20 +145,23 @@ defineExpose({
                     placeholder="搜索文档"
                     maxlength="64"
                     type="search"
-                    ref="input"
-                    />
+                    ref="input" />
             </form>
             <div class="search-list">
                 <div
-                    v-for="(group, groupKey) of GroupBy(result, x => x.pageTitle)"
+                    v-for="(group, groupKey) of GroupBy(
+                        result,
+                        (x) => x.pageTitle
+                    )"
                     :key="groupKey">
                     <span class="search-group">
                         <a :href="group[0].pageLink">{{
-                        groupKey
-                            ? groupKey.toString()[0].toUpperCase() +
-                              groupKey.toString().slice(1)
-                            : '主页'
-                    }}</a></span>
+                            groupKey
+                                ? groupKey.toString()[0].toUpperCase() +
+                                  groupKey.toString().slice(1)
+                                : '主页'
+                        }}</a></span
+                    >
                     <SearchItem
                         v-for="item in group"
                         :key="item.id"
@@ -161,7 +178,6 @@ defineExpose({
 </template>
 
 <style scoped lang="scss">
-
 .DocSearch-Footer {
     padding-top: 0.75rem;
     background-color: var(--docsearch-footer-background);
@@ -195,7 +211,7 @@ defineExpose({
 
 .DocSearch-Input {
     appearance: none;
-    
+
     border: solid 1px var(--c-brand-light);
     color: var(--docsearch-text-color);
     flex: 1;
@@ -254,7 +270,7 @@ defineExpose({
     padding: 0 var(--docsearch-spacing);
     position: relative;
     width: 100%;
-    
+
     // border-radius: 6px;
 }
 
@@ -270,5 +286,4 @@ defineExpose({
     background-color: white;
     border: 1px solid var(--vt-c-brand);
 }
-
 </style>
