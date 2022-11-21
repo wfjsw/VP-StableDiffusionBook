@@ -209,8 +209,7 @@ NAI 模型使用 Danbooru2021 的数据，而 Danbooru2022 还未训练(个人�
 
 ## 碎言
 
-
-<iframe src="//player.bilibili.com/player.html?aid=559362671&bvid=BV14e4y1U7r9&cid=869144379&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="600"> </iframe>
+[av559362671 - 【AI绘图】画师不是AI的附庸！手绘+AI辅助展示！StableDiffusion/NOVELAI辅助角色立绘设计最详细分享！ @ Bilibili](https://www.bilibili.com/video/av559362671)
 
 模型中没有存储任何素材，[算法实现](https://zhuanlan.zhihu.com/p/572986232)，目前的版权还很模糊。
 
@@ -220,11 +219,11 @@ AI 作为一种 高级笔刷 ，节省了小工作室和个人的成本，但是
 
 AI 本质上它不能替代人的创意性，让人眼前一亮的图片也无非是静物的绘制。
 
-<iframe src="//player.bilibili.com/player.html?aid=731418335&bvid=BV1YD4y1k7Cr&cid=858424971&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
+[av731418335 - AI上线画师下岗？即将到来的焦虑时代 @ Bilibili](https://www.bilibili.com/video/av731418335)
 
-<iframe src="//player.bilibili.com/player.html?aid=646853859&bvid=BV1Ye4y177ns&cid=869741249&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
+[av646853859 - AI绘画正在淘汰人类？火遍全网的NovelAI是如何发展至今的【AI进化论01】 @ Bilibili](https://www.bilibili.com/video/av646853859)
 
-<iframe src="//player.bilibili.com/player.html?aid=219246962&bvid=BV1N8411e766&cid=864564133&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
+[av219246962 - CVPR破圈/NovelAi权重泄露/绘圈集体破防/伪教程与latent diffusion模型分析 # 炼丹人震惊/简单吐槽 @ Bilibili](https://www.bilibili.com/video/av219246962)
 
 另外，欢迎参与文档编写和文档备份。
 

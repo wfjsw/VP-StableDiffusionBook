@@ -78,7 +78,7 @@ emoji 因为只有一个字符，所以在语义准确度上表现良好。
 
 `anime coloring` 会有很好的效果，像动漫截图一样。(如果遇到黑白色，需要指定人物部件的色彩)
 
-<iframe src="//player.bilibili.com/player.html?aid=304175820&bvid=BV1TP411N71t&cid=865253876&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[av304175820 - AI绘 | 让你的图片更特别！32种风格化prompt简介 @ Bilibili](https://www.bilibili.com/video/av304175820)
 
 ## 优化作品效果
 
@@ -259,7 +259,7 @@ bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits,
 
 ### 立绘
 
-<iframe src="//player.bilibili.com/player.html?aid=559362671&bvid=BV14e4y1U7r9&cid=869144379&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"></iframe>
+[av559362671 - 【AI绘图】画师不是AI的附庸！手绘+AI辅助展示！StableDiffusion/NOVELAI辅助角色立绘设计最详细分享！ @ Bilibili](https://www.bilibili.com/video/av559362671)
 
 > BV14e4y1U7r9
 

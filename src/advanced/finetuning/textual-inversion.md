@@ -239,6 +239,6 @@ Textual Inversion 训练不能训练模型中没有的东西。它对训练照�
 
 除非你试图修复照片，否则请将 `filewords` 用于 style，而不是用于 subject。
 
-<iframe src="//player.bilibili.com/player.html?aid=559085039&bvid=BV1ae4y1S7v9&cid=859894044&page=1" scrolling="no" allowfullscreen="true" width="100%" height="600"> </iframe>
+[av559085039 - 【AI绘画】AI不认识人物怎么办！强大的Textual Inversion【NovelAI】 @ Bilibili](https://www.bilibili.com/video/av559085039)
 
-[官方Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
+[官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
