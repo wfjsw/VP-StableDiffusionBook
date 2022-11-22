@@ -1,5 +1,5 @@
-import { defineConfig } from "vitepress";
-import { SearchPlugin } from "../src/plugins/search/plugin";
+import { defineConfig } from 'vitepress'
+import { SearchPlugin } from '../src/plugins/search/plugin'
 import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
@@ -225,14 +225,7 @@ export default defineConfig({
         ],
     ],
 
-    shouldPreload(link, page) {
-        if (link.includes('virtual_search-preview') || link.includes('virtual_search-index')) {
-            return false
-        }
-        return true
-    },
-
-    async transformHtml(_, id, { pageData }) {
+    async transformHtml(code, id, { pageData }) {
         if (!id.endsWith('404.html')) {
             links.push({
                 // you might need to change this if not using clean urls mode
@@ -240,6 +233,15 @@ export default defineConfig({
                 lastmod: pageData.lastUpdated,
             })
         }
+
+        return code
+            .split('\n')
+            .filter(
+                (n) =>
+                    !n.includes('virtual_search-preview') &&
+                    !n.includes('virtual_search-index')
+            )
+            .join('\n')
     },
     async buildEnd({ outDir }) {
         const sitemap = new SitemapStream({
