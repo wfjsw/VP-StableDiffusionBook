@@ -168,7 +168,10 @@ export default defineConfig({
                 'Copyright © 2022-present StableDiffusionBook Contributors',
         },
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/wfjsw/VP-StableDiffusionBook' },
+            {
+                icon: 'github',
+                link: 'https://github.com/wfjsw/VP-StableDiffusionBook',
+            },
         ],
         editLink: {
             pattern:
@@ -200,24 +203,7 @@ export default defineConfig({
             }),
         ],
     },
-    transformHtml: (_, id, { pageData }) => {
-        if (!id.endsWith('404.html')) {
-            links.push({
-                // you might need to change this if not using clean urls mode
-                url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-                lastmod: pageData.lastUpdated,
-            })
-        }
-    },
-    buildEnd: ({ outDir }) => {
-        const sitemap = new SitemapStream({
-            hostname: 'https://guide.novelai.dev/',
-        })
-        const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
-        sitemap.pipe(writeStream)
-        links.forEach((link) => sitemap.write(link))
-        sitemap.end()
-    },
+
     head: [
         [
             'script',
@@ -232,4 +218,23 @@ export default defineConfig({
             "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-86153EB058');",
         ],
     ],
+
+    async transformHtml(_, id, { pageData }) {
+        if (!id.endsWith('404.html')) {
+            links.push({
+                // you might need to change this if not using clean urls mode
+                url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+                lastmod: pageData.lastUpdated,
+            })
+        }
+    },
+    async buildEnd({ outDir }) {
+        const sitemap = new SitemapStream({
+            hostname: 'https://guide.novelai.dev/',
+        })
+        const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+        sitemap.pipe(writeStream)
+        links.forEach((link) => sitemap.write(link))
+        sitemap.end()
+    },
 })

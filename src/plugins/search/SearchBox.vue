@@ -9,15 +9,18 @@ const emit = defineEmits(['close'])
 
 const { localePath } = useData()
 
-const metaKey = ref('Ctrl')
 const searchTerm = ref()
 const origin = ref('')
 const input = ref()
 const PREVIEW_LOOKUP = ref()
 const searchIndex = ref()
 
+const indexLoaded = computed(
+    () => !!searchIndex.value && !!PREVIEW_LOOKUP.value
+)
+
 const result = computed(() => {
-    if (searchTerm.value) {
+    if (indexLoaded.value && searchTerm.value) {
         const searchResults = searchIndex.value.search(searchTerm.value, 10)
         const search = []
 
@@ -61,14 +64,13 @@ const GroupBy = (array, func) => {
     }, {})
 }
 
-onMounted(async () => {
+async function loadSearchIndex() {
     const [{ indexData, options }, { previewLookup }] = await Promise.all([
         import('virtual:search-index'),
         import('virtual:search-preview'),
     ])
     PREVIEW_LOOKUP.value = previewLookup
-    origin.value = window.location.origin + localePath.value
-    const document = FlexSearch({
+    const idx = FlexSearch({
         ...options,
         encode: (str) => {
             const filter = options.filter ?? []
@@ -84,16 +86,18 @@ onMounted(async () => {
         },
     })
 
-    document.registry = indexData.reg
-    document.cfg = indexData.cfg
-    document.map = indexData.map
-    document.ctx = indexData.ctx
+    idx.registry = indexData.reg
+    idx.cfg = indexData.cfg
+    idx.map = indexData.map
+    idx.ctx = indexData.ctx
 
-    searchIndex.value = document
+    searchIndex.value = idx
+}
 
-    metaKey.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
-        ? '⌘'
-        : 'Ctrl'
+onMounted(() => {
+    origin.value = window.location.origin + localePath.value
+
+    setTimeout(() => loadSearchIndex(), 0)
 })
 
 function cleanSearch() {
@@ -148,27 +152,32 @@ defineExpose({
                     ref="input" />
             </form>
             <div class="search-list">
-                <div
-                    v-for="(group, groupKey) of GroupBy(
-                        result,
-                        (x) => x.pageTitle
-                    )"
-                    :key="groupKey">
-                    <span class="search-group">
-                        <a :href="group[0].pageLink">{{
-                            groupKey
-                                ? groupKey.toString()[0].toUpperCase() +
-                                  groupKey.toString().slice(1)
-                                : '主页'
-                        }}</a></span
-                    >
-                    <SearchItem
-                        v-for="item in group"
-                        :key="item.id"
-                        :item="item"
-                        :origin="origin"
-                        @click="cleanSearch" />
-                </div>
+                <template v-if="indexLoaded">
+                    <div
+                        v-for="(group, groupKey) of GroupBy(
+                            result,
+                            (x) => x.pageTitle
+                        )"
+                        :key="groupKey">
+                        <span class="search-group">
+                            <a :href="group[0].pageLink">{{
+                                groupKey
+                                    ? groupKey.toString()[0].toUpperCase() +
+                                      groupKey.toString().slice(1)
+                                    : '主页'
+                            }}</a></span
+                        >
+                        <SearchItem
+                            v-for="item in group"
+                            :key="item.id"
+                            :item="item"
+                            :origin="origin"
+                            @click="cleanSearch" />
+                    </div>
+                </template>
+                <template v-else>
+                    <div class="index-loading">正在加载索引...</div>
+                </template>
             </div>
             <div class="DocSearch-Footer">
                 <img class="flex-logo" :src="FlexLogo" alt="flex logo" />
@@ -201,6 +210,13 @@ defineExpose({
     /* font-weight: bold; */
 
     margin-bottom: 0.75rem;
+
+    &.index-loading {
+        margin-top: 2rem;
+        text-align: center;
+        color: var(--docsearch-muted-color);
+        font-size: 1.25rem;
+    }
 }
 
 .DocSearch-MagnifierLabel {
@@ -286,4 +302,5 @@ defineExpose({
     background-color: white;
     border: 1px solid var(--vt-c-brand);
 }
+
 </style>
