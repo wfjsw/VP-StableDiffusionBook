@@ -225,6 +225,13 @@ export default defineConfig({
         ],
     ],
 
+    shouldPreload(link, page) {
+        if (link.includes('virtual_search-preview') || link.includes('virtual_search-index')) {
+            return false
+        }
+        return true
+    },
+
     async transformHtml(_, id, { pageData }) {
         if (!id.endsWith('404.html')) {
             links.push({
