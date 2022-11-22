@@ -176,6 +176,12 @@ export default defineConfig({
         editLink: {
             pattern:
                 'https://github.com/wfjsw/VP-StableDiffusionBook/edit/master/src/:path',
+            text: '提出修改意见',
+        },
+        lastUpdatedText: '修改日期',
+        docFooter: {
+            prev: '上一页',
+            next: '下一页',
         },
     },
     vite: {
