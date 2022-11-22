@@ -232,7 +232,7 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 不想来回设置 Clip？
 
-添加 `sd_hypernetwork` 和 `CLIP_stop_at_last_layers` 到设置页面的`Quicksettings list`，保存并重新启动 webui，你就可以在 UI 顶部看到相应的快速切换选项啦～
+添加 `sd_hypernetwork` 和 `CLIP_stop_at_last_layers` 到设置页面的 `Quicksettings list`，保存并重新启动 webui，你就可以在 UI 顶部看到相应的快速切换选项啦～
 
 ::: tip 需要添加更多快捷设置?
 

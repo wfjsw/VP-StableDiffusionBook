@@ -43,7 +43,7 @@ NovelAI 官方在此处使用 `31337`。
 
 ## CLIP
 
-> CLIP is a very advanced neural network that transforms your prompt text into a numerical representation. Neural networks work very well with this numerical representation and that's why devs of SD chose CLIP as one of 3 models involved in stable diffusion's method of producing images. As CLIP is a neural network, it means that it has a lot of layers. Your prompt is digitized in a simple way, and then fed through layers. You get numerical representation of the prompt after the 1st layer, you feed that into the second layer, you feed the result of that into third, etc, until you get to the last layer, and that's the output of CLIP that is used in stable diffusion. This is the slider value of 1. But you can stop early, and use the output of the next to last layer - that's slider value of 2. The earlier you stop, the less layers of neural network have worked on the prompt.  
+> CLIP 是一个非常先进的神经网络，可以将提示词文字转换为数字表示。神经网络在这种数值上工作得很好，这就是为什么 SD 的开发人员选择 CLIP 作为 Stable Diffusion 生成图像方法中涉及的 3 个模型之一。由于 CLIP 是一个神经网络，这意味着它有很多层。您的提示词以一种简单的方式被数字化，然后经过网络层层处理。在第一层之后得到的运算结果，会输入第二层，结果再输入第三层，等等，直到到达最后一层，这就是 SD 中 CLIP 模型的使用方法。`Stop At last layers of CLIP model` 滑块的默认值是 1，代表通过 CLIP 神经网络的所有运算层。但是您可以提前结束运算，直接使用倒数第二层的输出 - 即滑块值 2。您停止的越早，神经网络在提示词上工作的层数就越少。  
 > <br> > *https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#ignore-last-layers-of-clip-model*
 
 要让 AI 作画，先要让程序“听懂”你的指令，比如
