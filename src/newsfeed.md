@@ -11,6 +11,10 @@
  - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
  - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
 
+## 11/22
+
+- [梯度累积、autocast 修复、新的潜在采样方法等](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4886)
+
 ## 11/19 - 11/22
 * 警惕 `sdupdates6` 可能是假的
 * WebUI 中 Textual inversion 训练的实现有问题，它可以更高效: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4680
@@ -65,7 +69,7 @@
 * Latent-NERF 发布，与 stable-dreamfusion 类似，可产生更多受约束的输出 (?): https://github.com/eladrich/latent-nerf
 * 易于使用的本地安装 SD 版本发布：https://artroom.ai/download-app
 	* 文档: https://docs.equilibriumai.com/artroom
-	* Github: https://github.com/artmamedov/artroom-stable-diffusion
+	* GitHub: https://github.com/artmamedov/artroom-stable-diffusion
 	* Discord: https://discord.com/invite/XNEmesgTFy
 	* https://www.reddit.com/r/StableDiffusion/comments/yxdgps/easytouse_local_install_of_stable_diffusion/
 	* 图片修补、扩充 (使用 runway 模型)，嵌入模型与超网络将在后期更新

@@ -3,7 +3,7 @@
 [官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
 
 ::: tip
-训练时请不要加载VAE。
+训练时请不要加载 VAE。
 
 在启动 webui 前把 "xxx.vae.pt" 重命名为 "xxx.vae.pt.disabled" 或其他名字。
 
@@ -20,7 +20,29 @@ TI 是让 AI 了解 “喜欢” ，而 Apt 让 AI 了解“喜欢”和“不�
 
 https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 
-https://arxiv.org/abs/2211.11337
+[论文地址](https://arxiv.org/abs/2211.11337)
+
+### 简单的小指南
+
+#### DL（APT）准备
+
+1. 关闭--xformers
+2. 设置 Clip skip 调为 1
+
+#### 参数
+
+1. 正向，反向词元 tocken 对比值设定（因人物复杂度由低到高 `(3,6)(4,6)(5,7)(3,10)`)
+2. 学习率 `LR(0.0025,0.003)` 作者范例使用 `0.003`
+3. `CGF = 3`
+4. 宽高比 `512：512`
+5. 迭代步数 `step = 8000 (LR = 0.003)`
+6. 更新后的实验性功能 EMA（正）/EMA（负） 设为 `0.97`
+
+#### 提示
+
+如果生成动漫图片，模型使用 `animefull-latest 7g` 模型，生成可以用 `anything`
+
+> by DreamArtist s author
 
 ## 准备数据集
 
@@ -48,12 +70,12 @@ https://arxiv.org/abs/2211.11337
 1.000 1girl
 0.986 blush
 0.981 long_hair
-0.980 solo 
+0.980 solo
 0.918 japanese_clothes
-0.912 rating:safe 
+0.912 rating:safe
 0.798 bangs
 0.795 wide_sleeves
-0.731 blunt_bangs 
+0.731 blunt_bangs
 0.637 long_sleeves
 0.628 monochrome
 ```
@@ -68,7 +90,6 @@ https://arxiv.org/abs/2211.11337
 
 按下 `Apply setting` 保存设置。
 
-
 ## 创建训练
 
 打开 `train` 选项卡，在 `Create embedding`选项卡新建一个 `embedding` 模型。
@@ -79,12 +100,11 @@ https://arxiv.org/abs/2211.11337
 
 `Name` 输入框输入你预想的出现此人设的 提示词。
 
-`Initialization text` 可以输入 `one girl` 这种大分类，只能填一个，人物可以是1girl或者1boy，或者画风。
+`Initialization text` 可以输入 `one girl` 这种大分类，只能填一个，人物可以是 1girl 或者 1boy，或者画风。
 
 `Number of vectors per token` 是此 `embedding` 要占据的 token 位数量，越多越好，但是相应也会减少其他提示词 token 的位置。
 
 新建，会创建一个在 `embedding` 下的 pt 文件。
-
 
 ## 预处理
 
@@ -96,32 +116,19 @@ https://arxiv.org/abs/2211.11337
 
 选择训练的图片大小，一般 8Gb 显卡使用 `512x512` ，尺寸越大不一定越好。
 
-
 **接下来有四个复选框**
 
-
-> `Create flipped copies` 
-
-勾选后会将图片镜像反转来增加数据量。
-
-> `Use deepbooru caption as filename` 
-
-深度学习识 Tag，勾选后可以训练适用于 NAI 的 `embedding`。 如果你没有这个选项，需要在启动项添加`--deepdanbooru`
-
-Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者直接 `python launch.py --deepdanbooru` 。（如果启动卡住是网络问题）
-
-> `Use BLIP for caption` 
-
-使用 BLIP 模型为文件名添加标题。不太适合二次元图片。
-
-> `Split oversized images into two`
-
-将超大图像一分为二，一般不用。
-
-所以我们勾选 `Use deepbooru caption as filename` 和 `Create flipped copies` 。
-
-点击按钮，等待处理结束。
-
+-   `Create flipped copies`  
+    勾选后会将图片镜像反转来增加数据量。
+-   `Use deepbooru caption as filename`  
+    深度学习识 Tag，勾选后可以训练适用于 NAI 的 `embedding`。 如果你没有这个选项，需要在启动项添加`--deepdanbooru`  
+    Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者直接 `python launch.py --deepdanbooru` 。（如果启动卡住是网络问题）
+-   `Use BLIP for caption`  
+    使用 BLIP 模型为文件名添加标题。不太适合二次元图片。
+-   `Split oversized images into two`  
+    将超大图像一分为二，一般不用。  
+    所以我们勾选 `Use deepbooru caption as filename` 和 `Create flipped copies`。  
+    点击按钮，等待处理结束。
 
 ## 训练
 
@@ -133,7 +140,7 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 `Learning rate` (超参数：学习率)，学习速率代表了神经网络中随时间推移，信息累积的速度，这个参数较大地影响了影响训练的速度。
 
-通常，Learning rate越低学习越慢（花费更长的时间收敛），但是效果一般更好。
+通常，Learning rate 越低学习越慢（花费更长的时间收敛），但是效果一般更好。
 
 一般设置为 0.005，如果想快一些，可以使用 0.01 加快。但是如果设置得太高，梯度下降时候步长太大无法收敛，会且可能会破坏 `embedding`，使得效果达不到预期。如果设置的太小，容易陷入局部最优。目前 TI 支持设置 `0.1:500, 0.01:1000, 0.001:10000` 的学习率，它会按照 `学习率:步数` 进行，如果步数为小数，则代表 `总步数*百分比`。
 
@@ -160,21 +167,19 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 ### 操作
 
-`Preview prompt` 预览，完成后用此提示词生成一张预览。  
-如果为空，将使用来自 prompt 的提示。
-
-`Save a copy of embedding to log directory every N steps, 0 to disable`  
-每 N 步将嵌入的副本保存到日志目录，0 表示禁用。
-
-`Save an image to log directory every N steps, 0 to disable`  
-每 N 步保存一个图像到日志目录，0 表示禁用。
+-   `Preview prompt`  
+    预览，完成后用此提示词生成一张预览。  
+    如果为空，将使用来自 prompt 的提示。
+-   `Save a copy of embedding to log directory every N steps, 0 to disable`  
+    每 N 步将嵌入的副本保存到日志目录，0 表示禁用。
+-   `Save an image to log directory every N steps, 0 to disable`  
+    每 N 步保存一个图像到日志目录，0 表示禁用。
 
 ### 步数
 
 `Max steps` 决定完成多少 `step` 后，训练将停止。
 
 一个 step 是向模型训练一张图片（或一批图片，但目前不支持批量）并用于改进 embedding。如果你中断训练并在以后恢复训练，步数会被保留。
-
 
 角色形象的风格化模型，建议步数为 15000-40000
 
@@ -185,10 +190,10 @@ Windows 需要在 `webui-user.bat` 的 `COMMANDLINE_ARGS=` 一行添加，或者
 
 关键在于 Loss 率，Loss 10 轮不降低就可以停止了。
 
-如果Loss大于 0.3 ，效果就不是很好
+如果 Loss 大于 0.3 ，效果就不是很好
 :::
 
-如果太多会过拟合(可以理解为AI的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
+如果太多会过拟合(可以理解为 AI 的死板)，请随时观察，如果过拟合，可以停止。如果效果不是很好，可以去找早些时候的模型继续训练。**不断调整**找到一个好的效果。
 
 `Save images with embedding in PNG chunks` 是生成一个图片形式的 pt 文件，很方便我们分享嵌入，且其相较于 pt 文件更为安全。~~人物卡~~
 
@@ -243,6 +248,6 @@ Textual Inversion 训练不能训练模型中没有的东西。它对训练照�
 
 除非你试图修复照片，否则请将 `filewords` 用于 style，而不是用于 subject。
 
-[av559085039 - 【AI绘画】AI不认识人物怎么办！强大的Textual Inversion【NovelAI】 @ Bilibili](https://www.bilibili.com/video/av559085039)
+[av559085039 - 【AI 绘画】AI 不认识人物怎么办！强大的 Textual Inversion【NovelAI】 @ Bilibili](https://www.bilibili.com/video/av559085039)
 
 [官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)

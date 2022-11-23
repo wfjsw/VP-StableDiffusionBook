@@ -252,7 +252,7 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 转到设置并单击 `Download localization template` 底部的按钮，下载一个可以编辑的本地化模板。
 
-### 共享链接
+### 实例共享
 
 #### 托管分享页
 
@@ -289,6 +289,8 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 注意，监听 `0.0.0.0` 意味着对本地网卡所有 IPv4 监听，局域网访问请使用对应 IP 地址。
 
+使用 `--listen` 会启用默认的安全保护设置，插件功能会失效，需要使用 `--enable-insecure-extension-access` 开启。
+
 #### 修改监听端口
 
 参数 `--port xxxx` 使服务器监听特定端口。
@@ -296,10 +298,6 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 对于 Linux 系统，如需监听低于 `1024` 的任何端口，程序需要以 `root` 权限运行或授权 `CAP_NET_BIND_SERVICE` 能力，因此建议使用高于 `1024` 的端口。
 
 默认端口为 `7860`。
-
-#### 主题
-
-添加 `--theme` 参数来切换主题。
 
 ### 自定义运行
 
@@ -376,7 +374,11 @@ nvidia-smi
 
 [讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/3889) 中有人认为，通过在 Windows 设置上禁用硬件加速 GPU 调度，WebUI 性能提高了大约 10-50%
 
-### API
+#### 主题
+
+添加 `--theme` 参数来切换主题。
+
+#### API
 
 见 [API](../../advanced/development/api.md)。
 
@@ -511,7 +513,7 @@ Windows 7 上运行很可能会报错: `api-ms-win-core-path-l1-1-0.dll is missi
 
 如果没有出现该错误，不需要执行下面的操作。
 
-这些文件已经被移植来与 Windows 7 兼容，并且可以在 [这里](https://github.com/nalexandru/api-ms-win-core-path-HACK/releases/download/0.3.1/api-ms-win-core-path-blender-0.3.1.zip) 下载。它的 [Github 页面](https://github.com/nalexandru/api-ms-win-core-path-HACK/)
+这些文件已经被移植来与 Windows 7 兼容，并且可以在 [这里](https://github.com/nalexandru/api-ms-win-core-path-HACK/releases/download/0.3.1/api-ms-win-core-path-blender-0.3.1.zip) 下载。它的 [GitHub 页面](https://github.com/nalexandru/api-ms-win-core-path-HACK/)
 
 解压缩并将 `x86.dll` 复制到 `C:\Windows\SysWOW64` ，将 `x64.dll` 复制到 `C:\Windows\System32` 并重启。
 

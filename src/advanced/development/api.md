@@ -10,6 +10,8 @@
 set COMMANDLINE_ARGS=--api
 ```
 
+想要在启用 API 的同时使用插件，追加`--enable-insecure-extension-access`。
+
 ## 使用 API
 
 在浏览器访问 `{WebUI 启动网址}/docs` (如 http://127.0.0.1:7860/docs) 就可以查看到 WebUI 的 [API](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/master/modules/api) 文档。

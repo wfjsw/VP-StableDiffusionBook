@@ -1,86 +1,19 @@
 # 杂项
 
-## 参数
-
-为什么不去 [这里](https://danbooru.donmai.us/wiki_pages/howto%3Atag_checklist) 看[原始数据站点](https://danbooru.donmai.us/wiki_pages/tag_groups)的参数呢？
-
-[E 站标签翻译项目](https://github.com/EhTagTranslation)
-
-### NAI 在使用的出图参数
-
-- 使用全量模型(官方的GPU云特别强悍)
-- CLIP layer = 2
-- 使用 ema 权重加载，将yaml 配置其中的 `use_ema` 设置为 true
-- 将 ` sigma noise/strength` 重置为默认值 1
-- 设定 `eta noise seed delta` 为 31337（使 ` sigma noise/strength` 无需使用 0.69 / 0.67）
-- 如果 prompt 有权重，转换权重（ WebUI 占比 1.1 ，NAI 占比 1.05）
-- 使用 `--no-half` 参数启动程序（次要）
-
-**NAI 默认的模型设置**
-
-```
-steps": 28, "sampler": "[sampler]", "seed": [seed], "strength": 0.69, "noise": 0.667, "scale": 11.0,
-
-Strength ，noise 是 eta 和 sigma
-
-scale 就是 CFG scale
-```
-
-**NAI 默认的 `SFW` 消极提示词为**
-
-```
-lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry
-```
-
-**其他**
-
-将所有提示词前面加入 `masterpiece, best quality`
-
-Clip 跳过 0，其他一切都很好（afaik 不要使用超网络、v2、yaml、VAE）
-
-### 转换 —— NAI 和 WebUI 的增强语法差异
-
-**Prompts 参数括号转换**
-
-在 NAI 和 Webui 之间转换加强参数，相关的机器人服务 [M2NM2NBot](https://t.me/M2NM2NBot)
-
-相关的 [网页JS](https://github.com/naisd5ch/novel-ai-5ch-wiki-js)
-
-权重增强标识：NAI 是 `{}` ，WebUI(SD) 是 `()`
-
-
-### 元素法典
-
-元素法典提供了一个即查即用的模板库(类比作文大全)，里面有Tag的调试记录，方便快捷。
-
-[元素法典一卷](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs)
-
-[元素法典第一点五卷](https://docs.qq.com/doc/DWGh4QnZBVlJYRkly)
-
-[元素法典制作委员会](https://space.bilibili.com/1981251194)
-
-
 ### 良好参数(风格趋向插画)
 
 ```
 an extremely delicate and beautiful
 ```
 
-[绘画媒介全分类](https://danbooru.donmai.us/wiki_pages?commit=Search&search%5Btitle_normalize%5D=%2A_%28medium%29)
-
-[动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
-
-[风格化：人偶教室](https://www.yuque.com/longyuye/lmgcwy)
-
-[风格化，日语Wiki](https://seesaawiki.jp/nai_ch/d/%b2%e8%c9%f7%a1%a6%b9%bd%bf%de)
-
-[风格化: 32种](https://www.bilibili.com/video/BV1TP411N71t/)
-
-[艺术家列表/SD1.4](https://rentry.org/artists_sd-v1-4)
-
-[艺术家列表/SD1.4/1,833 位艺术家](https://www.urania.ai/top-sd-artists)
-
-[艺术家博物馆](https://gallerix.asia/storeroom/)
+- [绘画媒介全分类](https://danbooru.donmai.us/wiki_pages?commit=Search&search%5Btitle_normalize%5D=%2A_%28medium%29)
+- [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
+- [风格化：人偶教室](https://www.yuque.com/longyuye/lmgcwy)
+- [风格化，日语Wiki](https://seesaawiki.jp/nai_ch/d/%b2%e8%c9%f7%a1%a6%b9%bd%bf%de)
+- [风格化: 32种](https://www.bilibili.com/video/BV1TP411N71t/)
+- [艺术家列表/SD1.4](https://rentry.org/artists_sd-v1-4)
+- [艺术家列表/SD1.4/1,833 位艺术家](https://www.urania.ai/top-sd-artists)
+- [艺术家博物馆](https://gallerix.asia/storeroom/)
 
 #### 草图风格
 
@@ -226,23 +159,15 @@ an extremely delicate and beautiful
 
 ## 提示词速查
 
-**[手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)**
-
-**[Danbooru 全部 Tag 列表](https://gelbooru.com/index.php?page=tags&s=list)**
-
-**[参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)**
-
-**[Tag在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)**
-
-**[NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)**
-
-**[AI 艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)**
-
-**[Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)**
-
+- [手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)
+- [Danbooru 全部 Tag 列表](https://gelbooru.com/index.php?page=tags&s=list)
+- [参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)
+- [Tag在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)
+- [NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)
+- [AI 艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
+- [Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)
 
 ## 调参工程师
 
-[https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
-
-[https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)
+- [https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
+- [https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)

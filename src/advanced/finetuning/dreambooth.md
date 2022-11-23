@@ -35,8 +35,6 @@ Windows 系统的显存至少需要 16GB, Linux 系统要求显存至少为 8GB
 
 如果你选择使用 AutoDL 的镜像，需要把 `dreambooth-for-diffusion` 文件夹移到 `autodl-tmp`（数据盘）中，且确保当前运行路径为 `dreambooth-for-diffusion`，具体操作细节在 [知乎教程](https://zhuanlan.zhihu.com/p/584736850) 中有图文说明。
 
-启用 `prior_preservation` 以开始 DreamBooth 训练。`prior_loss_weight` 越低则越难过拟合，但是也越难学到东西。
-
 ### 模型转换
 
 在各个笔记本或镜像中都会有以下类型命令，作用是将 `ckpt` 模型转换为 `diffusers` 权重格式来训练。
@@ -171,20 +169,21 @@ accelerate launch $TRAINER \
     DreamBooth 本身具有十分强烈的 copy and paste 效果。使用 class/regularization 可以适当压制该效果。
 -   use_txt_as_label  
     是否读取与图片同名的 txt 文件作为 label。该选项会忽略 `instance_prompt` 参数传入的内容。通常在风格训练中使用。
-
-*   center_crop  
+-   center_crop  
     脚本自带的裁切图片选项，建议自己裁成正方形的哦。
-*   resolution  
+-   resolution  
     图片的分辨率（一般为 512)，定义此参数会缩放图像。
-*   max_train_steps  
+-   max_train_steps  
     训练的最大步数，一般是 1000，如果你的数据集比较大，那么可以适当增大该值。
     训练步数的选择一般来说是，训练步骤 =（参考图像 x 100）
-*   save_model_every_n_steps  
+-   save_model_every_n_steps  
     每多少步保存一次模型，方便查看中间训练的结果找出最优的模型，也可以用于从检查点恢复上一次的训练结果（colab 笔记本用户注意挂载到云盘中）。
-*   lr_scheduler  
+-   lr_scheduler  
     学习率调节器，可选有 `constant, linear, cosine, cosine_with_restarts, cosine_with_hard_restarts`
-*   with_prior_preservation  
-    禁用来开启 Native Training
+-   with_prior_preservation  
+    启用 prior_preservation 以开始 DreamBooth 训练，禁用来开启 Native Training。
+-   prior_loss_weight  
+    越低则越难过拟合，但是也越难学到东西。
 
 #### 关键说明
 
@@ -196,20 +195,21 @@ accelerate launch $TRAINER \
 #### 解释 Instance Prompt / Class Prompt
 
 -   Instance Prompt  
-    默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的，即 DreamBooth (original paper method)。
+    默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的，即 DreamBooth (original paper method)。  
     但是，当你的训练目标增多之后此参数不再适用，可以开启 `combine_prompt_from_txt` 选项，为每个 instance 准备一个 prompt （通常为 txt) 即为 DreamBooth (alternative method). Instance Prompt 之中应该包含一个唯一标识符 `[V]`
     instance prompt 会被处理为类似 `photo of a cute person`
 -   Class Prompt  
-    无需过分关心，是自动生成出来的，建议从其他支持 CLIP SKIP 2 的推理前端单独生成好之后丢到 class img 集内，同样可以从独立的 txt 中读取内容。
+    无需过分关心，是自动生成出来的，建议从其他支持 CLIP SKIP 2 的推理前端单独生成好之后丢到 class img 集内，同样可以从独立的 txt 中读取内容。  
     class prompt 会用来生成一类图片，被处理为类似 `photo of a person`
 
-*   示例
-    -   训练人物的示例
-        -   Instance prompt: `masterpiece, best quality, sks 1girl, aqua eyes, aqua hair`
-        -   Class prompt: `masterpiece, best quality, 1girl, aqua eyes, aqua hair`
-    -   训练风格的示例
-        -   Instance prompt: `1girl, by sks`
-        -   Class prompt: `1girl`
+示例：
+
+-   训练人物的示例
+    -   Instance prompt: `masterpiece, best quality, sks 1girl, aqua eyes, aqua hair`
+    -   Class prompt: `masterpiece, best quality, 1girl, aqua eyes, aqua hair`
+-   训练风格的示例
+    -   Instance prompt: `1girl, by sks`
+    -   Class prompt: `1girl`
 
 #### 关于 `[V]`
 

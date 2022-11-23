@@ -25,13 +25,13 @@ outline: [2, 4]
 #### 服务
 
 - [WebUI：为Krita插件等添加自定义后端API](https://github.com/Interpause/auto-sd-paint-ext)
-- [Danbooru 标签超市](https://tags.novelai.dev/),[项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)
-- [SDWebUI自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
+- [Danbooru 标签超市](https://tags.novelai.dev/) ([项目地址](https://github.com/wfjsw/danbooru-diffusion-prompt-builder))
+- [SDWebUI 自动补全]( https://github.com/DominikDoom/a1111-sd-webui-tagcomplete)
 - [标签提词器](https://thereisnospon.github.io/NovelAiTag/)
 - [参数转换-M2NM2NBot](https://t.me/M2NM2NBot)
-- [参数转换 - Js项目](https://naisd5ch.github.io/novel-ai-5ch-wiki-js/)
-- [WANDB-MLOps平台](https://wandb.ai/site)
-- [MD设计标签选择](https://aispells.art/)
+- [参数转换 - Js 项目](https://naisd5ch.github.io/novel-ai-5ch-wiki-js/)
+- [WANDB-MLOps 平台](https://wandb.ai/site)
+- [MD 设计标签选择](https://aispells.art/)
 
 ### 提示词相关
 
@@ -43,26 +43,27 @@ outline: [2, 4]
 - [参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)
 - [Tag在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)
 - [元素法典](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs)
+- [绘世法师见闻录](https://docs.qq.com/doc/DR0d3aEdzSmxORE5w)
 - [图像合成风格研究数据库](https://docs.google.com/spreadsheets/d/14xTqtuV3BuKDNhLotB_d1aFlBGnDJOY0BRXJ8-86GpA/edit#gid=0)
 - [StableDiffusion Show](https://t.me/StableDiffusion_Show)
 - [E 站标签翻译项目](https://github.com/EhTagTranslation)
 
 ### 文档
 
-- **[SD资源金矿](https://rentry.org/sdupdates)**
+- **[SD 资源金矿](https://rentry.org/sdupdates)**
 - [Notion：关于人工智能艺术](https://proximacentaurib.notion.site/proximacentaurib/parrot-zone-74a5c04d4feb4f12b52a41fc8750b205)
-- [WebUI使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
+- [WebUI 使用手册](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features)
 - [NovelAI 5ch Wiki](https://seesaawiki.jp/nai_ch/)
 - [Voldy Retard Guide](https://rentry.co/voldy)
 - [一个小指南：RedditAbout](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)
-- [WebUI自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
-- [SD相关的Faq](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
+- [WebUI 自定义脚本](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts)
+- [SD 相关的 FAQ](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)
 - [为文字转图像AI提示编写指南：A Guide to Writing Prompts for Text-to-image AI](https://docs.google.com/document/d/1XUT2G9LmkZataHFzmuOtRXnuWBfhvXDAo8DkS--8tec/edit#)
 - [AI Art Learning Hub](https://mashonoid.notion.site/AI-Art-Learning-Hub-b6bb69fc249847438602ee11d3a89fa0)
 - [日本社区？那边出的教程](https://rentry.co/zk4u5)
-- [novelai对Sd的优化日志](https://blog.novelai.net/novelai-improvements-on-stable-diffusion-e10d38db82ac)
+- [novelai 对 Sd 的优化日志](https://blog.novelai.net/novelai-improvements-on-stable-diffusion-e10d38db82ac)
 - [火药教程](https://rentry.org/stablediffgpubuy)
-- [WebUI的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
+- [WebUI 的鼠标悬浮提示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/javascript/hints.js)
 - [匿名者的绘画技巧/nsfw](https://rentry.org/inpainting-guide-SD)
 - [梦想家指南](https://stablediffusionguides.carrd.co/#)
 
@@ -70,7 +71,7 @@ outline: [2, 4]
 
 - [绘画媒介全分类](https://danbooru.donmai.us/wiki_pages?commit=Search&search%5Btitle_normalize%5D=%2A_%28medium%29)
 - [艺术家博物馆](https://gallerix.asia/storeroom/)
-- [AI艺术家文档——深入了解](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
+- [AI 艺术家文档——深入了解](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
 - [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
 - [风格化：人偶教室](https://www.yuque.com/longyuye/lmgcwy)
 - [风格化，日语Wiki](https://seesaawiki.jp/nai_ch/d/%b2%e8%c9%f7%a1%a6%b9%bd%bf%de)
@@ -80,7 +81,7 @@ outline: [2, 4]
 
 ### 社区
 
-- [StableDiffusion_Github_discussions](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions)
+- [StableDiffusion WebUI Discussions](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions)
 - [AIBooru](https://aibooru.online/)
 - [中文社区 StableDiffusion_CN](https://t.me/StableDiffusion_CN/)
 - [Reddit](https://www.reddit.com/r/StableDiffusion/)
@@ -99,12 +100,13 @@ outline: [2, 4]
 - [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
 - [HuggingFace 的e mbeddings 库，仅适用原版SD](https://cyberes.github.io/stable-diffusion-textual-inversion-models/) 
 - [stable-diffusion-conceptualizer](https://huggingface.co/spaces/sd-concepts-library/stable-diffusion-conceptualizer)
-- [(NSFW)embeddings 风格化](https://gitlab.com/16777216c/stable-diffusion-embeddings)
+- [(NSFW) embeddings 风格化](https://gitlab.com/16777216c/stable-diffusion-embeddings)
 - [list of Textual Inversion embeddings for SD](https://rentry.org/embeddings)
 
 ### 模板库
 
-[元素法典](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs?dver=) 来自 [元素法典制作委员会](https://space.bilibili.com/1981251194)
+- [元素法典](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs?dver=) 来自 [元素法典制作委员会](https://space.bilibili.com/1981251194)
+- [绘世法师见闻录](https://docs.qq.com/doc/DR0d3aEdzSmxORE5w)
 
 ### 数据集
 
