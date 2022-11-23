@@ -401,7 +401,7 @@ lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer
 parser.add_argument("--freeze-settings", action='store_true', help="disable editing settings", default=False)
 ```
 
-有网友称，最近发布的的 Stable diffusion 1.5 偏向 *三次元* 一些。
+有网友称，最近发布的的 Stable Diffusion 1.5 偏向 *三次元* 一些。
 
 WebUI 增加了俄语翻译，添加了 img2img API。
 
