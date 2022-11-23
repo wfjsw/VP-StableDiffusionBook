@@ -1,6 +1,6 @@
 # Textual Inversion
 
-[官方Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
+[官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
 
 ::: tip
 训练时请不要加载VAE。
@@ -10,13 +10,17 @@
 在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是将 VAE 模型从显存转移到内存，而非卸载，
 :::
 
+![Textual_Inversion](../../assets/203366251-ae0ae585-8492-4970-ac9a-5ccf14a1897c.webp)
+
 ## Apt/DreamArtist
 
-TI 是让 Ai 了解 “喜欢” ，而 Apt 让 AI 了解“喜欢”和“不喜欢”。
+TI 是让 AI 了解 “喜欢” ，而 Apt 让 AI 了解“喜欢”和“不喜欢”。
 
 所以是一种高效的 Textual Inversion
 
 https://github.com/7eu7d7/DreamArtist-sd-webui-extension
+
+https://arxiv.org/abs/2211.11337
 
 ## 准备数据集
 

@@ -91,7 +91,13 @@ export default defineConfig({
             '/advanced/': [
                 {
                     text: '进阶深入',
-                    items: [{ text: '前言', link: '/advanced/' }],
+                    items: [
+                        { text: '前言', link: '/advanced/' },
+                        {
+                            text: '识别 AI 作品',
+                            link: '/advanced/identify',
+                        },
+                    ],
                 },
                 {
                     text: '提示词工程学',

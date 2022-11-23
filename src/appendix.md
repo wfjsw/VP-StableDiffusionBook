@@ -171,9 +171,17 @@ NAI 模型使用 Danbooru2021 的数据，而 Danbooru2022 还未训练(个人�
 
 以后就是大公司的对弈了。
 
-### Ps插件
+### Ps 插件
 
 不确定是否安全的 [插件](https://internationaltd.github.io/defuser/)
+
+### 扩展
+
+[SD GUIDE FOR ARTISTS AND NON-ARTISTS](https://docs.google.com/document/d/1R2UZi5G-DXiz2HcCrfAFLYJoer_JPDEoZmV7wy1tEz0/edit#)
+
+[cs231n](https://cs231n.github.io/)
+
+[cs228](https://ermongroup.github.io/cs228/)
 
 ## 关于文档
 
@@ -192,43 +200,27 @@ NAI 模型使用 Danbooru2021 的数据，而 Danbooru2022 还未训练(个人�
 
 引用的开源教程.
 
-- 图标提供
-  - https://fonts.google.com/icons
-  - https://fontawesome.com/icons
-- 编辑器
-  - 图表格式化 https://mdformatter.dswwsd.net/
-  - 网页表格转MarkDown https://markdown.lovejade.cn/
-  - 石墨编辑器 https://editor.graphite.rs/
-- 文档写作指导
+### 图标提供
+
+- https://fonts.google.com/icons
+- https://fontawesome.com/icons
+
+### 编辑器
+
+- [图表格式化](https://mdformatter.dswwsd.net/)
+- [网页表格转MarkDown](https://markdown.lovejade.cn/)
+- [石墨编辑器](https://editor.graphite.rs/) 
+- [Markdown Padding](https://harttle.land/md-padding/)
+
+### 文档写作指导
   - [技术文档写作的道与术](https://juejin.cn/post/6844904025247186952)
   - [16 怎样才能写好项目文档？](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%BE%8E/16%20%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E5%86%99%E5%A5%BD%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3%EF%BC%9F.md)
 
-**由以下服务商托管运行**
+### 托管
 
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-black?style=flat&logo=CloudflarePages&logoColor=Orange)
 
-## 碎言
 
-[av559362671 - 【AI绘图】画师不是AI的附庸！手绘+AI辅助展示！StableDiffusion/NOVELAI辅助角色立绘设计最详细分享！ @ Bilibili](https://www.bilibili.com/video/av559362671)
+### 关于 Danbooru 标签翻译项目
 
-模型中没有存储任何素材，[算法实现](https://zhuanlan.zhihu.com/p/572986232)，目前的版权还很模糊。
-
-AI 根本不能替代人工的精细需求，只能替代低端需求(细节没AI多的那种)
-
-AI 作为一种 高级笔刷 ，节省了小工作室和个人的成本，但是会 ~~导致低端美术市场的需求缩水~~ AI在细节方面很弱，画背景倒是省事。
-
-AI 本质上它不能替代人的创意性，让人眼前一亮的图片也无非是静物的绘制。
-
-[av731418335 - AI上线画师下岗？即将到来的焦虑时代 @ Bilibili](https://www.bilibili.com/video/av731418335)
-
-[av646853859 - AI绘画正在淘汰人类？火遍全网的NovelAI是如何发展至今的【AI进化论01】 @ Bilibili](https://www.bilibili.com/video/av646853859)
-
-[av219246962 - CVPR破圈/NovelAi权重泄露/绘圈集体破防/伪教程与latent diffusion模型分析 # 炼丹人震惊/简单吐槽 @ Bilibili](https://www.bilibili.com/video/av219246962)
-
-另外，欢迎参与文档编写和文档备份。
-
-#### 关于对 Danbooru 标签翻译项目的碎碎念
-
-[在线文档](https://t.bilibili.com/720572354272428097)开展的结果是 `此文档违反XX文档社区公约，暂时无法查看，请所有者联系平台申诉`
-
-个人认为参考 [EhTagTranslation](https://github.com/EhTagTranslation) [Web页面提交翻译](https://ehtt.vercel.app/list/all)，可以提供 Json 化的数据，便于接入和展开，是一个更好的选择。
+建议参考 [EhTagTranslation](https://github.com/EhTagTranslation) [Web页面提交翻译](https://ehtt.vercel.app/list/all)，可以提供 Json 化的数据，便于接入和展开，是更好的选择。

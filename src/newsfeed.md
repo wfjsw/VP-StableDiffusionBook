@@ -11,6 +11,35 @@
  - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
  - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
 
+## 11/19 - 11/22
+* 警惕 `sdupdates6` 可能是假的
+* WebUI 中 Textual inversion 训练的实现有问题，它可以更高效: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4680
+	* Pull Request: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4886
+	* 与 Hypernetworks 相关的 PR: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4509
+* 支持 safetensors 的 PR，比原先的 pt、ckpt 加载更快、更安全: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4930
+	* 另一个: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4869
+* HuggingFace 与 Pytorch 合作使得基于 transformers 的模型演算地更快 (4.5 倍的速度提升): https://twitter.com/huggingface/status/1594783600855158805
+	* https://twitter.com/PyTorch/status/1594766050851102720
+	* 文档: https://huggingface.co/docs/optimum/bettertransformer/overview
+* SceneComposer：约翰霍普金斯大学和 Adobe 发布的基于语义的图像合成（可以指定某些提示词对应物体的位置）: https://zengyu.me/scenec/
+	* 文本 -> 勾画物体在图片的位置，可以调整精度 -> 把东西画在你想让他出现的位置 -> 可以用更多遮罩来细化
+	* 演示: https://zengyu.me/scenec/resources/demo_video.mp4
+	* Git: https://github.com/zengxianyu/scenec
+	* 论文: https://arxiv.org/abs/2211.11742
+* Magic3D (文本转 3D) 由 NVIDIA 发布: https://deepimagination.cc/Magic3D/
+	* 使用文本创建 3D 网格模型
+* 纯 pytorch 的 deepdanbooru 实现发布: https://github.com/AUTOMATIC1111/TorchDeepDanbooru
+	* AUTOMATIC1111 在考虑是从 webui 中删除 tensorflow 版本还是保留两者。他更喜欢前者。
+* WebUI 检查提示词相似度的插件: https://gitlab.com/azamshato/simula
+* CLIPSeg demo (使用文字修补): https://huggingface.co/spaces/nielsr/text-based-inpainting
+	* 文字转遮罩 (当前 webui 插件): https://github.com/ThereforeGames/txt2mask
+* (近期更新) Prompt travel: https://github.com/Kahsolt/stable-diffusion-webui-prompt-travel
+* Accelerate 启动器实现: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4527
+	* https://huggingface.co/docs/accelerate/index
+* 自动发布 4chan: https://rentry.org/promptchan
+* Anime NYK 与 Anime LA 封禁 AI 作品: https://www.artnews.com/art-news/news/anime-conventions-ban-ai-art-1234647165/
+* Midjourney x Spellbrush https://nijijourney.com/ (midjourney 但是二次元)
+
 ## 11/19
 
 * AUTOMATIC1111 webui 更新了，建议及时 `git pull`
@@ -26,7 +55,7 @@
 
 - [逆向思维修复手](https://twitter.com/needle/status/1593428231901700101)
 
-## 11/14+11/15+11/16+11/17+11/18
+## 11/14 - 11/18
 
 * 面向 CPU、GPU、加速器和异构集群的高性能机器学习和数据分析方法发布 (不确定安全性): https://github.com/nod-ai/SHARK
 * Safetensors，一种安全的模型存储方式，比 Pytorch 自带的方式快很多: https://huggingface.co/docs/safetensors/speed
@@ -64,7 +93,7 @@
   - https://lumendatabase.org/notices/29484955
   - https://lumendatabase.org/notices/29484957
 
-## 11/13+11/14
+## 11/13 + 11/14
 
 * 防 img2img 水印: https://github.com/MadryLab/photoguard
 	* 看起来类似: https://github.com/ShieldMnt/invisible-watermark
@@ -74,7 +103,7 @@
 	* 需要做的修改: https://rentry.org/wf7pv
 * 用于使用 Diffusers、Hivemind 和 Pytorch Lightning 训练稳定扩散模型的存储库发布了 (有人说他们的博客提到对 NAI 模型进行微调有正向效果): https://github.com/Mikubill/naifu-diffusion
 
-## 11/11+11/12
+## 11/11 + 11/12
 
 * 中文开源 SD 模型发布: https://huggingface.co/IDEA-CCNL/Taiyi-Stable-Diffusion-1B-Chinese-v0.1
 	* 让它与 AUTOMATIC1111 的 WebUI 一起工作（可能）: https://github.com/IDEA-CCNL/stable-diffusion-webui/commit/61ece0cec1097ab8f5e2b52c8d340ca203c5917b
