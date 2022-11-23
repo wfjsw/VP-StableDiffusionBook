@@ -66,8 +66,9 @@ const parseMdContent = (mdCode, path) => {
         (i) => i.trim() !== '' && !i.startsWith('---')
     )
     const mdData = cleaning.flatMap((i) => {
-        let content = i.split(/\n|。|；|？|！/)
-        let anchor = content?.shift() || ''
+        const nlIndex = i.indexOf('\n')
+        let content = i.split(/(?<=\.|:|;|\?|!|。|：|；|？|！)|\n/).map(n => n.trim()).filter(n => n.length > 0)
+        let anchor = i.slice(0, nlIndex > -1 ? nlIndex : i.length) || ''
         return content
             .map((c) =>
                 c
@@ -101,7 +102,12 @@ const buildDoc = (mdDoc, id) => {
             .replaceAll(' ', '-')
             .replaceAll('/', '-')
             .toLowerCase()
-        link += `#${normalized}`
+        
+        if (normalized.match(/^[0-9]/)) {
+            link += `#_${normalized}`
+        } else {
+            link += `#${normalized}`
+        }
     }
 
     return {
