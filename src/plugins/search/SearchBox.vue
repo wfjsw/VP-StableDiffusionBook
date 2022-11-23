@@ -74,9 +74,18 @@ async function loadSearchIndex() {
         ...options,
         encode: (str) => {
             const filter = options.filter ?? []
-            const eng = Array.from(
-                str.toLowerCase().matchAll(/[a-z0-9]+/gi)
-            ).map((n) => n[0])
+            const stemmer = options.stemmer
+                ? Object.entries(options.stemmer)
+                : []
+
+            const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
+                .map(n => n[0])
+                .map(n => {
+                    for (const [key, value] of stemmer) {
+                        if (n.endsWith(key)) return n.slice(0, -key.length) + value
+                    }
+                    return n
+                })
             const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
             return eng
                 .concat(chs)
