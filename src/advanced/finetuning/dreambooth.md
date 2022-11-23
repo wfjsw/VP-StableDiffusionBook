@@ -44,7 +44,7 @@ Windows 系统的显存至少需要 16GB, Linux 系统要求显存至少为 8GB
 #### 训练前示例
 
 ```bash
-python diffusers\scripts\convert_original_stable_diffusion_to_diffusers.py  --checkpoint_path model.ckpt --original_config_file v1-inference.yaml  --scheduler_type ddim  --dump_path models/diffusers_model
+python diffusers/scripts/convert_original_stable_diffusion_to_diffusers.py  --checkpoint_path model.ckpt --original_config_file v1-inference.yaml  --scheduler_type ddim  --dump_path models/diffusers_model
 ```
 
 #### 训练后示例
@@ -52,7 +52,7 @@ python diffusers\scripts\convert_original_stable_diffusion_to_diffusers.py  --ch
 训练完成后，打包转换为 ckpt 即可用于各种 UI 中。
 
 ```bash
-python diffusers\scripts\convert_diffusers_to_original_stable_diffusion.py  --model_path models/resultModel  --checkpoint_path result.ckpt  --half
+python diffusers/scripts/convert_diffusers_to_original_stable_diffusion.py  --model_path models/resultModel  --checkpoint_path result.ckpt  --half
 ```
 
 ### 数据集
@@ -197,7 +197,7 @@ accelerate launch $TRAINER \
 
 -   Instance Prompt  
     默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的，即 DreamBooth (original paper method)。
-    但是，当你的训练目标增多之后此参数不再适用，可以开启 `combine_prompt_from_txt` 选项，为每个 instance 准备一个 prompt （通常为 txt) 即为 DreamBooth (alternative method). Instance Prompt 之中应该包含一个唯一标识符 [V]
+    但是，当你的训练目标增多之后此参数不再适用，可以开启 `combine_prompt_from_txt` 选项，为每个 instance 准备一个 prompt （通常为 txt) 即为 DreamBooth (alternative method). Instance Prompt 之中应该包含一个唯一标识符 `[V]`
     instance prompt 会被处理为类似 `photo of a cute person`
 -   Class Prompt  
     无需过分关心，是自动生成出来的，建议从其他支持 CLIP SKIP 2 的推理前端单独生成好之后丢到 class img 集内，同样可以从独立的 txt 中读取内容。
@@ -211,21 +211,21 @@ accelerate launch $TRAINER \
         -   Instance prompt: `1girl, by sks`
         -   Class prompt: `1girl`
 
-#### 关于 [V]
+#### 关于 `[V]`
 
 | What your training set is about | Instance prompt must contain | Class prompt should describe                   |
 | ------------------------------- | ---------------------------- | ---------------------------------------------- |
 | A object/person                 | `[V]`                        | The object's type and/or characteristics       |
 | A artist's style                | `by [V]`                     | The common characteristics of the training set |
 
-[V] 是 CLIP 词汇表中的标记，对模型没有意义。
+`[V]` 是 CLIP 词汇表中的标记，对模型没有意义。
 
 假设你想训练的人物叫做 `[N]`（比如 `balabalabala 先生`) , 你不应该直接使用 `[N]`(`balabalabala 先生`) 作为代表特征词。
 推荐使用在 [该词汇表](https://huggingface.co/openai/clip-vit-large-patch14/raw/main/vocab.json) 中存在但是没有对应概念或者说对应概念不明显的词 `[V]`（比如 `bala`)。
 
 长长的名称很可能被分离为多个标记，会得不到预期效果。标记的分离情况具体可在 [NovelAI Tokenizer](https://novelai.net/tokenizer) 验证。
 
-最后代表 [V] 的提示将携带模型学到的新东西，你就可以在生成时使用你设定的 [V] 了。
+最后代表 `[V]` 的提示将携带模型学到的新东西，你就可以在生成时使用你设定的 `[V]` 了。
 
 > 注：原论文中使用的示例词 `sks` 和现实中的枪械 [SKS](https://en.wikipedia.org/wiki/SKS) 相同，属于不适合被使用的词汇。但是如果你的训练程度足够高的话说不定可以覆写其影响。
 
@@ -248,9 +248,9 @@ Native Training 为原生训练，与 DreamBooth 不同的是，Native Training 
 在此训练中没有 Instance/Class Image 之分，所有的图像都会被用于训练。但是你需要为每个图准备一个 Instance Prompt, 就像传统的 hypernetwork 一样同文件名称，通常为 txt。
 
 ::: tip 关于这个 Txt
-对于数据集中的每张图片（[X].png/[X].jpg），再放一个包含相应提示的 [X].txt。然后设置 `READ_PROMPT_FROM_TXT`（ `--use_txt_as_label` ）。Both train set and class set supports this.
+对于数据集中的每张图片（`[X].png`/`[X].jpg`），再放一个包含相应提示的 `[X].txt`。然后设置 `READ_PROMPT_FROM_TXT`（ `--use_txt_as_label` ）。Both train set and class set supports this.
 
-从 txt [PX] 中读取的提示将被插入到你在训练参数中设置的提示 [P] 中。默认情况下，它的插入方式是 [PX][p]。
+从 txt `[PX]` 中读取的提示将被插入到你在训练参数中设置的提示 `[P]` 中。默认情况下，它的插入方式是 `[PX][p]`。
 
 在启用 Variable Prompts 和禁用先前保存损失 (PRIOR_PRESERVATION) 的情况下，训练过程实际上等同于标准微调。
 :::
@@ -269,9 +269,9 @@ Native Training 需要较多的数据集，但这个量众说纷纭，大约在 
 
 使用 `--train_text_encoder` 后，Dreambooth 训练会额外训练文本编码器。
 
-有玄学说法是在达到训练的某个百分比/epoch/step 之后应该关闭以防止过度玩坏。
+有玄学说法是在达到训练的某个 百分比/epoch/step 之后应该关闭以防止过度玩坏。
 
--   你一开始写的 instance prompt 要长一些，概括你的训练目标 （但是又不要太长，不要覆盖你常用的词） （像是 girl 我会换成 woman, 1boy 换成 male)
+-   你一开始写的 instance prompt 要长一些，概括你的训练目标 （但是又不要太长，不要覆盖你常用的词） （像是 `girl` 我会换成 `woman`, `1boy` 换成 `male`)
 -   第一，text prompt 读进去是寄。因为词数太多了影响分散，效果不明显。
 -   第二，instance prompt 不能只填一个 `[V]` 否则那个词也废掉了。
 -   试着大火爆炒
@@ -323,7 +323,7 @@ concepts_list = [
 
 > 有些脚本提供 `--half` 参数用来保存 float16 半精度模型，权重文件大小会减半（约 2g），但效果基本一致。
 > WebUi 用户将训练出的 `.ckpt` 文件复制到 webui 的 `models\Stable-diffusion` 目录里，在 webui 的左上角切换模型即可使用。
-> 使用时在 `prompt` 里输入你之前指定的标志符（例如 <balabala> ) 来让 ai 在生成图像中加入你期待的东西。
+> 使用时在 `prompt` 里输入你之前指定的标志符（例如 `<blahblah>` ) 来让 ai 在生成图像中加入你期待的东西。
 > 过拟合后，CFG 影响很大，可以试试降低 CFG.
 > 模型的效果要看测试图。
 
