@@ -67,7 +67,7 @@ const parseMdContent = (mdCode, path) => {
     )
     const mdData = cleaning.flatMap((i) => {
         const nlIndex = i.indexOf('\n')
-        let content = i.split(/(?<=\.|:|;|\?|!|。|：|；|？|！)|\n/).map(n => n.trim()).filter(n => n.length > 0)
+        let content = i.split(/(?<=\.\s|:\s|;\s|\?\s|!\s|。|：|；|？|！)|\n/).map(n => n.trim()).filter(n => n.length > 0)
         let anchor = i.slice(0, nlIndex > -1 ? nlIndex : i.length) || ''
         return content
             .map((c) =>
