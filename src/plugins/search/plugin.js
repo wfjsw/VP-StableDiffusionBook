@@ -2,19 +2,10 @@ import { buildIndex, buildPreview } from './index-builder'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
-export function SearchPlugin(options) {
-    /** @type {import('vite').ResolvedConfig} */
-    let config
-    const virtualIndexModuleId = 'virtual:search-index'
-    const resolvedVirtualIndexModuleId = '\0' + virtualIndexModuleId
-    const virtualPreviewModuleId = 'virtual:search-preview'
-    const resolvedVirtualPreviewModuleId = '\0' + virtualPreviewModuleId
+export function SearchFrontend() {
     return {
-        name: 'vite-plugin-search',
+        name: 'vite-plugin-search-frontend',
         enforce: 'pre',
-        configResolved(resolvedConfig) {
-            config = resolvedConfig
-        },
 
         config: () => {
             const dir = dirname(fileURLToPath(import.meta.url))
@@ -30,6 +21,22 @@ export function SearchPlugin(options) {
                 },
             }
         },
+    }
+
+}
+
+export function SearchBackend(options) {
+    /** @type {import('vite').ResolvedConfig} */
+    let config
+    const virtualIndexModuleId = 'virtual:search-index'
+    const resolvedVirtualIndexModuleId = '\0' + virtualIndexModuleId
+    const virtualPreviewModuleId = 'virtual:search-preview'
+    const resolvedVirtualPreviewModuleId = '\0' + virtualPreviewModuleId
+    return {
+        name: 'vite-plugin-search-backend',
+        configResolved(resolvedConfig) {
+            config = resolvedConfig
+        },
 
         async resolveId(id) {
             switch (id) {
@@ -41,6 +48,7 @@ export function SearchPlugin(options) {
         },
 
         async load(id) {
+            console.log(id)
             if (config.build.ssr || config.command === 'serve') {
                 switch (id) {
                     case resolvedVirtualIndexModuleId:
