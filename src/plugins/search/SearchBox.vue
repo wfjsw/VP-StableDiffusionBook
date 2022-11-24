@@ -1,50 +1,29 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useData } from 'vitepress'
 import FlexSearch from 'flexsearch'
 import FlexLogo from './flex-logo.svg'
 import SearchItem from './SearchItem.vue'
+import {useIndexer} from './indexOperator.js'
 
 const emit = defineEmits(['close'])
 
 const { localePath } = useData()
+const indexer = useIndexer()
 
 const searchTerm = ref()
 const origin = ref('')
 const input = ref()
-const PREVIEW_LOOKUP = ref()
-const searchIndex = ref()
+const indexLoading = ref(false)
+const indexLoaded = ref(false)
 
-const indexLoaded = computed(
-    () => !!searchIndex.value && !!PREVIEW_LOOKUP.value
-)
+const result = ref([])
 
-const result = computed(() => {
-    if (indexLoaded.value && searchTerm.value) {
-        const searchResults = searchIndex.value.search(searchTerm.value, 10)
-        const search = []
-
-        for (let i = 0; i < searchResults.length; i++) {
-            const id = searchResults[i]
-            const item = PREVIEW_LOOKUP.value[id]
-
-            const title = item['t']
-            const preview = item['p']
-            const link = item['l']
-            const anchor = item['a']
-            const pageTitle = item['T']
-            const pageLink = origin.value + link.slice(0, link.indexOf('#'))
-            search.push({
-                id: i,
-                link,
-                title,
-                preview,
-                anchor,
-                pageTitle,
-                pageLink,
-            })
-        }
-        return search
+watch([indexLoaded, searchTerm], async ([loaded, query]) => {
+    if (loaded && query) {
+        result.value = await indexer.search(query, origin.value)
+    } else if (query === '') {
+        result.value = []
     }
 })
 
@@ -65,48 +44,18 @@ const GroupBy = (array, func) => {
 }
 
 async function loadSearchIndex() {
-    const [{ indexData, options }, { previewLookup }] = await Promise.all([
-        import('virtual:search-index'),
-        import('virtual:search-preview'),
-    ])
-    PREVIEW_LOOKUP.value = previewLookup
-    const idx = FlexSearch({
-        ...options,
-        encode: (str) => {
-            const filter = options.filter ?? []
-            const stemmer = options.stemmer
-                ? Object.entries(options.stemmer)
-                : []
-
-            const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
-                .map(n => n[0])
-                .map(n => {
-                    for (const [key, value] of stemmer) {
-                        if (n.endsWith(key)) return n.slice(0, -key.length) + value
-                    }
-                    return n
-                })
-            const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-            return eng
-                .concat(chs)
-                .filter((n) => !!n)
-                .filter((n) => n.trim() !== '')
-                .filter((n) => !filter.includes(n))
-        },
-    })
-
-    idx.registry = indexData.reg
-    idx.cfg = indexData.cfg
-    idx.map = indexData.map
-    idx.ctx = indexData.ctx
-
-    searchIndex.value = idx
+    if (indexLoading.value || indexLoaded.value) return
+    indexLoading.value = true
+    try {
+        await indexer.loadIndex()
+        indexLoaded.value = true
+    } finally {
+        indexLoading.value = false
+    }
 }
 
 onMounted(() => {
     origin.value = window.location.origin + localePath.value
-
-    setTimeout(() => loadSearchIndex(), 0)
 })
 
 function cleanSearch() {
@@ -115,6 +64,7 @@ function cleanSearch() {
 }
 
 defineExpose({
+    load: () => loadSearchIndex(),
     focus: () => input.value.focus(),
     clear: () => (searchTerm.value = ''),
 })
@@ -210,7 +160,9 @@ defineExpose({
 .search-list {
     padding: 1rem;
     min-height: 150px;
-    max-height: calc(100vh - 230px);
+    height: 100%;
+    // max-height: calc(100vh - 230px);
+    flex-grow: 1;
     overflow-x: auto;
 }
 
@@ -266,12 +218,22 @@ defineExpose({
     /* box-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5), 0 3px 8px 0 #555a64; */
     overflow: hidden;
     border: 1px solid #222222;
+
+    height: 80%;
+}
+
+.modal-content {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
 
 @media (max-width: 768px) {
     .modal {
         max-width: 100%;
         border-radius: 0px;
+        margin: 60px 0 0 0;
+        height: 100%;
     }
 }
 
