@@ -83,7 +83,7 @@ Deforum 的官方 API，一个用于 2D 和 3D 动画的扩展脚本，supportin
 
 ### Video2Video
 
-将 视频 投入 Img2Img,输出带有关键帧的视频。
+将 视频 投入 Img2Img，输出带有关键帧的视频。
 
 https://github.com/Leonm99/Stable-Diffusion-Video2Video
 
@@ -108,3 +108,9 @@ https://github.com/tsngo/stable-diffusion-webui-aesthetic-image-scorer
 stable-diffusion-webui 的一个扩展，增加了一个标签，让你预览 CLIP 模型将如何标记你的文本。
 
 https://github.com/AUTOMATIC1111/stable-diffusion-webui-tokenizer
+
+### 自动补全
+
+这里有一个项目，可以使 SD 做到类似 NAI 的补全效果。
+
+https://github.com/DominikDoom/a1111-sd-webui-tagcomplete

@@ -7,6 +7,7 @@ const open = ref(false)
 const searchBox = ref()
 
 const openSearch = () => {
+    searchBox.value?.load()
     setTimeout(() => {
         searchBox.value?.focus()
     }, 100)

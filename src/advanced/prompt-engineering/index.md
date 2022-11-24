@@ -82,7 +82,7 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI 绘画魔
 -   [Danbooru 标签超市](https://tags.novelai.dev/)
 -   [AI 绘画 tag 生成器](https://aitag.top/)
 -   [prompthero](https://prompthero.com/)
--   [Prompt Search ](https://www.ptsearch.info/home/)
+-   [Prompt Search Anime](https://www.ptsearch.info/home/)
 -   [Prompt Search2](https://pagebrain.ai/promptsearch/?q=girl&page=1)
 -   [midjourney haha](https://www.midjourney.com/showcase/)
 -   [Social Generative AI](https://histre.com/integrations/generative/)

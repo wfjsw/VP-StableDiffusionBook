@@ -20,13 +20,13 @@ Script 类有四个主要方法，这里通过一个简单的[示例脚本](http
 
 ### sd-dynamic-prompts
 
-AUTOMATIC1111/stable-diffusion-webui 的自定义脚本，用于实现用于随机提示生成的微型模板语言 
+实现用于随机提示语生成的微型模板语言。 
 
 https://github.com/adieyal/sd-dynamic-prompts
 
 ### Depth Maps for Stable Diffusion
 
-这个脚本是AUTOMATIC1111的Stable Diffusion Web UI的一个插件，可以从生成的图像中创建深度图。
+从生成的图像中创建深度图。
 
 https://github.com/thygate/stable-diffusion-webui-depthmap-script
 
@@ -35,12 +35,6 @@ https://github.com/thygate/stable-diffusion-webui-depthmap-script
 Automatic1111 Stable Diffusion 的脚本，用于从 krea 和 lexica 中提取提示。 
 
 https://github.com/Vetchems/sd-lexikrea
-
-### 自动补全
-
-这里有一个项目，可以使SD做到类似 NAI 的补全效果。
-
-https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
 
 ### Advanced prompt matrix
 
@@ -60,7 +54,7 @@ https://github.com/xrpgame/xyz_plot_script
 
 ### Embedding to PNG
 
-将一个已经存在的 embeddings 转换为图片。
+将一个已经存在的 Embeddings 转换为 PNG 表示。
 
 https://github.com/dfaker/embedding-to-png-script
 

@@ -14,6 +14,7 @@ const origin = ref('')
 const input = ref()
 const PREVIEW_LOOKUP = ref()
 const searchIndex = ref()
+const indexLoading = ref(false)
 
 const indexLoaded = computed(
     () => !!searchIndex.value && !!PREVIEW_LOOKUP.value
@@ -65,48 +66,52 @@ const GroupBy = (array, func) => {
 }
 
 async function loadSearchIndex() {
-    const [{ indexData, options }, { previewLookup }] = await Promise.all([
-        import('virtual:search-index'),
-        import('virtual:search-preview'),
-    ])
-    PREVIEW_LOOKUP.value = previewLookup
-    const idx = FlexSearch({
-        ...options,
-        encode: (str) => {
-            const filter = options.filter ?? []
-            const stemmer = options.stemmer
-                ? Object.entries(options.stemmer)
-                : []
+    if (indexLoading.value || indexLoaded.value) return
+    indexLoading.value = true
+    try {
+        const [{ indexData, options }, { previewLookup }] = await Promise.all([
+            import('virtual:search-index'),
+            import('virtual:search-preview'),
+        ])
+        PREVIEW_LOOKUP.value = previewLookup
+        const idx = FlexSearch({
+            ...options,
+            encode: (str) => {
+                const filter = options.filter ?? []
+                const stemmer = options.stemmer
+                    ? Object.entries(options.stemmer)
+                    : []
 
-            const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
-                .map(n => n[0])
-                .map(n => {
-                    for (const [key, value] of stemmer) {
-                        if (n.endsWith(key)) return n.slice(0, -key.length) + value
-                    }
-                    return n
-                })
-            const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-            return eng
-                .concat(chs)
-                .filter((n) => !!n)
-                .filter((n) => n.trim() !== '')
-                .filter((n) => !filter.includes(n))
-        },
-    })
+                const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
+                    .map(n => n[0])
+                    .map(n => {
+                        for (const [key, value] of stemmer) {
+                            if (n.endsWith(key)) return n.slice(0, -key.length) + value
+                        }
+                        return n
+                    })
+                const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
+                return eng
+                    .concat(chs)
+                    .filter((n) => !!n)
+                    .filter((n) => n.trim() !== '')
+                    .filter((n) => !filter.includes(n))
+            },
+        })
 
-    idx.registry = indexData.reg
-    idx.cfg = indexData.cfg
-    idx.map = indexData.map
-    idx.ctx = indexData.ctx
+        idx.registry = indexData.reg
+        idx.cfg = indexData.cfg
+        idx.map = indexData.map
+        idx.ctx = indexData.ctx
 
-    searchIndex.value = idx
+        searchIndex.value = idx
+    } finally {
+        indexLoading.value = false
+    }
 }
 
 onMounted(() => {
     origin.value = window.location.origin + localePath.value
-
-    setTimeout(() => loadSearchIndex(), 0)
 })
 
 function cleanSearch() {
@@ -115,6 +120,7 @@ function cleanSearch() {
 }
 
 defineExpose({
+    load: () => loadSearchIndex(),
     focus: () => input.value.focus(),
     clear: () => (searchTerm.value = ''),
 })
