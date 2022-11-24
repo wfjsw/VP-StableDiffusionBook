@@ -46,6 +46,7 @@ U-Net 在以文本嵌入为条件的同时迭代地对随机高斯噪声表示�
 
 扩展阅读：
 
+- [什么是扩散模型？ ](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 - [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
 - [稳定扩散](https://huggingface.co/blog/stable_diffusion)
 - [稳定扩散入门](https://pub.towardsai.net/getting-started-with-stable-diffusion-f343639e4931)

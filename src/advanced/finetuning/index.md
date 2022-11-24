@@ -28,6 +28,11 @@ outline: [2, 3]
 更大的 batch size 可能稍微加快训练并稍微提升训练效果，但也需要更大的显存。
 
 
+> fine tune = hn/TI/DreamArtist (APT)/DB/native training etc.  
+> fine tune directly = DB/native training
+
+
+
 ### Textual Inversion (TI)
 
 从一些具有共同语义 [v] 的图片中，提取 [v] 的一个方法。提取出的 [v] 张量称之为 "Embedding"。将 Embedding 保存为文件，之后生成图片时就可以在 prompt 中以文件名引用。
@@ -162,3 +167,4 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 - [WD 1.4 tagger for Automatic1111's Web UI](https://github.com/toriato/stable-diffusion-webui-wd14-tagger)
 - [Resize Tool](https://www.birme.net/)
 - [sd-tagging-helper 打标工具](https://github.com/arenatemp/sd-tagging-helper)
+- [naifu-diffusion](https://github.com/Mikubill/naifu-diffusion)

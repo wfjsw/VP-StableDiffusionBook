@@ -15,17 +15,20 @@ Dreambooth 基于 [Imagen](https://imagen.research.google/) 研发，使用时�
 然而，Imagen 的模型和预训练的权重都不可用。所以最初的 Dreambooth 并不适用于稳定扩散。但后面 [diffusers](https://github.com/ShivamShrirao/diffusers) 实现了 [Dreambooth](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth) 这一功能，并且完全适配了 Stable Diffusion。
 
 > Diffusers 提供跨多种模态（例如视觉和音频）的预训练扩散模型，作为扩散模型推理和训练的模块化工具箱提供支持。
-> 本节使用的是 Shivam Shirao 的 [diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth) 分支版本，配置衍生自 [ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)。
+> 本节使用 Shivam Shirao 的 [diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth) 分支版本讲解参数，配置衍生自 [ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)。
 
 ![DreamBooth_files](../../assets/dreambooth-system.webp){style="background-color: #fff;"}
+
+[关于移动云训练](https://rentry.org/yidongyun)
 
 ## 选择
 
 Windows 系统的显存至少需要 16GB, Linux 系统要求显存至少为 8GB
 
--   适用于 AutoDL 的 [DreamBooth 版本](https://github.com/crosstyan/dreambooth-scripts-for-autodl)
--   适用于 AutoDL 的 [封装镜像](https://github.com/CrazyBoyM/dreambooth-for-diffusion)，名称为 `dreambooth-for-diffusion`
--   适用于 WebUi 的 [插件](https://github.com/d8ahazard/sd_dreambooth_extension)
+-   适用于喜欢 YAML 文件配置 的 [CCRcmcpe/diffusers](https://github.com/CCRcmcpe/diffusers/) 分支。
+-   适用于 本地/AutoDL 的 [DreamBooth 版本](https://github.com/crosstyan/dreambooth-scripts-for-autodl)
+-   适用于 本地/AutoDL 的 [封装镜像](https://github.com/CrazyBoyM/dreambooth-for-diffusion)，名称为 `dreambooth-for-diffusion`
+-   适用于 WebUI 的 [插件](https://github.com/d8ahazard/sd_dreambooth_extension)，注意这会在启动脚本锁一个新的 Torch CUDA 版本，可能会带来网络问题与兼容问题等。
 -   适用于 Colab 的 [Nyanko Lepsoni 的 Colab 笔记本](https://colab.research.google.com/drive/17yM4mlPVOFdJE_81oWBz5mXH9cxvhmz8)
 -   适用于 Colab 的 [RcINS 的 Colab 笔记本](https://colab.research.google.com/drive/1C1vVZ59S4kWfL7jIsczyLpmxbD4cOA-k)
 
@@ -33,7 +36,11 @@ Windows 系统的显存至少需要 16GB, Linux 系统要求显存至少为 8GB
 
 ## 准备
 
+::: tip
+
 如果你选择使用 AutoDL 的镜像，需要把 `dreambooth-for-diffusion` 文件夹移到 `autodl-tmp`（数据盘）中，且确保当前运行路径为 `dreambooth-for-diffusion`，具体操作细节在 [知乎教程](https://zhuanlan.zhihu.com/p/584736850) 中有图文说明。
+
+:::
 
 ### 模型转换
 
@@ -65,9 +72,7 @@ class 和 instance 的质量决定生成的质量。
 
 当为一个特定的风格进行训练时，挑选具有良好一致性的样本。理想情况下，只挑选你要训练的艺术家的图像。避免粉丝艺术或任何具有不同风格的东西，除非你的目标是像风格融合。
 
-对于主题，黑色或白色背景的样本有极大的帮助。
-
-> 透明的背景也可以，但有时会在主体周围留下白色轮廓，所以目前我不建议使用透明背景。
+对于主题，黑色或白色背景的样本有极大的帮助。透明的背景也可以，但有时会在主体周围留下白色轮廓。
 
 如果需要使你的 Dreambooth 模型更加多样化，尽量使用不同的环境、灯光、发型、表情、姿势、角度和与主体的距离。
 
@@ -79,96 +84,72 @@ class 和 instance 的质量决定生成的质量。
 
 为了避免不自然的过度模糊，确保图像不包含假的重景深或虚化。
 
-#### 调节
+#### 数据集规范化
 
 一旦你收集了数据集的照片，将所有图片裁剪并调整为 512x512 的正方形（你可以利用 [BIRME](https://www.onlinephotosoft.com/birme/) 在线工具批量裁剪），并删除任何水印、商标、被图片边缘切断的人/肢体，或其他你不希望被训练的内容。以 PNG 格式保存图像，并将所有图像放在 train 文件夹中。
 
-### 标注图片
+#### 处理
 
-TODO
+处理图片的方式有许多，常见的有反转，旋转，亮度和裁切。将图片打碎或者对背景 / 大头等单独裁切，也许有助于提高训练效果。
 
-你可以手动标注或使用 clip 或 deepdanbooru 进行自动标注。
+## 训练方法
 
-推荐使用 [crosstyan/blip_helper](https://github.com/crosstyan/blip_helper) 去给你的图像打标。或者使用 [DeepDanbooru](https://github.com/KichangKim/DeepDanbooru) 和 [BLIP](https://github.com/salesforce/BLIP)
+下例来自 [CCRcmcpe/diffusers 版本](https://github.com/CCRcmcpe/diffusers/blob/748f64e47cd6fe3ebe5e6fe7011ee90c5a672fd3/examples/dreambooth/configs/dreambooth.yaml#L10) 的 YAML 配置文件。
 
-如果你使用 AutoDL 的镜像，你可以使用内置的 [label_images.py](https://github.com/CrazyBoyM/dreambooth-for-diffusion/blob/main/tools/label_images.py) 进行标注。
+DreamBooth 本身不能训练所谓的画风。而 Native Training 对模型进行微调会带来画风的改变，作为所谓的画风训练方法。
 
-#### 数据处理
+古典思路是：
 
--   处理数据的方式有许多：最常见的有反转，旋转，亮度和裁切。
+-   Native + deepdanbooru -> prompt txt - “训练风格”
+-   Dreambooth + class prompt/instance prompt - 训练物体
 
-> 将图片打碎，或者对背景/大头等单独裁切，也许会有帮助。
+但还有很多分类，差异如：是否给每张图片配对 Prompt, 是否 启用 prior_preservation loss(PPL), 是否使用 train text encoder (TTL)
 
-### 参数
+DreamBooth = instance + class with `prior preservation loss` （其中分给图片单独标签，和使用同一个标签的区别）。
 
-下例来自 [RcINS 的 Colab 笔记本](https://colab.research.google.com/drive/1C1vVZ59S4kWfL7jIsczyLpmxbD4cOA-k)。
+### DreamBooth
 
-#### 参数设置
-
-```bash
-INSTANCE_PROMPT = "masterpiece, best quality, sks 1girl"
-# images of the subject 数据集的图像
-INSTANCE_DIR = "/content/instance-images"
-# Class set
-CLASS_PROMPT = "masterpiece, best quality, 1girl"
-CLASS_NEGATIVE_PROMPT = "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry"
-CLASS_DIR = "/content/class-images"
-NUM_CLASS_IMAGES = 100
-# markdown Prompt for saving samples.
-SAVE_SAMPLE_PROMPT = "masterpiece, best quality, sks 1girl, looking at viewer"
-SAVE_SAMPLE_NEGATIVE_PROMPT = "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry"
-```
-
-#### 脚本重点参数
-
-```bash
-wandb_arg = "--wandb" if WANDB_KEY != "" else ""
-scale_lr_arg = "--scale_lr" if SCALE_LR else ""
-ppl_arg = f"--with_prior_preservation --prior_loss_weight={PRIOR_LOSS_WEIGHT}" if PRIOR_PRESERVATION else ""
-read_prompt_arg = f"--read_prompt_from_txt {READ_PROMPT_FROM_TXT}" if READ_PROMPT_FROM_TXT != "no" else ""
-arb_arg = "--use_aspect_ratio_bucket --debug_arb" if ASPECT_RATIO_BUCKETING else ""
-accelerate launch $TRAINER \
-  --instance_data_dir "{INSTANCE_DIR}" \
-  --instance_prompt "{INSTANCE_PROMPT}" \
-  --pretrained_model_name_or_path "{MODEL_NAME}" \
-  --pretrained_vae_name_or_path "{MODEL_NAME}/vae" \
-  --output_dir "{OUTPUT_DIR}" \
-  --seed=$SEED \
-  --resolution=$RESOLUTION \
-  --optimizer "{OPTIMIZER}" \
-  --train_batch_size=$TRAIN_BATCH_SIZE \
-  --learning_rate=$LEARNING_RATE \
-  --lr_scheduler=$LR_SCHEDULER \
-  --lr_warmup_steps=$LR_WARMUP_STEPS \
-  --lr_cycles=$LR_CYCLES \
-  --last_epoch=$LAST_EPOCH \
-  --max_train_steps=$MAX_TRAIN_STEPS \
-  --save_interval=$SAVE_INTERVAL \
-  --class_data_dir "{CLASS_DIR}" \
-  --class_prompt "{CLASS_PROMPT}" --class_negative_prompt "{CLASS_NEGATIVE_PROMPT}" \
-  --num_class_images=$NUM_CLASS_IMAGES \
-  --save_sample_prompt "{SAVE_SAMPLE_PROMPT}" --save_sample_negative_prompt "{SAVE_SAMPLE_NEGATIVE_PROMPT}" \
-  --n_save_sample=$SAMPLE_N \
-  --infer_batch_size=$INFER_BATCH_SIZE \
-  --infer_steps=$INFER_STEPS \
-  --guidance_scale=$GUIDANCE_SCALE \
-  --gradient_accumulation_steps=$GRADIENT_ACCUMULATION_STEPS \
-  --gradient_checkpointing \
-  --save_unet_half \
-  --mixed_precision "{MIXED_PRECISION}" \
-  --clip_skip=$CLIP_SKIP \
-  $wandb_arg $scale_lr_arg $ppl_arg $read_prompt_arg $arb_arg
-# disabled: --not_cache_latents
-```
+专业训练特定物体/人物。使用 `--with_prior_preservation` 来启用 DreamBooth ，**只有 DreamBooth 训练会用到 `[V]` 的概念和 `--instance_prompt` 相关的参数。**
 
 -   Instance Image  
     你所训练的目标数据集。
--   Class/Regularization  
-    无需过分关心，Image 应该为 自动生成 即 auto-generated 的图像，用于检测 AI 的先验知识。不应该放任何非 AI 生成的图像。如果你确定这么做应该去使用 Native Training。（掺杂同风格图在 clas image 属于早期探索的弯路，目前已经不再鼓励）
--   learning_rate 学习率  
-    DreamBooth 本身具有十分强烈的 copy and paste 效果。使用 class/regularization 可以适当压制该效果。
+-   Instance Prompt  
+    默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的，即 DreamBooth (original paper method)。但当你的训练目标增多之后可以开启 `combine_prompt_from_txt` 选项，为每个 instance 准备一个 prompt （通常为 txt) 即为 DreamBooth (alternative method). Instance Prompt 之中应该包含一个唯一标识符 `[V]`。
+-   Class/Regularization Image
+    对应 `--class_data_dir`，应该为 自动生成 即 auto-generated 的图像，用于检测 AI 的先验知识。不应该放任何非 AI 生成的图像。如果你确定这么做应该去使用 Native Training。（掺杂同风格图在 class image 属于早期探索的弯路，目前已经不再鼓励。）每次重新训练不同主题要清空一次。
+-   Class Prompt
+    对应 `--class_prompt` 参数，由程序自动生成，可以从其他支持 CLIP SKIP 2 的推理前端生成好之后放进 class img 集内。程序同样可以从独立的 txt 中读取内容。
+
+DreamBooth 本身具有十分强烈的 copy and paste 效果，使用 class/regularization 可以适当抑制该效果。
+
+<!-- TODO: 哪？ -->
+
+训练多个物体见 _Multiple Concept_ 节。
+
+示例 [train_object.sh](https://github.com/CrazyBoyM/dreambooth-for-diffusion/blob/main/train_object.sh)
+
+### Native Training
+
+Native Training 为原生训练，与 DreamBooth 不同的是，Native Training 会直接使用你的训练集进行训练，不再需要 Class Image。
+
+关闭 `prior_preservation` 选项以开始以原生方式进行训练，是训练画风的推荐方式。
+
+在此训练中没有 Instance / Class Image 之分，所有的图像都会被用于训练。但是你需要为每个图准备一个 Instance Prompt，放在和图片名称一样的文本文件，通常为 `txt`。例子参考 [dataset exp](https://github.com/chavinlo/stable-diffusion-scripts/tree/main/dataset-examples)
+
+Native Training 需要较多的数据集，但这个量众说纷纭，大约在 [100, 10000] 这个区间，多多益善。（但仍然建议人工挑选）
+
+示例 [train_style.sh](https://github.com/CrazyBoyM/dreambooth-for-diffusion/blob/main/train_style.sh)
+
+## 参数
+
+-   with_prior_preservation  
+    启用 prior_preservation 以开始 DreamBooth 训练，禁用此参数开启 Native Training。
+-   prior_loss_weight  
+    越低则越难过拟合，但是也越难学到东西。
+-   learning_rate  
+    学习率。DreamBooth 本身具有十分强烈的 copy and paste 效果。使用 class/regularization 可以适当压制该效果。
 -   use_txt_as_label  
-    是否读取与图片同名的 txt 文件作为 label。该选项会忽略 `instance_prompt` 参数传入的内容。通常在风格训练中使用。
+    通常在 Native 训练微调模型时使用，读取与图片同名的 txt 文件作为 label。启用该选项会关闭 DreamBooth, 无视 `instance_prompt` 参数传入的内容而转为从 txt 文件中读取 label。
 -   center_crop  
     脚本自带的裁切图片选项，建议自己裁成正方形的哦。
 -   resolution  
@@ -180,10 +161,6 @@ accelerate launch $TRAINER \
     每多少步保存一次模型，方便查看中间训练的结果找出最优的模型，也可以用于从检查点恢复上一次的训练结果（colab 笔记本用户注意挂载到云盘中）。
 -   lr_scheduler  
     学习率调节器，可选有 `constant, linear, cosine, cosine_with_restarts, cosine_with_hard_restarts`
--   with_prior_preservation  
-    启用 prior_preservation 以开始 DreamBooth 训练，禁用来开启 Native Training。
--   prior_loss_weight  
-    越低则越难过拟合，但是也越难学到东西。
 
 #### 关键说明
 
@@ -194,13 +171,8 @@ accelerate launch $TRAINER \
 
 #### 解释 Instance Prompt / Class Prompt
 
--   Instance Prompt  
-    默认实现为全局共享一个 prompt, 这对于 few shot 是可能有效的，即 DreamBooth (original paper method)。  
-    但是，当你的训练目标增多之后此参数不再适用，可以开启 `combine_prompt_from_txt` 选项，为每个 instance 准备一个 prompt （通常为 txt) 即为 DreamBooth (alternative method). Instance Prompt 之中应该包含一个唯一标识符 `[V]`
-    instance prompt 会被处理为类似 `photo of a cute person`
--   Class Prompt  
-    无需过分关心，是自动生成出来的，建议从其他支持 CLIP SKIP 2 的推理前端单独生成好之后丢到 class img 集内，同样可以从独立的 txt 中读取内容。  
-    class prompt 会用来生成一类图片，被处理为类似 `photo of a person`
+-   Instance Prompt 会被处理为类似 `photo of a cute person`
+-   Class Prompt 会用来生成一类图片，被处理为类似 `photo of a person`
 
 示例：
 
@@ -213,21 +185,24 @@ accelerate launch $TRAINER \
 
 #### 关于 `[V]`
 
-| What your training set is about | Instance prompt must contain | Class prompt should describe                   |
-| ------------------------------- | ---------------------------- | ---------------------------------------------- |
-| A object/person                 | `[V]`                        | The object's type and/or characteristics       |
-| A artist's style                | `by [V]`                     | The common characteristics of the training set |
+| 训练集类型       | Instance prompt 必须包含的 | Class prompt 应该描述的                        |
+| ---------------- | -------------------------- | ---------------------------------------------- |
+| A object/person  | `[V]`                      | The object's type and/or characteristics       |
+| A artist's style | `by [V]`                   | The common characteristics of the training set |
 
-`[V]` 是 CLIP 词汇表中的标记，对模型没有意义。
+`[V]` 只用在 Instance prompt 中，是 CLIP 词汇表中的标记，对模型没有意义。这是由你自己设定的短语，类比方程未知量 x，不是一个叫 `[V]` 的确切值。
 
 假设你想训练的人物叫做 `[N]`（比如 `balabalabala 先生`) , 你不应该直接使用 `[N]`(`balabalabala 先生`) 作为代表特征词。
+
 推荐使用在 [该词汇表](https://huggingface.co/openai/clip-vit-large-patch14/raw/main/vocab.json) 中存在但是没有对应概念或者说对应概念不明显的词 `[V]`（比如 `bala`)。
 
-长长的名称很可能被分离为多个标记，会得不到预期效果。标记的分离情况具体可在 [NovelAI Tokenizer](https://novelai.net/tokenizer) 验证。
+过长的名称很可能被分离为多个标记，会得不到预期效果。标记的分离情况具体可在 [NovelAI Tokenizer](https://novelai.net/tokenizer) 验证。
 
 最后代表 `[V]` 的提示将携带模型学到的新东西，你就可以在生成时使用你设定的 `[V]` 了。
 
-> 注：原论文中使用的示例词 `sks` 和现实中的枪械 [SKS](https://en.wikipedia.org/wiki/SKS) 相同，属于不适合被使用的词汇。但是如果你的训练程度足够高的话说不定可以覆写其影响。
+注：原论文中使用的示例词 `sks` 和现实中的枪械 [SKS](https://en.wikipedia.org/wiki/SKS) 相同，属于不适合被使用的词汇。但是如果你的训练程度足够高的话说不定可以覆写其影响。
+
+不要使用默认的 by sks (sks 这个艺术家）, 融合模型的时候会发生灾难。
 
 #### 解释 Subject images / Class images
 
@@ -239,23 +214,13 @@ Subject images （或者你在笔记本上看到的实例图像）是你想要�
 
 DreamBooth 可以在没有 Class images 的情况下开始训练，只需要禁用 `--with_prior_preservation` 来开启 Native Training.
 
-### Native Training
+#### 标注方法
 
-Native Training 为原生训练，与 DreamBooth 不同的是，Native Training 会直接使用你的训练集进行训练，不再需要 Class Image。
+你可以手动标注或使用 clip 或 deepdanbooru 进行自动标注。
 
-关闭 `prior_preservation` 选项（也就是 `--with_prior_preservation` 参数）以开始以原生方式进行训练，是训练画风的推荐方式。
+推荐使用 [crosstyan/blip_helper](https://github.com/crosstyan/blip_helper) 去给你的图像打标。或者使用 [DeepDanbooru](https://github.com/KichangKim/DeepDanbooru) 和 [BLIP](https://github.com/salesforce/BLIP)
 
-在此训练中没有 Instance/Class Image 之分，所有的图像都会被用于训练。但是你需要为每个图准备一个 Instance Prompt, 就像传统的 hypernetwork 一样同文件名称，通常为 txt。
-
-::: tip 关于这个 Txt
-对于数据集中的每张图片（`[X].png`/`[X].jpg`），再放一个包含相应提示的 `[X].txt`。然后设置 `READ_PROMPT_FROM_TXT`（ `--use_txt_as_label` ）。Both train set and class set supports this.
-
-从 txt `[PX]` 中读取的提示将被插入到你在训练参数中设置的提示 `[P]` 中。默认情况下，它的插入方式是 `[PX][p]`。
-
-在启用 Variable Prompts 和禁用先前保存损失 (PRIOR_PRESERVATION) 的情况下，训练过程实际上等同于标准微调。
-:::
-
-Native Training 需要较多的数据集，但这个量众说纷纭，大约在 [100, 10000] 这个区间，多多益善。（建议人工挑选）
+如果你使用 AutoDl 的镜像，你可以使用内置的 [label_images.py](https://github.com/CrazyBoyM/dreambooth-for-diffusion/blob/main/tools/label_images.py) 进行标注。
 
 #### 从检查点恢复训练
 
@@ -271,12 +236,10 @@ Native Training 需要较多的数据集，但这个量众说纷纭，大约在 
 
 有玄学说法是在达到训练的某个 百分比/epoch/step 之后应该关闭以防止过度玩坏。
 
--   你一开始写的 instance prompt 要长一些，概括你的训练目标 （但是又不要太长，不要覆盖你常用的词） （像是 `girl` 我会换成 `woman`, `1boy` 换成 `male`)
--   第一，text prompt 读进去是寄。因为词数太多了影响分散，效果不明显。
--   第二，instance prompt 不能只填一个 `[V]` 否则那个词也废掉了。
--   试着大火爆炒
-    炼出来调用的话看情况加你训练的 instance prompt 的词，看你想要多少味道。
-    或许训练人物的时候也是效果拔群。
+-   一开始写的 instance prompt 要长一些，概括你的训练目标 （但是又不要太长，不要覆盖你常用的词） （像是 girl 我会换成 woman, 1boy 换成 male)
+-   text prompt 词数太多了影响分散，效果不明显。
+-   instance prompt 不能只填一个 `[V]`（比如 `balabala`，应该是 `a photo of balabala`) ，否则那个词也废掉了。
+-   尝试提高学习率
 
 #### Multiple Concept
 
@@ -497,18 +460,6 @@ usage: argmark [-h] --pretrained_model_name_or_path
 ||`--output_dir`|`text-inversion-model`|输出目录，模型预测和 checkpoints 将被写入该目录。|
 ||`--seed`|`None`|可重复的培训的种子。|
 ||`--resolution`|512`|输入图像的分辨率，训练/验证数据集中的所有图像将被调整到这个分辨率。| ||`--center_crop`||是否在调整图像大小至分辨率前居中裁剪图像？| ||`--use_filename_as_label`||使用文件名作为图像标签而不是 instance_prompt，在训练图像差异较大的样式时对正则化很有用| ||`--use_txt_as_label`||使用 filename.txt 文件的内容作为图像标签而不是 instance_prompt，在训练图像差异较大的样式时对正则化很有用| ||`--train_text_encoder`||是否训练文本编码器| ||`--train_batch_size`|`4`|训练数据加载器的批量大小（每个设备）。| ||`--sample_batch_size`|`4`|采样图像的批量大小（每个设备）。| ||`--num_train_epochs`|`1`|`None`| ||`--max_train_steps`|`None`|要执行的训练步骤总数。 如果提供，则覆盖 num_train_epochs。| ||`--gradient_accumulation_steps`|`1`|执行向后/更新传递之前要累积的更新步数。| ||`--gradient_checkpointing`||是否使用梯度检查点来以较慢的反向传递为代价来节省内存。| ||`--learning_rate`|`5e-06`|要使用的初始学习率（在潜在的预热期之后）。| ||`--scale_lr`||通过 GPU 数量、梯度累积步长和批量大小来缩放学习率。| ||`--lr_scheduler`|`constant`|The scheduler type to use. Choose between ["linear", "cosine", "cosine_with_restarts", "polynomial", "constant", "constant_with_warmup"]| ||`--lr_warmup_steps`|`500`|lr 调度程序中预热的步骤数。| ||`--use_8bit_adam`||是否使用 bitsandbytes 中的 8 位 Adam。| ||`--adam_beta1`|`0.9`|Adam 优化器的 beta1 参数。| ||`--adam_beta2`|`0.999`|Adam 优化器的 beta2 参数。| ||`--adam_weight_decay`|`0.01`|要使用的权重衰减。| ||`--adam_epsilon`|`1e-08`|Adam 优化器的 Epsilon 值| ||`--max_grad_norm`|`1.0`|最大梯度范数。| ||`--push_to_hub`||是否将模型推送到 Hub。| ||`--hub_token`|`None`|用于推送到模型中心的令牌。| ||`--hub_model_id`|`None`|要与本地 `output_dir` 保持同步的存储库名称。| ||`--logging_dir`|`logs`|[TensorBoard](https://www.tensorflow.org/tensorboard) log directory. Will default to *output_dir/runs/* *CURRENT_DATETIME_HOSTNAME***.| ||`--log_with`|`tensorboard`|`None`| ||`--mixed_precision`|`no`|是否使用混合精度。 在 fp16 和 bf16 (bfloat16) 之间选择。 Bf16 需要 PyTorch >= 1.10 和 Nvidia Ampere GPU。| ||`--local_rank`|`-1`|对于分布式训练：local_rank| ||`--save_model_every_n_steps`|`None`|`None`| ||`--auto_test_model`||保存后是否自动测试模型| ||`--test_prompt`|`A photo of a cat`|用于测试模型的提示。| ||`--test_prompts_file`|`None`|包含用于测试模型的提示的文件。示例：test_prompts.txt，每一行都是一个提示| ||`--test_negative_prompt` |``|用于测试模型的否定提示。| || `--test_seed`|`42`|用于测试模型的种子。| ||`--test_num_per_prompt`|`1`|每个提示生成的图像数量。|
-
--   细节
-
-```python
-if args.instance_data_dir is None:
-        raise ValueError("You must specify a train data directory.")
-if args.with_prior_preservation:
-    if args.class_data_dir is None:
-        raise ValueError("You must specify a data directory for class images.")
-    if args.class_prompt is None:
-        raise ValueError("You must specify prompt for class images.")
-```
 
 <!--
 [飞桨 dreambooth 训练教程](https://docs.qq.com/doc/DUHVuZ3BNV0FkT1R6)
