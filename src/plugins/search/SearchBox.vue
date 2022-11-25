@@ -22,29 +22,19 @@ const indexLoaded = computed(
 
 const result = computed(() => {
     if (indexLoaded.value && searchTerm.value) {
-        const searchResults = searchIndex.value.search(searchTerm.value, 10)
-        const search = []
-
-        for (let i = 0; i < searchResults.length; i++) {
-            const id = searchResults[i]
-            const item = PREVIEW_LOOKUP.value[id]
-
-            const title = item['t']
-            const preview = item['p']
-            const link = item['l']
-            const anchor = item['a']
-            const pageTitle = item['T']
-            const pageLink = origin.value + link.slice(0, link.indexOf('#'))
-            search.push({
+        const searchResults = searchIndex.value.search(searchTerm.value, 25)
+        const search = searchResults.map((id, i) => {
+            const { t, p, l, a, T } = PREVIEW_LOOKUP.value[id]
+            return {
                 id: i,
-                link,
-                title,
-                preview,
-                anchor,
-                pageTitle,
-                pageLink,
-            })
-        }
+                title: t,
+                preview: p,
+                link: l,
+                anchor: a,
+                pageTitle: T,
+                pageLink: origin.value + link.slice(0, link.indexOf('#'))
+            }
+        })
         return search
     }
 })

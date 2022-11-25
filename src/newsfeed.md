@@ -11,11 +11,93 @@
  - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
  - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
 
+## 11/24
+
+* SD Training Labs 计划于 11 月 27 日进行首次全球公开分布式模型训练
+	* 关于分布式模型训练：
+		* 尝试结合全球 40 多个机组的计算能力，使用 Hivemind 训练 Stable Diffusion 的微调模型。
+		* 这是一次实验，不保证有效。
+		* 这是一个 P2P 网络。
+			* 您可以使用 VPN 进行连接
+			* 如果可能，在隔离容器内运行
+			* 开发者会尝试添加代码来防止恶意脚本，但不能做出保证
+		*当前对此类训练方法的担忧：
+			* 担忧 1 - 下毒: 节点可以连接并使用恶意数据集，从而影响平均梯度。与区块链网络类似，这只会对平均权重产生很小的影响。连接的恶意节点数量越多，它们对平均权重的影响就越大。目前我们正在实施最基本（和模糊）的 Discord 帐户验证。
+			* 担忧 2 - 远程代码执行: Pickle 入侵应该是不可能的，但尚未经过测试。
+			* 担忧 3 - IP 泄露 & 防火墙问题: 由于 Hivemind 的结构，您的 IP 将能被其他节点看到。您可以通过设置仅客户端模式来避免这种情况，但这会牺牲网络连通性。应该可以使用 IPFS 来避免防火墙和 NAT 问题，但目前不起作用
+* Unstable Diffusion 于 12 月 9 日启动众筹，以资助 AI 模型的研究和开发，这些模型在专用于 NSFW 内容的超大型数据集上进行微调和训练
+	- https://discord.com/channels/1010980909568245801/1011042718853648526/1045519049955749898
+* 在 AUTOMATIC1111 的 webui 上运行 SD V2 的实现（正在开发）
+	- https://gist.github.com/toriato/3d1b2da54ef15c100e8996dd546da825
+	- Pull request: https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/5011#issuecomment-1326384199
+	- https://github.com/uservar/stable-diffusion-webui/commits/dev2
+- 后宫生成器发布: https://github.com/Extraltodeus/multi-subject-render
+	- 用于在图片中一次生成多个人的插件
+- 新的 Stable Diffusion 训练器发布: https://github.com/CCRcmcpe/scal-sdt
+	- 作为 https://github.com/CCRcmcpe/diffusers 的替代
+	- "与 https://github.com/Mikubill/naifu-diffusion 并行开发，但我更专注于在本地环境中训练而不是 hivemind"
+* **SD V2 发布: https://stability.ai/blog/stable-diffusion-v2-release**
+	- https://www.reddit.com/r/StableDiffusion/comments/z36mm2/stable_diffusion_20_announcement/
+	- Stable Diffusion 2.0: 全新的文本到图像模型，使用全新的文本编码器 OpenCLIP 进行训练，与早期 V1 版本相比，大大提高了生成图像的质量
+		- 使用生成 512x512 图像的 OpenCLIP-ViT/H 文本编码器从头开始训练，与以前的版本相比有所改进（更好的 FID 和 CLIP-g 分数）
+	- Inpainting Diffusion 更新: 在 Stable Diffusion 2.0 上微调的全新文本引导修复模型
+	- Upscaler Diffusion: 在保留精细细节的同时将图像分辨率提高 4 倍
+	- depth2img: 一个图像到图像模型变体，专注于输入图像的整体结构和形状，允许您从根本上改变图像的内容但不改变它们的组成结构
+		- 推断输入图像的深度 --> 更好的 img2img（保持连贯性）
+		- 好像有点像 Midjourney 的 “Remix” 功能
+		- 该模型以通过 MiDaS 推断的单目深度估测为条件，可用于保留结构的 img2img 和 形状-条件 合成
+	* 在 512x512 和 768x768 上训练 --> 默认可以生成这些分辨率的图像
+		- 对于 768x768，模型经过 v-prediction 微调以生成 768x768 图像
+	* 结合 Upscaler，可以默认生成至少 2048x2048 的图片。 建议安装 xformers (https://github.com/facebookresearch/xformers)
+	* 在 Stability AI 的 DeepFloyd 团队创建的 LAION-5B 数据集的美学子集上进行训练，**然后使用 LAION 的 NSFW 过滤器进一步过滤以删除成人内容**。
+	* 优化为在单个 GPU 上运行
+	* 模型在修订后的 “CreativeML Open RAIL++-M 许可” 下发布
+	* 下载: https://huggingface.co/stabilityai
+	* GitHub: https://github.com/Stability-AI/stablediffusion
+	* Emad 的声明: https://discord.com/channels/1002292111942635562/1002292398703001601/1045151904767942818
+	* Twitter: https://twitter.com/StabilityAI/status/1595590319566819328?t=PXgar920uu4SnCOSjx0Mkw&s=19
+	* 需要编辑当前 Stable Diffusion 的代码实现以支持 SD v2。根据 Emad 描述，做起来应该不会太难
+
+	- 运行 SD 2.0:
+	`python scripts/txt2img.py --prompt "a professional photograph of an astronaut riding a horse" --ckpt <path/to/model.ckpt/> --config <path/to/config.yaml/>` 
+	示例: `python scripts/txt2img.py --prompt "a professional photograph of an astronaut riding a horse" --ckpt <path/to/768model.ckpt/> --config configs/stable-diffusion/v2-inference-v.yaml --H 768 --W 768 `
+	另一个示例: `python3.10 txt2img.py --prompt "woman showing her hands" --ckpt ../stable-diffusion-2/768-v-ema.ckpt --config configs/stable-diffusion/v2-inference-v.yaml --H 768 --W 768`
+
+	- 在 AUTOMATIC1111 的 webui 上的基本支持: https://github.com/MrCheeze/stable-diffusion-webui/commit/069591b06bbbdb21624d489f3723b5f19468888d
+	- 免费版 colab (未测试): https://colab.research.google.com/drive/1YPFfjFC2NFm0nIxNHXm4fVsxmGPsf38S?usp=sharing
+	- 本地运行 (未测试): https://github.com/AmericanPresidentJimmyCarter/stable-diffusion
+	- Discord 机器人 (未测试): https://github.com/AmericanPresidentJimmyCarter/yasd-discord-bot
+- StabilityAI 解决了法律问题 --> 可能会有更频繁的新闻和更新: https://discord.com/channels/1002292111942635562/1002292112739549196/1045158750631243786
+	- https://www.reddit.com/r/StableDiffusion/comments/z37ke7/emad_just_said_on_discord_that_it_is_possible/
+- 完全由 AI 生成的网络漫画: https://globalcomix.com/c/paintings-photographs/chapters/en/1/4
+	- https://www.reddit.com/r/StableDiffusion/comments/z2qkyj/i_created_a_completely_aigenerated_webcomic_over/
+- 另一个 Pickle 扫描器发布: https://www.reddit.com/r/StableDiffusion/comments/z2zu2x/keep_yourself_safe_when_downloading_models_pickle/
+	- GUI 项目: https://github.com/diStyApps/Stable-Diffusion-Pickle-Scanner-GUI
+	- Windows 应用: https://github.com/diStyApps/Stable-Diffusion-Pickle-Scanner-GUI/releases/download/v0.1.0/distys-Stable-Diffusion-Pickle-Scanner-GUI.v0.1.0.zip
+	- 原项目: https://github.com/mmaitre314/picklescan
+
+## 11/23
+
+- 如何高效训练 Stable Diffusion (SD) 与如何使用 [SCAL-SDT](https://github.com/CCRcmcpe/scal-sdt/wiki)
+
 ## 11/22
 
-- [梯度累积、autocast 修复、新的潜在采样方法等](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4886)
+* [梯度累积、autocast 修复、新的潜在采样方法等](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4886)
+* 11 月 24 日 Emad 问答: https://discord.gg/TeTtZGTq?event=1045032204557897768 
+* 使用引导扩散模型编辑真实图像的 NULL 文本反转 (又叫将图像转换到潜在空间并对其进行编辑): https://github.com/thepowerfuldeez/null-text-inversion
+	* https://www.reddit.com/r/StableDiffusion/comments/yyqufb/nulltext_inversion_for_editing_real_images_using/
+* 首个多语言文本转图像模型发布: https://huggingface.co/sberbank-ai/Kandinsky_2.0
+* 改进 Addam 的二阶近似: https://twitter.com/_clashluke/status/1594327381317419010
+* 可通过一行代码将 Stable Diffusion、Dreambooth 加速为最快的推理模型的轻量库: https://github.com/VoltaML/voltaML-fast-stable-diffusion
+* 新的采样器 PR (DPM++ SDE): https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4961
+* 修补超网络训练的扩展发布了: https://github.com/aria1th/Hypernetwork-MonkeyPatch-Extension
+	* 相关的 PR: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4965
+* 更好、更简单、更快(？)的模型训练讨论: https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/4940
+* Animus 的收费模型泄露(不确定安全性): https://rentry.org/animusmixed
+* (更新) pickle 检查器现在有一个脚本和一个 Stable Diffusion 使用的白名单: https://github.com/lopho/pickle_inspector/blob/main/README.md
+* Midjourney x Spellbrush 合作发布 https://nijijourney.com/ (midjourney 但是二次元)
 
-## 11/19 - 11/22
+## 11/19 - 11/21
 * 警惕 `sdupdates6` 可能是假的
 * WebUI 中 Textual inversion 训练的实现有问题，它可以更高效: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4680
 	* Pull Request: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4886
@@ -42,7 +124,6 @@
 	* https://huggingface.co/docs/accelerate/index
 * 自动发布 4chan: https://rentry.org/promptchan
 * Anime NYK 与 Anime LA 封禁 AI 作品: https://www.artnews.com/art-news/news/anime-conventions-ban-ai-art-1234647165/
-* Midjourney x Spellbrush https://nijijourney.com/ (midjourney 但是二次元)
 
 ## 11/19
 

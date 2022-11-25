@@ -99,8 +99,10 @@ const buildDoc = (mdDoc, id) => {
         const normalized = a
             .replace(/[!@#$%^&*()=！@#￥%…&*（）+_：:;；'"“”‘’<>《》?./]/g, ' ')
             .replace(/\s{2,}/g, ' ')
+            .trim()
             .replaceAll(' ', '-')
             .replaceAll('/', '-')
+            .replace(/-$/, '')
             .toLowerCase()
         
         if (normalized.match(/^[0-9]/)) {
