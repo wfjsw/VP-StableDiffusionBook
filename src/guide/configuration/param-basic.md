@@ -61,13 +61,11 @@ PS：调太高步数 (>30) 效果不会更好
 
 [英文论坛介绍](https://www.reddit.com/r/StableDiffusion/comments/xbeyw3/can_anyone_offer_a_little_guidance_on_the/)
 
--   举个例子
+不同 Step 和 采样器 的不同效果示例：
 
-不同 Step 和 采样器 的不同效果：
-
-| 预览一                                        | 预览二                                        |
-| --------------------------------------------- | --------------------------------------------- |
-| ![效果](../../assets/sampler-vs-steps-1.webp) | ![效果](../../assets/sampler-vs-steps-2.webp) |
+| 预览一                                                                             | 预览二                                                                            |
+| ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ![效果](../../assets/sampler-vs-steps-1.webp){width=3654 height=4756 loading=lazy} | ![效果](../../assets/sampler-vs-steps-2.webp){width=983 height=1280 loading=lazy} |
 
 ## 注意尺寸
 

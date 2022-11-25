@@ -10,6 +10,7 @@
         "flexsearch": "0.7.31",
         "html-entities": "^2.3.3",
         "markdown-it": "^13.0.1",
+        "markdown-it-attrs": "^4.1.4",
         "medium-zoom": "^1.0.6",
         "sass": "^1.56.0",
         "sitemap": "^7.1.1",

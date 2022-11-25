@@ -1401,6 +1401,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"markdown-it-attrs@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "markdown-it-attrs@npm:4.1.4"
+  peerDependencies:
+    markdown-it: ">= 9.0.0"
+  checksum: c4980619ab190d5c05a99c85bf501207d8105b46556bb7d260d44f3322c9fa4a5cfba9c7b79d92281ab6acc6d25abfd8837b4330a6c3886750aee17262a65e47
+  languageName: node
+  linkType: hard
+
 "markdown-it@npm:^13.0.1":
   version: 13.0.1
   resolution: "markdown-it@npm:13.0.1"
@@ -2084,6 +2093,7 @@ __metadata:
     flexsearch: 0.7.31
     html-entities: ^2.3.3
     markdown-it: ^13.0.1
+    markdown-it-attrs: ^4.1.4
     medium-zoom: ^1.0.6
     sass: ^1.56.0
     sitemap: ^7.1.1

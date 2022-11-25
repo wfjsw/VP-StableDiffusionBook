@@ -10,7 +10,7 @@
 在设置内勾选 **Move VAE and CLIP to RAM when training hypernetwork. Saves VRAM.** 的效果是将 VAE 模型从显存转移到内存，而非卸载，
 :::
 
-![Textual_Inversion](../../assets/203366251-ae0ae585-8492-4970-ac9a-5ccf14a1897c.webp)
+![Textual_Inversion](../../assets/203366251-ae0ae585-8492-4970-ac9a-5ccf14a1897c.webp){width=1058 height=790 loading=lazy}
 
 ## Apt/DreamArtist
 
@@ -146,7 +146,7 @@ https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 
 训练时，可以先用较大的学习率进行测试，然后逐步调小 `0.1 -- 0.02 -- 0.005` ，每次测试都用上一次效果最好的。
 
-![CS231n](../../assets/CS231n.webp)
+![CS231n](../../assets/CS231n.webp){width=1506 height=675 loading=lazy}
 
 ### 其他参数
 

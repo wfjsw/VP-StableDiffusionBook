@@ -17,7 +17,7 @@ Dreambooth 基于 [Imagen](https://imagen.research.google/) 研发，使用时�
 > Diffusers 提供跨多种模态（例如视觉和音频）的预训练扩散模型，作为扩散模型推理和训练的模块化工具箱提供支持。
 > 本节使用 Shivam Shirao 的 [diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth) 分支版本讲解参数，配置衍生自 [ShivamShrirao/diffusers](https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth)。
 
-![DreamBooth_files](../../assets/dreambooth-system.webp){style="background-color: #fff;"}
+![DreamBooth_files](../../assets/dreambooth-system.webp){style="background-color: #fff;" width=3010 height=1482 loading=lazy}
 
 [关于移动云训练](https://rentry.org/yidongyun)
 
@@ -375,7 +375,7 @@ accelerate launch --num_cpu_threads_per_process 8 diffusers/examples/dreambooth/
 
 :::
 
-![image](https://user-images.githubusercontent.com/44570237/198906326-21b4f779-f870-4012-84c1-d5ac1dae0411.png)
+![image](../../assets/198906326-21b4f779-f870-4012-84c1-d5ac1dae0411.webp){width=2068 height=512 loading=lazy}
 峰值显存占用正好为 12G，如果您只有一个显卡，显存不高于 12G，而且同时需要用于 Windows 系统显示，请关闭所有占用显存的程序或网页等，减少额外显存消耗再进行训练。
 
 diffusers 不能直接使用 ckpt 文件进行训练，需要先进行转换，示例如下。

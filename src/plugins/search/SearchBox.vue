@@ -261,13 +261,14 @@ defineExpose({
     position: relative;
     /* box-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5), 0 3px 8px 0 #555a64; */
     overflow: hidden;
-    border: 1px solid #222222;
 }
 
 @media (max-width: 768px) {
     .modal {
         max-width: 100%;
         border-radius: 0px;
+        margin-top: 55px;
+        max-height: 95vh;
     }
 }
 

@@ -54,7 +54,7 @@ Automatic 1111 的 WebUI 提示词语法中，[x:10] 告诉 稳定扩散 直到�
 
 [推荐使用 Danbooru 含有的术语](https://danbooru.donmai.us/wiki_pages/tag_group%3Aimage_composition)
 
-![shot](../../assets/shot.webp)
+![shot](../../assets/shot.webp){width=800 height=600 loading=lazy}
 
 > 引用来自日本 Wiki 的图片，作者不明
 
@@ -277,7 +277,7 @@ bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits,
 
 latent noise 是确定 AI 参考的内容，而 Denoising strength 可以理解为对参考点的偏离容许程度。
 
-![aidrawfix2](../../assets/aidrawfix2.webp)
+![aidrawfix2](../../assets/aidrawfix2.webp){width=1096 height=908 loading=lazy}
 
 ### 变动元素
 
@@ -285,7 +285,7 @@ latent noise 是确定 AI 参考的内容，而 Denoising strength 可以理解�
 
 如果需要添加元素，我们可以通过 PS 给角色移植一个手让 AI 来润色，或者为没有下半身的半身像嫁接其他作品的下半身让 AI 修复。
 
-![test1](../../assets/test1.webp)
+![test1](../../assets/test1.webp){width=1024 height=512 loading=lazy}
 
 ### 基于原图进行微调
 
@@ -295,7 +295,7 @@ latent noise 是确定 AI 参考的内容，而 Denoising strength 可以理解�
 
 然后使用 Img2Img Inpaint + 相关提示词修复，不满意可以再改，直到满意。然后对图像进行 realesrgan 超分，去除图像纹理。
 
-![fix_exp](../../assets/fix_exp.webp)
+![fix_exp](../../assets/fix_exp.webp){width=806 height=521 loading=lazy}
 
 ### 修复绘画技巧/Inpaint/PS重绘画/嫁接修复/躺姿补全
 
@@ -305,7 +305,7 @@ AI 也接受其他成图进行嫁接(解决躺姿没有下半身的问题)
 
 比如
 
-![test_woman](../../assets/test_woman.webp)
+![test_woman](../../assets/test_woman.webp){width=5414 height=5140 loading=lazy}
 
 [一张图片](https://m.weibo.cn/status/4823585938735546) 展现 WebUI 下 img2img 中不同参数下效果的详细对比图（prompt、steps、scale、各种 seed 等参数均保持一致）
 

@@ -6,13 +6,13 @@
 
 ### 图像生成器
 
-![jalammar s pic](../../assets/stable-diffusion-components-and-tensors.webp)
+![jalammar s pic](../../assets/stable-diffusion-components-and-tensors.webp){width=1440 height=553 loading=lazy}
 
 information creator 完全在图像信息空间（或潜伏空间）中工作。这一特性使它比以前在像素空间工作的扩散模型更快。在技术上，这个组件是由一个 UNet 神经网络和一个调度算法组成的。
 
 #### Text Encoder
 
-提示词的解析由 Text Encoder/CLIP 处理 (token embedding)，这里是提示词转译给AI的关键一步。
+提示词的解析由 Text Encoder/CLIP 处理 (token embedding)，这里是提示词转译给 AI 的关键一步。
 
 ClipText 用于文本编码。
 
@@ -32,25 +32,25 @@ Autoencoder Decoder 使用处理过的信息阵列绘制最终图像的解码器
 
 #### CLIP 的工作
 
-![训练图](../../assets/v2-340920caff256e06c29cff7097e23e62_1440w.webp)
+![训练图](../../assets/v2-340920caff256e06c29cff7097e23e62_1440w.webp){width=1440 height=679 loading=lazy}
 
->CLIP 训练图 from https://bbs.huaweicloud.com/blogs/371319
+> CLIP 训练图 from https://bbs.huaweicloud.com/blogs/371319
 
 Stable Diffusion 中使用的自动编码器的缩减系数为 8。这意味着一张 (4, 512, 512) 的图像在潜在空间中是 (4, 64, 64)。
 
-在使用稳定扩散推理一张 512 x 512 的图片的过程中，模型用一个种子和一个文本提示作为输入。潜在种子生成大小 64 × 64 的随机潜在图像，而 prompt 进入 Text Encoder 通过CLIP的文本编码器转化为大小为 77 × 768 的文本嵌入。
+在使用稳定扩散推理一张 512 x 512 的图片的过程中，模型用一个种子和一个文本提示作为输入。潜在种子生成大小 64 × 64 的随机潜在图像，而 prompt 进入 Text Encoder 通过 CLIP 的文本编码器转化为大小为 77 × 768 的文本嵌入。
 
 U-Net 在以文本嵌入为条件的同时迭代地对随机高斯噪声表示进行去噪。U-Net 通过 采样算法 计算去噪的潜在图像表示，输出噪声残差。这个步骤重复许多次后，潜在表示由 Image Decoder 的 auto encoder 的解码器解码输出。
 
-![流程](../../assets/stable_diffusion.webp)
+![流程](../../assets/stable_diffusion.webp){width=578 height=769 loading=lazy}
 
 扩展阅读：
 
-- [什么是扩散模型？ ](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
-- [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
-- [稳定扩散](https://huggingface.co/blog/stable_diffusion)
-- [稳定扩散入门](https://pub.towardsai.net/getting-started-with-stable-diffusion-f343639e4931)
-- [Stable Diffusion From Wikipedia](https://en.wikipedia.org/wiki/Stable_Diffusion)
+-   [什么是扩散模型？ ](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+-   [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+-   [稳定扩散](https://huggingface.co/blog/stable_diffusion)
+-   [稳定扩散入门](https://pub.towardsai.net/getting-started-with-stable-diffusion-f343639e4931)
+-   [Stable Diffusion From Wikipedia](https://en.wikipedia.org/wiki/Stable_Diffusion)
 
 #### WebUI 的实现
 
@@ -64,9 +64,9 @@ WebUI prompt 语法会转换为相应时间的 prompt，然后通过 embedding �
 
 其他以此类推。
 
-整个看下来，原理流程如图 ![prompt_draw](../../assets/198675128-c2c849d0-d024-468b-80c4-374f13e933e3.webp)
+整个看下来，原理流程如图 ![prompt_draw](../../assets/198675128-c2c849d0-d024-468b-80c4-374f13e933e3.webp){width=442 height=468 loading=lazy}
 
->By RcINS
+> By RcINS
 
 你可以在 [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/) 看到全面的介绍。本节部分内容也是由此翻译。
 
@@ -76,7 +76,7 @@ WebUI prompt 语法会转换为相应时间的 prompt，然后通过 embedding �
 
 CLIP 询问器有两个部分：一个是 BLIP 模型，它从图片中创建文本描述。另一种是 CLIP 模型，它会从列表中挑选出与图片相关的几行
 
-::: tip 
+::: tip
 本文件为 [model_base_caption_capfilt_large.pth](https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_caption_capfilt_large.pth)
 
 大小为 855MB
@@ -94,15 +94,15 @@ PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint �
 
 ### 调整大小
 
-- Just resize : 将图像调整为目标分辨率。除非高度和宽度完全匹配，否则图片会被挤压
-- Crop and resize：调整图像大小，使整个目标分辨率都被图像填充。裁剪多余部分。
-- Resize and fill：调整图像大小，使整个图像在目标分辨率内。用图像的颜色填充空白区域。
+-   Just resize : 将图像调整为目标分辨率。除非高度和宽度完全匹配，否则图片会被挤压
+-   Crop and resize：调整图像大小，使整个目标分辨率都被图像填充。裁剪多余部分。
+-   Resize and fill：调整图像大小，使整个图像在目标分辨率内。用图像的颜色填充空白区域。
 
 ## Img2Img 三渲二
 
 调整 3D 模型骨架比寻找样图更容易。
 
-可以结合 **3D建模** 摆 Pose，也可以使用 MMD 相关软件。
+可以结合 **3D 建模** 摆 Pose，也可以使用 MMD 相关软件。
 
 如果是真人图片，需要适当提高 `CFG Scale` 相似度，结合提示词一起生成。降噪 `Denoising` 越高，相关性越低。
 
@@ -120,35 +120,35 @@ PS 重新绘画投入 Img2Img 的话，会导致画风的变动，而 Inpaint �
 
 它们的效果如下:
 
-| 示意操作  | fill  | original   | latent noise      | latent nothing       |
-|---------------------------|----------------|-----------------------|-------------------------|-----------------------|
-| ![](../../assets/inpainting-initial-content-mask.webp) | ![](../../assets/inpainting-initial-content-fill.webp) | ![](../../assets/inpainting-initial-content-original.webp) | ![](../../assets/inpainting-initial-content-latent-noise.webp) | ![](../../assets/inpainting-initial-content-latent-nothing.webp) |
+| 示意操作                                                                                  | fill                                                                                      | original                                                                                      | latent noise                                                                                      | latent nothing                                                                                      |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![](../../assets/inpainting-initial-content-mask.webp){width=484 height=482 loading=lazy} | ![](../../assets/inpainting-initial-content-fill.webp){width=512 height=512 loading=lazy} | ![](../../assets/inpainting-initial-content-original.webp){width=512 height=512 loading=lazy} | ![](../../assets/inpainting-initial-content-latent-noise.webp){width=512 height=512 loading=lazy} | ![](../../assets/inpainting-initial-content-latent-nothing.webp){width=512 height=512 loading=lazy} |
 
 `mask` 横条决定了涂抹区块边缘的平滑程度。original 指代 `原图`，fill 是 `填充底色`。
 
-::: tip 
+::: tip
 `fill` 要更多 step 才能消除不自然感.
 :::
 
 `mask` 横条决定了模糊程度。original 是`原图`，fill 是`填充底色`，`fill` 要更多 step 才能消除不自然感。
 
-`Inpaint at full resolution` 即全分辨率修复。默认情况下 Inpaint 会将生成的图像大小 **整体** 调整为 *UI中指定的目标分辨率*。启用 `Inpaint at full resolution` 后，**仅调整遮罩区域** 的大小，并在处理后将其 **粘贴回** 原始图片。这允许你处理大尺寸图片，并允许以更大的分辨率渲染修复对象。
+`Inpaint at full resolution` 即全分辨率修复。默认情况下 Inpaint 会将生成的图像大小 **整体** 调整为 _UI 中指定的目标分辨率_。启用 `Inpaint at full resolution` 后，**仅调整遮罩区域** 的大小，并在处理后将其 **粘贴回** 原始图片。这允许你处理大尺寸图片，并允许以更大的分辨率渲染修复对象。
 
 目前有几种方法进行重绘制操作：
 
-- 在网络编辑器中自己绘制蒙版（`Inpaint masked `指重画涂鸦区域，`Inpaint not masked` 指重画涂鸦之外的区域）
-- 在外部编辑器中擦除部分图片并上传透明图片。 透明区域会成为蒙版的一部分。注意：某些编辑器默认将完全透明的区域保存为黑色。
-- 将模式（图片右下角）更改为 "Upload mask" 并为蒙版处理为单独的黑白图像(白色部分会被 inpaint)。
+-   在网络编辑器中自己绘制蒙版（`Inpaint masked `指重画涂鸦区域，`Inpaint not masked` 指重画涂鸦之外的区域）
+-   在外部编辑器中擦除部分图片并上传透明图片。 透明区域会成为蒙版的一部分。注意：某些编辑器默认将完全透明的区域保存为黑色。
+-   将模式（图片右下角）更改为 "Upload mask" 并为蒙版处理为单独的黑白图像(白色部分会被 inpaint)。
 
 如果 `inpaint at full resolution` 出现黑块，可能是内存不足，尝试卸载 vae.
 
-![result](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/images/inpainting.png)
+![result](../../assets/inpainting.webp){width=1597 height=957 loading=lazy}
 
-[开源调研-AI绘画全参数讲解-002img2img图像到图像](https://www.bilibili.com/video/BV1HK411Q7uk)
+[开源调研-AI 绘画全参数讲解-002img2img 图像到图像](https://www.bilibili.com/video/BV1HK411Q7uk)
 
 通过这种方法，我们可以更改角色衣物风格或者其他任何细节。
 
-[如何教会AI画手](https://www.bilibili.com/video/av559044202)
+[如何教会 AI 画手](https://www.bilibili.com/video/av559044202)
 
 ## Outpainting 外部修补
 
@@ -175,11 +175,11 @@ Batch 数设置控制获得多少次迭代
 
 但是如果你想使用脚本提供的分辨率增强，这里有 Img2Img 的具体流程
 
-1. 使用 `--medvram` 或者 `--lowvram` 参数启动webui
+1. 使用 `--medvram` 或者 `--lowvram` 参数启动 webui
 2. 选择较小分辨率生成图片。记住你生成图片的分辨率。生成完毕之后，复制图片的 `Seed`
-3. 生成完毕后，先查看图片效果是否满意。如果满意，直接将图片送进Img2img。（点击 `Send to img2img`）
-4. 在img2img界面底部，有一个 `Script` 选项。将 `Script` 选为 `SD Upscale`，里面的 Tile overlap 尽量调小
-5. 一般送入 Img2img 的图，输入框自动填充原提示词。如果你发现prompt有变动，请手动填充
+3. 生成完毕后，先查看图片效果是否满意。如果满意，直接将图片送进 Img2img。（点击 `Send to img2img`）
+4. 在 img2img 界面底部，有一个 `Script` 选项。将 `Script` 选为 `SD Upscale`，里面的 Tile overlap 尽量调小
+5. 一般送入 Img2img 的图，输入框自动填充原提示词。如果你发现 prompt 有变动，请手动填充
 6. 选择合适的 `Sampling Steps` 和 `Sampling method`
 7. 确认你的 `Width` 和 `Height` 与**原图**一致
 8. 将第 2 步复制的 Seed 填入 img2img 的 Seed 里并生成
@@ -199,15 +199,15 @@ SD-WebUI 的 Extras 页有一个自带的超分功能，可以使用 `ESRGAN_4x`
 ::: tip 相关模型
 文件统一下载到 `SDwebUI文件夹\models` 下
 
-[LDSR](https://heibox.uni-heidelberg.de/f/578df07c8fc04ffbadf3/?dl=1)，文件大小为1.9GB
+[LDSR](https://heibox.uni-heidelberg.de/f/578df07c8fc04ffbadf3/?dl=1)，文件大小为 1.9GB
 
-[BSGRAN 4x](https://github.com/cszn/KAIR/releases/download/v1.0/BSRGAN.pth) ，文件大小为63.9M
+[BSGRAN 4x](https://github.com/cszn/KAIR/releases/download/v1.0/BSRGAN.pth) ，文件大小为 63.9M
 
-[ESRGAN_4x](https://github.com/cszn/KAIR/releases/download/v1.0/ESRGAN.pth)，文件大小为63.8MB
+[ESRGAN_4x](https://github.com/cszn/KAIR/releases/download/v1.0/ESRGAN.pth)，文件大小为 63.8MB
 
-[ScuNET GAN/PSNR](https://github.com/cszn/KAIR/releases/download/v1.0/scunet_color_real_gan.pth" to D:\stable-diffusio\models\ScuNET\ScuNET.pth)，文件大小为68.6MB
+[ScuNET GAN/PSNR](https://github.com/cszn/KAIR/releases/download/v1.0/scunet_color_real_gan.pth" to D:\stable-diffusio\models\ScuNET\ScuNET.pth)，文件大小为 68.6MB
 
-[SwinIR 4x](https://github.com/JingyunLiang/SwinIR/releases/download/v0.0/003_realSR_BSRGAN_DFOWMFC_s64w8_SwinIR-L_x4_GAN.pth)，文件大小为136MB
+[SwinIR 4x](https://github.com/JingyunLiang/SwinIR/releases/download/v0.0/003_realSR_BSRGAN_DFOWMFC_s64w8_SwinIR-L_x4_GAN.pth)，文件大小为 136MB
 :::
 
 **Highres Fix/超分应该使用什么 Upscaler？**
@@ -218,11 +218,10 @@ SD-WebUI 的 Extras 页有一个自带的超分功能，可以使用 `ESRGAN_4x`
 
 如果你要搞二次元，推荐使用[realcugan](https://github.com/bilibili/ailab/tree/main/Real-CUGAN)
 
-
 ## 图像去噪
 
 推荐使用 [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) 降噪。
 
-![效果](../../assets/realesrgan-teaser.webp)
+![效果](../../assets/realesrgan-teaser.webp){width=1844 height=870 loading=lazy}
 
->效果图
+> 效果图

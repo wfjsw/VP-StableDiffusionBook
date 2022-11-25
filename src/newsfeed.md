@@ -294,7 +294,7 @@ and keep old args for not using username and password only use authtoken : --ngr
 
 ### NovelAI
 
-![exp](./assets/200149887-935a6f95-0bfa-4f8e-b6b1-0fb0bfe0b39e.webp){ align=left loading=lazy}
+![exp](./assets/200149887-935a6f95-0bfa-4f8e-b6b1-0fb0bfe0b39e.webp){ align=left loading=lazy width=11200 height=4020 }
 
 Test From [Here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/4363)
 
@@ -302,7 +302,7 @@ Test From [Here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discuss
 
 ### Stable Diffusion 1.5
 
-![exp](./assets/200134579-dc31f8d4-abd6-4ef0-9d2c-1582a53ec1b0.webp){loading=lazy}
+![exp](./assets/200134579-dc31f8d4-abd6-4ef0-9d2c-1582a53ec1b0.webp){loading=lazy width=730 height=1295}
 
 Test From [Here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4304#issuecomment-1304602296)
 
@@ -317,7 +317,7 @@ DPM-Solver++ 只需 15 到 20 个步骤即可实现出色的样本质量，尤�
  - 有人说如果对 k-diffusion 做一些调整，DPM++ 2M Karras 可在更少步数中获得更佳效果
    - https://rentry.org/wf7pv
    - 理由：https://github.com/crowsonkb/k-diffusion/issues/43#issuecomment-1304916783
-   - ![](./assets/1667784374378916.webp)
+   - ![](./assets/1667784374378916.webp){width=590 height=863}
  - 独立 Dreambooth 插件：https://github.com/d8ahazard/sd_dreambooth_extension
    - https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3995
  - stable-diffusion-webui 添加了另一层模型安全性过滤器：  
@@ -349,7 +349,7 @@ DPM-Solver++ 只需 15 到 20 个步骤即可实现出色的样本质量，尤�
    - https://www.reddit.com/r/COPYRIGHT/comments/yhdtnb/artist_states_that_us_copyright_office_intends_to/
  - 来自 DreamBooth 的一位原始作者：停止使用 `SKS` 作为初始化词
    - `SKS` 在模型的认知中是一把枪
-   - ![Twitter](./assets/tFA0Vy1.webp)
+   - ![Twitter](./assets/tFA0Vy1.webp){width=1362 height=2048 loading=lazy}
    - https://www.reddit.com/r/StableDiffusion/comments/yju5ks/from_one_of_the_original_dreambooth_authors_stop/
  - Unprompted 插件中出现广告
    - 显然可以被修改去除
@@ -373,7 +373,7 @@ DPM-Solver++ 只需 15 到 20 个步骤即可实现出色的样本质量，尤�
    - 比 1.5 版更好的新的开源模型将由其他组在接下来几个月发布
    - 优化了模型训练流程
    - 2.0 模型快了
-   - ![Discord](./assets/1038223793279217734.webp)
+   - ![Discord](./assets/1038223793279217734.webp){width=946 height=747 loading=lazy}
 
 
 ## 11/03
@@ -434,8 +434,7 @@ lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer
    - 支持本地与云端
  - PaintHua.com - 专注于图片修补的界面
    - https://www.reddit.com/r/StableDiffusion/comments/ygp0iv/painthuacom_new_gui_focusing_on_inpainting_and/
-   - ![](./assets/Hua-Demo.gif)
-
+   - ![](./assets/Hua-Demo.gif){width=726 height=591 loading=lazy}
 
 ## 10/30
 
@@ -555,9 +554,9 @@ NovelAI 是一个使用 AI 生成故事文本和**通过描述文字生成图片
 
 AUTOMATIC 则称自己没有窃取代码，并解释说他编写的代码是基于很久以前已经完成的研究和开发，并且是开源的。有问题的函数于 2021 年 12 月 21 日在 [此处](https://github.com/CompVis/latent-diffusion/commit/e66308c7f2e64cb581c6d27ab6fbeb846828253b) 发布，并称反倒是 NovelAI 使用了自己的代码。
 
-![Discord](./assets/lu014Ca.webp)
+![Discord](./assets/lu014Ca.webp){width=1268 height=689 loading=lazy}
 
-![4ch](./assets/jgyvup5.webp)
+![4ch](./assets/jgyvup5.webp){width=1371 height=362 loading=lazy}
 
 Stable Diffusion 社群管理员后又要求 AUTOMATIC 移除项目中的 Hypernetwork 支持，称 NovelAI 核心开发者认为相关代码必然与泄露源码有联系；但被以代码原创且 Hypernetwork **并非泄露模型独创** 的理由回绝。
 

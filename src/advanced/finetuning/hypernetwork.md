@@ -66,7 +66,7 @@ Swish 对比 ReLU 和 Linear 要更好，Swish适合更大的网络，而 ReLU �
 
 [相关的英文讨论](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2670)
 
-![hypernet对比图](../../assets/exp_hypernet.webp)
+![hypernet对比图](../../assets/exp_hypernet.webp){width=1280 height=434 loading=lazy}
 
 > hypernet对比图, the woman in picture is 24 years old
 

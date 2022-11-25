@@ -24,7 +24,7 @@ nvidia-smi
 
 查看机器的英伟达显卡是否正常运作。
 
-![效果.png](../../assets/benchmark-512.webp)
+![效果.png](../../assets/benchmark-512.webp){width=1794 height=1095 loading=lazy}
 
 > 这里是 9 月份效果(现在快了不少)
 
@@ -464,7 +464,7 @@ pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
 
 如果还不行....
 
-![CUDA-OOM](../../assets/cuda-oom.webp)
+![CUDA-OOM](../../assets/cuda-oom.webp){width=1280 height=959 loading=lazy}
 
 建议你升级设备。
 

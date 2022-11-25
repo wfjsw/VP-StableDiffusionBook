@@ -3,8 +3,15 @@ let rootPath = ''
 
 const replaceMdSyntax = (mdCode) =>
     mdCode
+        .replace(/!\[(.*?)\]\(.*?\)(\{.*?\})?/g, `$1`) // images
         .replace(/\[(.*?)\]\(.*?\)/g, `$1`) // links
-        .replace(/(\*+)(\s*\b)([^\*]*)(\b\s*)(\*+)/gm, `$3`) //bold
+        .replace(/(\*+)(\s*)([^\*]*)(\s*)(\*+)/gm, `$3`) //bold
+        .replace(/~~(.*?)~~/g, `$1`) // strikethrough
+        .replace(/^```[a-z0-9{}\-,]*/gm, '') // code blocks
+        .replace(/^:::(?: (?:tip|warning|details|danger|info))?/gm, '') // custom blocks
+        .replace(/`(.+?)`/gm, `$1`) // inline code
+        .replace(/(\|\s*-+\s*)+\|/g, '') // table bar
+        .replace(/^>/gm, '')
 
 /**
  * Get a list of all md files in the docs folders..
@@ -48,6 +55,7 @@ const processMdFiles = async (dirName) => {
             .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
             .replace(/(<([^>]+)>)/gi, '')
             .trim()
+        
         allData.push({ content: cleanCode, path: mdFile })
     }
     return allData
@@ -73,13 +81,13 @@ const parseMdContent = (mdCode, path) => {
             .map((c) =>
                 c
                     .replace(/\s{2,}/g, ' ')
-                    .replace(
-                        /^:::(?: (?:tip|warning|details|danger|info))?/gm,
-                        ''
-                    )
-                    .replace(/^```[a-z0-9{}\-,]*/gm, '')
-                    .replace(/~~[^~]|^~~|~~$/gm, '')
-                    .replace(/!\[.*?\]\(.*?\)(?:\{.+?\})?/gm, '')
+                    // .replace(
+                    //     /^:::(?: (?:tip|warning|details|danger|info))?/gm,
+                    //     ''
+                    // )
+                    // .replace(/^```[a-z0-9{}\-,]*/gm, '')
+                    // .replace(/~~[^~]|^~~|~~$/gm, '')
+                    // .replace(/!\[.*?\]\(.*?\)(?:\{.+?\})?/gm, '')
             )
             .filter((c) => c.trim() !== '' && !i.match(/^\|\s*:?-+/m))
             .map((c) => ({ anchor, content: c.trim(), path, pageTitle }))
@@ -105,7 +113,7 @@ const buildDoc = (mdDoc, id) => {
             .replace(/-$/, '')
             .toLowerCase()
         
-        if (normalized.match(/^[0-9]/)) {
+        if (normalized.match(/^\d/)) {
             link += `#_${normalized}`
         } else {
             link += `#${normalized}`

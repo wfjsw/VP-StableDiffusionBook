@@ -99,7 +99,7 @@ NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一�
 
 把 DreamBooth 训练出的 .ckpt 文件放进 webui 的 `models\Stable-diffusion` 目录里，在 webui 的左上角切换到即可使用。
 
-![SAMPLE](../../assets/high_level.webp){style="background-color: #fff;"}
+![SAMPLE](../../assets/high_level.webp){style="background-color: #fff;" width=3178 height=1186 loading=lazy}
 
 官网 https://dreambooth.github.io/
 
@@ -152,7 +152,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 
 然后重启程序，你就可以在 Img2Img 中使用此项功能。
 
-![Aesthetic_other](../../assets/Aesthetic_other.webp)
+![Aesthetic_other](../../assets/Aesthetic_other.webp){width=866 height=351 loading=lazy}
 
 ## 如何选择
 

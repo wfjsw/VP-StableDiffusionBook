@@ -4,7 +4,7 @@
 
 见 [Roaming_info_for_latent_diffusion](http://allophane.com/index.php/2022/10/17/roaming_info_for_latent_diffusion/)
 
-![Roaming_info.png](../../assets/load-path.webp)
+![Roaming_info.png](../../assets/load-path.webp){width=2124 height=1811}
 
 ## 半精度还是单精度？
 
@@ -59,14 +59,14 @@ S/R 是 搜索/替换 的意思，输入一个单词或短语的列表，它从�
 
 引用官方 Wiki 的设置图：
 
-![引用官方 Wiki 的设置图](../../assets/xy_grid-medusa-ui.webp)
+![引用官方 Wiki 的设置图](../../assets/xy_grid-medusa-ui.webp){width=1559 height=1038 loading=lazy}
 
 ## Variations 种子变化
 
 `Variation strength slider` 和 `Variation seed field` 允许您指定现有图片应更改多少以使其看起来不同。
 在最大强度下，图片种子将完全取决于 Variation seed；在最小强度下，图片种子将完全取决于原始种子。（使用 Ancestral 采样器时除外）。
 
-![引用官方 Wiki 的设置图](../../assets/seed-variations.webp)
+![引用官方 Wiki 的设置图](../../assets/seed-variations.webp){width=2432 height=2637 loading=lazy}
 
 ## 提示词模板
 

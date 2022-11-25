@@ -160,7 +160,7 @@ Part 1 中较常用的文件列举如下：
 
 `random_stableckpt` 是一些模型，有的与 Part1 重复
 
-![Part1](../../assets/models.webp)
+![Part1](../../assets/models.webp){width=965 height=425 loading=lazy}
 
 ::: details 附内容
 
@@ -224,7 +224,7 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 ### SD Pokemon Diffusers
 
-![Preview](../../assets/1663756797814-62bd5f951e22ec84279820e8.webp)
+![Preview](../../assets/1663756797814-62bd5f951e22ec84279820e8.webp){width=768 height=512 loading=lazy}
 
 经过微调的 Stable Diffusion 模型，专注于生成宝可梦图片。
 
@@ -232,7 +232,7 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 ### SD PixelArt SpriteSheet Generator
 
-![Preview](../../assets/1667278292305-63028bc42db53f7d9f38dadb.webp)
+![Preview](../../assets/1667278292305-63028bc42db53f7d9f38dadb.webp){width=256 height=512 loading=lazy}
 
 经过微调的 Stable Diffusion 模型，专注于生成多个方向的像素小人。
 
@@ -242,11 +242,11 @@ EMA 移动平均值对生成图像没有任何帮助。
 
 ### Furry 超网络模型比较
 
-![furry](../../assets/furry-xy.webp)
+![furry](../../assets/furry-xy.webp){width=1920 height=2119 loading=lazy}
 
 ### 其他超网络模型比较
 
-![test-result](../../assets/other-hn-xy.webp)
+![test-result](../../assets/other-hn-xy.webp){width=1446 height=4000 loading=lazy}
 
 参考参数：
 

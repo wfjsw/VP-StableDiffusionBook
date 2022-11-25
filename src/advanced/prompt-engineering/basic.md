@@ -116,7 +116,7 @@ SD-WebUI 突破最多 75 个词组限制的方式是将每 20 + 55 个词分为�
 
 以上排序对于每组提示词单独计算，因此需要合理调整顺序。
 
-![图像生成的描述](../../assets/stable-diffusion-image-generation.webp)
+![图像生成的描述](../../assets/stable-diffusion-image-generation.webp){width=1426 height=808 loading=lazy}
 
 > https://jalammar.github.io/illustrated-stable-diffusion/
 

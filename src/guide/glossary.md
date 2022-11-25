@@ -92,7 +92,7 @@ CLIP 在生成模型的潜在空间进行搜索，从而找到与给定的文字
 
 Latent Diffusion Model 潜在扩散模型。
 
-![？](../assets/prompt_draw_fix.webp)
+![？](../assets/prompt_draw_fix.webp){width=442 height=468 loading=lazy}
 
 > 下面的框
 
