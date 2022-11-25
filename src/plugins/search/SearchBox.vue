@@ -32,7 +32,7 @@ const result = computed(() => {
                 link: l,
                 anchor: a,
                 pageTitle: T,
-                pageLink: origin.value + link.slice(0, link.indexOf('#'))
+                pageLink: origin.value + l.slice(0, l.indexOf('#'))
             }
         })
         return search
