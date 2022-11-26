@@ -10,22 +10,17 @@
 
 如果是其他显卡而且加载了 VAE 时出现黑图，加入 `--no-half-vae` 参数（见 [关于 AUTOMATIC1111 /stable-diffusion-webui 的 FAQ](https://gist.github.com/crosstyan/f912612f4c26e298feec4a2924c41d99)）。
 
-
 ## RuntimeError Sizes of tensors must match
 
 (img2img) 如果你得到 `RuntimeError: Sizes of tensors must match`，你需要改变输入图像的分辨率
 
-
 ## 彩虹混乱图
 
-如果 AI 输出了混乱的彩虹色图片，则生成分辨率被设置得太低
-
+如果 AI 输出了混乱的彩虹色图片，可能是生成分辨率或步数设置得太低。
 
 ## 高分辨率出鬼图 / 低显存生成大分辨率图片
 
-简单说就是使用低分辨率重新生成或者超分。见钩吻
-
-你可以在下个章节看到具体操作流程。
+使用 [Highres. fix](./param-basic.md#highres-fix-高清修复)
 
 ## RuntimeError: Unable to find a valid cuDNN algorithm to run convolution
 

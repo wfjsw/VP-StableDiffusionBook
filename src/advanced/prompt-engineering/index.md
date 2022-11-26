@@ -70,7 +70,7 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI 绘画魔
 ### 工具
 
 -   [快速分享-在线剪切板](https://netcut.cn/)
--   **[AIPhotoShop-无限外延画布的在线工具](https://www.painthua.com/)**
+-   [PaintHua-无限外延画布的在线工具](https://www.painthua.com/)
 -   [NAI<=>WebUI 权重转换 Telegram 服务](https://github.com/sudoskys/M2NM2NBot)
 -   [NAI 的分词器，用来查看你的文本被识别为哪些](https://novelai.net/tokenizer)
 

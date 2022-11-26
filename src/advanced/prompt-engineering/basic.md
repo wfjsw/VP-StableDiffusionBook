@@ -36,7 +36,7 @@ CLIP 的标记器在标记之前将所有单词转为小写。其他模型，如
 
 ### 特殊情况
 
-大写字母并不重要，下划线（"_"）通常不被转换为空格。
+大写字母并不重要，下划线（"\_"）通常不被转换为空格。
 
 开头和结尾的额外空格会被直接丢弃。词与词之间的额外空格也会被丢弃。
 
@@ -44,7 +44,7 @@ CLIP 的标记器在标记之前将所有单词转为小写。其他模型，如
 
 可以直接使用自然语言，SD-WebUI 有自然语言处理能力(英文句子)，可以使用部分颜文字 (如 `(^_^)`) 和 Emoji，甚至可以是一些日文。部分 Emoji 在表达上尤为准确。
 
-至少有一些Unicode字符是拉丁语字符的替代版本，它们被映射为普通的拉丁语字符。日语中使用的全幅拉丁字符（如ABC）被确认为可以转换。法语重音符（如é和è）和德语 umlauts（如 ä 和 ö）不会被映射到它们的常规对应物。
+至少有一些 Unicode 字符是拉丁语字符的替代版本，它们被映射为普通的拉丁语字符。日语中使用的全幅拉丁字符（如 ABC）被确认为可以转换。法语重音符（如 é 和 è）和德语 umlauts（如 ä 和 ö）不会被映射到它们的常规对应物。
 
 人类的语言是任意的和不精确的(除了 Emoji ，它只有一个字符所以异常精确)，人类的语言从未进化到可以详细描述空间信息的程度。
 
@@ -94,7 +94,7 @@ CLIP 的标记器在标记之前将所有单词转为小写。其他模型，如
 
 ```text
 masterpiece,
-1girl,  hatsune miku, 
+1girl,  hatsune miku,
 look at viewer,turning back,
 blow wind, cyan hair, two side up, cyan eyes,eardrop,dress,
 caustics, masterpiece, high resolution,
@@ -149,26 +149,26 @@ samples_ddim, _ = sampler.sample(conditioning=c, unconditional_conditioning=uc, 
 比如使用以下提示词避免生成水印和文字内容
 
 ```text
-lowres, bad anatomy, bad hands, text, error, missing fingers, 
-extra digit, fewer digits, cropped, worst quality, low quality, 
+lowres, bad anatomy, bad hands, text, error, missing fingers,
+extra digit, fewer digits, cropped, worst quality, low quality,
 normal quality, jpeg artifacts, signature, watermark, username, blurry
 ```
 
 还如这个例子
 
 ```text
-ugly, fat, obese, chubby, (((deformed))), [blurry], bad anatomy, 
-disfigured, poorly drawn face, mutation, mutated, (extra_limb), 
-(ugly), (poorly drawn hands fingers), messy drawing, morbid, 
-mutilated, tranny, trans, trannsexual, [out of frame], (bad proportions), 
-(poorly drawn body), (poorly drawn legs), worst quality, low quality, 
+ugly, fat, obese, chubby, (((deformed))), [blurry], bad anatomy,
+disfigured, poorly drawn face, mutation, mutated, (extra_limb),
+(ugly), (poorly drawn hands fingers), messy drawing, morbid,
+mutilated, tranny, trans, trannsexual, [out of frame], (bad proportions),
+(poorly drawn body), (poorly drawn legs), worst quality, low quality,
 normal quality, text, censored, gown, latex, pencil
 ```
 
 更多资料详见 [官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Negative-prompt#examples)
 
 ## 权重系数
- 
+
 权重系数可改变提示词特定部分的比重。
 
 更多资料详见：[Wiki:Attention Emphasis](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis)
@@ -191,12 +191,12 @@ a \(word\) - 在提示中使用文字 () 字符
 指定权重仅适用于 `()` 而不是 `[]`，注意 `[]` 为权重削减语法，指定单个权重仅适用于 WebUI 且使用 `()`
 
 ```
-> ( n ) = ( n : 1.1 )  
-> (( n )) = ( n : 1.21 )  
-> ((( n ))) = ( n : 1.331 )  
-> (((( n )))) = ( n : 1.4641 )  
-> ((((( n )))) = ( n : 1.61051 )  
-> (((((( n )))))) = ( n : 1.771561 )  
+> ( n ) = ( n : 1.1 )
+> (( n )) = ( n : 1.21 )
+> ((( n ))) = ( n : 1.331 )
+> (((( n )))) = ( n : 1.4641 )
+> ((((( n )))) = ( n : 1.61051 )
+> (((((( n )))))) = ( n : 1.771561 )
 ```
 
 ::: info
@@ -204,7 +204,7 @@ a \(word\) - 在提示中使用文字 () 字符
 
 过多圆括号会导致 字符 被程序吃掉，`a ((((farm))), daytime`会变成 `a farm daytime` 而没有逗号。
 :::
-    
+
 ::: tip 关于 NovelAI
 NovelAI 中不允许单独指定权重，但支持混合权重 `cat:1|happy:-0.2|cute:-0:3` 这样的语法。
 
@@ -255,17 +255,18 @@ SD-WebUI 使用 `()` 增强权重，而 NovelAI 使用 `{}` 增强权重。两�
 `a ((((farm))), daytime` 的语法可能会吃掉逗号
 :::
 
-混合：NovelAI 使用 `|` 分隔多个关键词以混合多个要素，字面意义上的混合，可以串联多个提示词。SD-WebUI 使用 ` AND ` 关键词（注意大小写）。混合组内单词可通过 `提示词 :权重值` 格式指示权重值。
+混合：NovelAI 使用 `|` 分隔多个关键词以混合多个要素，字面意义上的混合，可以串联多个提示词。SD-WebUI 使用 `AND` 关键词（注意大小写）。混合组内单词可通过 `提示词 :权重值` 格式指示权重值。
 
 ::: warning
 值得注意的是，`AND` 会将所有标签划分成段，括号对其并无作用。
 :::
 
 [渐变](advanced#渐变提示词)：使用 `[some1:some2:num]`
- - `[fantasy:cyberpunk:0.2]` 代表从 20% 的生成步数后，将 `fantasy` 标签替换为 `cyberpunk`
- - `[fantasy:cyberpunk:16]` 代表从第 16 步后，将 `fantasy` 标签替换为 `cyberpunk`
- - `[to:when]` 在 when 指示的生成步数后添加 `to` 到提示词中
- - `[from::when]` 在 when 指示的生成步数从提示中删除 `from` 提示词
+
+-   `[fantasy:cyberpunk:0.2]` 代表从 20% 的生成步数后，将 `fantasy` 标签替换为 `cyberpunk`
+-   `[fantasy:cyberpunk:16]` 代表从第 16 步后，将 `fantasy` 标签替换为 `cyberpunk`
+-   `[to:when]` 在 when 指示的生成步数后添加 `to` 到提示词中
+-   `[from::when]` 在 when 指示的生成步数从提示中删除 `from` 提示词
 
 转义：SD-WebUI 中如果提示词本身带有括号，如 `pig (animal)` 请在括号前使用 `\` 字符转义作 `pig \(animal\)`，避免出现意料之外的增强效果。
 
@@ -281,7 +282,7 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 
 [人偶教室的测试记录](https://www.yuque.com/longyuye/lmgcwy)
 
-[风格化: 32种](https://www.bilibili.com/video/BV1TP411N71t/)
+[风格化: 32 种](https://www.bilibili.com/video/BV1TP411N71t/)
 
 更全面的指南见页尾。
 
@@ -307,7 +308,7 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 
 对于以图做图来说，低 `denoising` 意味着修正原图，高 `denoising` 就和原图就没有大的相关性了。一般来讲阈值是 0.7 左右，超过 0.7 和原图基本上无关，0.3 以下就是稍微改一些。
 
-实际执行中，具体的执行步骤为 Denoising strength * Sampling Steps。
+实际执行中，具体的执行步骤为 Denoising strength \* Sampling Steps。
 
 ## 从图片指纹提取提示词
 
@@ -319,32 +320,35 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 
 通过使用其他机器学习模型，可以从图片中提取相关元素。结果常常不准确。
 
-[LenKiMo_Bot](https://t.me/LenKiMo_Bot)
+Stable Diffusion WebUI 自带逆向分析提示词功能，需将图片上传至 img2img 窗体后使用 [CLIP Interrogate](advanced#clip-interrogate) 或 [DeepDanbooru Interrogate](advanced#deepdanbooru-interrogate)。
 
-[DeepDanbooru](https://github.com/KichangKim/DeepDanbooru)
+其他方法：
+
+-   [LenKiMo_Bot](https://t.me/LenKiMo_Bot)
+-   [DeepDanbooru](https://github.com/KichangKim/DeepDanbooru)
 
 ## 提示词组合展示台 / 搜索引擎
 
-你可以访问以下传送门获取一些优秀的参数实例！（当然，中文社区的测试群有 **大量素材**，一分钟20次）
+你可以访问以下传送门获取一些优秀的参数实例！（当然，中文社区的测试群有 **大量素材**，一分钟 20 次）
 
 [StableDiffusion_Show](https://t.me/StableDiffusion_Show)
 
 [cyan_ai_sese](https://t.me/cyan_ai_sese)
 
-[LEXICA搜索引擎](https://lexica.art/?q=Miku)
+[LEXICA 搜索引擎](https://lexica.art/?q=Miku)
 
 ## Prompt matrix 参数矩阵
 
-使用 `|` 分隔多个Tag，程序将为它们的每个组合生成一个图像。 例如，如果使用 `a busy city street in a modern city|illustration|cinematic lighting` ，则可能有四种组合（始终保留提示的第一部分）：
+使用 `|` 分隔多个 Tag，程序将为它们的每个组合生成一个图像。 例如，如果使用 `a busy city street in a modern city|illustration|cinematic lighting` ，则可能有四种组合（始终保留提示的第一部分）：
 
-- a busy city street in a modern city
-- a busy city street in a modern city, illustration
-- a busy city street in a modern city, cinematic lighting
-- a busy city street in a modern city, illustration, cinematic lighting
+-   a busy city street in a modern city
+-   a busy city street in a modern city, illustration
+-   a busy city street in a modern city, cinematic lighting
+-   a busy city street in a modern city, illustration, cinematic lighting
 
 ## 提示词冲突
 
-比如 `sex` 包含较多姿势体位，在使用者想要特定姿势时，法术内单一的 `sex` tag就应该被删除。
+比如 `sex` 包含较多姿势体位，在使用者想要特定姿势时，法术内单一的 `sex` tag 就应该被删除。
 
 同样地，`loli` Tag 附带了强画风属性，会很大地影响结果！改成 `female child` 会好一点。
 
@@ -360,15 +364,15 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 [from:to:when]
 ```
 
-其中from和to是任意文本，并且when是一个数字，用于定义应在采样周期多长时间内进行切换。越晚，模型绘制to文本代替from文本的能力就越小。如果when是介于 0 和 1 之间的数字，则它是进行切换之后的步数的一小部分。如果它是一个大于零的整数，那么这只是进行切换的步骤。
+其中 from 和 to 是任意文本，并且 when 是一个数字，用于定义应在采样周期多长时间内进行切换。越晚，模型绘制 to 文本代替 from 文本的能力就越小。如果 when 是介于 0 和 1 之间的数字，则它是进行切换之后的步数的一小部分。如果它是一个大于零的整数，那么这只是进行切换的步骤。
 
 将一个提示编辑嵌套在另一个提示中不起作用。
 
 **使用方法**
 
-[to:when] 在固定数量的step后添加to到提示 ( when)
+[to:when] 在固定数量的 step 后添加 to 到提示 ( when)
 
-[from::when] 在固定数量的step后从提示中删除from( when)
+[from::when] 在固定数量的 step 后从提示中删除 from( when)
 
 例子： a [fantasy:cyberpunk:16] landscape
 
@@ -377,4 +381,3 @@ NovelAI 出图风格受训练数据多样性影响并不固定。你可以通过
 在第 16 步之后，它将切换到绘图 `a cyberpunk landscape`，从幻想停止的地方继续。
 
 比如 [male:female:0.0], 意味着你开始时就要求画一个女性。
-

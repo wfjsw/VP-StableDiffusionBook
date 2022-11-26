@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 import FlexSearch from 'flexsearch'
 import FlexLogo from './flex-logo.svg'
 import SearchItem from './SearchItem.vue'
+import { getEncoder } from './encoder.js'
 
 const emit = defineEmits(['close'])
 
@@ -32,7 +33,7 @@ const result = computed(() => {
                 link: l,
                 anchor: a,
                 pageTitle: T,
-                pageLink: origin.value + l.slice(0, l.indexOf('#'))
+                pageLink: origin.value + l.slice(0, l.indexOf('#')),
             }
         })
         return search
@@ -59,34 +60,15 @@ async function loadSearchIndex() {
     if (indexLoading.value || indexLoaded.value) return
     indexLoading.value = true
     try {
-        const [{ indexData, options }, { previewLookup }] = await Promise.all([
-            import('virtual:search-index'),
-            import('virtual:search-preview'),
-        ])
+        const [{ indexData, options }, { previewLookup }] =
+            await Promise.all([
+                import('virtual:search-index'),
+                import('virtual:search-preview'),
+            ])
         PREVIEW_LOOKUP.value = previewLookup
         const idx = FlexSearch({
             ...options,
-            encode: (str) => {
-                const filter = options.filter ?? []
-                const stemmer = options.stemmer
-                    ? Object.entries(options.stemmer)
-                    : []
-
-                const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
-                    .map(n => n[0])
-                    .map(n => {
-                        for (const [key, value] of stemmer) {
-                            if (n.endsWith(key)) return n.slice(0, -key.length) + value
-                        }
-                        return n
-                    })
-                const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-                return eng
-                    .concat(chs)
-                    .filter((n) => !!n)
-                    .filter((n) => n.trim() !== '')
-                    .filter((n) => !filter.includes(n))
-            },
+            encode: getEncoder(options),
         })
 
         idx.registry = indexData.reg
@@ -308,5 +290,4 @@ defineExpose({
     background-color: white;
     border: 1px solid var(--vt-c-brand);
 }
-
 </style>

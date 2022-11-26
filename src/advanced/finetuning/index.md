@@ -4,83 +4,64 @@ outline: [2, 3]
 
 # 模型精调
 
->Todo 
->材料
->
-> https://github.com/huggingface/diffusers/issues/712
->
-> https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2002
->
-> https://github.com/ShivamShrirao/diffusers/tree/main/examples/dreambooth
-
-
-这节对显卡的要求较高。
-
-在法律上，**不应该**无视画师约定的版权许可，采集作品数据进行训练。在道德上，**不应该**用训练结果贬低原画师作品价值，俗谚有 “吃水不忘挖井人”，训练数据并不能作为你的贡献。
+这节对显卡显存大小的要求较高。训练前，需要确定至少有 8 GB 专用显存。大规模的模型训练可能需要至少 12 GB 专用显存。
 
 ## 模型训练的不同方法
 
 如果你在 `--medvram` 参数下开始训练，可能会出现 `RuntimeError: Expected all tensors to be on the same device` 错误，无法创建训练。
 这是优化机制导致的[问题](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/2399)，WebUI 在 [这次提交](https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/cbb857b675cf0f169b21515c29da492b513cc8c4) 中允许了在 `--medvram` 下创建 embedding 的情况。请更新版本到这个版本之后。
 
-**关于 batch size**
+<!-- **关于 batch size**
 
-更大的 batch size 可能稍微加快训练并稍微提升训练效果，但也需要更大的显存。
-
+更大的 batch size 可能稍微加快训练并稍微提升训练效果，但也需要更大的显存。 -->
 
 > fine tune = hn/TI/DreamArtist (APT)/DB/native training etc.  
 > fine tune directly = DB/native training
 
-
-
 ### Textual Inversion (TI)
 
-从一些具有共同语义 [v] 的图片中，提取 [v] 的一个方法。提取出的 [v] 张量称之为 "Embedding"。将 Embedding 保存为文件，之后生成图片时就可以在 prompt 中以文件名引用。
+从一些具有共同语义 `[V]` 的图片中，提取 `[V]` 的一个方法。提取出的 `[V]` 张量称之为 "Embedding"。将 Embedding 保存为文件，之后生成图片时就可以在提示词中使用文件名方便引用。
 
 #### 特征
 
-训练产物大小较小，WebUI 自带训练支持。
+训练产物较小 (`.pt` 文件多数只占用数十 KB 空间)，WebUI 自带训练支持。
 
 可以解决新出的角色画不出的问题，或者模仿特定的可以用语言精确描述的艺术风格。
 
-因为 TI 是在 Text Encoder 的输出做处理，所以并不能让模型学习到它不知道的概念。
+因为 TI 是在 Text Encoder 的输出做处理，并不涉及图像生成本身，所以并不能让模型学习到未知概念。
 
 #### 使用
 
-使用时，将 embedding（一个 .pt 、一个 .bin 文件或新版图片格式 .png / .webp / .avif / .jxl）放入 webui 的 `embeddings` 目录并在 prompt 中写要用的 embedding 的文件名（不包括扩展名）即可，不必重启 webui。可以同时使用多个 embedding。
+使用时，将 embedding（一个 `.pt` 、一个 `.bin` 文件或新版图片格式 `.png` / `.webp` / `.avif` / `.jxl`）放入 webui 的 `embeddings` 目录并在提示词中提及使用到的 `embedding` 的文件名（不包括扩展名）。添加或更换模型无需重启 webui。可以同时使用多个 embedding。
 
 如果你使用 DreamArtist ，则将 `*-neg.pt` 一并放入 `embeddings` 目录，在积极和消极提示词中同时使用它们即可。
 
 #### 相关
 
-[webui 给的英文说明和效果图](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion)
-
-[相关 embeddings](https://gitlab.com/16777216c/stable-diffusion-embeddings)，里面有相关效果预览。
-
-[list of Textual Inversion embeddings for webui(SD)](https://rentry.org/embeddings)
-
-[HuggingFace 的 embedding 库](https://cyberes.github.io/stable-diffusion-textual-inversion-models/)
-
+- [webui 给的英文说明和效果图](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion)
+- [相关 embeddings](https://gitlab.com/16777216c/stable-diffusion-embeddings)，里面有相关效果预览。
+- [list of Textual Inversion embeddings for webui(SD)](https://rentry.org/embeddings)
+- [HuggingFace 的 embedding 库](https://cyberes.github.io/stable-diffusion-textual-inversion-models/)
 
 ### Hypernetwork (HN)
 
-一类给模型生成权重的网络，在这里是给 LDM(潜在扩散模型) 生成权重。是一个较为实验性的方法，NovelAI 率先探索了在 LDM 上使用。
+一类给模型生成权重的网络，在这里是给 LDM (潜在扩散模型) 生成权重。是一个较为实验性的方法，NovelAI 率先探索了在 LDM 上使用。
 
 #### 特征
 
 与 TI 不同，Hypernetwork 会改动 LDM 本身的权重，所以可以训练出无法用语言精确表述的细节，也更适用于画风的训练。
 
-训练产物大小中等，WebUI 自带训练支持。
+训练产物大小中等，大多在 80 - 160 MB 上下，WebUI 自带训练支持。
 
 #### 使用
 
-使用时，将 Pt 放入 `/models/hypernetworks` 并在设置选项勾选启用它。
-
-NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一些 Hypernetwork。
-
 ::: tip
-对于 `.pt`文件，一般情况下小的是 embedding 大的是 hypernetwork。
+由于 Embedding 与 Hypernetwork 共用 `.pt` 扩展名，加载时需要予以区分。主要的区分手段为文件大小。
 :::
+
+使用时，将 `.pt` 文件放入 `/models/hypernetworks` 并在设置页面的 `hypernetworks` 下拉菜单中启用它。
+
+NAI 泄露包中的 `stableckpt/modules/modules` 文件夹有 NovelAI 训练的一些 Hypernetwork。
 
 ### DreamBooth (DB)
 
@@ -94,17 +75,17 @@ NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一�
 
 这个模型并非为学习画风（抽象概念）而设计。但似乎可以一定程度上适应“画风”。具体效果交由读者你实验。
 
+训练产物较大，使用 `.ckpt` 扩展名，大多在 2 - 4 GB 上下。
 
 #### 使用
 
-把 DreamBooth 训练出的 .ckpt 文件放进 webui 的 `models\Stable-diffusion` 目录里，在 webui 的左上角切换到即可使用。
+操作方法同一般模型，把 DreamBooth 训练出的 `.ckpt` 文件放进 webui 的 `models\Stable-diffusion` 目录里，在 webui 的左上角切换即可使用。
 
 ![SAMPLE](../../assets/high_level.webp){style="background-color: #fff;" width=3178 height=1186 loading=lazy}
 
 官网 https://dreambooth.github.io/
 
 论文 https://arxiv.org/abs/2208.12242
-
 
 ### Advanced Prompt Tuning (APT)
 
@@ -117,7 +98,6 @@ NAI Leaks 的 `novelaileak\stableckpt\modules\modules` 中有 NAI 训练的一�
 添加重建损失以提高生成图像的细节质量和丰富度。
 
 添加通过人工注释训练的鉴别器（使用 convnext 实现）允许嵌入基于模型进行学习。 
-
 
 ### Aesthetic Gradients
 

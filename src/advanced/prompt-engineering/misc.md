@@ -6,72 +6,67 @@
 an extremely delicate and beautiful
 ```
 
-- [绘画媒介全分类](https://danbooru.donmai.us/wiki_pages?commit=Search&search%5Btitle_normalize%5D=%2A_%28medium%29)
-- [动漫人物/艺术家/风格化列表/Pt文件](https://rentry.org/anime_and_titties)
-- [风格化：人偶教室](https://www.yuque.com/longyuye/lmgcwy)
-- [风格化，日语Wiki](https://seesaawiki.jp/nai_ch/d/%b2%e8%c9%f7%a1%a6%b9%bd%bf%de)
-- [风格化: 32种](https://www.bilibili.com/video/BV1TP411N71t/)
-- [艺术家列表/SD1.4](https://rentry.org/artists_sd-v1-4)
-- [艺术家列表/SD1.4/1,833 位艺术家](https://www.urania.ai/top-sd-artists)
-- [艺术家博物馆](https://gallerix.asia/storeroom/)
+-   [绘画媒介全分类](https://danbooru.donmai.us/wiki_pages?commit=Search&search%5Btitle_normalize%5D=%2A_%28medium%29)
+-   [动漫人物/艺术家/风格化列表/Pt 文件](https://rentry.org/anime_and_titties)
+-   [风格化：人偶教室](https://www.yuque.com/longyuye/lmgcwy)
+-   [风格化，日语 Wiki](https://seesaawiki.jp/nai_ch/d/%b2%e8%c9%f7%a1%a6%b9%bd%bf%de)
+-   [风格化: 32 种](https://www.bilibili.com/video/BV1TP411N71t/)
+-   [艺术家列表/SD1.4](https://rentry.org/artists_sd-v1-4)
+-   [艺术家列表/SD1.4/1,833 位艺术家](https://www.urania.ai/top-sd-artists)
+-   [艺术家博物馆](https://gallerix.asia/storeroom/)
 
 #### 草图风格
 
-| 词                                                            | 描述                                               |
-|---------------------------------------------------------------|----------------------------------------------------|
-| sketch                                                        | 可以让图片看起来像随手画的草稿                     |
-| lineart                                                   | 可以让线条变得很粗                                 |
-| posing sketch, monochrome                           | 黑白草图                                           |
-| rough sketch                                                | 上了颜色的草图                                     |
-| monochrome+lineart                                            | 情况下一般只会让眼睛上色，强调发色后头发也可以上色 |
+| 词                                          | 描述                                               |
+| ------------------------------------------- | -------------------------------------------------- |
+| sketch                                      | 可以让图片看起来像随手画的草稿                     |
+| lineart                                     | 可以让线条变得很粗                                 |
+| posing sketch, monochrome                   | 黑白草图                                           |
+| rough sketch                                | 上了颜色的草图                                     |
+| monochrome+lineart                          | 情况下一般只会让眼睛上色，强调发色后头发也可以上色 |
 | monochrome, gray scale, pencil sketch lines | 做出的铅笔速写的感觉                               |
 
-
-利用sketch，pastel color，lineart的tag模拟一张图的绘画过程
-
+利用 sketch，pastel color，lineart 的 tag 模拟一张图的绘画过程
 
 #### 艺术风格
 
-| 词                                                                  | 描述                                   |
-|---------------------------------------------------------------------|----------------------------------------|
-| chibi                                                               | 可以画出低头身比的效果(二头身, 三头身) |
-| watercolor pencil                                               | 可以生成彩铅画                         |
-| faux traditional media                                       | 可以做出签绘的风格                     |
-| anime screeshot，                                                   | 可以让画面变成动画风格                 |
-| retro artstyle                                               | 赛璐璐风                               |
+| 词                                                        | 描述                                   |
+| --------------------------------------------------------- | -------------------------------------- |
+| chibi                                                     | 可以画出低头身比的效果(二头身, 三头身) |
+| watercolor pencil                                         | 可以生成彩铅画                         |
+| faux traditional media                                    | 可以做出签绘的风格                     |
+| anime screeshot，                                         | 可以让画面变成动画风格                 |
+| retro artstyle                                            | 赛璐璐风                               |
 | photorealistic, painting, realistic, sketch, oil painting | 厚涂                                   |
-| pastel color和sketch                                                | 搭配会有速涂的质感                     |
-
+| pastel color 和 sketch                                    | 搭配会有速涂的质感                     |
 
 #### 杂志/设定集 风格
 
-| 词                                                             | 描述                                                           |
-|----------------------------------------------------------------|----------------------------------------------------------------|
-| official art                                                   | 变得更加官方一点                                               |
-| three views from front, back and side和costume setup materials | 可以用来生成设定图                                             |
-| multiple views                                                 | 会出现类似设定图                                               |
-| character sheet                                              | 会出现设定图                                                   |
-| magazine cover                                                 | 会把背景换成杂志封面, 配合office art更像真实杂志(虽然字没法看) |
-| magazine scan                                                  | 类似杂志内页的风格                                             |
-| posing                                                         | 会强调有一个动作, 不至于出现混乱的动作(露出有六个手指头的手)   |
-| caustics                                                       | 画面向主题聚焦, 类似海报                                       |
+| 词                                                               | 描述                                                             |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| official art                                                     | 变得更加官方一点                                                 |
+| three views from front, back and side 和 costume setup materials | 可以用来生成设定图                                               |
+| multiple views                                                   | 会出现类似设定图                                                 |
+| character sheet                                                  | 会出现设定图                                                     |
+| magazine cover                                                   | 会把背景换成杂志封面, 配合 office art 更像真实杂志(虽然字没法看) |
+| magazine scan                                                    | 类似杂志内页的风格                                               |
+| posing                                                           | 会强调有一个动作, 不至于出现混乱的动作(露出有六个手指头的手)     |
+| caustics                                                         | 画面向主题聚焦, 类似海报                                         |
 
+### 常用参数: SFW
 
-### 常用参数:SFW
+| 人物数量 | 描述                                                                |
+| -------- | ------------------------------------------------------------------- |
+| 数量     | one boy / one girl / two boy / two girl (one_boy_one_girl 是错误的) |
 
-| 人物数量 | 描述                                                                  |
-| ----------- | ----------------------------------------------------------------------- |
-| 数量      | , one boy , one girl , two boy ,two girl,one_boy_one_girl(这是错误的) |
-
-
-| 人物画风                                         | 描述 |
-| -------------------------------------------------- | ------ |
-| 质量提升参数 |   , masterpiece, best quality   |
-| 原神                             |   , Genshin Impact   |
-| 萝莉                  |    , female child , loli画风差  |
+| 人物画风     | 描述                         |
+| ------------ | ---------------------------- |
+| 质量提升参数 | masterpiece, best quality    |
+| 原神         | Genshin Impact               |
+| 萝莉         | female child , loli (画风差) |
 
 | 人物样貌                           | 描述                                                           |
-| ------------------------------------ | ---------------------------------------------------------------- |
+| ---------------------------------- | -------------------------------------------------------------- |
 | 头发                               | hair                                                           |
 | 长发                               | longhair                                                       |
 | 短发                               | shorthair                                                      |
@@ -119,55 +114,54 @@ an extremely delicate and beautiful
 | 流口水(和唾液冲突)                 | drooling                                                       |
 | 水手服                             | sailor dress                                                   |
 
-| 环境样式                                                                 | 描述                           |
-| -------------------------------------------------------------------------- | -------------------------------- |
-| 在床上                                                                   | on bed                         |
-| 光线反射                                                                 | reflection light               |
-| 赛博朋克                                                                 | cyberpunk, city, kowloon, rain |
-| 在地毯上                                                                 | on carpet                      |
-| 在瑜伽垫上(它分不清什么是瑜伽垫，只知道色块比较大，所以要配合one girl用) | on_yoga_mats                   |
+| 环境样式                                                                   | 描述                           |
+| -------------------------------------------------------------------------- | ------------------------------ |
+| 在床上                                                                     | on bed                         |
+| 光线反射                                                                   | reflection light               |
+| 赛博朋克                                                                   | cyberpunk, city, kowloon, rain |
+| 在地毯上                                                                   | on carpet                      |
+| 在瑜伽垫上(它分不清什么是瑜伽垫，只知道色块比较大，所以要配合 one girl 用) | on_yoga_mats                   |
 
 | 人物视角     | 描述        |
-| -------------- | ------------- |
+| ------------ | ----------- |
 | 正面视角     | from viewer |
 | 从上到下视角 | from below  |
 | 全身         | full body   |
 
-| 人物状态           | 描述                                                 |
-| -------------------- | ------------------------------------------------------ |
-| 叉开腿             | spread leg                                           |
-| 露出腋下           | armpits                                              |
-| 举起手             | hands up , arms up                                   |
-| 爪子手             | paw pose                                             |
-| 站立               | standing                                             |
-| 行走               | walking                                              |
-| 吐舌头             | tongue out                                           |
-| 抬起腿             | legs up                                              |
-| 手放背后           | arms behind back , hidden hands                      |
-| 衬衫               | shirt                                                |
-| 长袖               | long sleeves                                         |
-| 连帽衫             | hoodie                                               |
-| 褶边               | frills                                               |
-| 喇叭裤             | bloomers                                             |
-| 白色连衣裙         | white dress                                          |
-| 捆绑               | bondage , bondage body , bondage foot , bondage hand |
-| 蹲下               | crouch , squatting                                   |
-| 真画风           | photorealistic                                       |
-| 跪下               | kneel down                                           |
-| 湿身               | wet body                                             |
-
+| 人物状态   | 描述                                                 |
+| ---------- | ---------------------------------------------------- |
+| 叉开腿     | spread leg                                           |
+| 露出腋下   | armpits                                              |
+| 举起手     | hands up, arms up                                    |
+| 爪子手     | paw pose                                             |
+| 站立       | standing                                             |
+| 行走       | walking                                              |
+| 吐舌头     | tongue out                                           |
+| 抬起腿     | legs up                                              |
+| 手放背后   | arms behind back, hidden hands                       |
+| 衬衫       | shirt                                                |
+| 长袖       | long sleeves                                         |
+| 连帽衫     | hoodie                                               |
+| 褶边       | frills                                               |
+| 喇叭裤     | bloomers                                             |
+| 白色连衣裙 | white dress                                          |
+| 捆绑       | bondage , bondage body , bondage foot , bondage hand |
+| 蹲下       | crouch , squatting                                   |
+| 真画风     | photorealistic                                       |
+| 跪下       | kneel down                                           |
+| 湿身       | wet body                                             |
 
 ## 提示词速查
 
-- [手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)
-- [Danbooru 全部 Tag 列表](https://gelbooru.com/index.php?page=tags&s=list)
-- [参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)
-- [Tag在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)
-- [NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)
-- [AI 艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
-- [Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)
+-   [手抄本法术书](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/edit)
+-   [Danbooru 全部 Tag 列表](https://gelbooru.com/index.php?page=tags&s=list)
+-   [参数法术全典](https://docs.google.com/spreadsheets/d/e/2PACX-1vRa2HjzocajlsPLH1e5QsJumnEShfooDdeHqcAuxjPKBIVVTHbOYWASAQyfmrQhUtoZAKPri2s_tGxx/pubhtml#)
+-   [Tag 在线协作](https://docs.google.com/spreadsheets/d/1zij5OzCZIaQuhAbiSayhFznjgJ3rwbaNwnUnaUMxyTQ/edit?usp=drivesdk)
+-   [NSFWTag](https://github.com/scooderic/exhentai-tags-chinese-translation)
+-   [AI 艺术家文档](https://docs.google.com/spreadsheets/d/1SRqJ7F_6yHVSOeCi3U82aA448TqEGrUlRrLLZ51abLg/htmlview#)
+-   [Novelai 关键词组合器](https://www.bilibili.com/read/cv19023021)
 
 ## 调参工程师
 
-- [https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
-- [https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)
+-   [https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
+-   [https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)

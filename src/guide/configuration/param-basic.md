@@ -77,9 +77,9 @@ PS：调太高步数 (>30) 效果不会更好
 
 ## Highres. fix 高清修复
 
-通过勾选 txt2img 页面上的 "Highres.fix" 复选框来启用。
+通过勾选 txt2img 页面上的 "Highres. fix" 复选框来启用。
 
-默认情况下，txt2img 在非常高的分辨率下做出非常混沌的图像。而此插件这使得它可以避免使用小图片的构图，在较低的分辨率下部分渲染你的图片，提高分辨率，然后在高分辨率下添加细节。
+默认情况下，txt2img 在高分辨率下会生成非常混沌的图像。该选项会使得模型首先生成一张小图片，然后通过 img2img 将图片分辨率扩大，以实现高清大图效果。
 
 ## 种子调试
 
@@ -111,17 +111,19 @@ ckpt 文件被加载时基本上可以执行任何内容，盲目加载有安全
 
 ### 需要做的事情
 
--   如果使用 7G 模型，需要将 config.yml 改名为 `模型名.yml` 与模型文件放置在一起。这种加载方式可能消耗大量显存。如果使用 4G 模型，无需进行任何操作即可达到等同效果。
+-   如果使用 7G 模型，需要将 `config.yml` 改名为 `模型名.yml` 与模型文件放置在一起。这种加载方式会消耗大量显存并减慢加载速度。如果使用 4G 模型，无需进行任何操作即可达到等同效果。
 -   启用 xformers
 -   加载 `animevae.pt` 模型（将该模型文件改名为 `模型名.vae.pt` 与模型文件放置在一起）
 -   Settings 中将 `Stop At last layers of CLIP model` 设为 `2`
     -   匹配 NAI 的一个[优化](https://blog.novelai.net/novelai-improvements-on-stable-diffusion-e10d38db82ac)。
--   `Eta noise seed delta` 设置为 `31337`
--   使用 NovelAI 自动填充的正反标签
-    -   正向标签：`masterpiece, best quality`
+-   Settings 中将 `Eta noise seed delta` 设置为 `31337`
+-   将 NovelAI 自动填充的正反标签前置在提示词组中
+    -   正向标签：`masterpiece, best quality, `
     -   反向标签：`lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`
 -   如果使用大括号，将大括号翻译为权重数字（每个大括号 105%）
+    -   将 `{...}` 翻译为 `(...:1.05)`
+    -   将 `[...]` 翻译为 `(...:0.9091)`
 
 ### 不需要做的事情
 
--   hypernetwork。官网默认并不使用 hypernetwork。
+-   加载模型包中的 hypernetwork。官网默认并不使用 hypernetwork。

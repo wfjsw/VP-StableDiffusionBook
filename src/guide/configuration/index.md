@@ -177,7 +177,7 @@ Part 1 中较常用的文件列举如下：
 
 :::
 
-启动 cli 有提示加载就 OK，同时可以去设置选模型那里选喜欢的 `hypernetwork`
+启动 CLI 有提示加载就即可，同时可以去设置选模型那里选喜欢的 `hypernetwork`
 
 #### 全量和基线模型
 
@@ -189,19 +189,11 @@ Part 1 中较常用的文件列举如下：
 
 4GB 的模型由 7GB 的模型修剪而来，去除了最后一次的权重，留下了 EMA 权重。
 
-个人用户只需要使用 pruned 4GB 模型。使用 latest 会过度占用 RAM 和 VRAM。
+个人用户只需要使用 pruned 4 GB 模型。使用 latest 会过度占用 RAM 和 VRAM。
 
 且 NAI 在线上也使用 EMA 权重，所以选择 latest 7GB 模型是没有意义的。
 
 [结论由此贴讨论得到](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2017#discussioncomment-3882551)。
-
-#### 关于 EMA
-
-EMA 移动平均值对生成图像没有任何帮助。
-
-但确实可以在后续的训练中防止过拟合。
-
-不确定在 dreambooth 的训练中是否起作用。
 
 #### 详细介绍
 

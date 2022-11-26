@@ -3,6 +3,7 @@ import attrsPlugin from 'markdown-it-attrs'
 import FlexSearch from 'flexsearch'
 import buildDocs from './docs-builder.js'
 import { decode } from 'html-entities'
+import { getEncoder } from './encoder.js'
 
 const md = new MarkdownIt()
 md.use(attrsPlugin)
@@ -11,28 +12,7 @@ const MAX_PREVIEW_CHARS = 64 // Number of characters to show for a given search 
 const buildIndexSearch = (docs, options) => {
     const searchIndex = new FlexSearch.Index({
         ...options,
-        encode: (str) => {
-            const filter = options.filter ?? []
-            const stemmer = options.stemmer
-                ? Object.entries(options.stemmer)
-                : []
-
-            const eng = Array.from(str.toLowerCase().matchAll(/[a-z0-9]+/gi))
-                .map((n) => n[0])
-                .map((n) => {
-                    for (const [key, value] of stemmer) {
-                        if (n.endsWith(key))
-                            return n.slice(0, -key.length) + value
-                    }
-                    return n
-                })
-            const chs = str.replaceAll(/[a-zA-Z0-9]+/g, '').split('')
-            return eng
-                .concat(chs)
-                .filter((n) => !!n)
-                .filter((n) => n.trim() !== '')
-                .filter((n) => !filter.includes(n))
-        },
+        encode: getEncoder(options),
     })
     for (const doc of docs) {
         if (doc.a.trim() !== '' && doc.b.trim() !== '') {

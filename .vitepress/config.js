@@ -14,7 +14,6 @@ export default defineConfig({
     lastUpdated: true,
     outDir: './dist',
     srcDir: './src',
-    ignoreDeadLinks: true,
     cleanUrls: 'without-subfolders',
     themeConfig: {
         logo: '/paintbrush-solid.svg',
@@ -194,7 +193,7 @@ export default defineConfig({
         plugins: [
             SearchPlugin({
                 profile: 'score',
-                tokenize: 'reverse',
+                tokenize: 'forward',
                 cache: 50,
                 context: {
                     resolution: 4,

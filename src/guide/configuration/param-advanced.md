@@ -224,29 +224,9 @@ pip install xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
 
 可以通过 `--use-cpu all` 尽可能的使用CPU进行生成，虽然慢 100 倍。
 
-## CLIP Interrogate
-
-CLIP 可以从图像中提取令牌。
-
-默认情况下，只有一个列表 - 艺术家列表（来自 artists.csv）。
-
-不过你可以通过执行以下操作添加更多列表：
-* 在与 `webui.py` 相同的位置创建 `interrogate` 目录
-* 将文本文件放入其中，每行包含相关描述
-
-你可以在[这里](https://github.com/pharmapsychotic/clip-interrogator/tree/main/data)查看使用哪个文本文件的例子。实际上，你可以直接用这个例子中的文件 —— 除了 `artists.txt` ，你已经有一份艺术家列表在 `artists.csv` 中了不是吗（或者用这个也行，随你）。每个文件都会使最后的描述增加一行字。如果你将 `.top3.` 放到文件名中，比如 `flavors.top3.txt` ，文件中相关度最高的三行将会被添加到提示词中（其他数量也行）。
-
-<!-- TODO: DeepDanbooru Interrogate -->
-
-## DeepDanbooru Interrogate
-
-新版 Stable-Diffusion-WebUI 已无需使用 `--deepdanbooru` 开关启用该功能。
-
-可在 img2img / 图生图 页面中看到 DeepDanbooru Interrogate 按钮。可以从图像中提取令牌。
-
 ## Face restoration 三次元人脸修复
 
-适用于三次元。
+适用于修复三次元图片的面部问题。对二次元图片效果较差。
 
 [Face Restoration @ WebUI Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#face-restoration)
 
@@ -265,7 +245,6 @@ CLIP 可以从图像中提取令牌。
 ## 更换提示音
 
 如果在 webui.py 附近存在 `notification.mp3` 文件，它将在图片生成结束后播放。
-
 
 ## 修剪模型
 
