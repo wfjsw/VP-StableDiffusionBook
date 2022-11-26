@@ -63,6 +63,8 @@ A horse running on the moon
 -   [Stable Diffusion v1.3](https://huggingface.co/CompVis/stable-diffusion-v-1-3-original)
 -   [Stable Diffusion v1.4](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original)
 -   [Stable Diffusion v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5)
+-   [Stable Diffusion v2.0](https://huggingface.co/stabilityai/stable-diffusion-2)
+    - 安装方法：[在 WebUI 中使用 SD 2.0 模型](other#在-webui-中使用-sd-20-模型)
 
 ### Waifu Diffusion 模型
 
