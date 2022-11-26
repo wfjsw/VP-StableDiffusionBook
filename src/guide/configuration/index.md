@@ -212,6 +212,10 @@ Part 1 中较常用的文件列举如下：
 
 ### Anything 2.1 / 3.0
 
+![Sample1](../../assets/anything-comparison1.webp){width=2048 height=631 loading=lazy}
+
+![Sample2](../../assets/anything-comparison2.webp){width=2048 height=631 loading=lazy} 
+
 融合模型，适用于生成各类二次元图像。
 
 下载地址：https://pan.baidu.com/s/1r--2XuWV--MVoKKmTftM-g?pwd=ANYN
