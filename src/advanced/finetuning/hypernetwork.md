@@ -14,27 +14,25 @@ Hypernetworks 是一种新颖的概念，用于在不触及任何权重的情况
 
 注意，应该使用非常低的学习率，例如 0.000005 或 0.0000005.
 
-如果学习率是5e-6，步数大约 10000 到 20000。[学习率计算器](https://colab.research.google.com/drive/1qzweYEMIFkG6jPa04tD1MhWWOzgSnDvP?usp=sharing)，来自 [这里](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2670)
+如果学习率是 5e-6，步数大约 10000 到 20000。见 [学习率计算器](https://colab.research.google.com/drive/1qzweYEMIFkG6jPa04tD1MhWWOzgSnDvP?usp=sharing) (来自 [Discussion #2670](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/2670))
 
 分辨率设置为要训练的分辨率，最好使用 1:1 的纵横比。
 
-如果数据集的图片是长条或者横条，请勾选 `Split cversized images into two`
+如果数据集的图片不是方形的，请勾选 `Split oversized images into two`
 
 如果你还没有打标签，可以勾选 `Using deepbooru for caption` ，来让 deepbooru 识别标签。
 
-## hyper network layer structure
+## 网络层结构
 
-If write "1, 2, 1", hypernetworks are composed of 2 fully connected layers whose intermediate dim is 2x, which is same as up to now.
+`1, 2, 1` 的网络结构代表该网络由两个中间维度为 2x 的全连接层组成。这是目前的默认设置。
 
-The more you add the number, like "1, 2, 4, 2, 1", the more the structure of hypernetworks becomes deeper. Deep hypernetworks are suited for training with large datasets.
+添加的数字越多，例如 `1, 2, 4, 2, 1`，超网络的结构就越深。深度超网络适合使用更大的数据集进行训练。
 
-层结构目前还是推荐1，2，1，如果想扩展的话，可以尝试1，2，2，1。
+`1, 2, 1` 的 pt 文件大概是 83.8 MB，`1, 2, 2, 1` 大概是 167 MB。如果要扩展的话，一定要注意盘空间是否足够，否则很容易爆盘。
 
-1，2，1的pt文件大概是83.8MB，1，2，2，1大概是167MB。如果要扩展的话，一定要注意盘空间是否足够，否则很容易爆盘。
+## 层标准化 Layer Normalization
 
-## Add layer normalization
-
-If checked, add layer normalization after every fully connected layer.
+如果勾选，则在每个完全连接层之后添加标准化处理。
 
 防止超网络过拟合，使训练更加稳定。
 
@@ -42,15 +40,15 @@ LN 对防止过拟合使训练更加稳定是有意义的，但是根据之前�
 
 Swish 似乎并不需要开启 LN，因为 Swish 的训练速度慢，所以应该使用更高的学习率。
 
-## USE Dropout
+## Dropout
 
-启用 Dropout 可以防止超网络过拟合，目前不支持自定义 dropout 比率，默认为 0.3
+启用 Dropout 可以防止超网络过拟合，目前不支持自定义 Dropout 比率，默认为 0.3
 
-在 1:2:1 的层结构上，dropout可能只会对小数据集有帮助。
+在 `1, 2, 1` 的层结构上，dropout 可能只会对小数据集有帮助。
 
-## 激活函数 activation functions
+## 激活函数 Activation Functions
 
-关于[激活函数](https://www.geeksforgeeks.org/activation-functions-neural-networks/)，[维基](https://en.wikipedia.org/wiki/Activation_function)
+关于[激活函数](https://www.geeksforgeeks.org/activation-functions-neural-networks/)，见 [维基百科](https://en.wikipedia.org/wiki/Activation_function)。
 
 激活函数是神经网络中非线性的来源。如果去掉激活函数，神经网络的权重和偏差只会进行线性变换(不管神经网络有多少层，线性运算的复合还是线性运算的)，最终的效果只相当于单层的线性模型。
 
@@ -60,7 +58,7 @@ Swish 似乎并不需要开启 LN，因为 Swish 的训练速度慢，所以应�
 
 支持 ReLU、LeakyReLU 和 Linear。选择 Linear (线性) 的效果和没有激活函数一样。
 
-Swish 对比 ReLU 和 Linear 要更好，Swish适合更大的网络，而 ReLU 可能对1，2，1的超网络带来更好的结果。
+Swish 对比 ReLU 和 Linear 要更好，Swish 适合更大的网络，而 ReLU 可能对 `1, 2, 1` 的超网络带来更好的结果。
 
 [相关的英文指南](https://rentry.org/hypernetwork4dumdums)
 

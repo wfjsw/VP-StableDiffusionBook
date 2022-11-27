@@ -20,7 +20,7 @@
 
 ## 高分辨率出鬼图 / 低显存生成大分辨率图片
 
-使用 [Highres. fix](./param-basic.md#highres-fix-高清修复)
+使用 [Highres. fix](./param-basic.md#highres-fix-高清修复) 或先使用低分辨率成图后再使用 Waifu2x 等技术提升分辨率。
 
 ## RuntimeError: Unable to find a valid cuDNN algorithm to run convolution
 

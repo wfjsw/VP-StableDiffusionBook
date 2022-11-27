@@ -1,6 +1,74 @@
 # 杂项
 
-### 良好参数(风格趋向插画)
+## 提示词原理
+
+### 图像生成器
+
+![jalammar s pic](../../assets/stable-diffusion-components-and-tensors.webp){width=1440 height=553 loading=lazy}
+
+information creator 完全在图像信息空间（或潜伏空间）中工作。这一特性使它比以前在像素空间工作的扩散模型更快。在技术上，这个组件是由一个 UNet 神经网络和一个调度算法组成的。
+
+### Text Encoder
+
+提示词的解析由 Text Encoder/CLIP 处理 (token embedding)，这里是提示词转译给 AI 的关键一步。
+
+ClipText 用于文本编码。
+
+输入文本，输出 77 个标记嵌入向量，每个都有 768 个维度。
+
+### information creator
+
+UNet + Scheduler 在信息（潜在）空间中逐步处理/分散信息。
+
+它输入文本嵌入和一个由噪声组成的起始多维数组（结构化的数字列表，也叫张量），输出一个经过处理的信息阵列。
+
+### Image Decoder
+
+Text Decoder 根据从 information creator 那里获得的信息绘制一幅图画。 它只在过程结束时运行一次以生成最终图像。
+
+Autoencoder Decoder 使用处理过的信息阵列绘制最终图像的解码器。输入处理过的信息阵列 (dimensions: (4,64,64))，输出结果图像 (dimensions: (3, 512, 512)，即 (red/green/blue, width, height)。
+
+### CLIP 的工作
+
+![训练图](../../assets/v2-340920caff256e06c29cff7097e23e62_1440w.webp){width=1440 height=679 loading=lazy}
+
+> CLIP 训练图 from https://bbs.huaweicloud.com/blogs/371319
+
+Stable Diffusion 中使用的自动编码器的缩减系数为 8。这意味着一张 (4, 512, 512) 的图像在潜在空间中是 (4, 64, 64)。
+
+在使用稳定扩散推理一张 512 x 512 的图片的过程中，模型用一个种子和一个文本提示作为输入。潜在种子生成大小 64 × 64 的随机潜在图像，而 prompt 进入 Text Encoder 通过 CLIP 的文本编码器转化为大小为 77 × 768 的文本嵌入。
+
+U-Net 在以文本嵌入为条件的同时迭代地对随机高斯噪声表示进行去噪。U-Net 通过 采样算法 计算去噪的潜在图像表示，输出噪声残差。这个步骤重复许多次后，潜在表示由 Image Decoder 的 auto encoder 的解码器解码输出。
+
+![流程](../../assets/stable_diffusion.webp){width=578 height=769 loading=lazy}
+
+扩展阅读：
+
+-   [什么是扩散模型？ ](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+-   [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+-   [稳定扩散](https://huggingface.co/blog/stable_diffusion)
+-   [稳定扩散入门](https://pub.towardsai.net/getting-started-with-stable-diffusion-f343639e4931)
+-   [Stable Diffusion From Wikipedia](https://en.wikipedia.org/wiki/Stable_Diffusion)
+
+### WebUI 的实现
+
+[WebUI 的 prompt_parser](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/prompt_parser.py) 通过本地 WebUI 实现了渐变等功能。
+
+WebUI prompt 语法会转换为相应时间的 prompt，然后通过 embedding 交给 Ai 处理。
+
+关于权重的实现：权重增加通常会占一个提示词位。
+
+关于渐变的实现：到了指定 Step，WebUI 程序会替换对应提示词，达到渐变效果。
+
+其他以此类推。
+
+整个看下来，原理流程如图 ![prompt_draw](../../assets/198675128-c2c849d0-d024-468b-80c4-374f13e933e3.webp){width=442 height=468 loading=lazy}
+
+> By RcINS
+
+你可以在 [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/) 看到全面的介绍。本节部分内容也是由此翻译。
+
+## 良好参数(风格趋向插画)
 
 ```
 an extremely delicate and beautiful
@@ -15,7 +83,7 @@ an extremely delicate and beautiful
 -   [艺术家列表/SD1.4/1,833 位艺术家](https://www.urania.ai/top-sd-artists)
 -   [艺术家博物馆](https://gallerix.asia/storeroom/)
 
-#### 草图风格
+### 草图风格
 
 | 词                                          | 描述                                               |
 | ------------------------------------------- | -------------------------------------------------- |
@@ -28,7 +96,7 @@ an extremely delicate and beautiful
 
 利用 sketch，pastel color，lineart 的 tag 模拟一张图的绘画过程
 
-#### 艺术风格
+### 艺术风格
 
 | 词                                                        | 描述                                   |
 | --------------------------------------------------------- | -------------------------------------- |
@@ -40,7 +108,7 @@ an extremely delicate and beautiful
 | photorealistic, painting, realistic, sketch, oil painting | 厚涂                                   |
 | pastel color 和 sketch                                    | 搭配会有速涂的质感                     |
 
-#### 杂志/设定集 风格
+### 杂志/设定集 风格
 
 | 词                                                               | 描述                                                             |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- |

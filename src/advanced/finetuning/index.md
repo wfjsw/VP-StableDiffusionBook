@@ -128,7 +128,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 
 安装后，在 webui 的 `extensions` 文件夹下面创建 `aesthetic-gradients` 文件夹。
 
-使用时，把 Pt 放在 `models/aesthetic_embeddings/`
+使用时，把 `.pt` 文件放在 `models/aesthetic_embeddings/`
 
 然后重启程序，你就可以在 Img2Img 中使用此项功能。
 

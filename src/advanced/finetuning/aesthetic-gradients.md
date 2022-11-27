@@ -2,7 +2,7 @@
 
 https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients
 
-Create an embedding from one or few pictures and use it to apply their style to generated images.
+从一张或几张图片创建嵌入式模型，以将特定的画风应用于生成的图像。
 
 `Source directory` 填数据源文件夹地址。
 

@@ -23,7 +23,7 @@ Dreambooth 基于 [Imagen](https://imagen.research.google/) 研发，使用时�
 
 ## 选择
 
-Windows 系统的显存至少需要 16GB, Linux 系统要求显存至少为 8GB
+Windows 系统的显存至少需要 16 GB, Linux 系统要求显存至少为 8 GB
 
 -   适用于喜欢 YAML 文件配置 的 [CCRcmcpe/diffusers](https://github.com/CCRcmcpe/diffusers/) 分支。
 -   适用于 本地/AutoDL 的 [DreamBooth 版本](https://github.com/crosstyan/dreambooth-scripts-for-autodl)

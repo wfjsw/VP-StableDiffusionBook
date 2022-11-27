@@ -104,16 +104,16 @@ export default defineConfig({
                     items: [
                         { text: '概述', link: '/advanced/prompt-engineering/' },
                         {
-                            text: '魔法入门',
-                            link: '/advanced/prompt-engineering/basic',
+                            text: '文字转图片',
+                            link: '/advanced/prompt-engineering/txt2img',
+                        },
+                        {
+                            text: '图片转图片',
+                            link: '/advanced/prompt-engineering/img2img',
                         },
                         {
                             text: '实战技巧',
                             link: '/advanced/prompt-engineering/practice',
-                        },
-                        {
-                            text: '魔法进阶',
-                            link: '/advanced/prompt-engineering/advanced',
                         },
                         {
                             text: '杂项',
