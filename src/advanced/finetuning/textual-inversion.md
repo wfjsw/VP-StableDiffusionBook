@@ -156,7 +156,7 @@ https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 
 目录中 `textual_inversion_templates`，解释了你可以使用这些文件做什么。
 
-训练时参考 `style.txt` 和`subject.txt`，比如训练画风，使用 `style.txt`，训练人物，使用 `subject.txt`
+训练时参考 `style.txt` 和 `subject.txt`，比如训练画风，使用 `style.txt`，训练人物、物体，使用 `subject.txt`
 
 根据模板文件，你可以在文件名中使用下面的关键词，处理时它们会被替换。
 
