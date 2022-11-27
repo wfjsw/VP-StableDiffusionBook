@@ -303,20 +303,6 @@ a, b, c AND d, e, f
 
 这将使用两组提示词 `a, b, c` 和 `d, e, f` 生成，并将它们的结果相加。
 
-## 标签契合度与降噪强度
-
-### CFG Scale 标签契合度
-
-`cfg scale` 是图像与 prompt 的契合度，该值越高，提示词对最终生成结果的影响越大，契合度越高。
-
-### Denoising strength 降噪强度
-
-`Denoising strength` 仅在 img2img 时被应用，其表征最后生成图片对原始输入图像内容的变化程度。通过调整该值，可以降低对画风的影响，但也会弱化 img2img 能力。值越高 AI 对原图的参考程度就越低 (同时增加迭代次数)。
-
-对于以图做图来说，低 `denoising` 意味着修正原图，高 `denoising` 就和原图就没有大的相关性了。一般来讲阈值是 0.7 左右，超过 0.7 和原图基本上无关，0.3 以下就是稍微改一些。
-
-实际执行中，具体的执行步骤为 Denoising strength \* Sampling Steps。
-
 ## Prompt matrix 参数矩阵
 
 使用 `|` 分隔多个 Tag，程序将为它们的每个组合生成一个图像。 例如，如果使用 `a busy city street in a modern city|illustration|cinematic lighting` ，则可能有四种组合（始终保留提示的第一部分）：

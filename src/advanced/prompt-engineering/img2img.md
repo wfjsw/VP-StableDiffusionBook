@@ -90,6 +90,14 @@ Batch 数设置控制获得多少次迭代
 
 也可以使用 [在线工具](https://spell.novelai.dev/) 查看它。
 
+## Denoising strength 降噪强度
+
+`Denoising strength` 仅在 img2img 时被应用，其表征最后生成图片对原始输入图像内容的变化程度。通过调整该值，可以降低对画风的影响，但也会弱化 img2img 能力。值越高 AI 对原图的参考程度就越低 (同时增加迭代次数)。
+
+对于以图做图来说，低 `denoising` 意味着修正原图，高 `denoising` 就和原图就没有大的相关性了。一般来讲阈值是 0.7 左右，超过 0.7 和原图基本上无关，0.3 以下就是稍微改一些。
+
+实际执行中，具体的执行步骤为 Denoising strength \* Sampling Steps。
+
 ## 从图片内容提取提示词
 
 ### CLIP Interrogate

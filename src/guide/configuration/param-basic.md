@@ -127,3 +127,17 @@ ckpt 文件被加载时基本上可以执行任何内容，盲目加载有安全
 ### 不需要做的事情
 
 -   加载模型包中的 hypernetwork。官网默认并不使用 hypernetwork。
+
+## CFG Scale 标签契合度
+
+`cfg scale` 是图像与 prompt 的契合度，该值越高，提示词对最终生成结果的影响越大，契合度越高。
+
+过高的 CFG Scale 体现为粗犷的线条和过锐化的图像。
+
+## Denoising strength 降噪强度
+
+`Denoising strength` 仅在 img2img 时被应用，其表征最后生成图片对原始输入图像内容的变化程度。通过调整该值，可以降低对画风的影响，但也会弱化 img2img 能力。值越高 AI 对原图的参考程度就越低 (同时增加迭代次数)。
+
+对于以图做图来说，低 `denoising` 意味着修正原图，高 `denoising` 就和原图就没有大的相关性了。一般来讲阈值是 0.7 左右，超过 0.7 和原图基本上无关，0.3 以下就是稍微改一些。
+
+实际执行中，具体的执行步骤为 Denoising strength \* Sampling Steps。
