@@ -30,6 +30,8 @@ outline: [2, 3]
 
 因为 TI 是在 Text Encoder 的输出做处理，并不涉及图像生成本身，所以并不能让模型学习到未知概念。
 
+**不同模型训练出的 embeddings 通常无法通用。**
+
 #### 使用
 
 使用时，将 embedding（一个 `.pt` 、一个 `.bin` 文件或新版图片格式 `.png` / `.webp` / `.avif` / `.jxl`）放入 webui 的 `embeddings` 目录并在提示词中提及使用到的 `embedding` 的文件名（不包括扩展名）。添加或更换模型无需重启 webui。可以同时使用多个 embedding。

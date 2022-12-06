@@ -231,5 +231,7 @@ an extremely delicate and beautiful
 
 ## 调参工程师
 
+-   [emphasis 测试](https://github.com/JohannesGaessler/stable-diffusion-tools/tree/master/emphasis)
+-   [面向 NAI 的测试](https://github.com/6DammK9/nai-anime-pure-negative-prompt)
 -   [https://github.com/Maks-s/sd-akashic](https://github.com/Maks-s/sd-akashic)
 -   [https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)

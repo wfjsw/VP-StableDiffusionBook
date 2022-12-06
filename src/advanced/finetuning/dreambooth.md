@@ -19,20 +19,21 @@ Dreambooth 基于 [Imagen](https://imagen.research.google/) 研发，使用时�
 
 ![DreamBooth_files](../../assets/dreambooth-system.webp){style="background-color: #fff;" width=3010 height=1482 loading=lazy}
 
-[关于移动云训练](https://rentry.org/yidongyun)
+关于移动云训练见 [这个](https://rentry.org/yidongyun) 和 [这个](https://www.notion.so/fd4747a969344594aca26d24aecab402)（由 [eij x](https://t.me/StableDiffusion_CN/398884) 提供 ）
 
 ## 选择
 
 Windows 系统的显存至少需要 16 GB, Linux 系统要求显存至少为 8 GB
 
 -   适用于喜欢 YAML 文件配置 的 [CCRcmcpe/diffusers](https://github.com/CCRcmcpe/diffusers/) 分支。
--   适用于 本地/AutoDL 的 [DreamBooth 版本](https://github.com/crosstyan/dreambooth-scripts-for-autodl)
--   适用于 本地/AutoDL 的 [封装镜像](https://github.com/CrazyBoyM/dreambooth-for-diffusion)，名称为 `dreambooth-for-diffusion`
+-   适用于 本地/AutoDL 的 [DreamBooth 版本](https://github.com/crosstyan/dreambooth-scripts-for-autodl)，由 [Kurosu Chan](https://t.me/StableDiffusion_CN/224331) 提供。
+-   适用于 AutoDL 的 [DreamBooth 版本](https://github.com/Akegarasu/dreambooth-autodl)，由 [秋葉aaaki](https://www.bilibili.com/video/av348289643) 提供。
+-   适用于 本地/AutoDL 的 [封装镜像](https://github.com/CrazyBoyM/dreambooth-for-diffusion)，由 [Bai cai](https://t.me/StableDiffusion_CN/328385) 提供。
 -   适用于 WebUI 的 [插件](https://github.com/d8ahazard/sd_dreambooth_extension)，注意这会在启动脚本锁一个新的 Torch CUDA 版本，可能会带来网络问题与兼容问题等。
--   适用于 Colab 的 [Nyanko Lepsoni 的 Colab 笔记本](https://colab.research.google.com/drive/17yM4mlPVOFdJE_81oWBz5mXH9cxvhmz8)
+-   适用于 Colab 的 [笔记本](https://colab.research.google.com/drive/17yM4mlPVOFdJE_81oWBz5mXH9cxvhmz8)，由 Nyanko Lepsoni 提供。
 -   适用于 Colab 的 [RcINS 的 Colab 笔记本](https://colab.research.google.com/drive/1C1vVZ59S4kWfL7jIsczyLpmxbD4cOA-k)
 
-> Colab 笔记本来自 [社区置顶](https://t.me/StableDiffusion_CN/196744)
+（Colab 笔记本来自 [社区置顶](https://t.me/StableDiffusion_CN/196744)）
 
 ## 准备
 
@@ -91,6 +92,10 @@ class 和 instance 的质量决定生成的质量。
 #### 处理
 
 处理图片的方式有许多，常见的有反转，旋转，亮度和裁切。将图片打碎或者对背景 / 大头等单独裁切，也许有助于提高训练效果。
+
+相关实例请参考 [Diffusers ベースの DreamBooth の精度をさらに上げる・ augmentation 編 ](https://note.com/kohya_ss/n/nad3bce9a3622).
+
+> It may be useful to break up the image, or to crop the background/headers etc. separately.
 
 ## 训练方法
 

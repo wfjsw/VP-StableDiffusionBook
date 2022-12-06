@@ -33,19 +33,19 @@ def preload(parser):
 
 ### DreamBooth extension
 
-Dreambooth Extension for Stable-Diffusion-WebUI
-
 https://github.com/d8ahazard/sd_dreambooth_extension
+
+Dreambooth Extension for Stable-Diffusion-WebUI
 
 ### training-picker
 
-stable-diffusion-webui 的扩展，允许用户通过视频的关键帧进行复用，并自动从各个关键帧中挑选和导出训练示例。
-
 https://github.com/Maurdekye/training-picker
+
+允许用户通过视频的关键帧进行复用，并自动从各个关键帧中挑选和导出训练示例。
 
 ### 随机艺术家插件
 
-[项目地址](https://github.com/yfszzx/stable-diffusion-webui-inspiration)
+https://github.com/yfszzx/stable-diffusion-webui-inspiration
 
 ```bash
 cd extensions
@@ -54,7 +54,7 @@ git clone https://github.com/yfszzx/stable-diffusion-webui-inspiration.git exten
 
 ### 美学权重插件
 
-[项目地址](https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients)
+https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients
 
 ```bash
 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients.git extensions/aesthetic-gradients
@@ -62,7 +62,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-grad
 
 ### 历史记录画廊
 
-[项目地址](https://github.com/yfszzx/stable-diffusion-webui-images-browser)
+https://github.com/yfszzx/stable-diffusion-webui-images-browser
 
 ```bash
 cd extensions
@@ -71,21 +71,21 @@ git clone https://github.com/yfszzx/stable-diffusion-webui-images-browser.git ex
 
 ### Wildcards 通配符
 
-[项目地址](https://github.com/AUTOMATIC1111/stable-diffusion-webui-wildcards)
+https://github.com/AUTOMATIC1111/stable-diffusion-webui-wildcards
 
 允许使用类似 `__name__` 提示的语法，以从名为 `name.txt` 的文件中获取随机一行。
 
 ### Deforum
 
-[项目地址](https://github.com/deforum-art/deforum-for-automatic1111-webui)
+https://github.com/deforum-art/deforum-for-automatic1111-webui
 
 Deforum 的官方 API，一个用于 2D 和 3D 动画的扩展脚本，supporting keyframable sequences, dynamic math parameters (even inside the prompts), dynamic masking, depth estimation and warping.
 
 ### Video2Video
 
-将 视频 投入 Img2Img，输出带有关键帧的视频。
-
 https://github.com/Leonm99/Stable-Diffusion-Video2Video
+
+将 视频 投入 Img2Img，输出带有关键帧的视频。
 
 ### Img2img Video
 
@@ -93,24 +93,36 @@ https://github.com/memes-forever/Stable-diffusion-webui-video
 
 ### Artists To Study
 
-把 https://artiststostudy.pages.dev 添加到 WebUI
-
 https://github.com/camenduru/stable-diffusion-webui-artists-to-study
+
+把 https://artiststostudy.pages.dev 添加到 WebUI
 
 ### 美学权重评分器
 
-计算生成图像的美学分数
-
 https://github.com/tsngo/stable-diffusion-webui-aesthetic-image-scorer
+
+计算生成图像的美学分数。
 
 ### Tokenizer
 
-stable-diffusion-webui 的一个扩展，增加了一个标签，让你预览 CLIP 模型将如何标记你的文本。
-
 https://github.com/AUTOMATIC1111/stable-diffusion-webui-tokenizer
+
+stable-diffusion-webui 的一个扩展，增加了一个标签，让你预览 CLIP 模型将如何标记你的文本。
 
 ### 自动补全
 
-这里有一个项目，可以使 SD 做到类似 NAI 的补全效果。
-
 https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
+
+使 SD 做到类似 NAI 的标签输入自动补全效果。
+
+### txt2mask 
+
+https://github.com/ThereforeGames/txt2mask
+
+使用自然语言为 Stable Diffusion 修复自动创建遮罩。 
+
+### multi-subject-render
+
+https://github.com/Extraltodeus/multi-subject-render
+
+生成多个的物体并合成在同一张图上。~~全自动 Photoshop~~

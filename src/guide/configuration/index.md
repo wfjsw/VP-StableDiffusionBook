@@ -43,13 +43,13 @@ You can skip this check with --disable-safe-unpickle commandline argument.
 
 如果你运行脚本得到了类似 "global something.something is forbidden" 这意味着检查点试图做坏事，可能有危险。
 
-## 模型选调
+## 模型选择
 
 模型使用的数据集和标签对于效果影响非常重要，在使用之前要先了解数据来源。
 
 ### Stable Diffusion 模型
 
-Stable Diffusion 模型适用于生成与照片、艺术品类似的图像。
+Stable Diffusion 模型适用于生成与照片、艺术品类似的图像。基于 [LAION](https://laion.ai/) 数据集训练。
 
 提示词常用连贯的自然语言句子描述一个物体，如：
 
@@ -64,7 +64,7 @@ A horse running on the moon
 -   [Stable Diffusion v1.4](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original)
 -   [Stable Diffusion v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5)
 -   [Stable Diffusion v2.0](https://huggingface.co/stabilityai/stable-diffusion-2)
-    - 安装方法：[在 WebUI 中使用 SD 2.0 模型](other#在-webui-中使用-sd-20-模型)
+    - 安装方法：[在 WebUI 中使用 SD 2.0 模型](other#在-webui-中使用-sd-2-0-模型)
 
 ### Waifu Diffusion 模型
 

@@ -56,7 +56,7 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI 绘画魔
 
 ### 标签参考
 
--   [Danbooru wiki Tag](https://danbooru.donmai.us/wiki_pages/tag_groups)
+-   [Danbooru Wiki - Tag Groups](https://danbooru.donmai.us/wiki_pages/tag_groups)
 -   [MidJourney-Styles-and-Keywords-Reference](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)
 -   [手抄魔法本](https://docs.google.com/spreadsheets/d/14Gg1kIGWdZGXyCC8AgYVT0lqI6IivLzZOdIT3QMWwVI/)
 -   [nai-anime-pure-negative-prompt docs](https://github.com/6DammK9/nai-anime-pure-negative-prompt)
@@ -66,6 +66,7 @@ Bilibili 上也发布了许多视频教程，如 [【开源调研】AI 绘画魔
 -   [美学风格分类](https://aesthetics.fandom.com/wiki/List_of_Aesthetics)
 -   [颜色列表](https://en.wikipedia.org/wiki/List_of_colors_by_shade)
 -   [表情符号参考](https://unicode.org/emoji/charts/emoji-list.html)
+-   [Danbooru 标签比例冰山图](https://icebergcharts.com/i/Danbooru_Tags)
 
 ### 工具
 

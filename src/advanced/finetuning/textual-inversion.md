@@ -12,37 +12,17 @@
 
 ![Textual_Inversion](../../assets/203366251-ae0ae585-8492-4970-ac9a-5ccf14a1897c.webp){width=1058 height=790 loading=lazy}
 
-## Apt/DreamArtist
+## Apt / DreamArtist
 
-TI 是让 AI 了解 “喜欢” ，而 Apt 让 AI 了解“喜欢”和“不喜欢”。
+此功能通过扩展提供。
 
-所以是一种高效的 Textual Inversion
+普通的 Textual Inversion 仅从激励方向调整 AI，而 DreamArtist (Apt) 同时从激励和抑制两个方向进行微调。所以 DreamArtist 是一种更加高效的 Textual Inversion.
 
 https://github.com/7eu7d7/DreamArtist-sd-webui-extension
 
 [论文地址](https://arxiv.org/abs/2211.11337)
 
-### 简单的小指南
-
-#### DL（APT）准备
-
-1. 关闭 `--xformers`
-2. 设置 Clip skip 调为 1
-
-#### 参数
-
-1. 正向，反向词元 token 对比值设定（因人物复杂度由低到高 `(3,6)(4,6)(5,7)(3,10)`)
-2. 学习率 `LR(0.0025,0.003)` 作者范例使用 `0.003`
-3. `CGF = 3`
-4. 宽高比 `512:512`
-5. 迭代步数 `step = 8000 (LR = 0.003)`
-6. 更新后的实验性功能 EMA（正）/EMA（负） 设为 `0.97`
-
-#### 提示
-
-如果生成动漫图片，模型使用 `animefull-latest 7g` 模型，生成可以用 `anything`
-
-> by DreamArtist s author
+具体训练方式见 [下文](#dreamartist-小指南)。
 
 ## 准备数据集
 
@@ -251,3 +231,39 @@ Textual Inversion 训练不能训练模型中没有的东西。它对训练照�
 [av559085039 - 【AI 绘画】AI 不认识人物怎么办！强大的 Textual Inversion【NovelAI】 @ Bilibili](https://www.bilibili.com/video/av559085039)
 
 [官方 Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion#training-embeddings)
+
+## DreamArtist 小指南
+
+此段内容由 konbaku yomu 撰写在 [中文社区](https://t.me/StableDiffusion_CN/471273).
+
+### 准备
+
+**训练集** 是 **最重要的**，因 DA 特性最少 one shot 即可炼制，所以我测试的都是 *原图 + 镜像*。下面所有的调参方法都没有训练集本身重要。**训练集没选好怎么调参都没用。**
+
+训练集标准是 人物正面（全身 或 半身） + 高分辨率 + 尽量简洁的背景 + 人物本身没有什么特殊动作（含有类似瑜伽的动作或者持握物体的元素的图片都不行，会严重影响泛化和成图）
+
+基础参数设置如下：
+
+- 关闭 `--xformers`
+- 重启 SD-WebUI 后设置里面将 CLIP Skip 设为 1（通常为 2）
+- 使用 7 GB 的 anime 模型文件 (latest 模型)。
+
+你还可以通过添加训练集灰度图进行 [局部学习增强](https://t.me/StableDiffusion_CN/474128)。
+
+### 训练
+
+| **方向** | **重建** | **学习率**             | **CFG** | **filewords read** | **提示词模板**     | **训练集参数** | **step 范围**           | **EMA**               | **** |
+|:------:|:------:|:-------------------:|:-------:|:------------------:|:-------------:|:---------:|:---------------------:|:---------------------:|:----:|
+| 人物     | 开      | 3e-3（不稳定可以改为 2.5e-3) | 3       | 不建议开               | `subject.txt` | 默认 512 即可 | 3000~6500 （看 sample 质量） | 0.97（插件推荐）/0.95（作者推荐） |      |
+| 画风     | 开      | 5e-3                | 5       | 建议开启               | `style.txt`   | 默认 512 即可 | 1500~2000             | 0.97（插件推荐）/0.95（作者推荐） |      |
+
+#### 关于 Batch Size 和 Accumulation steps
+
+Accumulation steps 相当于增加 Batch Size，但这个设置多少，训练时间就多几倍，总体 `bs = (batch size * Accumulation steps)`，视自己显卡情况自行开启，默认为 1 1。
+
+#### 其他
+
+1. 默认词元 token 为 `(3,6)`，根据角色复杂程度可以加大剂量为 `(4,7)` 或 `(5,8)`，作者甚至推荐过 `(10,10)`。
+2. 训练人物时 loss > 0.2 基本上直接失败，大概率鬼图，稳定 loss 应该小于 0.15，可以通过裁减原图背景减低训练 loss，最好提升训练集的质量。
+3. 可以尝试通过添加灰度图增加训练稳定性（实验中）。
+4. 插件作者的推荐：训练画风时可以把提示词模板文件改为 `style_filewords`，效果不错（实验中）

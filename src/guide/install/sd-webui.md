@@ -244,9 +244,9 @@ Torch active/reserved: 1975/2144 MiB, Sys VRAM: 7890/8134 MiB (93.61%)
 
 ### 中文/本地化
 
-语言文件作为单个 `.json` 文件提供。 将此文件放入 `localizations` 目录并在设置中选择即可。
-
-在 22/10/26 下午，WebUI 添加了内置的中文翻译。
+当前，语言文件有两种分发途径：
+1. 通过[插件](../../advanced/development/extensions.md)机制分发。插件 `localizations` 目录中的语言文件将应用到系统中。同名语言文件会 **互相覆盖**。
+2. 作为单个 `.json` 文件提供。 将此文件放入 `localizations` 目录并在设置中选择即可。
 
 #### 创建本地化文件
 
@@ -383,6 +383,8 @@ nvidia-smi
 见 [API](../../advanced/development/api.md)。
 
 ## 错误处理 Troubleshooting
+
+这里是一些关于设置不当引发的异常。
 
 翻译整理自 [Voldy 的傻瓜教程](https://rentry.co/voldy)
 
