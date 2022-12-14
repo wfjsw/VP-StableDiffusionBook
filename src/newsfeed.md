@@ -11,9 +11,78 @@
  - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
  - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
 
+# 11/26 - 12/12
+
+- SD-WebUI 有大量功能更新与修复：
+	- 增加 `--gradio-inpaint-tool` 开关与 `color-sketch` 选项: https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/5cd5a672f7889dcc018c3873ec557d645ebe35d0
+	- Safetensors 已合并: https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/4930
+		- 要在 GPU 上启用 Safetensors，需要设置环境变量 `SAFETENSORS_FAST_GPU environment` 为 `1`
+		- PR 中包含了一个批量转换脚本
+		- 在线转换: https://huggingface.co/spaces/safetensors/convert
+	- 一些 UI 更新与修复
+	- SD 2.0 支持: https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/ce6911158b5b2f9cf79b405a1f368f875492044d
+	- 更新了一些工具（如超分工具）
+- 修正一些关于 WD 1.4 的错误信息：模型将基于 SD 2.0 和 SD 1.5 并将在圣诞节之前发布 (https://desu-usergeneratedcontent.xyz/g/image/1670/00/1670003773171.png)
+- InvokeAI 一体化替代前端更新了一些内容: https://github.com/invoke-ai/InvokeAI
+	- InvokeAI 只需要大约 3.5GB 显存即可生成 512x768 大小图像，兼容 Windows/Linux/Mac (M1 & M2).
+	- 功能：外部修补 UI，嵌入式模型管理，网页画图工具与图像浏览器
+	- 界面对用户友好，便于安装
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/zabmht/invokeai_22_release_the_unified_canvas/
+- Unstable Diffusion 达成了 $25000 筹款目标以继续训练 SD 2.0
+	- https://www.kickstarter.com/projects/unstablediffusion/unstable-diffusion-unrestricted-ai-art-powered-by-the-crowd
+	- 目标：
+		- 社区 GPU 云：研究者与模型训练者可免费在社区提供的平台上训练模型，前提是训练结果开源
+		- 使用更多图片继续训练
+		- 仅过滤儿童色情
+- Stable Diffusion v2.1 发布: https://stability.ai/blog/stablediffusion2-1-release7-dec-2022
+	- https://huggingface.co/stabilityai/stable-diffusion-2-1
+	- 降低过滤器强度以生成更好的人像
+- LORA - Low-rank Adaptation for Fast Text-to-Image Diffusion Fine-tuning space: https://huggingface.co/spaces/ysharma/Low-rank-Adaptation
+	- 比 Dreambooth 快两倍
+	- 仅需要 6 GB 显存与 16 GB 内存
+	- 超小模型体积 (3-4MB)
+	- 据作者声称效果好于全量微调
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/ziwwzh/lora_dreambooth_web_ui_finetune_stable_diffusion/
+	- GitHub: https://github.com/cloneofsimo/lora
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/zfqkh3/we_can_now_do_dreambooth_on_a_gpu_with_only_6gb/
+	- 在 Windows 上运行的教程: https://www.reddit.com/r/StableDiffusion/comments/ydip3s/guide_dreambooth_training_with_shivamshriraos/
+- StableTuner，图形化 Stable Diffusion 微调软件发布: https://github.com/devilismyfriend/StableTuner
+	- 安装使用方便，界面友好，训练功能全面
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/zd3xut/stabletuner_a_nononsense_powerful_finetuner_with/
+- openOutpaint 发布: https://github.com/zero01101/openOutpaint
+	- PaintHu 的开源替代
+	- 指南: https://github.com/zero01101/openOutpaint/wiki/SBS-Guided-Example
+	- 手册: https://github.com/zero01101/openOutpaint/wiki/Manual
+	- Reddit (评论中列出了更多功能): https://www.reddit.com/r/StableDiffusion/comments/zi2nr9/openoutpaint_v0095_an_aggressively_open_source/
+- OpenAI 发布了 ChatGPT，一个用于聊天的模型: https://openai.com/blog/chatgpt/
+	- 演示 (需要账号与国外手机号): https://chat.openai.com/	
+- Automatic1111 添加 SD 深度模型支持
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/zi6x66/automatic1111_added_support_for_new_depth_model/
+	- Reddit 用户提供的指南：
+		1. 下载 https://huggingface.co/stabilityai/stable-diffusion-2-depth (模型) 并放置在 `models/Stable-diffusion`
+		2. 下载 https://raw.githubusercontent.com/Stability-AI/stablediffusion/main/configs/stable-diffusion/v2-midas-inference.yaml (配置文件) 放置在模型旁边
+		3. 将配置文件重命名为 512-depth-ema.yaml
+		4. 开启 Stable-Diffusion-Webui, 选择 `512-depth-ema` 模型并正常使用图生图功能。
+- depthmap2mask 插件发布，可创建 3D 深度图 --> 可能用于更好的图生图
+	- 似乎是调节图像蒙版权重的替代方法
+- Shivam 的 Dreambooth 训练插件支持 SD v2.0
+- 将 Diffuser 模型与 ckpt 模型互相转换的脚本发布: https://github.com/lawfordp2017/diffusers/tree/main/scripts
+- AUTOMATIC1111 webui 现在可以在 HuggingFace 上使用: https://huggingface.co/spaces/camenduru/webui
+- 图形界面模型安全扫描器更新: https://github.com/diStyApps/Stable-Diffusion-Pickle-Scanner-GUI
+- Dream Textures (Stable Diffusion for Blender) 演示: https://twitter.com/CarsonKatri/status/1600248599254007810
+	- Github: https://github.com/carson-katri/dream-textures
+	- Reddit: https://www.reddit.com/r/StableDiffusion/comments/zf2b9k/absolutely_crazy_addon_in_blender_to_add_textures/
+- Stable Diffusion iOS 应用发布: https://www.reddit.com/r/StableDiffusion/comments/z5ndpw/i_made_a_stable_diffusion_for_anime_app_in_your/
+	- 离线？
+	- App Store: https://apps.apple.com/us/app/waifu-art-ai-local-generator/id6444585505
+- Dreambooth 训练服务发布（收费）: https://openart.ai/photobooth
+- Stable Diffusion 在线运行服务发布（收费）: https://rundiffusion.com/
+	- https://www.reddit.com/r/StableDiffusion/comments/zea5rd/thank_you_to_all_the_alpha_testers/
+- 由于数据库原因，Waifu Diffusion 1.4 发布日推迟到 12 月 26 日
+
 ## 12/1
 
-WebUi:[Newly created embeddings considered malicious](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/3878)
+- SD-WebUI 安全检查器会对生成的嵌入式模型报毒：[Newly created embeddings considered malicious](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/3878)
 
 ## 11/30
 

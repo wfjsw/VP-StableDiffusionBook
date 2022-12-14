@@ -126,3 +126,9 @@ https://github.com/ThereforeGames/txt2mask
 https://github.com/Extraltodeus/multi-subject-render
 
 生成多个的物体并合成在同一张图上。~~全自动 Photoshop~~
+
+### DAAM 
+
+https://github.com/kousw/stable-diffusion-webui-daam
+
+提示词热度图，显示提示词作用于图片的哪些部分。

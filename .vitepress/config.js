@@ -19,10 +19,15 @@ export default defineConfig({
         logo: '/paintbrush-solid.svg',
         outlineTitle: '在这一页上',
         nav: [
-            { text: '指南', link: '/guide/' },
+            {
+                text: '指南',
+                link: '/guide/',
+                activeMatch: '^/guide/',
+            },
             {
                 text: '深入',
                 link: '/advanced/',
+                activeMatch: '^/advanced/',
             },
             { text: '新闻', link: '/newsfeed' },
             { text: '附录', link: '/appendix' },

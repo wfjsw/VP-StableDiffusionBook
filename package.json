@@ -10,12 +10,12 @@
         "flexsearch": "0.7.31",
         "html-entities": "^2.3.3",
         "markdown-it": "^13.0.1",
-        "markdown-it-attrs": "^4.1.4",
-        "medium-zoom": "^1.0.6",
-        "sass": "^1.56.0",
+        "markdown-it-attrs": "^4.1.6",
+        "medium-zoom": "^1.0.8",
+        "sass": "^1.56.2",
         "sitemap": "^7.1.1",
-        "vitepress": "1.0.0-alpha.29",
-        "vue": "^3.2.41",
+        "vitepress": "1.0.0-alpha.31",
+        "vue": "^3.2.45",
         "wasm-pack": "^0.10.3"
     },
     "scripts": {
