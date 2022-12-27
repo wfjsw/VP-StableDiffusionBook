@@ -11,7 +11,7 @@
  - [sdupdates2 @ rentry](https://rentry.org/sdupdates2)
  - [sdupdates3 @ rentry](https://rentry.org/sdupdates3) 
 
-# 11/26 - 12/12
+## 11/26 - 12/12
 
 - SD-WebUI 有大量功能更新与修复：
 	- 增加 `--gradio-inpaint-tool` 开关与 `color-sketch` 选项: https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/5cd5a672f7889dcc018c3873ec557d645ebe35d0
