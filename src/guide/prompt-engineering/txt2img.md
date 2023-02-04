@@ -78,7 +78,7 @@ Emoji 在构图上有影响，比如 `💐☺️💐`。
 [人偶教室的测试记录](https://www.yuque.com/longyuye/lmgcwy)
 [风格化: 32 种](https://www.bilibili.com/video/BV1TP411N71t/)
 
-或通过使用 [微调模型](../finetuning/index.md) 来创作图片。
+或通过使用 [微调模型](../../advanced/finetuning/index.md) 来创作图片。
 
 #### 运动和姿势
 
@@ -282,7 +282,7 @@ NAI 花括号权重为 1.05/个，WebUI 圆括号权重为 1.1/个。
 允许您在生成过程中每步轮换使用多个提示词。基本语法是：
 
 ```
-[a|b|c] 
+[a|b|c]
 ```
 
 生成的第一步将使用 `a`，第二步将使用 `b`，第三步将使用 `c`，第四步将使用 `a`，依此类推。

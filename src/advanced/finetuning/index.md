@@ -15,7 +15,7 @@ outline: [2, 3]
 
 更大的 batch size 可能稍微加快训练并稍微提升训练效果，但也需要更大的显存。 -->
 
-> fine tune = hn/TI/DreamArtist (APT)/DB/native training etc.  
+> fine tune = hn/TI/DreamArtist (APT)/DB/native training etc.
 > fine tune directly = DB/native training
 
 ### Textual Inversion (TI)
@@ -95,11 +95,11 @@ NAI 泄露包中的 `stableckpt/modules/modules` 文件夹有 NovelAI 训练的�
 
 [Pull Here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2945)
 
-添加对否定词的即时嵌入学习，以显着提高生成图像的质量。 高质量的概念可以从单个图像中学习。 
+添加对否定词的即时嵌入学习，以显着提高生成图像的质量。 高质量的概念可以从单个图像中学习。
 
 添加重建损失以提高生成图像的细节质量和丰富度。
 
-添加通过人工注释训练的鉴别器（使用 convnext 实现）允许嵌入基于模型进行学习。 
+添加通过人工注释训练的鉴别器（使用 convnext 实现）允许嵌入基于模型进行学习。
 
 ### Aesthetic Gradients
 
