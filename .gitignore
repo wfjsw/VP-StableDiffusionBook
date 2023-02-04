@@ -2,3 +2,5 @@
 .yarn/install-state.gz
 dist/
 node_modules/
+
+.idea

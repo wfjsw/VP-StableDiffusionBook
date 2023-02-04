@@ -4,11 +4,6 @@ import Actions from './components/Actions.vue'
 
 # AiDraw
 
-::: tip 提示
-本站为 [sudoskys/StableDiffusionBook @ GitHub](https://github.com/sudoskys/StableDiffusionBook) 的一个派生网站，
-遵循 GFDL 发布。其中大部分内容为 [原本](https://draw.dianas.cyou/) 经演绎修改的产物。
-:::
-
 关于使用 AI 绘画的 Wiki、翻译、教程与相关资源。主要内容涉及 [Stable-Diffusion-WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
 <Actions />
@@ -61,6 +56,11 @@ Stable Diffusion 原模型是面向三次元的，而 NovelAI 所用的模型是
 -   [/r/SDForAll](https://www.reddit.com/r/sdforall/)
 
 ## 声明
+
+::: tip 提示
+本站为 [sudoskys/StableDiffusionBook @ GitHub](https://github.com/sudoskys/StableDiffusionBook) 的一个派生网站，
+遵循 GFDL 发布。其中大部分内容为 [原本](https://draw.dianas.cyou/) 经演绎修改的产物。
+:::
 
 1. 如果本文档外链的内容中有不合适的内容，与本文档无关。
 2. 引用或复制内容需要注明链接。
