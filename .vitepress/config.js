@@ -123,9 +123,9 @@ export default defineConfig({
                             text: '识别 AI 作品',
                             link: '/advanced/identify',
                         },
+                        { text: '术语解释', link: '/advanced/glossary' },
                     ],
                 },
-                { text: '术语解释', link: '/guide/glossary' },
                 {
                     text: '模型精调',
                     collapsible: true,
