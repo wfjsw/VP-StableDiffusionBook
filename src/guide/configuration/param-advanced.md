@@ -1,20 +1,5 @@
 # 进阶配置
 
-## Batch Count 与 Batch Size
-
--   `Batch Count` 指定共生成几个批次。
--   `Batch Size` 指定每个批次并行生产多少张图片。
-
-批次之间属于串行关系，批次之间的图片并行生成。
-
-对于显存极大的显卡而言，一次生成一张图片无法充分利用显卡计算容量，此时可将 `Batch Size` 提高以充分压榨算力。
-
-## 启动流程
-
-见 [Roaming_info_for_latent_diffusion](http://allophane.com/index.php/2022/10/17/roaming_info_for_latent_diffusion/)
-
-![Roaming_info.png](../../assets/load-path.webp){width=2124 height=1811}
-
 ## X/Y 图
 
 创建具有不同参数的图像网格。使用 X 类型和 Y 类型字段选择应由行和列共享的参数，并将这些参数以逗号分隔输入 X 值 / Y 值字段。支持整数、浮点数和范围。

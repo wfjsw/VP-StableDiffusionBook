@@ -68,7 +68,7 @@ export default defineConfig({
                     ],
                 },
                 {
-                    text: '配置与调试',
+                    text: '使用与调参',
                     collapsible: true,
                     items: [
                         { text: '引言', link: '/guide/configuration/' },
