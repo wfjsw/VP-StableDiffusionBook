@@ -1,4 +1,6 @@
 /guide/newsfeed /newsfeed 301
+/guide/glossary /advanced/glossary 301
+/advanced/prompt-engineering/ /guide/prompt-engineering/ 301
 
 /s/troubleshooting/install /guide/install/sd-webui#错误处理-troubleshooting 302
 /s/troubleshooting/generate /guide/configuration/troubleshoot 302

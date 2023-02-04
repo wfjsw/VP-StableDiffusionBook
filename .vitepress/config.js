@@ -127,7 +127,7 @@ export default defineConfig({
                     ],
                 },
                 {
-                    text: '模型精调',
+                    text: '模型训练',
                     collapsible: true,
                     items: [
                         {
