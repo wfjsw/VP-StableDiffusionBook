@@ -43,7 +43,6 @@ export default defineConfig({
                     text: '起步于此',
                     collapsible: true,
                     items: [
-                        { text: '术语解释', link: '/guide/glossary' },
                         {
                             text: '硬件要求',
                             link: '/guide/requirements',
@@ -91,6 +90,29 @@ export default defineConfig({
                         },
                     ],
                 },
+                {
+                    text: '提示词工程学',
+                    collapsible: true,
+                    items: [
+                        { text: '概述', link: '/guide/prompt-engineering/' },
+                        {
+                            text: '文字转图片',
+                            link: '/guide/prompt-engineering/txt2img',
+                        },
+                        {
+                            text: '图片转图片',
+                            link: '/guide/prompt-engineering/img2img',
+                        },
+                        {
+                            text: '实战技巧',
+                            link: '/guide/prompt-engineering/practice',
+                        },
+                        {
+                            text: '杂项',
+                            link: '/guide/prompt-engineering/misc',
+                        },
+                    ],
+                },
             ],
             '/advanced/': [
                 {
@@ -103,29 +125,7 @@ export default defineConfig({
                         },
                     ],
                 },
-                {
-                    text: '提示词工程学',
-                    collapsible: true,
-                    items: [
-                        { text: '概述', link: '/advanced/prompt-engineering/' },
-                        {
-                            text: '文字转图片',
-                            link: '/advanced/prompt-engineering/txt2img',
-                        },
-                        {
-                            text: '图片转图片',
-                            link: '/advanced/prompt-engineering/img2img',
-                        },
-                        {
-                            text: '实战技巧',
-                            link: '/advanced/prompt-engineering/practice',
-                        },
-                        {
-                            text: '杂项',
-                            link: '/advanced/prompt-engineering/misc',
-                        },
-                    ],
-                },
+                { text: '术语解释', link: '/guide/glossary' },
                 {
                     text: '模型精调',
                     collapsible: true,
