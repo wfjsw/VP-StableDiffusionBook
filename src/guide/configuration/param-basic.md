@@ -85,6 +85,15 @@ outline: [2, 3]
 
 默认情况下，txt2img（文生图） 在高分辨率下会生成非常混沌的图像。该选项会使得模型首先生成一张小图片，然后通过 img2img 将图片分辨率扩大，以实现高清大图效果。
 
+## Batch Count 与 Batch Size
+
+-   `Batch Count（生成批次）` 指定共生成几个批次。
+-   `Batch Size（每批数量）` 指定每个批次并行生产多少张图片。
+
+大的 Batch Size 需要消耗巨量显存。若您的显卡没有超过 12G 的显存，请不要调节 Batch Size。
+
+对于显存极大的显卡而言，一次生成一张图片无法充分利用显卡计算容量，此时可将 `Batch Size` 提高以充分压榨算力。
+
 ## 随机种子
 
 理论上，种子决定模型在生成图片时涉及的所有随机性。
@@ -103,25 +112,9 @@ outline: [2, 3]
 
 实际执行中，具体的执行步骤为 Denoising strength \* Sampling Steps。
 
+## 不间断生成
 
-## Batch Count 与 Batch Size
-
--   `Batch Count（生成批次）` 指定共生成几个批次。
--   `Batch Size（每批数量）` 指定每个批次并行生产多少张图片。
-
-大的 Batch Size 需要消耗巨量显存。若您的显卡没有超过 12G 的显存，请不要调节 Batch Size。
-
-对于显存极大的显卡而言，一次生成一张图片无法充分利用显卡计算容量，此时可将 `Batch Size` 提高以充分压榨算力。
-
-## ckpt 文件安全问题
-
-见 [It's not a virus it's a checkpoint file](https://huggingface.co/Deltaadams/Hentai-Diffusion/discussions/12)
-
-ckpt 文件被加载时基本上可以执行任何内容，盲目加载有安全风险。请检查来源是否可靠再加载。
-
-如果杀毒软件拦截，有可能创建者向文件中注入了恶意的 Python 代码。
-
-可以通过此脚本检查风险：<https://rentry.org/safeunpickle2>
+在 WebUI 的生成键上右击即可出现 **不间断生成** 的选项。
 
 ## 使用 WebUI 复现 NAI 官网结果
 

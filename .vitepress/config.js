@@ -77,12 +77,16 @@ export default defineConfig({
                             link: '/guide/configuration/param-basic',
                         },
                         {
-                            text: '进阶配置',
+                            text: '进阶使用',
                             link: '/guide/configuration/param-advanced',
                         },
                         {
                             text: '疑难解答',
                             link: '/guide/configuration/troubleshoot',
+                        },
+                        {
+                            text: '模型选择',
+                            link: '/guide/configuration/model',
                         },
                         {
                             text: '其他',
