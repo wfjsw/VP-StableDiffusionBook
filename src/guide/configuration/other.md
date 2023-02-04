@@ -1,5 +1,27 @@
-
 # 其他
+
+## xformers
+
+xformers 分辨率越高加速效果越好。使用 xformers 会引入一些随机性，稍微影响生成的图像。
+
+如果你使用 Pascal、Turing 或者 Ampere 架构的卡（包括 GTX 1000，RTX 2000、3000 系列），将 `--xformers` 参数添加到 `webui-user.bat` 中的 `COMMANDLINE_ARGS`。
+
+::: tip
+有人说在 700 和 900 系列卡上使用 xformers 的性能明显较差，请注意这一点。
+本人实测，2050 在启用 xformers 之后，速度慢了 50%
+:::
+
+::: warning
+注意使用 xformers 优化加速将使得同种子生成的图片存在细微差异。
+:::
+
+通常不需要自行编译 xformers。如果需要编译，见 [在 Windows 上编译 xformers](other#在-windows-上编译-xformers)
+
+## 使用 CPU 进行绘画
+
+根据此 [PR](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2597)
+
+可以通过 `--use-cpu all` 尽可能的使用 CPU 进行生成，虽然慢 100 倍。
 
 ## 4GB 显卡支持
 
@@ -14,14 +36,6 @@
 :::
 
 当然也可以减半精度，或者生成一张 64x64 图片清理显存。
-
-## 不间断生成
-
-在 WebUI 的生成键上右击即可出现 **不间断生成** 的选项。
-
-## 图片信息 PNG info
-
-生成的图片原图内嵌生成信息，拖放到 PNG Info 页面即可查看。
 
 ## 速度判定
 
@@ -52,8 +66,8 @@
 
 <!-- TODO: 11.6 没问题 -->
 
-- 安装 [VS Build Tools 2022](https://visualstudio.microsoft.com/zh-hans/downloads/?q=build+tools)，运行安装时只需要选择 `Desktop development with C++`
-- 安装 [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)。可选择 `Custom` 安装方式，删除一些如 Nsight、Visual Studio 集成等无用组件。
+-   安装 [VS Build Tools 2022](https://visualstudio.microsoft.com/zh-hans/downloads/?q=build+tools)，运行安装时只需要选择 `Desktop development with C++`
+-   安装 [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)。可选择 `Custom` 安装方式，删除一些如 Nsight、Visual Studio 集成等无用组件。
 
 1. 确认 nvcc 可用
 
@@ -98,7 +112,7 @@ pip install ninja
 
 6. 如果使用 CUDA 11.6 之前的旧版本，需要强制启用它以在 MS Build Tools 2022 上构建。
 
-在 CMD 设置 
+在 CMD 设置
 
 ```cmd
 set NVCC_FLAGS=-allow-unsupported-compiler"
@@ -116,12 +130,14 @@ export NVCC_FLAGS=-allow-unsupported-compiler
 
 比如说，如果你的 GPU 是 GTX 1070，基于该表，架构是 6.1
 
-*CMD*
+_CMD_
+
 ```cmd
 set TORCH_CUDA_ARCH_LIST=6.1
 ```
 
-*BASH*  
+_BASH_
+
 ```bash
 export TORCH_CUDA_ARCH_LIST=6.1
 ```

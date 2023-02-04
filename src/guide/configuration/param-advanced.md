@@ -1,23 +1,10 @@
-# 进阶配置
+# 进阶使用
 
-## Batch Count 与 Batch Size
+## X/Y/Z 图表
 
--   `Batch Count` 指定共生成几个批次。
--   `Batch Size` 指定每个批次并行生产多少张图片。
+这项功能可以在 文生图/图生图 界面的左下角种 “脚本” 一栏内选择 “X/Y/Z 图表” 以启用。
 
-批次之间属于串行关系，批次之间的图片并行生成。
-
-对于显存极大的显卡而言，一次生成一张图片无法充分利用显卡计算容量，此时可将 `Batch Size` 提高以充分压榨算力。
-
-## 启动流程
-
-见 [Roaming_info_for_latent_diffusion](http://allophane.com/index.php/2022/10/17/roaming_info_for_latent_diffusion/)
-
-![Roaming_info.png](../../assets/load-path.webp){width=2124 height=1811}
-
-## X/Y 图
-
-创建具有不同参数的图像网格。使用 X 类型和 Y 类型字段选择应由行和列共享的参数，并将这些参数以逗号分隔输入 X 值 / Y 值字段。支持整数、浮点数和范围。
+它创建具有不同参数的图像网格。使用 X 类型和 Y 类型字段选择应由行和列共享的参数，并将这些参数以逗号分隔输入 X 值 / Y 值字段。支持整数、浮点数和范围。
 
 ### Simple ranges 简单范围
 
@@ -87,28 +74,9 @@ S/R 是 搜索/替换 的意思，输入一个单词或短语的列表，它从�
 
 [Face Restoration @ WebUI Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#face-restoration)
 
-## xformers
+## 图片信息 PNG info
 
-xformers 分辨率越高加速效果越好。使用 xformers 会引入一些随机性，稍微影响生成的图像。
-
-如果你使用 Pascal、Turing 或者 Ampere 架构的卡（包括 GTX 1000，RTX 2000、3000 系列），将 `--xformers` 参数添加到 `webui-user.bat` 中的 `COMMANDLINE_ARGS`。
-
-::: tip
-有人说在 700 和 900 系列卡上使用 xformers 的性能明显较差，请注意这一点。
-本人实测，2050 在启用 xformers 之后，速度慢了 50%
-:::
-
-::: warning
-注意使用 xformers 优化加速将使得同种子生成的图片存在细微差异。
-:::
-
-通常不需要自行编译 xformers。如果需要编译，见 [在 Windows 上编译 xformers](other#在-windows-上编译-xformers)
-
-## 使用 CPU 进行绘画
-
-根据此 [PR](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2597)
-
-可以通过 `--use-cpu all` 尽可能的使用 CPU 进行生成，虽然慢 100 倍。
+生成的图片原图内嵌生成信息，拖放到 PNG Info 页面即可查看。
 
 ## 附加功能 Extras
 

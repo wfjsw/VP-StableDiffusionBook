@@ -50,7 +50,7 @@ WSL 不可以迁移，如果 C 盘不够，寄！
 
 #### 安装 Python
 
-安装 [Python 3.10 / 3.11](https://www.python.org/downloads/windows/)，安装时须选中 `Add Python to PATH`
+安装 [Python 3.10](https://www.python.org/downloads/windows/)，安装时须选中 `Add Python to PATH`
 
 > 部分整合包自带 Python 运行时。
 
@@ -179,7 +179,7 @@ Win 用户编辑并运行 `webui.bat`
 
 Linux 用户可运行 `launch.py` 或 `webui.py` ，前者会自动安装(新)环境。
 
-```bash 
+```bash
 python launch.py
 ```
 
@@ -349,7 +349,7 @@ export COMMANDLINE_ARGS="--ckpt a.ckpt"
 
 选择要使用的默认 GPU `--device-id 0`，来代替旧版本 (2022/10 之前) 的 `CUDA_VISIBLE_DEVICES=0`，可以选择第二个 GPU 允许同时运行两个实例，从而能够以更简洁的方式简单地选择设备。
 
-查看 GPU 序号，可以使用 
+查看 GPU 序号，可以使用
 
 ```bash
 nvidia-smi
@@ -541,7 +541,7 @@ Windows 7 上运行很可能会报错: `api-ms-win-core-path-l1-1-0.dll is missi
 
 代理环境变量形如：
 
-```text 
+```text
 HTTP_PROXY
 HTTPS_PROXY
 ALL_PROXY

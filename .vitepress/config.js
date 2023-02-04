@@ -43,7 +43,6 @@ export default defineConfig({
                     text: '起步于此',
                     collapsible: true,
                     items: [
-                        { text: '术语解释', link: '/guide/glossary' },
                         {
                             text: '硬件要求',
                             link: '/guide/requirements',
@@ -69,7 +68,7 @@ export default defineConfig({
                     ],
                 },
                 {
-                    text: '配置与调试',
+                    text: '使用与调参',
                     collapsible: true,
                     items: [
                         { text: '引言', link: '/guide/configuration/' },
@@ -78,7 +77,7 @@ export default defineConfig({
                             link: '/guide/configuration/param-basic',
                         },
                         {
-                            text: '进阶配置',
+                            text: '进阶使用',
                             link: '/guide/configuration/param-advanced',
                         },
                         {
@@ -86,8 +85,35 @@ export default defineConfig({
                             link: '/guide/configuration/troubleshoot',
                         },
                         {
+                            text: '模型选择',
+                            link: '/guide/configuration/model',
+                        },
+                        {
                             text: '其他',
                             link: '/guide/configuration/other',
+                        },
+                    ],
+                },
+                {
+                    text: '提示词工程学',
+                    collapsible: true,
+                    items: [
+                        { text: '概述', link: '/guide/prompt-engineering/' },
+                        {
+                            text: '文字转图片',
+                            link: '/guide/prompt-engineering/txt2img',
+                        },
+                        {
+                            text: '图片转图片',
+                            link: '/guide/prompt-engineering/img2img',
+                        },
+                        {
+                            text: '实战技巧',
+                            link: '/guide/prompt-engineering/practice',
+                        },
+                        {
+                            text: '杂项',
+                            link: '/guide/prompt-engineering/misc',
                         },
                     ],
                 },
@@ -101,33 +127,11 @@ export default defineConfig({
                             text: '识别 AI 作品',
                             link: '/advanced/identify',
                         },
+                        { text: '术语解释', link: '/advanced/glossary' },
                     ],
                 },
                 {
-                    text: '提示词工程学',
-                    collapsible: true,
-                    items: [
-                        { text: '概述', link: '/advanced/prompt-engineering/' },
-                        {
-                            text: '文字转图片',
-                            link: '/advanced/prompt-engineering/txt2img',
-                        },
-                        {
-                            text: '图片转图片',
-                            link: '/advanced/prompt-engineering/img2img',
-                        },
-                        {
-                            text: '实战技巧',
-                            link: '/advanced/prompt-engineering/practice',
-                        },
-                        {
-                            text: '杂项',
-                            link: '/advanced/prompt-engineering/misc',
-                        },
-                    ],
-                },
-                {
-                    text: '模型精调',
+                    text: '模型训练',
                     collapsible: true,
                     items: [
                         {
